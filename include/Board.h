@@ -15,12 +15,12 @@ class Board
 public:
 	Board();
 	~Board() {};
-	void play(sf::RenderWindow&, float);
+	void play(sf::RenderWindow&, float, float);
 	void draw(sf::RenderWindow&)const;
 	bool checkCollision();
 	void readLevel();
 	bool alive() const;
-	void updateBackground(float);
+	void moveBackground(float, sf::RenderWindow&);
 
 
 private:

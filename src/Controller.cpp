@@ -64,7 +64,8 @@ void Controller::run(sf::RenderWindow& m_wind)
 			//	}
 			//}
 		}
-		m_board.play(m_wind, m_timer);
+		m_delta_time = m_clock.restart().asSeconds();
+		m_board.play(m_wind, m_timer, m_delta_time);
 
 		//change view
 

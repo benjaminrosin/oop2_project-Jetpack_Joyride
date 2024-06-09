@@ -17,6 +17,7 @@ private:
 
 	sf::Clock m_clock;
 	float m_timer;
+	float m_delta_time;
 	int m_coins = 0;
 
 	void drawData(sf::RenderWindow&);
