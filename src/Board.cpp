@@ -7,7 +7,7 @@ Board::Board()
 	readLevel();
 }
 
-void Board::play(sf::RenderWindow& wind, float timer, float delta_time)
+void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב שיש גם טיימר וגם דלתא
 {
 	if (auto event = sf::Event(); wind.pollEvent(event))
 	{
