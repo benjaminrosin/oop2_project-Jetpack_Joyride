@@ -23,7 +23,7 @@ void Board::play(sf::RenderWindow& wind, float dalta_time)
 	}
 
 	//cheack collision
-	std::for_each(m_objects.begin(), m_objects.end(), [&](auto obj) {obj->move_and_change_sprite(dalta_time, &m_player); });
+	std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {obj->move_and_change_sprite(dalta_time, &m_player); });
 
 	if (m_objects.size() < MIN_AMOUNT)
 	{
@@ -34,7 +34,7 @@ void Board::play(sf::RenderWindow& wind, float dalta_time)
 void Board::draw(sf::RenderWindow& wind) const
 {
 	wind.draw(m_player.getDrawable());
-	std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto obj) {wind.draw(obj->getDrawable()); });
+	std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto &obj) {wind.draw(obj->getDrawable()); });
 
 }
 
