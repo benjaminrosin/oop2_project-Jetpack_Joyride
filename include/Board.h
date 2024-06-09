@@ -20,7 +20,8 @@ public:
 	bool checkCollision();
 	void readLevel();
 	bool alive() const;
-	
+	void updateBackground(float);
+
 
 private:
 	Player m_player;
