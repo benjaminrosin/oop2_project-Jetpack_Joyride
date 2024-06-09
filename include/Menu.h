@@ -2,7 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include "Resources.h"
 #include "Controller.h"
-#include "Utilities.h"
 
 class Menu {
 public:
@@ -20,7 +19,7 @@ private:
 	int handleClick(sf::Vector2f) const;
 	void drawButtons(sf::RenderWindow&) const;
 	void newGame();
-	void loadGame();
+	//void loadGame();
 	void showHelp();
 
 };

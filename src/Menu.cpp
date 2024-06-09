@@ -15,6 +15,7 @@ Menu::Menu()
 		m_button[i].setOrigin(sf::Vector2f(150, 50));
 		m_button[i].setPosition(sf::Vector2f(450, 120 * (i + 1)));
 		m_button[i].setTexture(Resources::getInstance().getTextureButtons(i));	
+		m_button[i].setFillColor(sf::Color::Green);
 	}
 }
 
@@ -28,17 +29,17 @@ Menu::~Menu()
 
 void Menu::showMenu()
 {
-	m_wind.create(sf::VideoMode(SCREEN_SIZE.x, SCREEN_SIZE.y), "sticks");
+	m_wind.create(sf::VideoMode(SCREEN_SIZE.x, SCREEN_SIZE.y), "Jetpack Joyride");
 
 	while (m_wind.isOpen())
 	{
 		m_wind.clear(sf::Color::White);
 		m_wind.draw(m_background);
 
-		sf::Vector2i mousePos = sf::Mouse::getPosition(m_wind);
-		sf::Vector2f mousePosF(mousePos.x, mousePos.y);
+		//sf::Vector2i mousePos = sf::Mouse::getPosition(m_wind);
+		//sf::Vector2f mousePosF(mousePos.x, mousePos.y);
 
-		handleHover(mousePosF, m_button, NUM_OF_BUTTONS_MENU);
+		//handleHover(mousePosF, m_button, NUM_OF_BUTTONS_MENU);
 		drawButtons(m_wind);
 
 		m_wind.display();
@@ -61,7 +62,7 @@ void Menu::showMenu()
 					newGame();
 					break;
 				case 1:
-					loadGame();
+					//loadGame();
 					break;
 				case 2:
 					showHelp();
@@ -105,20 +106,20 @@ void Menu::newGame()
 	m_controller = nullptr;
 }
 
-void Menu::loadGame()
-{
-	try
-	{
-		m_controller = new Controller(FILE_NAME);
-		m_controller->run(m_wind);
-		delete m_controller;
-		m_controller = nullptr;
-	}
-	catch (std::exception& exp)
-	{
-		printMessage(std::vector<std::string>{exp.what()});
-	}
-}
+//void Menu::loadGame()
+//{
+//	try
+//	{
+//		m_controller = new Controller(FILE_NAME);
+//		m_controller->run(m_wind);
+//		delete m_controller;
+//		m_controller = nullptr;
+//	}
+//	catch (std::exception& exp)
+//	{
+//		//printMessage(std::vector<std::string>{exp.what()});
+//	}
+//}
 
 void Menu::showHelp()
 {

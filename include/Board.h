@@ -6,20 +6,23 @@
 #include <memory>
 #include "Player.h"
 
+const int MIN_AMOUNT = 20;
+
 class Controller;
 
 class Board
 {
 public:
 	Board();
-	~Board();
-	void play(Controller*, const sf::Vector2f&);
+	~Board() {};
+	void play(sf::RenderWindow&, float);
 	void draw(sf::RenderWindow&)const;
-	bool check_collision();
+	bool checkCollision();
+	void readLevel();
+	bool alive() const;
 	
 
 private:
-	int m_coins = 0;
 	Player m_player;
 	std::list<std::unique_ptr<Object>> m_objects;
 

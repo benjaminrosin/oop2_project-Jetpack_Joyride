@@ -7,7 +7,6 @@
 class Controller {
 public:
 	Controller();
-	Controller(std::string);
 	void run(sf::RenderWindow&);
 	
 private:
@@ -17,8 +16,11 @@ private:
 	sf::RectangleShape m_buttonsGame[NUM_OF_BUTTONS_BOARD];
 
 	sf::Clock m_clock;
+	float m_timer;
+	int m_coins = 0;
 
 	void drawData(sf::RenderWindow&);
+	void addToCoins(int);
 	int handleClick(sf::Vector2f) const;
 	void resetSFMLComponents();
 
