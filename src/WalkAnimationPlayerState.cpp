@@ -28,7 +28,7 @@ void WalkAnimationPlayerState::update(Player* player,float deltaTime)
 
     // Update player's horizontal movement if needed
         // For simplicity, let's assume the player always moves to the right
-    float moveSpeed = 100.0f; // מהירות ההליכה של השחקן
+    float moveSpeed = 200.0f; // מהירות ההליכה של השחקן
     player->setMove(moveSpeed * deltaTime, 0);
 }
 
