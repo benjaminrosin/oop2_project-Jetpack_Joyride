@@ -23,6 +23,8 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 		}
 	}
 
+	m_player->move_and_change_sprite(timer, m_player.get());
+
 	//cheack collision
 	std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {obj->move_and_change_sprite(delta_time, &(*m_player)); });
 

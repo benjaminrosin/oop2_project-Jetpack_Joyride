@@ -60,6 +60,7 @@ void Controller::run(sf::RenderWindow& m_wind)
 
 		m_board.play(m_wind, m_timer, m_delta_time);
 
+		//change view
 		auto curr_view = m_wind.getView();
 		sf::Vector2f size = curr_view.getSize();
 		sf::Vector2f center = curr_view.getCenter();
@@ -67,25 +68,10 @@ void Controller::run(sf::RenderWindow& m_wind)
 
 		m_wind.setView(sf::View(center, size));
 
-
-		//change view
 		moveBackground(m_delta_time, m_wind);
-
-		//----
-		sf::RectangleShape r;
-		r.setSize(sf::Vector2f(100, 100));
-		r.setPosition(sf::Vector2f(100, SCREEN_SIZE.y-MARGIN));
-		r.setFillColor(sf::Color::Blue);
-
-
-
-		//----
-
 		//m_wind.setView(sf::View(sf::FloatRect(m_background.getPosition(), sf::Vector2f(m_background.getTexture()->getSize()))));
 
 		m_board.draw(m_wind);
-
-		//m_wind.draw(r);
 
 		m_wind.display();
 	}
