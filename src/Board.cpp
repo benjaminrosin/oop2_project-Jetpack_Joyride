@@ -56,10 +56,10 @@ bool Board::alive() const
 void Board::moveBackground(float delta_time, sf::RenderWindow& wind) //נסיון. צריך לשנות
 {
 	// קבלת הטקסטורה של הרקע
-	auto background = Resources::getInstance().getBackground(1);
-	sf::Vector2u backgroundSize = background->getSize();
+	m_background = Resources::getInstance().getBackground(1);
+	sf::Vector2u backgroundSize = m_background->getSize();
 	sf::Sprite sprite;
-	sprite.setTexture(*background);
+	sprite.setTexture(*m_background);
 	float scrollSpeed = 200.f;
 
 	// חישוב ההזזה האופקית בהתבסס על מהירות הגלילה והזמן שעבר
