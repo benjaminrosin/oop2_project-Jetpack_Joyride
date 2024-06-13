@@ -1,12 +1,13 @@
 
 #include "JumpAnimationPlayerState.h"
 #include "Player.h"
+#include <iostream>
 
 void JumpAnimationPlayerState::enter(Player* player)
 {
     // Set jump animation frames
     m_currentFrame = 0;
-    m_frameTime = 0.1f;  // זמן בין פריימים באנימציית הקפיצה
+    m_frameTime = 0.0f;  // זמן בין פריימים באנימציית הקפיצה
     m_elapsedTime = 0.0f;
 
     // נניח שיש לנו 4 פריימים לאנימציית הקפיצה
@@ -16,15 +17,37 @@ void JumpAnimationPlayerState::enter(Player* player)
     player->setSpriteRect(m_jumpFrames[m_currentFrame]);
 
     // הגדרת מהירות הקפיצה
-    m_jumpVelocity = -300.0f;
-    m_gravity = 800.0f;
+    m_jumpVelocity = -400.0f;
+    m_gravity = 100.0f;
 }
 
 void JumpAnimationPlayerState::update(Player* player, float deltaTime)
 {
+    std::cout << "tset jump";
+  //  m_elapsedTime += deltaTime;
+
+  //  // עדכון פריימים של האנימציה
+  //  if (m_elapsedTime >= m_frameTime)
+  //  {
+  //      m_elapsedTime -= m_frameTime;
+  //      m_currentFrame = (m_currentFrame + 1) % m_jumpFrames.size();
+  //      player->setSpriteRect(m_jumpFrames[m_currentFrame]);
+  //  }
+
+  //  // עדכון תנועת הקפיצה
+  //  player->setMove(0, m_jumpVelocity * deltaTime);
+  //  m_jumpVelocity += m_gravity * deltaTime;
+
+  //  // בדיקת סיום הקפיצה (כאשר השחקן נוחת בחזרה)
+  ///*  if (player->sprite.getPosition().y >= 300.0f)
+  //  {
+  //      player->sprite.setPosition(player->sprite.getPosition().x, 300.0f);
+  //      player->setState(std::make_unique<WalkAnimationPlayerState>());
+  //  }*/
+
     m_elapsedTime += deltaTime;
 
-    // עדכון פריימים של האנימציה
+    // Update animation frames
     if (m_elapsedTime >= m_frameTime)
     {
         m_elapsedTime -= m_frameTime;
@@ -32,16 +55,20 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
         player->setSpriteRect(m_jumpFrames[m_currentFrame]);
     }
 
-    // עדכון תנועת הקפיצה
-    //player->setMove(0, m_jumpVelocity * deltaTime);
+    // Update jump movement
+    player->setMove(0, m_jumpVelocity * deltaTime);
     m_jumpVelocity += m_gravity * deltaTime;
 
-    // בדיקת סיום הקפיצה (כאשר השחקן נוחת בחזרה)
-  /*  if (player->sprite.getPosition().y >= 300.0f)
+    // Check if spacebar is released to end the jump
+    if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
-        player->sprite.setPosition(player->sprite.getPosition().x, 300.0f);
-        player->setState(std::make_unique<WalkAnimationPlayerState>());
-    }*/
+        // Finish the jump animation
+        if (player->getPosition().y >= 300.0f)
+        {
+            player->setPosition(player->getPosition().x, 300.0f);
+            player->setState(std::make_unique<WalkAnimationPlayerState>());
+        }
+    }
 }
 
 void JumpAnimationPlayerState::draw(Player* player, sf::RenderWindow& wind)

@@ -40,3 +40,13 @@ void Player::walk()
 {
 	m_currentState->walk(this);
 }
+
+void Player::handleSpaceRelease()
+{
+	if (auto jumpState = dynamic_cast<JumpAnimationPlayerState*>(m_currentState.get()))
+	{
+		setState(std::make_unique<WalkAnimationPlayerState>());
+	}
+}
+
+

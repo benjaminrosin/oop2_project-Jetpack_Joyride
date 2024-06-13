@@ -1,29 +1,51 @@
 #include "Board.h"
+#include "JumpAnimationPlayerState.h"
+#include "WalkAnimationPlayerState.h"
 #include <iostream>
 #include <fstream>
+#include <memory>
+
 Board::Board()
 {
 	m_objects.clear();
 	readLevel();
 	readLevel();
 	m_player = std::make_unique<Player>();
+	//m_player->setState(std::make_unique<WalkAnimationPlayerState>());
+
 }
 
 void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב שיש גם טיימר וגם דלתא
 {
+	//if (auto event = sf::Event(); wind.pollEvent(event))
+	//{
+	//	/*if (event.type == sf::Event::KeyPressed &&
+	//		event.key.code == sf::Keyboard::Space)
+	//	{*/
+	//	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	//	{
+	//		//flyyyyyyyyyy
+	//		m_player->jump();
+	//		m_player->update(delta_time);
+	//	}
+	//}
+
 	if (auto event = sf::Event(); wind.pollEvent(event))
 	{
-		if (event.type == sf::Event::KeyPressed &&
+		if (event.type == sf::Event::KeyReleased &&
 			event.key.code == sf::Keyboard::Space)
 		{
-			//flyyyyyyyyyy
-		}
-		else
-		{
-			//walk
+			m_player->handleSpaceRelease(); // טיפול במקש הרווח שנשחרר
 		}
 	}
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		m_player->jump();
+		m_player->update(delta_time);
+	}
+
+	m_player->update(delta_time);
 	m_player->move_and_change_sprite(timer, m_player.get());
 
 	//cheack collision

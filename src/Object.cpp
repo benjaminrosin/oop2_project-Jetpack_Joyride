@@ -1,5 +1,5 @@
 #include "Object.h"
-
+//#include <iostream>
 Object::Object(const sf::Texture* txture, sf::Vector2f loc, const sf::IntRect rect)
 {
 	m_sp.setTexture(*txture);
@@ -28,3 +28,14 @@ void Object::setMove(float x, float y)
 {
 	m_sp.move(x, y);
 }
+
+void Object::setPosition(float x, float y)
+{
+	m_sp.setPosition(x, y);
+}
+
+sf::Vector2f Object::getPosition() const
+{
+	return m_sp.getPosition();
+}
+

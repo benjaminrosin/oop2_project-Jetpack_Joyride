@@ -1,6 +1,5 @@
 #include "WalkAnimationPlayerState.h"
 #include "Player.h"
-
 void WalkAnimationPlayerState::enter(Player* player)
 {
     // Set run animation frames

@@ -33,7 +33,7 @@ void Controller::run(sf::RenderWindow& m_wind)
 			{
 				auto mousePosition = m_wind.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
 				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
-
+				//handle hoverd!!!
 				switch (option)
 				{
 				case 0:

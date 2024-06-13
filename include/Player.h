@@ -17,7 +17,7 @@ public:
 	void draw(sf::RenderWindow&);
 	void jump();
 	void walk();
-
+	void handleSpaceRelease();
 	
 private:
 	std::unique_ptr<PlayerAnimationState> m_currentState;
