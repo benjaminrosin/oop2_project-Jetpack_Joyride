@@ -24,7 +24,7 @@ public:
 
 
 private:
-	Player m_player;
+	std::unique_ptr<Player> m_player;
 	std::list<std::unique_ptr<Object>> m_objects;
 	const sf::Texture* m_background;
 };
