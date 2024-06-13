@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Moving_object.h"
+#include "MovingObject.h"
 
-class Missale:public Moving_object {
+class Missale:public MovingObject {
 public:
-	using Moving_object::collision;
+	using MovingObject::collision;
 
 	Missale(int, int);
 	virtual ~Missale();

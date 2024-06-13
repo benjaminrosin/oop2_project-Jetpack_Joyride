@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Static_object.h"
+#include "StaticObject.h"
 
-class Laser:public Static_object {
+class Laser:public StaticObject {
 public:
-	using Static_object::collision;
+	using StaticObject::collision;
 
 	Laser(int, int);
 	virtual ~Laser();
