@@ -1,5 +1,6 @@
 #include "Board.h"
 #include <iostream>
+#include <fstream>
 Board::Board()
 {
 	m_objects.clear();
@@ -37,7 +38,7 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 
 void Board::draw(sf::RenderWindow& wind) const
 {
-	wind.draw(m_player->getDrawable());//לשים לב שמדפיס ריבוע לבן בפינה, כנראה כי הוא ריק.
+	wind.draw(m_player->getDrawable());
 	std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto &obj) {wind.draw(obj->getDrawable()); });
 
 }
@@ -49,6 +50,26 @@ bool Board::checkCollision()
 
 void Board::readLevel()
 {
+	char c;
+	auto file = std::ifstream("level.txt");
+	int col = 0;
+	int row = 0;
+
+	while (file.get(c))
+	{
+		if (c == '\n')
+		{
+			row = 0;
+			col++;
+			continue;
+		}
+
+		else if (c != '-')
+		{
+			//factory
+		}
+		row++;
+	}
 }
 
 bool Board::alive() const

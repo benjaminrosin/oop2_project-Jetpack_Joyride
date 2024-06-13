@@ -12,16 +12,15 @@ const sf::IntRect BLOCKING_RECT[] = {
 };
 
 const sf::Vector2f SCREEN_SIZE(1200, 791);
-const sf::Vector2f MESSAGE_SCREEN_SIZE(600, 300);
-const int NUM_OF_DATA = 5;
+//const sf::Vector2f MESSAGE_SCREEN_SIZE(600, 300);
+const int NUM_OF_DATA = 2;
 const int MARGIN = SCREEN_SIZE.y/12;
 
-const std::string FILE_NAME = "sticks.txt";
-
-const int NUM_OF_BACKGROUNDS = 2;
+const int NUM_OF_BACKGROUNDS = 3;
 const std::string BACKGROUNDS_FILE_NAMES[NUM_OF_BACKGROUNDS] = {
 	"GameMenu.png",
-	"Hall.png"
+	"Hall.png",
+	"help.png"
 };
 
 const int NUM_OF_BUTTONS_MENU = 4;
@@ -32,29 +31,33 @@ const std::string BOTTUNS_FILE_NAMES[NUM_OF_BUTTONS_MENU] = {
 	"exit.png"
 };
 
-const int NUM_OF_BUTTONS_BOARD = 2;
+
+//add textures
+const int NUM_OF_BUTTONS_BOARD = 3;
 const std::string BOTTUNS_BOARD_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
-"hint.png",
-"save.png"
+"back.png",
+"pause.png",
+"mute.png"
 };
 
+//add textures
 const int NUM_OF_OBJECTS = 1;
 const std::string OBJECT_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
 "JetpackWalking.png"
 };
 
-const int NUM_OF_SOUNDES = 7;
-const std::string SOUND_FILE_NAME[NUM_OF_SOUNDES] = {
-"success.ogg",
-"loss.ogg",
-"bite.ogg",
-"door open.ogg",
-"gift.ogg",
-"collect key.ogg",
-"door collision.ogg"
-};
+//const int NUM_OF_SOUNDES = 7;
+//const std::string SOUND_FILE_NAME[NUM_OF_SOUNDES] = {
+//"success.ogg",
+//"loss.ogg",
+//"bite.ogg",
+//"door open.ogg",
+//"gift.ogg",
+//"collect key.ogg",
+//"door collision.ogg"
+//};
 
-const std::string FONT_FILE_NAME = "LoveDays-2v7Oe.ttf";
+const std::string FONT_FILE_NAME = "New Athletic M54.ttf";//LoveDays-2v7Oe.ttf";
 
 
 class Resources 
