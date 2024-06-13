@@ -57,7 +57,7 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
 //"door collision.ogg"
 //};
 
-const std::string FONT_FILE_NAME = "LoveDays-2v7Oe.ttf";
+const std::string FONT_FILE_NAME = "New Athletic M54.ttf";//LoveDays-2v7Oe.ttf";
 
 
 class Resources 
