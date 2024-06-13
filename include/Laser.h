@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Static_object.h"
+#include "StaticObject.h"
 
-class Coin:public Static_object {
+class Coin:public StaticObject {
 public:
-	using Static_object::collision;
+	using StaticObject::collision;
 
 	Coin(int, int);
 	virtual ~Coin();

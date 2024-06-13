@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Static_object.h"
+#include "StaticObject.h"
 
-class Gift : public Static_object
+class Gift : public StaticObject
 {
 public:
 	Gift(object_code, int, int);

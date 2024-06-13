@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Moving_object.h"
+#include "MovingObject.h"
 
-class Scientists:public Moving_object {
+class Scientists:public MovingObject {
 public:
-	using Moving_object::collision;
+	using MovingObject::collision;
 
 	Scientists(int, int);
 	virtual ~Scientists();
