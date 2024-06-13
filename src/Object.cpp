@@ -1,4 +1,6 @@
 #include "Object.h"
+#include <iostream>
+
 //#include <iostream>
 Object::Object(const sf::Texture* txture, sf::Vector2f loc, const sf::IntRect rect)
 {
@@ -26,7 +28,7 @@ void Object::setSpriteRect(sf::IntRect sprite_rect)
 
 void Object::setMove(float x, float y)
 {
-	m_sp.move(x, y);
+		m_sp.move(x, y);
 }
 
 void Object::setPosition(float x, float y)

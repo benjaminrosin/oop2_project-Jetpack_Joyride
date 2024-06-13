@@ -2,7 +2,7 @@
 #include "WalkAnimationPlayerState.h"
 
 Player::Player()
-	: MovingObject(Player_t, sf::Vector2f(MARGIN,SCREEN_SIZE.y-MARGIN))
+	: MovingObject(Player_t, sf::Vector2f(MARGIN, DEFULT_START_POINT))
 {
 	setState(std::make_unique<WalkAnimationPlayerState>());
 	//m_currentState->enter(this);

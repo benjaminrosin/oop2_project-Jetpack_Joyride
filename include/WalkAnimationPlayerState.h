@@ -16,4 +16,5 @@ private://לבדוק אם להעלות ממברים למעלה
     int m_currentFrame;
     float m_frameTime;
     float m_elapsedTime;
+    //bool m_forward = true;
 };

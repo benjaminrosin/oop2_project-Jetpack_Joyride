@@ -1,20 +1,18 @@
 
 #include "JumpAnimationPlayerState.h"
 #include "Player.h"
-#include <iostream>
 
 void JumpAnimationPlayerState::enter(Player* player)
 {
     // Set jump animation frames
-    m_currentFrame = 0;
-    m_frameTime = 0.0f;  // זמן בין פריימים באנימציית הקפיצה
-    m_elapsedTime = 0.0f;
+    //m_currentFrame = 0;
+    //m_frameTime = 0.1f;  // זמן בין פריימים באנימציית הקפיצה
+    //m_elapsedTime = 0.0f;
 
-    // נניח שיש לנו 4 פריימים לאנימציית הקפיצה
         //להעביר לריסורסז
 
-    m_jumpFrames = { sf::IntRect(0, 0, 50, 50), sf::IntRect(50, 0, 50, 50), sf::IntRect(100, 0, 50, 50), sf::IntRect(150, 0, 50, 50) };
-    player->setSpriteRect(m_jumpFrames[m_currentFrame]);
+    m_jumpFrame = sf::IntRect(337.5, 0, 112.5, 150);
+    player->setSpriteRect(m_jumpFrame);
 
     // הגדרת מהירות הקפיצה
     m_jumpVelocity = -400.0f;
@@ -23,51 +21,36 @@ void JumpAnimationPlayerState::enter(Player* player)
 
 void JumpAnimationPlayerState::update(Player* player, float deltaTime)
 {
-    std::cout << "tset jump";
-  //  m_elapsedTime += deltaTime;
+    //std::cout << "tset jump";
 
-  //  // עדכון פריימים של האנימציה
-  //  if (m_elapsedTime >= m_frameTime)
-  //  {
-  //      m_elapsedTime -= m_frameTime;
-  //      m_currentFrame = (m_currentFrame + 1) % m_jumpFrames.size();
-  //      player->setSpriteRect(m_jumpFrames[m_currentFrame]);
-  //  }
-
-  //  // עדכון תנועת הקפיצה
-  //  player->setMove(0, m_jumpVelocity * deltaTime);
-  //  m_jumpVelocity += m_gravity * deltaTime;
-
-  //  // בדיקת סיום הקפיצה (כאשר השחקן נוחת בחזרה)
-  ///*  if (player->sprite.getPosition().y >= 300.0f)
-  //  {
-  //      player->sprite.setPosition(player->sprite.getPosition().x, 300.0f);
-  //      player->setState(std::make_unique<WalkAnimationPlayerState>());
-  //  }*/
-
-    m_elapsedTime += deltaTime;
-
-    // Update animation frames
-    if (m_elapsedTime >= m_frameTime)
-    {
-        m_elapsedTime -= m_frameTime;
-        m_currentFrame = (m_currentFrame + 1) % m_jumpFrames.size();
-        player->setSpriteRect(m_jumpFrames[m_currentFrame]);
-    }
+    player->setSpriteRect(m_jumpFrame);
 
     // Update jump movement
-    player->setMove(0, m_jumpVelocity * deltaTime);
-    m_jumpVelocity += m_gravity * deltaTime;
+  /*  if ((m_jumpVelocity * deltaTime) < TOP_SCREEN_LIMIT)
+    {
+        player->setMove(0, TOP_SCREEN_LIMIT);
+    }
+    else
+    {*/
+        player->setMove(0, m_jumpVelocity * deltaTime);
+        m_jumpVelocity += m_gravity * deltaTime;
+    //}
+ 
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        m_jumpVelocity = -400.0f;
+        m_gravity = 100.0f;
+    }
     // Check if spacebar is released to end the jump
     if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
-        // Finish the jump animation
-        if (player->getPosition().y >= 300.0f)
-        {
-            player->setPosition(player->getPosition().x, 300.0f);
-            player->setState(std::make_unique<WalkAnimationPlayerState>());
-        }
+            m_gravity = 800.0f;
+            if (player->getPosition().y >= DEFULT_START_POINT)
+            {
+                player->setPosition(player->getPosition().x, DEFULT_START_POINT);
+                player->setState(std::make_unique<WalkAnimationPlayerState>());
+            }
     }
 }
 

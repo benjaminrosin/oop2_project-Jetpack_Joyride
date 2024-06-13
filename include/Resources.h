@@ -15,6 +15,8 @@ const sf::Vector2f SCREEN_SIZE(1200, 791);
 //const sf::Vector2f MESSAGE_SCREEN_SIZE(600, 300);
 const int NUM_OF_DATA = 2;
 const int MARGIN = SCREEN_SIZE.y/12;
+const int DEFULT_START_POINT = SCREEN_SIZE.y - MARGIN;
+const float TOP_SCREEN_LIMIT = 0.0f + MARGIN;
 
 const int NUM_OF_BACKGROUNDS = 3;
 const std::string BACKGROUNDS_FILE_NAMES[NUM_OF_BACKGROUNDS] = {

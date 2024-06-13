@@ -13,10 +13,10 @@ public:
         virtual void walk(Player*) override {};
 
 private: //לבדוק אם להעלות ממברים למעלה
-    std::vector<sf::IntRect> m_jumpFrames;
-    int m_currentFrame;
-    float m_frameTime;
-    float m_elapsedTime;
+    sf::IntRect m_jumpFrame;
+   // int m_currentFrame;
+    //float m_frameTime;
+    //float m_elapsedTime;
     float m_jumpVelocity;
     float m_gravity;
     };
