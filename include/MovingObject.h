@@ -9,7 +9,6 @@ public:
 	virtual ~MovingObject() {};
 
 	virtual void move_and_change_sprite(float, Object*) = 0;
-
 private:
 
 };

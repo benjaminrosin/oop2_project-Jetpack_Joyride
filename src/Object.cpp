@@ -18,3 +18,13 @@ sf::Vector2f Object::get_position() const
 {
 	return m_sp.getPosition();
 }
+
+void Object::setSpriteRect(sf::IntRect sprite_rect)
+{
+	m_sp.setTextureRect(sprite_rect);
+}
+
+void Object::setMove(float x, float y)
+{
+	m_sp.move(x, y);
+}

@@ -20,7 +20,8 @@ public:
 	const sf::Sprite& getDrawable() const;
 	sf::Vector2f get_position() const;
 	virtual void move_and_change_sprite(float, Object*) = 0;
-
+	virtual void setSpriteRect(sf::IntRect);
+	virtual void setMove(float, float); //פוגע באובייקטים סטטיים
 private:
 	sf::Sprite m_sp;
 	sf::Clock m_texutre_timer;

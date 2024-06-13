@@ -1,33 +1,22 @@
-# pragma once
-# include "PlayerAnimationState.h"
+#pragma once
+#include "PlayerAnimationState.h"
+#include "WalkAnimationPlayerState.h"
 
+class Player;
 class JumpAnimationPlayerState : public PlayerAnimationState {
 public:
     public:
-        virtual void enter(Player* player) override
-        {
-            // Set jump animation frames
-        }
+        virtual void enter(Player*) override;
+        virtual void update(Player*, float) override;
+        virtual void draw(Player*, sf::RenderWindow&) override;
+        virtual void jump(Player*) override {};
+        virtual void walk(Player*) override {};
 
-        virtual void update(Player* player, float deltaTime) override
-        {
-            // Update jump animation logic
-        }
-
-        virtual void draw(Player* player, sf::RenderWindow& window) override
-        {
-            window.draw(player->sprite);
-        }
-
-        virtual void jump(Player* player) override {}
-
-        virtual void walk(Player* player) override
-        {
-            player->setState(std::make_unique<WalkAnimationPlayerState>());
-        }
-
-     /*   virtual void idle(Player* player) override
-        {
-            player->setState(std::make_unique<IdleAnimation>());
-        }*/
+private: //לבדוק אם להעלות ממברים למעלה
+    std::vector<sf::IntRect> m_jumpFrames;
+    int m_currentFrame;
+    float m_frameTime;
+    float m_elapsedTime;
+    float m_jumpVelocity;
+    float m_gravity;
     };
