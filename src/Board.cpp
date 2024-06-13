@@ -5,6 +5,7 @@ Board::Board()
 	m_objects.clear();
 	readLevel();
 	readLevel();
+	m_player = std::make_unique<Player>();
 }
 
 void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב שיש גם טיימר וגם דלתא
@@ -23,7 +24,7 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 	}
 
 	//cheack collision
-	std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {obj->move_and_change_sprite(delta_time, &m_player); });
+	std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {obj->move_and_change_sprite(delta_time, &(*m_player)); });
 
 	//moveBackground(delta_time, wind);
 	if (m_objects.size() < MIN_AMOUNT)
@@ -34,7 +35,7 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 
 void Board::draw(sf::RenderWindow& wind) const
 {
-	wind.draw(m_player.getDrawable());//לשים לב שמדפיס ריבוע לבן בפינה, כנראה כי הוא ריק.
+	wind.draw(m_player->getDrawable());//לשים לב שמדפיס ריבוע לבן בפינה, כנראה כי הוא ריק.
 	std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto &obj) {wind.draw(obj->getDrawable()); });
 
 }

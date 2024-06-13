@@ -8,9 +8,7 @@ enum object_code {
 };
 
 const sf::IntRect BLOCKING_RECT[] = {
-	sf::IntRect(0, 0, 40, 40),
-
-
+	sf::IntRect(0, 0, 112.5, 150)
 };
 
 const sf::Vector2f SCREEN_SIZE(728, 480);
@@ -39,10 +37,9 @@ const std::string BOTTUNS_BOARD_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
 "save.png"
 };
 
-const int NUM_OF_OBJECTS = 2;
+const int NUM_OF_OBJECTS = 1;
 const std::string OBJECT_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
-"hint.png",
-"save.png"
+"JetpackWalking.png"
 };
 
 const int NUM_OF_SOUNDES = 7;

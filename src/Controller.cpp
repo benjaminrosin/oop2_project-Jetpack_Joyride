@@ -84,7 +84,7 @@ void Controller::run(sf::RenderWindow& m_wind)
 
 		m_board.draw(m_wind);
 
-		m_wind.draw(r);
+		//m_wind.draw(r);
 
 		m_wind.display();
 	}
