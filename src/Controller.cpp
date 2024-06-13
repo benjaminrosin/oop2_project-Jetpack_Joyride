@@ -18,8 +18,7 @@ void Controller::run(sf::RenderWindow& m_wind)
 	while (m_wind.isOpen() && m_board.alive())
 	{
 		m_wind.clear(sf::Color::White);
-		m_wind.draw(m_background);
-		
+		//m_wind.draw(m_background);		
 		m_timer = m_clock.getElapsedTime().asSeconds();
 
 		drawData(m_wind);
@@ -56,16 +55,18 @@ void Controller::run(sf::RenderWindow& m_wind)
 				//	}
 				//}
 			}
-			//else if (event.type == sf::Event::KeyPressed)
-			//{
-			//	if (event.KeyPressed == sf::Keyboard::Space)
-			//	{
-
-			//	}
-			//}
 		}
 		m_delta_time = m_clock.restart().asSeconds();
+
 		m_board.play(m_wind, m_timer, m_delta_time);
+
+		auto curr_view = m_wind.getView();
+		sf::Vector2f size = curr_view.getSize();
+		sf::Vector2f center = curr_view.getCenter();
+		center = sf::Vector2f(center.x, center.y);
+
+		m_wind.setView(sf::View(center, size));
+
 
 		//change view
 		moveBackground(m_delta_time, m_wind);
@@ -73,7 +74,7 @@ void Controller::run(sf::RenderWindow& m_wind)
 		//----
 		sf::RectangleShape r;
 		r.setSize(sf::Vector2f(100, 100));
-		r.setPosition(sf::Vector2f(100, 100));
+		r.setPosition(sf::Vector2f(100, SCREEN_SIZE.y-MARGIN));
 		r.setFillColor(sf::Color::Blue);
 
 

@@ -13,9 +13,10 @@ const sf::IntRect BLOCKING_RECT[] = {
 
 };
 
-const sf::Vector2f SCREEN_SIZE(728, 480);
+const sf::Vector2f SCREEN_SIZE(1200, 791);
 const sf::Vector2f MESSAGE_SCREEN_SIZE(600, 300);
 const int NUM_OF_DATA = 5;
+const int MARGIN = SCREEN_SIZE.y/12;
 
 const std::string FILE_NAME = "sticks.txt";
 
