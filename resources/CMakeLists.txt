@@ -2,3 +2,9 @@
 configure_file ("GameMenu.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Hall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("JetpackWalking.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+configure_file ("play.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("rules.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("continue.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("exit.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("LoveDays-2v7Oe.ttf" ${CMAKE_BINARY_DIR} COPYONLY)

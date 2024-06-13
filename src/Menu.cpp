@@ -13,9 +13,8 @@ Menu::Menu()
 	{
 		m_button[i].setSize(sf::Vector2f(300, 100));
 		m_button[i].setOrigin(sf::Vector2f(150, 50));
-		m_button[i].setPosition(sf::Vector2f(450, 120 * (i + 1)));
+		m_button[i].setPosition(sf::Vector2f(2*SCREEN_SIZE.x/3, 150 * (i + 1)));
 		m_button[i].setTexture(Resources::getInstance().getTextureButtons(i));	
-		m_button[i].setFillColor(sf::Color::Green);
 	}
 }
 
@@ -126,7 +125,7 @@ void Menu::showHelp()
 	m_wind.clear(sf::Color::White);
 
 	m_wind.clear();
-	m_background.setTexture(Resources::getInstance().getBackground(1));
+	m_background.setTexture(Resources::getInstance().getBackground(2));
 
 	m_wind.draw(m_background);
 	
