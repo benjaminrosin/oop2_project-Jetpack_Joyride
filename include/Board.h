@@ -20,7 +20,7 @@ public:
 	bool checkCollision();
 	void readLevel();
 	bool alive() const;
-	void moveBackground(float, sf::RenderWindow&);
+	//void moveBackground(float, sf::RenderWindow&);
 
 
 private:

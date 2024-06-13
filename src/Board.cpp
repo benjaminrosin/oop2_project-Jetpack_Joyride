@@ -25,7 +25,7 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 	//cheack collision
 	std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {obj->move_and_change_sprite(delta_time, &m_player); });
 
-	moveBackground(delta_time, wind);
+	//moveBackground(delta_time, wind);
 	if (m_objects.size() < MIN_AMOUNT)
 	{
 		readLevel();
@@ -53,31 +53,31 @@ bool Board::alive() const
 	return true;
 }
 
-void Board::moveBackground(float delta_time, sf::RenderWindow& wind) //נסיון. צריך לשנות
-{
-	// קבלת הטקסטורה של הרקע
-	m_background = Resources::getInstance().getBackground(1);
-	sf::Vector2u backgroundSize = m_background->getSize();
-	sf::Sprite sprite;
-	sprite.setTexture(*m_background);
-	float scrollSpeed = 200.f;
-
-	// חישוב ההזזה האופקית בהתבסס על מהירות הגלילה והזמן שעבר
-	static float offsetX = 0.f;
-	offsetX += scrollSpeed * delta_time;
-
-	// אם ההזזה עוברת את רוחב הרקע, לאתחל אותה
-	if (offsetX >= backgroundSize.x)
-		offsetX -= backgroundSize.x;
-
-	// צייר את הרקע המגלול
-	for (float i = -offsetX; i < wind.getSize().x; i += backgroundSize.x)
-	{
-		for (unsigned int j = 0; j < wind.getSize().y; j += backgroundSize.y)
-		{
-			sprite.setPosition(i, j);
-			wind.draw(sprite);
-		}
-	}
-}
+//void Board::moveBackground(float delta_time, sf::RenderWindow& wind) //נסיון. צריך לשנות
+//{
+//	// קבלת הטקסטורה של הרקע
+//	m_background = Resources::getInstance().getBackground(1);
+//	sf::Vector2u backgroundSize = m_background->getSize();
+//	sf::Sprite sprite;
+//	sprite.setTexture(*m_background);
+//	float scrollSpeed = 200.f;
+//
+//	// חישוב ההזזה האופקית בהתבסס על מהירות הגלילה והזמן שעבר
+//	static float offsetX = 0.f;
+//	offsetX += scrollSpeed * delta_time;
+//
+//	// אם ההזזה עוברת את רוחב הרקע, לאתחל אותה
+//	if (offsetX >= backgroundSize.x)
+//		offsetX -= backgroundSize.x;
+//
+//	// צייר את הרקע המגלול
+//	for (float i = -offsetX; i < wind.getSize().x; i += backgroundSize.x)
+//	{
+//		for (unsigned int j = 0; j < wind.getSize().y; j += backgroundSize.y)
+//		{
+//			sprite.setPosition(i, j);
+//			wind.draw(sprite);
+//		}
+//	}
+//}
 

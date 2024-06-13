@@ -68,8 +68,24 @@ void Controller::run(sf::RenderWindow& m_wind)
 		m_board.play(m_wind, m_timer, m_delta_time);
 
 		//change view
+		moveBackground(m_delta_time, m_wind);
+
+		//----
+		sf::RectangleShape r;
+		r.setSize(sf::Vector2f(100, 100));
+		r.setPosition(sf::Vector2f(100, 100));
+		r.setFillColor(sf::Color::Blue);
+
+
+
+		//----
+
+		//m_wind.setView(sf::View(sf::FloatRect(m_background.getPosition(), sf::Vector2f(m_background.getTexture()->getSize()))));
 
 		m_board.draw(m_wind);
+
+		m_wind.draw(r);
+
 		m_wind.display();
 	}
 }
@@ -122,8 +138,8 @@ void Controller::resetSFMLComponents()
 		m_data[i].setPosition(sf::Vector2f(10, 20 + 100 * i));
 	}
 
-	m_background.setTexture(Resources::getInstance().getBackground(0));
-	m_background.setSize(SCREEN_SIZE);
+	m_background.setTexture(*Resources::getInstance().getBackground(0));
+	//m_background.setSize(SCREEN_SIZE);
 
 	//m_boardBackground.setSize(BOARD_SIZE);
 	//m_boardBackground.setPosition(sf::Vector2f(300, 0));
@@ -136,5 +152,30 @@ void Controller::resetSFMLComponents()
 		m_buttonsGame[i].setSize(sf::Vector2f(100, 100));
 		m_buttonsGame[i].setPosition(sf::Vector2f(30 + i * 100, 480));
 		m_buttonsGame[i].setTexture(Resources::getInstance().getTextureBoardButtons(i));
+	}
+}
+
+void Controller::moveBackground(float delta_time, sf::RenderWindow& wind) //נסיון. צריך לשנות
+{
+	// קבלת הטקסטורה של הרקע
+	m_background.setTexture(*Resources::getInstance().getBackground(1));
+	float scrollSpeed = 200.f;
+
+	// חישוב ההזזה האופקית בהתבסס על מהירות הגלילה והזמן שעבר
+	static float offsetX = 0.f;
+	offsetX += scrollSpeed * delta_time;
+
+	// אם ההזזה עוברת את רוחב הרקע, לאתחל אותה
+	if (offsetX >= SCREEN_SIZE.x)
+		offsetX -= SCREEN_SIZE.x;
+
+	// צייר את הרקע המגלול
+	for (float i = -offsetX; i < wind.getSize().x; i += SCREEN_SIZE.x)
+	{
+		for (unsigned int j = 0; j < wind.getSize().y; j += SCREEN_SIZE.y)
+		{
+			m_background.setPosition(i, j);
+			wind.draw(m_background);
+		}
 	}
 }

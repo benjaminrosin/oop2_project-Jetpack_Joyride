@@ -12,7 +12,7 @@ public:
 private:
 	Board m_board;
 	sf::Text m_data[NUM_OF_DATA];
-	sf::RectangleShape m_background;
+	 sf::Sprite m_background;
 	sf::RectangleShape m_buttonsGame[NUM_OF_BUTTONS_BOARD];
 
 	sf::Clock m_clock;
@@ -24,6 +24,7 @@ private:
 	void addToCoins(int);
 	int handleClick(sf::Vector2f) const;
 	void resetSFMLComponents();
+	void moveBackground(float, sf::RenderWindow&);
 
 };
 
