@@ -37,9 +37,9 @@ const std::string BOTTUNS_FILE_NAMES[NUM_OF_BUTTONS_MENU] = {
 //add textures
 const int NUM_OF_BUTTONS_BOARD = 3;
 const std::string BOTTUNS_BOARD_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
-"back.png",
+"mute.png",
 "pause.png",
-"mute.png"
+"back.png"
 };
 
 //add textures

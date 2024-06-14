@@ -1,6 +1,8 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 #include "PlayerAnimationState.h"
 #include "WalkAnimationPlayerState.h"
+#include "Resources.h"
 
 class Player;
 class JumpAnimationPlayerState : public PlayerAnimationState {

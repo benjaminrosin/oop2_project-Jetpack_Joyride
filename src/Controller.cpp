@@ -77,8 +77,8 @@ void Controller::run(sf::RenderWindow& m_wind)
 
 void Controller::drawData(sf::RenderWindow& wind)
 {
-	m_data[0].setString("TIME: " + std::to_string((int)m_timer));
-	m_data[1].setString("COINS: " + std::to_string(m_coins));
+	m_data[0].setString("TIME " + std::to_string((int)m_timer));
+	m_data[1].setString("COINS " + std::to_string(m_coins));
 
 	for (int i = 0; i < NUM_OF_DATA; i++)
 	{

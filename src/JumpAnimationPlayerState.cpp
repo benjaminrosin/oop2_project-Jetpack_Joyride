@@ -26,15 +26,15 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     player->setSpriteRect(m_jumpFrame);
 
     // Update jump movement
-  /*  if ((m_jumpVelocity * deltaTime) < TOP_SCREEN_LIMIT)
+    if ((player->getDrawable().getGlobalBounds().top + m_jumpVelocity * deltaTime) < TOP_SCREEN_LIMIT)
     {
-        player->setMove(0, TOP_SCREEN_LIMIT);
+        m_jumpVelocity = 0;
     }
     else
-    {*/
+    {
         player->setMove(0, m_jumpVelocity * deltaTime);
         m_jumpVelocity += m_gravity * deltaTime;
-    //}
+    }
  
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
@@ -43,7 +43,8 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
         m_gravity = 100.0f;
     }
     // Check if spacebar is released to end the jump
-    if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    //if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)))
+    else
     {
             m_gravity = 800.0f;
             if (player->getPosition().y >= DEFULT_START_POINT)

@@ -1,6 +1,7 @@
 # pragma once
 #include "PlayerAnimationState.h"
 #include "JumpAnimationPlayerState.h"
+#include "Resources.h"
 
 class Player;
 class WalkAnimationPlayerState : public PlayerAnimationState {
