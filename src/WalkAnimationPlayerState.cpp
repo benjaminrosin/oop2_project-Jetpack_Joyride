@@ -31,10 +31,10 @@ void WalkAnimationPlayerState::update(Player* player,float deltaTime)
     player->setMove(moveSpeed * deltaTime, 0);
 }
 
-void WalkAnimationPlayerState::draw(Player* player, sf::RenderWindow& wind)
-{
-    wind.draw(player->getDrawable());
-}
+//void WalkAnimationPlayerState::draw(Player* player, sf::RenderWindow& wind)
+//{
+//    wind.draw(player->getDrawable());
+//}
 
 void WalkAnimationPlayerState::jump(Player* player)
 {
