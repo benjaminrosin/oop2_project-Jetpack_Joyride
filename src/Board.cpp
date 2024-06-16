@@ -99,6 +99,11 @@ bool Board::alive() const
 	return true;
 }
 
+sf::Vector2f Board::getPlayerLoc() const
+{
+	return m_player->getDrawable().getPosition();
+}
+
 //void Board::moveBackground(float delta_time, sf::RenderWindow& wind) //נסיון. צריך לשנות
 //{
 //	// קבלת הטקסטורה של הרקע

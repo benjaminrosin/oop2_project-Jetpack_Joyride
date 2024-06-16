@@ -29,9 +29,11 @@ Menu::~Menu()
 void Menu::showMenu()
 {
 	m_wind.create(sf::VideoMode(SCREEN_SIZE.x, SCREEN_SIZE.y), "Jetpack Joyride");
+	m_wind.setFramerateLimit(60);
 
 	while (m_wind.isOpen())
 	{
+		//m_background.setTexture(Resources::getInstance().getBackground(0));
 		m_wind.clear(sf::Color::White);
 		m_wind.draw(m_background);
 
