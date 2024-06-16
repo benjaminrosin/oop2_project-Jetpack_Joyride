@@ -20,6 +20,7 @@ public:
 	bool checkCollision();
 	void readLevel();
 	bool alive() const;
+	sf::Vector2f getPlayerLoc() const;
 	//void moveBackground(float, sf::RenderWindow&);
 
 

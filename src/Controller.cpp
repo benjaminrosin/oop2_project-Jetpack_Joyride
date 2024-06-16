@@ -47,6 +47,7 @@ void Controller::run(sf::RenderWindow& m_wind)
 				case 2:
 					//back to main menu
 					std::cout << "back\n";
+					m_wind.setView(m_wind.getDefaultView());
 					return;
 				}
 			}
@@ -56,16 +57,13 @@ void Controller::run(sf::RenderWindow& m_wind)
 
 		m_board.play(m_wind, m_timer, m_delta_time);
 
+		moveBackground(m_delta_time, m_wind);
 		//change view
 		auto curr_view = m_wind.getView();
-		sf::Vector2f size = curr_view.getSize();
 		sf::Vector2f center = curr_view.getCenter();
-		center = sf::Vector2f(center.x + 100*m_delta_time, center.y);
+		center = sf::Vector2f(m_board.getPlayerLoc().x + 400, center.y);
 
-		m_wind.setView(sf::View(center, size));
-
-		moveBackground(m_delta_time, m_wind);
-		//m_wind.setView(sf::View(sf::FloatRect(m_background.getPosition(), sf::Vector2f(m_background.getTexture()->getSize()))));
+		m_wind.setView(sf::View(center, curr_view.getSize()));
 		drawData(m_wind);
 		m_board.draw(m_wind);
 
@@ -74,21 +72,26 @@ void Controller::run(sf::RenderWindow& m_wind)
 }
 
 
-
 void Controller::drawData(sf::RenderWindow& wind)
 {
+	auto currView = wind.getView();
+	wind.setView(wind.getDefaultView());
+
 	m_data[0].setString("TIME " + std::to_string((int)m_timer));
 	m_data[1].setString("COINS " + std::to_string(m_coins));
 
 	for (int i = 0; i < NUM_OF_DATA; i++)
 	{
+		//m_data[i].setPosition(offset + m_data[i].getPosition().x, m_data[i].getPosition().y);
 		wind.draw(m_data[i]);
 	}
 
 	for (int i = 0; i < NUM_OF_BUTTONS_BOARD; i++)
 	{
+		//m_buttonsGame[i].setPosition(offset + m_buttonsGame[i].getPosition().x, m_buttonsGame[i].getPosition().y);
 		wind.draw(m_buttonsGame[i]);
 	}
+	wind.setView(currView);
 }
 
 void Controller::addToCoins(int coins)
@@ -143,8 +146,6 @@ void Controller::moveBackground(float delta_time, sf::RenderWindow& wind) //נסיו
 	// צייר את הרקע המגלול
 	float xStart = m_background.getGlobalBounds().left - 3 * SCREEN_SIZE.x;
 	float xEnd = wind.getView().getCenter().x + SCREEN_SIZE.x;
-
-	std::cout << xStart << ' ' << xEnd << '\n';
 
 	m_background.setPosition(xStart, 0);
 

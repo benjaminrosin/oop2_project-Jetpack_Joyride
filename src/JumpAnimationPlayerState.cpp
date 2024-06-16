@@ -32,10 +32,11 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     }
     else
     {
-        player->setMove(100*deltaTime, m_jumpVelocity * deltaTime);
+        player->setMove(0, m_jumpVelocity * deltaTime);
         m_jumpVelocity += m_gravity * deltaTime;
     }
- 
+    //change to member and calculate right speed
+    player->setMove(100*deltaTime , 0);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
