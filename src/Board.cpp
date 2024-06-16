@@ -89,7 +89,11 @@ void Board::readLevel()
 
 		else if (c != '-')
 		{
-			m_objects.push_back(ObjectFactory::create(c));
+			auto temp = ObjectFactory::create(c);
+			if (temp != nullptr) {
+				//m_objects.push_back(std::move(temp));
+			}
+			
 		}
 		row++;
 	}
