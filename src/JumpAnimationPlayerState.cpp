@@ -36,15 +36,13 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
         m_jumpVelocity += m_gravity * deltaTime;
     }
     //change to member and calculate right speed
-    player->setMove(100*deltaTime , 0);
+    player->setMove(200*deltaTime , 0);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
         m_jumpVelocity = -400.0f;
         m_gravity = 100.0f;
     }
-    // Check if spacebar is released to end the jump
-    //if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)))
     else
     {
             m_gravity = 800.0f;

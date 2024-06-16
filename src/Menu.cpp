@@ -15,6 +15,7 @@ Menu::Menu()
 		m_button[i].setOrigin(sf::Vector2f(150, 50));
 		m_button[i].setPosition(sf::Vector2f(2*SCREEN_SIZE.x/3, 150 * (i + 1)));
 		m_button[i].setTexture(Resources::getInstance().getTextureButtons(i));	
+		m_button[i].setOutlineThickness(2);
 	}
 }
 
@@ -65,7 +66,7 @@ void Menu::showMenu()
 					newGame();
 					break;
 				case 1:
-					//loadGame();
+					//high score;
 					break;
 				case 2:
 					showHelp();
