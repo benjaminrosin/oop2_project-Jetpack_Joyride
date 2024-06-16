@@ -43,6 +43,8 @@ void Menu::showMenu()
 
 		m_wind.display();
 
+		//hover effect
+
 		if (auto event = sf::Event(); m_wind.pollEvent(event))
 		{
 			switch (event.type)

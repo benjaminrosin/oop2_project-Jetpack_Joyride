@@ -14,6 +14,7 @@ Controller::Controller() : m_board()
 
 void Controller::run(sf::RenderWindow& m_wind) 
 {
+	m_background.setTexture(*Resources::getInstance().getBackground(1));
 	while (m_wind.isOpen() && m_board.alive())
 	{
 		m_wind.clear(sf::Color::White);
@@ -33,7 +34,6 @@ void Controller::run(sf::RenderWindow& m_wind)
 			{
 				auto mousePosition = m_wind.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
 				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
-				//handle hoverd!!!
 				switch (option)
 				{
 				case 0:
@@ -60,7 +60,7 @@ void Controller::run(sf::RenderWindow& m_wind)
 		auto curr_view = m_wind.getView();
 		sf::Vector2f size = curr_view.getSize();
 		sf::Vector2f center = curr_view.getCenter();
-		center = sf::Vector2f(center.x, center.y);
+		center = sf::Vector2f(center.x + 100*m_delta_time, center.y);
 
 		m_wind.setView(sf::View(center, size));
 
@@ -120,6 +120,7 @@ void Controller::resetSFMLComponents()
 	}
 
 	m_background.setTexture(*Resources::getInstance().getBackground(0));
+	m_background.setPosition(0, 0);
 	//m_background.setSize(SCREEN_SIZE);
 
 	//m_boardBackground.setSize(BOARD_SIZE);
@@ -139,25 +140,17 @@ void Controller::resetSFMLComponents()
 
 void Controller::moveBackground(float delta_time, sf::RenderWindow& wind) //נסיון. צריך לשנות
 {
-	// קבלת הטקסטורה של הרקע
-	m_background.setTexture(*Resources::getInstance().getBackground(1));
-	float scrollSpeed = 200.f;
-
-	// חישוב ההזזה האופקית בהתבסס על מהירות הגלילה והזמן שעבר
-	static float offsetX = 0.f;
-	offsetX += scrollSpeed * delta_time;
-
-	// אם ההזזה עוברת את רוחב הרקע, לאתחל אותה
-	if (offsetX >= SCREEN_SIZE.x)
-		offsetX -= SCREEN_SIZE.x;
-
 	// צייר את הרקע המגלול
-	for (float i = -offsetX; i < wind.getSize().x; i += SCREEN_SIZE.x)
+	float xStart = m_background.getGlobalBounds().left - 3 * SCREEN_SIZE.x;
+	float xEnd = wind.getView().getCenter().x + SCREEN_SIZE.x;
+
+	std::cout << xStart << ' ' << xEnd << '\n';
+
+	m_background.setPosition(xStart, 0);
+
+	for (; xStart < xEnd; xStart += SCREEN_SIZE.x)
 	{
-		for (unsigned int j = 0; j < wind.getSize().y; j += SCREEN_SIZE.y)
-		{
-			m_background.setPosition(i, j);
-			wind.draw(m_background);
-		}
+		m_background.setPosition(xStart, 0);
+		wind.draw(m_background);
 	}
 }

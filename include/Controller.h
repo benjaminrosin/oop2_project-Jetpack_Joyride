@@ -24,7 +24,7 @@ private:
 	void addToCoins(int);
 	int handleClick(sf::Vector2f) const;
 	void resetSFMLComponents();
-	void moveBackground(float, sf::RenderWindow&);
+	void moveBackground(float ,sf::RenderWindow&);
 
 };
 

@@ -32,7 +32,7 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     }
     else
     {
-        player->setMove(0, m_jumpVelocity * deltaTime);
+        player->setMove(100*deltaTime, m_jumpVelocity * deltaTime);
         m_jumpVelocity += m_gravity * deltaTime;
     }
  
