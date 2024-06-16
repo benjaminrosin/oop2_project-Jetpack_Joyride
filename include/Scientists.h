@@ -7,7 +7,7 @@ public:
 	//using MovingObject::collision;
 
 	Scientists();
-	//virtual ~Scientists();
+	virtual ~Scientists() {};
 	void move_and_change_sprite(float, Object*);
 	void changeDirection();
 		
@@ -28,4 +28,6 @@ private:
 	float m_changeDirectionTimer = 0.0f;
 	sf::Vector2f m_direction;
 	float timeToChangeDirection = 1.5f; // זמן בשניות לשינוי כיוון
+	static bool m_registered;
+
 };

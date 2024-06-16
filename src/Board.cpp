@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <memory>
+#include "ObjectFactory.h"
 
 Board::Board()
 {
@@ -49,7 +50,7 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 	m_player->move_and_change_sprite(timer, m_player.get());
 
 	//cheack collision
-	std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {obj->move_and_change_sprite(delta_time, &(*m_player)); });
+	std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {if (obj!=nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });
 
 	//moveBackground(delta_time, wind);
 	if (m_objects.size() < MIN_AMOUNT)
@@ -61,7 +62,7 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 void Board::draw(sf::RenderWindow& wind) const
 {
 	wind.draw(m_player->getDrawable());
-	std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto &obj) {wind.draw(obj->getDrawable()); });
+	std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto &obj) {if (obj != nullptr) wind.draw(obj->getDrawable()); });
 
 }
 
@@ -88,7 +89,7 @@ void Board::readLevel()
 
 		else if (c != '-')
 		{
-			//factory
+			m_objects.push_back(ObjectFactory::create(c));
 		}
 		row++;
 	}

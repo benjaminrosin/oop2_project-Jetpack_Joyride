@@ -1,4 +1,9 @@
 #include "Scientists.h"
+#include "ObjectFactory.h"
+#include <memory>
+#include "Object.h"
+
+bool Scientists::m_registered = ObjectFactory::registerIt('<', []() -> std::unique_ptr<Object> { return std::make_unique<Scientists>(); });
 
 Scientists::Scientists() 
 	: MovingObject(Scientists_t, sf::Vector2f(MARGIN, DEFULT_START_POINT)) //לשנות את הנקודה))
