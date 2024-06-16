@@ -4,7 +4,7 @@
 #include <string>
 
 enum object_code {
-	Player_t, Coin_t
+	Player_t, Coin_t , Scientists_t
 };
 
 const sf::IntRect BLOCKING_RECT[] = {
@@ -45,7 +45,9 @@ const std::string BOTTUNS_BOARD_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
 //add textures
 const int NUM_OF_OBJECTS = 1;
 const std::string OBJECT_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
-"JetpackWalking.png"
+"JetpackWalking.png",
+"Scientist.png"
+
 };
 
 //const int NUM_OF_SOUNDES = 7;
