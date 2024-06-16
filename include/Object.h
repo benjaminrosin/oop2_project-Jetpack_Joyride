@@ -24,6 +24,7 @@ public:
 	virtual void setMove(float, float); //פוגע באובייקטים סטטיים
 	virtual void setPosition(float, float);//פוגע באובייקטים סטטיים
 	virtual sf::Vector2f getPosition() const;//פוגע באובייקטים סטטיים
+	virtual void moveSprite(sf::Vector2f);
 private:
 	sf::Sprite m_sp;
 	sf::Clock m_texutre_timer;

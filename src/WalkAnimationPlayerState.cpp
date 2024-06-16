@@ -9,8 +9,7 @@ void WalkAnimationPlayerState::enter(Player* player)
 
     // נניח שיש לנו 4 פריימים לאנימציית ההליכה
     //להעביר לריסורסז
-    m_walkFrames = { sf::IntRect(0, 0, 112.5, 150), sf::IntRect(112.5, 0, 112.5, 150), sf::IntRect(225, 0, 112.5, 150),
-                  /*sf::IntRect(337.5, 0, 112.5, 150)*/};
+    m_walkFrames = { sf::IntRect(0, 0, 112.5, 150), sf::IntRect(112.5, 0, 112.5, 150), sf::IntRect(225, 0, 112.5, 150)};
     player->setSpriteRect(m_walkFrames[m_currentFrame]);
 }
 

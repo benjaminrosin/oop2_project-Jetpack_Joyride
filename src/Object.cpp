@@ -41,3 +41,8 @@ sf::Vector2f Object::getPosition() const
 	return m_sp.getPosition();
 }
 
+void Object::moveSprite(sf::Vector2f move)
+{
+	m_sp.move(move);
+}
+
