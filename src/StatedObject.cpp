@@ -13,6 +13,11 @@ void StatedObject::move(sf::Vector2f v2m)
 	std::for_each(m_sp.begin(), m_sp.end(), [v2m](auto sp) {sp.move(v2m); });
 }
 
+void StatedObject::draw(sf::RenderWindow& wind) const
+{
+	std::for_each(m_sp.begin(), m_sp.end(), [&wind](auto sp) {wind.draw(sp); });
+}
+
 sf::Vector2f StatedObject::getPosition() const
 {
 	return m_sp[0].getPosition();

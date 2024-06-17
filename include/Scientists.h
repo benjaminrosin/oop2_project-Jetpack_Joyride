@@ -6,7 +6,7 @@ class Scientists:public NonStatedObject {
 public:
 	//using StatedObject::collision;
 
-	Scientists();
+	Scientists(int, int);
 	virtual ~Scientists() {};
 	void move_and_change_sprite(float, Object*);
 	void changeDirection();
