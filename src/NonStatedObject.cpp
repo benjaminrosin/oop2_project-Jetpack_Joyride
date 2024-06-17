@@ -1,4 +1,5 @@
 #include "NonStatedObject.h"
+#include "NonStatedObject.h"
 
 NonStatedObject::NonStatedObject(object_code obj, sf::Vector2f loc)
 {
@@ -11,4 +12,9 @@ NonStatedObject::NonStatedObject(object_code obj, sf::Vector2f loc)
 void NonStatedObject::draw(sf::RenderWindow& wind) const
 {
 	wind.draw(m_sp);
+}
+
+void NonStatedObject::setSpriteRect(sf::IntRect rect)
+{
+	m_sp.setTextureRect(rect);
 }
