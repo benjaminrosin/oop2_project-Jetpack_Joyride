@@ -26,7 +26,7 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     //player->setSpriteRect(m_jumpFrame);
 
     // Update jump movement
-    if ((player->getPosition().y + m_jumpVelocity * deltaTime) < TOP_SCREEN_LIMIT) //add texture height
+    if ((player->getPosition().y + player->getHeight() + m_jumpVelocity * deltaTime) < TOP_SCREEN_LIMIT) //add texture height
     {
         m_jumpVelocity = 0;
     }

@@ -17,3 +17,8 @@ sf::Vector2f StatedObject::getPosition() const
 {
 	return m_sp[0].getPosition();
 }
+
+float StatedObject::getHeight() const
+{
+	return m_sp[0].getGlobalBounds().height;
+}

@@ -8,8 +8,6 @@ Resources::Resources()
 	readData(m_buttonsBoardTexures, BOTTUNS_BOARD_FILE_NAMES, NUM_OF_BUTTONS_BOARD);
 	readData(m_objTexures, OBJECT_FILE_NAMES, NUM_OF_OBJECTS);
 
-	//m_backgroungs[1].setRepeated(true);
-
 	//font
 	m_font.loadFromFile(FONT_FILE_NAME);
 
