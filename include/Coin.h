@@ -7,7 +7,7 @@ public:
 	//using NonStatedObject::collision;
 
 	Coin(int, int);
-	virtual ~Coin();
+	virtual ~Coin(){};
 	void move_and_change_sprite(float, Object*);
 	
 

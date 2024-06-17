@@ -6,8 +6,11 @@
 
 class NonStatedObject :public Object {
 public:
-	NonStatedObject(object_code, int, int);
-	virtual ~NonStatedObject();
+	NonStatedObject(object_code, sf::Vector2f);
+	virtual ~NonStatedObject() {};
+
+	virtual void draw(sf::RenderWindow&) const;
+	virtual void move_and_change_sprite(float, Object*) = 0;
 
 	//virtual bool collision(Object&) = 0;
 	//virtual bool collision(Player&) = 0;
