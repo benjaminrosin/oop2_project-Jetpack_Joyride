@@ -58,6 +58,7 @@ void Controller::run(sf::RenderWindow& m_wind)
 		m_board.play(m_wind, m_timer, m_delta_time);
 
 		moveBackground(m_delta_time, m_wind);
+		
 		//change view
 		auto curr_view = m_wind.getView();
 		sf::Vector2f center = curr_view.getCenter();
@@ -82,13 +83,11 @@ void Controller::drawData(sf::RenderWindow& wind)
 
 	for (int i = 0; i < NUM_OF_DATA; i++)
 	{
-		//m_data[i].setPosition(offset + m_data[i].getPosition().x, m_data[i].getPosition().y);
 		wind.draw(m_data[i]);
 	}
 
 	for (int i = 0; i < NUM_OF_BUTTONS_BOARD; i++)
 	{
-		//m_buttonsGame[i].setPosition(offset + m_buttonsGame[i].getPosition().x, m_buttonsGame[i].getPosition().y);
 		wind.draw(m_buttonsGame[i]);
 	}
 	wind.setView(currView);
@@ -116,6 +115,7 @@ void Controller::resetSFMLComponents()
 	for (int i = 0; i < NUM_OF_DATA; i++)
 	{
 		m_data[i].setFillColor(sf::Color::White);
+		//add outline to text
 		m_data[i].setCharacterSize(30);
 		m_data[i].setFont(*Resources::getInstance().getFont());
 		m_data[i].setOrigin(sf::Vector2f(m_data[i].getGlobalBounds().width / 2, m_data[i].getGlobalBounds().height / 2));
@@ -141,13 +141,12 @@ void Controller::resetSFMLComponents()
 	}
 }
 
-void Controller::moveBackground(float delta_time, sf::RenderWindow& wind) //נסיון. צריך לשנות
+void Controller::moveBackground(float delta_time, sf::RenderWindow& wind)
 {
-	// צייר את הרקע המגלול
-	float xStart = m_background.getGlobalBounds().left - 3 * SCREEN_SIZE.x;
+	float xStart = m_background.getGlobalBounds().left - 2 * SCREEN_SIZE.x;
 	float xEnd = wind.getView().getCenter().x + SCREEN_SIZE.x;
 
-	m_background.setPosition(xStart, 0);
+	//m_background.setPosition(xStart, 0);
 
 	for (; xStart < xEnd; xStart += SCREEN_SIZE.x)
 	{

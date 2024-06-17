@@ -16,14 +16,14 @@ void JumpAnimationPlayerState::enter(Player* player)
 
     // הגדרת מהירות הקפיצה
     m_jumpVelocity = -400.0f;
-    m_gravity = 100.0f;
+    m_gravity = 800.0f;
 }
 
 void JumpAnimationPlayerState::update(Player* player, float deltaTime)
 {
     //std::cout << "tset jump";
 
-    player->setSpriteRect(m_jumpFrame);
+    //player->setSpriteRect(m_jumpFrame);
 
     // Update jump movement
     if ((player->getDrawable().getGlobalBounds().top + m_jumpVelocity * deltaTime) < TOP_SCREEN_LIMIT)
@@ -41,16 +41,16 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
         m_jumpVelocity = -400.0f;
-        m_gravity = 100.0f;
+        //m_gravity = 100.0f;
     }
     else
     {
-            m_gravity = 800.0f;
-            if (player->getPosition().y >= DEFULT_START_POINT)
-            {
-                player->setPosition(player->getPosition().x, DEFULT_START_POINT);
-                player->setState(std::make_unique<WalkAnimationPlayerState>());
-            }
+        //m_gravity = 800.0f;
+        if (player->getPosition().y > DEFULT_START_POINT)
+        {
+            //player->setPosition(player->getPosition().x, DEFULT_START_POINT);
+            player->setState(std::make_unique<WalkAnimationPlayerState>());
+        }
     }
 }
 
