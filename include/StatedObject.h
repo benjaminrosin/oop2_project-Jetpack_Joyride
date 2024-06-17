@@ -11,6 +11,7 @@ public:
 	virtual void move_and_change_sprite(float, Object*) = 0;
 	virtual sf::Vector2f getPosition() const override;
 	virtual float getHeight() const;
+	virtual void setSpriteRect(sf::IntRect) override;
 
 protected:
 	std::vector <sf::Sprite> m_sp;
