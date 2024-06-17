@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "MovingObject.h"
+#include "NonStatedObject.h"
 
-class Scientists:public MovingObject {
+class Scientists:public NonStatedObject {
 public:
-	//using MovingObject::collision;
+	//using StatedObject::collision;
 
 	Scientists();
 	virtual ~Scientists() {};

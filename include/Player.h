@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <memory>
-#include "MovingObject.h"
+#include "StatedObject.h"
 #include "PlayerAnimationState.h"
 
 
 
-class Player:public MovingObject {
+class Player:public StatedObject {
 public:
 	Player();
 	virtual ~Player() {};

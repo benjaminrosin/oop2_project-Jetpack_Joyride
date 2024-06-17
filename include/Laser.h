@@ -1,18 +1,18 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "StaticObject.h"
+#include "NonStatedObject.h"
 
-class Coin:public StaticObject {
+class Laser:public NonStatedObject {
 public:
-	using StaticObject::collision;
+	using NonStatedObject::collision;
 
-	Coin(int, int);
-	virtual ~Coin();
+	Laser(int, int);
+	virtual ~Laser();
 	void move_and_change_sprite(float, Object*);
 	
 
-	virtual bool collision(Object&)	override;
-	virtual bool collision(Coin&)	override;
+	//virtual bool collision(Object&)	override;
+	//virtual bool collision(Laser&)	override;
 	//virtual bool collision(Cat&)	override;
 	//virtual bool collision(Cheese&)	override;
 	//virtual bool collision(Door&)	override;

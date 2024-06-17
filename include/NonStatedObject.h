@@ -4,10 +4,10 @@
 #include "Resources.h"
 
 
-class StaticObject :public Object {
+class NonStatedObject :public Object {
 public:
-	StaticObject(object_code, int, int);
-	virtual ~StaticObject();
+	NonStatedObject(object_code, int, int);
+	virtual ~NonStatedObject();
 
 	virtual bool collision(Object&) = 0;
 	//virtual bool collision(Player&) = 0;

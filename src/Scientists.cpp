@@ -6,7 +6,7 @@
 bool Scientists::m_registered = ObjectFactory::registerIt('<', []() -> std::unique_ptr<Object> { return std::make_unique<Scientists>(); });
 
 Scientists::Scientists() 
-	: MovingObject(Scientists_t, sf::Vector2f(MARGIN, DEFULT_START_POINT)) //לשנות את הנקודה))
+	: NonStatedObject(Scientists_t, sf::Vector2f(MARGIN, DEFULT_START_POINT)) //לשנות את הנקודה))
 {
 	changeDirection();
 }

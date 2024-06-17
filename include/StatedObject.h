@@ -3,10 +3,10 @@
 #include "Object.h"
 #include "Resources.h"
 
-class MovingObject :public Object {
+class StatedObject :public Object {
 public:
-	MovingObject(object_code, sf::Vector2f);
-	virtual ~MovingObject() {};
+	StatedObject(object_code, sf::Vector2f);
+	virtual ~StatedObject() {};
 
 	virtual void move_and_change_sprite(float, Object*) = 0;
 private:
