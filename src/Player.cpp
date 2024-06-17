@@ -25,11 +25,11 @@ void Player::update(float deltaTime)
 	m_currentState->update(this, deltaTime);
 }
 
-void Player::draw(sf::RenderWindow& wind)
-{
-	m_currentState->draw(this, wind);
-
-}
+//void Player::draw(sf::RenderWindow& wind)
+//{
+//	m_currentState->draw(this, wind);
+//
+//}
 
 void Player::jump()
 {
