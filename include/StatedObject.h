@@ -15,4 +15,5 @@ public:
 
 protected:
 	std::vector <sf::Sprite> m_sp;
+	//const std::vector <sf::IntRect>* m_intRect;
 };

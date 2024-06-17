@@ -49,6 +49,7 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
 "Scientist.png"
 
 };
+const int NUM_OF_TXTR_IN_SHEET[NUM_OF_OBJECTS] = { 4 };
 
 //const int NUM_OF_SOUNDES = 7;
 //const std::string SOUND_FILE_NAME[NUM_OF_SOUNDES] = {
@@ -84,10 +85,14 @@ private:
 	Resources& operator=(const Resources&) = delete;
 
 	void readData(sf::Texture[], const std::string[], int);
+	//void readSpriteSheet(sf::Texture[], const std::string [], int);
+
+
 	sf::Texture m_backgroungs[NUM_OF_BACKGROUNDS];
 	sf::Texture m_buttonsTexures[NUM_OF_BUTTONS_MENU];
 	sf::Texture m_buttonsBoardTexures[NUM_OF_BUTTONS_MENU];
 	sf::Texture m_objTexures[NUM_OF_OBJECTS];
+	//std::vector<sf::IntRect> m_intRect[NUM_OF_OBJECTS];
 	//sf::SoundBuffer m_sound_buffer[NUM_OF_SOUNDES];
 	sf::Font m_font;
 

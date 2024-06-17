@@ -57,3 +57,20 @@ void Resources::readData(sf::Texture arr[], const std::string names[], int num_o
 		}
 }
 
+//void Resources::readSpriteSheet(sf::Texture arr[], const std::string names[], int num_of_objects)
+//{
+//	for (int i = 0; i < num_of_objects; i++)
+//		{
+//			arr[i].loadFromFile(names[i]);
+//
+//			auto size = arr[i].getSize();
+//			float x = size.x / NUM_OF_TXTR_IN_SHEET[i];
+//
+//			for (int num = 0; num < NUM_OF_TXTR_IN_SHEET[i]; num++)
+//			{
+//				m_intRect[i].push_back(sf::IntRect(num * x, 0, x, size.y));
+//			}
+//
+//		}
+//}
+//
