@@ -6,7 +6,7 @@
 #include <memory>
 #include "Player.h"
 
-const int MIN_AMOUNT = 20;
+const int MIN_AMOUNT = 5;
 
 class Controller;
 
@@ -18,7 +18,7 @@ public:
 	void play(sf::RenderWindow&, float, float);
 	void draw(sf::RenderWindow&)const;
 	bool checkCollision();
-	void readLevel();
+	void readLevel(sf::RenderWindow&);
 	bool alive() const;
 	sf::Vector2f getPlayerLoc() const;
 	//void moveBackground(float, sf::RenderWindow&);

@@ -8,7 +8,8 @@ enum object_code {
 };
 
 const sf::IntRect BLOCKING_RECT[] = {
-	sf::IntRect(0, 0, 112.5, 150)
+	sf::IntRect(0, 0, 112.5, 150),
+	sf::IntRect(0, 0, 40, 40)
 };
 
 const sf::Vector2f SCREEN_SIZE(1200, 791);
@@ -43,13 +44,13 @@ const std::string BOTTUNS_BOARD_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
 };
 
 //add textures
-const int NUM_OF_OBJECTS = 1;
-const std::string OBJECT_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
+const int NUM_OF_OBJECTS = 2;
+const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "JetpackWalking.png",
-"Scientist.png"
+"Coin.png",
+//"Scientist.png"
 
 };
-const int NUM_OF_TXTR_IN_SHEET[NUM_OF_OBJECTS] = { 4 };
 
 //const int NUM_OF_SOUNDES = 7;
 //const std::string SOUND_FILE_NAME[NUM_OF_SOUNDES] = {

@@ -14,6 +14,17 @@ std::unique_ptr<Object> ObjectFactory::create(int index)
 	return it->second(5,5);
 	//adding pram
 }
+std::unique_ptr<Object> ObjectFactory::create(int index, int x, int y) //for debug
+{
+	auto it = getMap().find(index);
+	if (it == getMap().end())
+	{
+		return nullptr;
+	}
+
+	return it->second(x,y);
+	//adding pram
+}
 
 bool ObjectFactory::registerIt(int index, std::unique_ptr<Object>(*fu)(int, int))
 {

@@ -10,6 +10,7 @@ class ObjectFactory
 {
 public:
 	static std::unique_ptr<Object> create(int);
+	static std::unique_ptr<Object> create(int,int,int); //for debug
 	static bool registerIt(int, std::unique_ptr<Object>(*)(int, int));
 
 private:

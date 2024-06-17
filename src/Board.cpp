@@ -9,8 +9,8 @@
 Board::Board()
 {
 	m_objects.clear();
-	readLevel();
-	readLevel();
+	//readLevel();
+	//readLevel();
 	m_player = std::make_unique<Player>();
 	//m_player->setState(std::make_unique<WalkAnimationPlayerState>());
 
@@ -43,8 +43,10 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 	//moveBackground(delta_time, wind);
 	if (m_objects.size() < MIN_AMOUNT)
 	{
-		readLevel();
+		readLevel(wind);
 	}
+
+	//clearing obj from m_object if the view not on them
 }
 
 void Board::draw(sf::RenderWindow& wind) const
@@ -62,34 +64,38 @@ bool Board::checkCollision()
 	return false;
 }
 
-void Board::readLevel()
+void Board::readLevel(sf::RenderWindow& wind)
 {
-	//for now the func will read level from txt file, hopfully 
-	//the game will ganarate its levels
-	char c;
-	auto file = std::ifstream("level.txt");
-	int col = 0;
-	int row = 0;
+	auto x = wind.getView().getCenter().x + SCREEN_SIZE.x;
 
-	while (file.get(c))
-	{
-		if (c == '\n')
-		{
-			row = 0;
-			col++;
-			continue;
-		}
+	m_objects.push_back(ObjectFactory::create(Coin_t, x, 500));
 
-		else if (c != '-')
-		{
-			auto temp = ObjectFactory::create(c);
-			if (temp != nullptr) {
-				//m_objects.push_back(std::move(temp));
-			}
-			
-		}
-		row++;
-	}
+	////for now the func will read level from txt file, hopfully 
+	////the game will ganarate its levels
+	//char c;
+	//auto file = std::ifstream("level.txt");
+	//int col = 0;
+	//int row = 0;
+
+	//while (file.get(c))
+	//{
+	//	if (c == '\n')
+	//	{
+	//		row = 0;
+	//		col++;
+	//		continue;
+	//	}
+
+	//	else if (c != '-')
+	//	{
+	//		auto temp = ObjectFactory::create(c);
+	//		if (temp != nullptr) {
+	//			m_objects.push_back(std::move(temp));
+	//		}
+	//		
+	//	}
+	//	row++;
+	//}
 }
 
 bool Board::alive() const
