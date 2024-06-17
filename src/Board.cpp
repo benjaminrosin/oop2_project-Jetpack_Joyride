@@ -49,8 +49,11 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 
 void Board::draw(sf::RenderWindow& wind) const
 {
-	wind.draw(m_player->getDrawable());
-	std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto &obj) {if (obj != nullptr) wind.draw(obj->getDrawable()); });
+	m_player->draw(wind);
+	std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto& obj) {if (obj != nullptr) obj->draw(wind); });
+
+	//wind.draw(m_player->getDrawable());
+	//std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto &obj) {if (obj != nullptr) wind.draw(obj->getDrawable()); });
 
 }
 
@@ -96,6 +99,6 @@ bool Board::alive() const
 
 sf::Vector2f Board::getPlayerLoc() const
 {
-	return m_player->getDrawable().getPosition();
+	return m_player->getPosition();
 }
 

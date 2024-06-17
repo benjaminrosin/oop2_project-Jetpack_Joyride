@@ -16,15 +16,16 @@ public:
 	//virtual bool collision(Mouse&) = 0;
 	//virtual bool collision(Cat&) = 0;
 
-	//virtual void draw(sf::RenderWindow&)const;
-	const sf::Sprite& getDrawable() const;
-	sf::Vector2f get_position() const;
+	virtual void draw(sf::RenderWindow&)const = 0;
+	virtual sf::Vector2f getPosition() const = 0;
+	//const sf::Sprite& getDrawable() const;
+	//sf::Vector2f get_position() const;
 	virtual void move_and_change_sprite(float, Object*) = 0;
-	virtual void setSpriteRect(sf::IntRect);
-	virtual void setMove(float, float); //פוגע באובייקטים סטטיים
-	virtual void setPosition(float, float);//פוגע באובייקטים סטטיים
-	virtual sf::Vector2f getPosition() const;//פוגע באובייקטים סטטיים
-	virtual void moveSprite(sf::Vector2f);
+	//virtual void setSpriteRect(sf::IntRect);
+	//virtual void setMove(float, float); //פוגע באובייקטים סטטיים
+	//virtual void setPosition(float, float);//פוגע באובייקטים סטטיים
+	//virtual sf::Vector2f getPosition() const;//פוגע באובייקטים סטטיים
+	//virtual void moveSprite(sf::Vector2f);
 private:
 	//sf::Sprite m_sp;
 	sf::Clock m_texutre_timer;

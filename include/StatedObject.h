@@ -7,8 +7,10 @@ class StatedObject :public Object {
 public:
 	StatedObject(object_code, sf::Vector2f);
 	virtual ~StatedObject() {};
-
+	virtual void move(sf::Vector2f);
 	virtual void move_and_change_sprite(float, Object*) = 0;
-private:
+	virtual sf::Vector2f getPosition() const override;
+
+protected:
 	std::vector <sf::Sprite> m_sp;
 };

@@ -116,6 +116,8 @@ void Controller::resetSFMLComponents()
 	{
 		m_data[i].setFillColor(sf::Color::White);
 		//add outline to text
+		m_data[i].setOutlineThickness(2);
+		m_data[i].setOutlineColor(sf::Color::Black);
 		m_data[i].setCharacterSize(30);
 		m_data[i].setFont(*Resources::getInstance().getFont());
 		m_data[i].setOrigin(sf::Vector2f(m_data[i].getGlobalBounds().width / 2, m_data[i].getGlobalBounds().height / 2));

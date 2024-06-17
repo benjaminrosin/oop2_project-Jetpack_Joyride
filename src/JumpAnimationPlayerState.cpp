@@ -26,17 +26,17 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     //player->setSpriteRect(m_jumpFrame);
 
     // Update jump movement
-    if ((player->getDrawable().getGlobalBounds().top + m_jumpVelocity * deltaTime) < TOP_SCREEN_LIMIT)
+    if ((player->getPosition().y + m_jumpVelocity * deltaTime) < TOP_SCREEN_LIMIT) //add texture height
     {
         m_jumpVelocity = 0;
     }
     else
     {
-        player->setMove(0, m_jumpVelocity * deltaTime);
+        player->move({0, m_jumpVelocity * deltaTime});
         m_jumpVelocity += m_gravity * deltaTime;
     }
     //change to member and calculate right speed
-    player->setMove(200*deltaTime , 0);
+    player->move({ 200 * deltaTime , 0 });
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
