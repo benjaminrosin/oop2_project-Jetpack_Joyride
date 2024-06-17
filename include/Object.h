@@ -6,7 +6,7 @@
 class Object 
 {
 public:
-	Object(const sf::Texture*, sf::Vector2f, sf::IntRect);
+	//Object(const sf::Texture*, sf::Vector2f, sf::IntRect);
 	virtual ~Object() {};
 
 	//bool checkCollision(Object& obj) const;
@@ -26,7 +26,7 @@ public:
 	virtual sf::Vector2f getPosition() const;//פוגע באובייקטים סטטיים
 	virtual void moveSprite(sf::Vector2f);
 private:
-	sf::Sprite m_sp;
+	//sf::Sprite m_sp;
 	sf::Clock m_texutre_timer;
 	//sf::Sound m_sound;
 
