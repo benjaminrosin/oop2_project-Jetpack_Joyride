@@ -2,8 +2,15 @@
 #include "WalkAnimationPlayerState.h"
 
 Player::Player()
-	: StatedObject(Player_t, sf::Vector2f(MARGIN, DEFULT_START_POINT))
+	: Object(Resources::getInstance().getTextureObject(Player_t),
+		sf::Vector2f(MARGIN, DEFULT_START_POINT),
+		Resources::getInstance().getIntRect(Player_t))
 {
+	//m_sp.setTexture(*Resources::getInstance().getTextureObject(Player_t));
+	//m_sp.setPosition(DEFULT_START_POINT);
+	//m_sp.setTextureRect(Resources::getInstance().getIntRect(obj));
+	//m_sp.setOrigin(sf::Vector2f(0, Resources::getInstance().getIntRect(obj).height));
+
 	setState(std::make_unique<WalkAnimationPlayerState>());
 	//m_currentState->enter(this);
 
@@ -12,6 +19,11 @@ Player::Player()
 void Player::move_and_change_sprite(float time, Object*)
 {
 	 
+}
+
+float Player::getHeight() const
+{
+	return m_sp.getGlobalBounds().height;
 }
 
 void Player::setState(std::unique_ptr<PlayerAnimationState> state)

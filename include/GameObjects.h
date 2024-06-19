@@ -4,15 +4,15 @@
 #include "Resources.h"
 
 
-class NonStatedObject :public Object {
+class GameObjects :public Object {
 public:
-	NonStatedObject(object_code, sf::Vector2f);
-	virtual ~NonStatedObject() {};
+	GameObjects(object_code, sf::Vector2f);
+	virtual ~GameObjects() {};
 
-	virtual sf::Vector2f getPosition() const override;
-	virtual void draw(sf::RenderWindow&) const override;
+	//virtual sf::Vector2f getPosition() const override;
+	//virtual void draw(sf::RenderWindow&) const override;
 	virtual void move_and_change_sprite(float, Object*) = 0;
-	virtual void setSpriteRect(sf::IntRect) override;
+	//virtual void setSpriteRect(sf::IntRect) override;
 	virtual void move(sf::Vector2f move) override;
 
 	//virtual bool collision(Object&) = 0;
@@ -20,5 +20,5 @@ public:
 	//virtual bool collision(Cat&) = 0;
 
 private:
-	sf::Sprite m_sp;
+	//sf::Sprite m_sp;
 };

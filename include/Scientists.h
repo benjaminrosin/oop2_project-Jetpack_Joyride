@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "NonStatedObject.h"
+#include "GameObjects.h"
 
-class Scientists:public NonStatedObject {
+class Scientists:public GameObjects {
 public:
 	//using StatedObject::collision;
 

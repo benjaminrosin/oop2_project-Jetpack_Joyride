@@ -6,7 +6,7 @@
 bool Scientists::m_registered = ObjectFactory::registerIt('<', [](int col, int row) -> std::unique_ptr<Object> { return std::make_unique<Scientists>(col, row); });
 
 Scientists::Scientists(int col, int row=0) 
-	: NonStatedObject(Scientists_t, sf::Vector2f(col, row)) //לשנות את הנקודה))
+	: GameObjects(Scientists_t, sf::Vector2f(col, row)) //לשנות את הנקודה))
 {
 	changeDirection();
 }

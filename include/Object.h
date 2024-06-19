@@ -6,7 +6,7 @@
 class Object 
 {
 public:
-	//Object(const sf::Texture*, sf::Vector2f, sf::IntRect);
+	Object(const sf::Texture*, sf::Vector2f, sf::IntRect);
 	virtual ~Object() {};
 
 	//bool checkCollision(Object& obj) const;
@@ -16,21 +16,21 @@ public:
 	//virtual bool collision(Mouse&) = 0;
 	//virtual bool collision(Cat&) = 0;
 
-	virtual void draw(sf::RenderWindow&)const = 0;
-	virtual sf::Vector2f getPosition() const = 0;
+	virtual void draw(sf::RenderWindow&)const;
+	virtual sf::Vector2f getPosition() const;
 
 	//const sf::Sprite& getDrawable() const;
-	//sf::Vector2f get_position() const;
-	virtual void move(sf::Vector2f) = 0;
+	//virtual sf::Vector2f get_position() const;
+	virtual void move(sf::Vector2f) ;
 	virtual void move_and_change_sprite(float, Object*) = 0;
-	virtual void setSpriteRect(sf::IntRect) = 0;
+	virtual void setSpriteRect(sf::IntRect);
 
 	//virtual void setMove(float, float); //פוגע באובייקטים סטטיים
 	//virtual void setPosition(float, float);//פוגע באובייקטים סטטיים
 	//virtual sf::Vector2f getPosition() const;//פוגע באובייקטים סטטיים
 	//virtual void moveSprite(sf::Vector2f);
-private:
-	//sf::Sprite m_sp;
+protected:
+	sf::Sprite m_sp;
 	sf::Clock m_texutre_timer;
 	//sf::Sound m_sound;
 
