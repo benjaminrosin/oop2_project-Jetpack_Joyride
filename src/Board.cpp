@@ -10,31 +10,20 @@
 #include "Gspeed.h";
 #include "Gpower.h";
 #include "Gmoney.h";
+#include "Utilities.h"
 
 
 
 Board::Board()
 {
 	m_objects.clear();
-	//readLevel();
-	//readLevel();
 	m_player = std::make_unique<Player>();
-	//m_player->setState(std::make_unique<WalkAnimationPlayerState>());
 
 }
 
 void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב שיש גם טיימר וגם דלתא
 {
-	//if (auto event = sf::Event(); wind.pollEvent(event))
-	//{
-	//	if (event.type == sf::Event::KeyReleased &&
-	//		event.key.code == sf::Keyboard::Space)
-	//	{
-	//		m_player->handleSpaceRelease(); // טיפול במקש הרווח שנשחרר
-	//	}
-	//}
 
-	//לבדוק
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
 		m_player->jump();
@@ -46,8 +35,6 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 
 	//std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {if (obj!=nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });
 
-
-	//moveBackground(delta_time, wind);
 	m_objTimer -= delta_time;
 
 	if (m_objTimer < 0)
@@ -56,7 +43,9 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 		m_objTimer = 1;
 	}
 
-	//clearing obj from m_object if the view not on them
+	int xView = wind.getView().getCenter().x - SCREEN_SIZE.x;
+	m_objects.remove_if(outOfView(xView));
+
 }
 
 void Board::draw(sf::RenderWindow& wind) const
@@ -85,6 +74,8 @@ void Board::readLevel(sf::RenderWindow& wind)
 	m_objects.push_back(ObjectFactory::create(Gshield_t, x, 300));
 	m_objects.push_back(ObjectFactory::create(Gmoney_t, x, 550));
 	m_objects.push_back(ObjectFactory::create(Gpower_t, x, 450));
+
+	m_objects.push_back(ObjectFactory::create(Scientists_t, x, 600));
 
 	/*switch (rand() % NUM_OF_GIFTS)
 	{
@@ -141,4 +132,25 @@ sf::Vector2f Board::getPlayerLoc() const
 {
 	return m_player->getPosition();
 }
+
+//void Board::deleteObjects(sf::RenderWindow& wind)
+//{
+//	int xView = wind.getView().getCenter().x - SCREEN_SIZE.x;
+//
+//	for (auto& obj : m_objects) 
+//	{
+//		if (obj->getPosition().x < xView) {
+//
+//		}
+//
+//	}
+//
+//	
+//
+//	for (int i = 0; i < m_objects.size(); i++) {
+//		{
+//
+//		}
+//	}
+//}
 

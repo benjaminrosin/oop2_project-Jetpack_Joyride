@@ -46,7 +46,7 @@ void Player::jump()
 
 void Player::walk()
 {
-	m_currentState->walk(this);
+//	m_currentState->walk(this);
 }
 
 void Player::handleSpaceRelease()

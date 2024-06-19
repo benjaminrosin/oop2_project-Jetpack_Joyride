@@ -25,8 +25,10 @@ public:
 
 
 private:
+	//void deleteObjects(sf::RenderWindow&);
+
 	std::unique_ptr<Player> m_player;
 	std::list<std::unique_ptr<Object>> m_objects;
-	const sf::Texture* m_background;
+	//const sf::Texture* m_background;
 	float m_objTimer = 1;
 };

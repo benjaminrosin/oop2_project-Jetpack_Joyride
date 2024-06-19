@@ -12,7 +12,7 @@ public:
         virtual void update(Player*, float) override;
         //virtual void draw(Player*, sf::RenderWindow&) override;
         virtual void jump(Player*) override {};
-        virtual void walk(Player*) override {};
+        //virtual void walk(Player*) override {};
 
 private: //לבדוק אם להעלות ממברים למעלה
     sf::IntRect m_jumpFrame;
@@ -21,4 +21,5 @@ private: //לבדוק אם להעלות ממברים למעלה
     //float m_elapsedTime;
     float m_jumpVelocity;
     float m_gravity;
+    
     };

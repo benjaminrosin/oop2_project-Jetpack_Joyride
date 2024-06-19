@@ -8,6 +8,7 @@ class Controller {
 public:
 	Controller();
 	void run(sf::RenderWindow&);
+	static void addToCoins();
 	
 private:
 	Board m_board;
@@ -18,10 +19,10 @@ private:
 	sf::Clock m_clock;
 	float m_timer;
 	float m_delta_time;
-	int m_coins = 0;
+	static int m_coins;
 
 	void drawData(sf::RenderWindow&);
-	void addToCoins(int);
+
 	int handleClick(sf::Vector2f) const;
 	void resetSFMLComponents();
 	void moveBackground(float ,sf::RenderWindow&);

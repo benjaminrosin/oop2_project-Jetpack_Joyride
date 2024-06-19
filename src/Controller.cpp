@@ -5,12 +5,13 @@
 #include <fstream>
 #include <sstream>
 
+int Controller::m_coins = 0;
+
 Controller::Controller() : m_board()
 {
 	m_clock.restart();
 	resetSFMLComponents();
 }
-
 
 void Controller::run(sf::RenderWindow& m_wind) 
 {
@@ -93,9 +94,9 @@ void Controller::drawData(sf::RenderWindow& wind)
 	wind.setView(currView);
 }
 
-void Controller::addToCoins(int coins)
+void Controller::addToCoins()
 {
-	m_coins += coins;
+	m_coins ++;
 }
 
 int Controller::handleClick(sf::Vector2f v2f) const

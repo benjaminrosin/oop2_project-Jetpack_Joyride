@@ -5,8 +5,8 @@ Object::Object(const sf::Texture* txture, sf::Vector2f loc, const sf::IntRect re
 {
 	m_sp.setTexture(*txture);
 	m_sp.setTextureRect(rect);
-	m_sp.setPosition(loc);
 	m_sp.setOrigin(sf::Vector2f(0, rect.height));
+	m_sp.setPosition(loc);
 	//m_texutre_timer.restart();
 }
 

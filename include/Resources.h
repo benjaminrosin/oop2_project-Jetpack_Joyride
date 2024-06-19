@@ -13,7 +13,8 @@ const sf::IntRect BLOCKING_RECT[] = {
 	sf::IntRect(0, 0, 100, 102), //power
 	sf::IntRect(0, 0, 40, 40), //shield
 	sf::IntRect(0, 0, 40, 40), //speed
-	sf::IntRect(0, 0, 100, 91) //money
+	sf::IntRect(0, 0, 100, 91), //money
+	sf::IntRect(0, 0, 67, 164)//sc
 	///
 };
 
@@ -49,16 +50,15 @@ const std::string BOTTUNS_BOARD_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
 };
 
 //add textures
-const int NUM_OF_OBJECTS = 6;
+const int NUM_OF_OBJECTS = 7;
 const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "JetpackWalking.png",
 "Coin.png",
 "PowerUpBox.png",
 "Shield.png",
 "Speed.png",
-"Piggy.png"
-
-//"Scientist.png"
+"Piggy.png",
+"Scientist.png"
 };
 
 const int NUM_OF_GIFTS = 4;
