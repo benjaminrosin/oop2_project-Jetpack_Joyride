@@ -2,17 +2,17 @@
 #include <SFML/Graphics.hpp>
 #include "StatedObject.h"
 
-class Missale:public StatedObject {
+class Missile:public StatedObject {
 public:
 	//using StatedObject::collision;
 
 	Missale(int, int);
-	virtual ~Missale();
+	virtual ~Missile();
 	void move_and_change_sprite(float, Object*);
 	
 
 	virtual bool collision(Object&)	override;
-	virtual bool collision(Missale&)	override;
+	virtual bool collision(Missile&)	override;
 	//virtual bool collision(Cat&)	override;
 	//virtual bool collision(Cheese&)	override;
 	//virtual bool collision(Door&)	override;
