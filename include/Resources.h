@@ -4,7 +4,7 @@
 #include <string>
 
 enum object_code {
-	Player_t, Coin_t , Scientists_t
+	Player_t, Coin_t , Scientists_t, Gmoney_t, Gshield_t, Gspeed_t
 };
 
 const sf::IntRect BLOCKING_RECT[] = {
@@ -51,6 +51,8 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 //"Scientist.png"
 
 };
+
+const int NUM_OF_GIFTS = 4;
 
 //const int NUM_OF_SOUNDES = 7;
 //const std::string SOUND_FILE_NAME[NUM_OF_SOUNDES] = {
