@@ -24,6 +24,7 @@ public:
 	virtual void move(sf::Vector2f) = 0;
 	virtual void move_and_change_sprite(float, Object*) = 0;
 	virtual void setSpriteRect(sf::IntRect) = 0;
+
 	//virtual void setMove(float, float); //פוגע באובייקטים סטטיים
 	//virtual void setPosition(float, float);//פוגע באובייקטים סטטיים
 	//virtual sf::Vector2f getPosition() const;//פוגע באובייקטים סטטיים

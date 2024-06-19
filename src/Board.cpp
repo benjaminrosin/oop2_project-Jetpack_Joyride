@@ -18,14 +18,14 @@ Board::Board()
 
 void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב שיש גם טיימר וגם דלתא
 {
-	if (auto event = sf::Event(); wind.pollEvent(event))
-	{
-		if (event.type == sf::Event::KeyReleased &&
-			event.key.code == sf::Keyboard::Space)
-		{
-			m_player->handleSpaceRelease(); // טיפול במקש הרווח שנשחרר
-		}
-	}
+	//if (auto event = sf::Event(); wind.pollEvent(event))
+	//{
+	//	if (event.type == sf::Event::KeyReleased &&
+	//		event.key.code == sf::Keyboard::Space)
+	//	{
+	//		m_player->handleSpaceRelease(); // טיפול במקש הרווח שנשחרר
+	//	}
+	//}
 
 	//לבדוק
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
@@ -41,9 +41,12 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 
 
 	//moveBackground(delta_time, wind);
-	if (m_objects.size() < MIN_AMOUNT)
+	m_objTimer -= delta_time;
+
+	if (m_objTimer < 0)
 	{
 		readLevel(wind);
+		m_objTimer = 1;
 	}
 
 	//clearing obj from m_object if the view not on them

@@ -46,7 +46,7 @@ void Player::handleSpaceRelease()
 	//овезк
 	//if (auto jumpState = /*dynamic_cast<JumpAnimationPlayerState*>*/(m_currentState.get()))
 	{
-		setState(std::make_unique<WalkAnimationPlayerState>());
+		//setState(std::make_unique<WalkAnimationPlayerState>());
 	}
 }
 
