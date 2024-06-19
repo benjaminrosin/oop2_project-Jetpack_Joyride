@@ -2,11 +2,11 @@
 #include <SFML/Graphics.hpp>
 #include "Gift.h"
 
-class Gshield :public Gift
+class Gpower :public Gift
 {
 public:
-	Gshield(int, int);
-	
+	Gpower(int, int);
+
 	virtual void open_gift();
 private:
 	static bool m_registered;

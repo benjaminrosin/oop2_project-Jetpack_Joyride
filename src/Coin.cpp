@@ -8,9 +8,6 @@ Coin::Coin(int col, int row)
 {
 }
 
-void Coin::move_and_change_sprite(float, Object*)
-{
-}
 
 //
 //bool Coin::m_registered = ObjectFactory::registerIt('*', []() -> std::unique_ptr<Object> { return std::make_unique<Coin>(); });

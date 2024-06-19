@@ -11,5 +11,7 @@ public:
 	//virtual bool collision(Object&);
 	//virtual bool collision(Cat&);
 	//virtual bool collision(Mouse&);
+private:
+	//static bool m_registered;
 
 };

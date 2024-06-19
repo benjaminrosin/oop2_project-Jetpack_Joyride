@@ -8,7 +8,7 @@ public:
 
 	Coin(int, int);
 	virtual ~Coin(){};
-	void move_and_change_sprite(float, Object*);
+	//void move_and_change_sprite(float, Object*);
 	
 
 	//virtual bool collision(Object&)	override;
