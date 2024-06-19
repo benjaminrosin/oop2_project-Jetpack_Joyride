@@ -37,7 +37,7 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 
 	//check collision
 
-	std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {if (obj!=nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });
+	std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {/*if (obj != nullptr)*/ obj->move_and_change_sprite(delta_time, &(*m_player)); });
 
 
 	//moveBackground(delta_time, wind);

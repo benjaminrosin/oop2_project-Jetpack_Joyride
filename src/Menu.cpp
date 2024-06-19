@@ -2,6 +2,9 @@
 #include <iostream>
 #include <exception>
 #include "Resources.h"
+#include "Command/StartGameCommand.h"
+#include "Command/RulesCommand.h"
+#include "Command/HighScoreCommand.h"
 
 Menu::Menu()
 {
@@ -9,14 +12,17 @@ Menu::Menu()
 	m_background.setSize(SCREEN_SIZE);
 	m_controller = nullptr;
 
-	for (int i = 0; i < NUM_OF_BUTTONS_MENU; i++)
+	m_buttons.emplace_back(std::make_unique<StartGameCommand>(this));
+	m_buttons.emplace_back(std::make_unique<HighScoreCommand>(this));
+	m_buttons.emplace_back(std::make_unique<RulesCommand>(this));
+	//exit button?
+
+	for (int i = 0; i < m_buttons.size(); i++)
 	{
-		m_button[i].setSize(sf::Vector2f(300, 100));
-		m_button[i].setOrigin(sf::Vector2f(150, 50));
-		m_button[i].setPosition(sf::Vector2f(2*SCREEN_SIZE.x/3, 150 * (i + 1)));
-		m_button[i].setTexture(Resources::getInstance().getTextureButtons(i));	
-		m_button[i].setOutlineThickness(2);
+		auto pos = sf::Vector2f(2 * SCREEN_SIZE.x / 3, 200 * (i + 1));
+		m_buttons[i]->setSptire(pos, i);
 	}
+
 }
 
 Menu::~Menu()
@@ -29,12 +35,12 @@ Menu::~Menu()
 
 void Menu::showMenu()
 {
+
 	m_wind.create(sf::VideoMode(SCREEN_SIZE.x, SCREEN_SIZE.y), "Jetpack Joyride");
 	m_wind.setFramerateLimit(60);
 
 	while (m_wind.isOpen())
 	{
-		//m_background.setTexture(Resources::getInstance().getBackground(0));
 		m_wind.clear(sf::Color::White);
 		m_wind.draw(m_background);
 
@@ -42,7 +48,7 @@ void Menu::showMenu()
 		//sf::Vector2f mousePosF(mousePos.x, mousePos.y);
 
 		//handleHover(mousePosF, m_button, NUM_OF_BUTTONS_MENU);
-		drawButtons(m_wind);
+		std::for_each(m_buttons.begin(), m_buttons.end(), [&](auto& but) {but->draw(m_wind); });
 
 		m_wind.display();
 
@@ -60,20 +66,11 @@ void Menu::showMenu()
 			{
 				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 
-				switch (option)
-				{
-				case 0:
-					newGame();
-					break;
-				case 1:
-					//high score;
-					break;
-				case 2:
-					showHelp();
-					break;
-				case 3:
-					m_wind.close();
-					break;
+				if (option == -1) {
+					//m_wind.close();
+				}
+				else {
+					m_buttons[option]->axecute();
 				}
 			}
 			}
@@ -84,22 +81,14 @@ void Menu::showMenu()
 
 int Menu::handleClick(sf::Vector2f v2f) const
 {
-	for (int i = 0; i < NUM_OF_BUTTONS_MENU; i++)
+	for (int i = 0; i < m_buttons.size(); i++)
 	{
-		if (m_button[i].getGlobalBounds().contains(v2f))
+		if (m_buttons[i]->contains(v2f))
 		{
 			return i;
 		}
 	}
 	return -1;
-}
-
-void Menu::drawButtons(sf::RenderWindow& wind) const
-{
-	for (int i = 0; i < NUM_OF_BUTTONS_MENU; i++)
-	{
-		wind.draw(m_button[i]);
-	}
 }
 
 void Menu::newGame()
@@ -110,20 +99,10 @@ void Menu::newGame()
 	m_controller = nullptr;
 }
 
-//void Menu::loadGame()
-//{
-//	try
-//	{
-//		m_controller = new Controller(FILE_NAME);
-//		m_controller->run(m_wind);
-//		delete m_controller;
-//		m_controller = nullptr;
-//	}
-//	catch (std::exception& exp)
-//	{
-//		//printMessage(std::vector<std::string>{exp.what()});
-//	}
-//}
+void Menu::highScore()
+{
+	std::cout << "high score\n";
+}
 
 void Menu::showHelp()
 {
