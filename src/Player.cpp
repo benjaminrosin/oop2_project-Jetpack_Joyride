@@ -16,10 +16,6 @@ Player::Player()
 
 }
 
-void Player::move_and_change_sprite(float time, Object*)
-{
-	 
-}
 
 float Player::getHeight() const
 {

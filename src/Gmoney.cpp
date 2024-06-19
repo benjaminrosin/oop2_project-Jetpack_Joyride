@@ -2,6 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include "Gift.h"
 #include "Gmoney.h"
+#include "ObjectFactory.h"
+
+bool Gmoney::m_registered = ObjectFactory::registerIt(Gmoney_t, [](int col, int row) -> std::unique_ptr<Object> { return std::make_unique<Gmoney>(col, row); });
+
 
 Gmoney::Gmoney(int col, int row)
 	:Gift(Gmoney_t, col, row)

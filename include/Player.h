@@ -10,7 +10,7 @@ class Player:public Object {
 public:
 	Player();
 	virtual ~Player() {};
-	void move_and_change_sprite(float, Object*)override;
+	//void move_and_change_sprite(float, Object*)override;
 	virtual float getHeight() const;
 	void setState(std::unique_ptr<PlayerAnimationState>);
 	void update(float);

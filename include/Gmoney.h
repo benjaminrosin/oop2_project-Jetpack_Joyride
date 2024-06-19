@@ -9,5 +9,7 @@ public:
 	
 	virtual void open_gift();
 private:
+	static bool m_registered;
+
 
 };
