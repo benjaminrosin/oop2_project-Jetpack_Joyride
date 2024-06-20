@@ -4,18 +4,18 @@
 #include <string>
 
 enum object_code {
-	Player_t, Coin_t , Gift_t ,Gpower_t, Gshield_t, Gspeed_t, Gmoney_t, Scientists_t
+	Player_t, Coin_t , Gpower_t, Gshield_t, Gspeed_t, Gmoney_t, Scientists_t, Gift_t
 };
 
 const sf::IntRect BLOCKING_RECT[] = {
 	sf::IntRect(0, 0, 112.5, 150), //player
 	sf::IntRect(0, 0, 40, 40), //coin
-	sf::IntRect(),
+	//sf::IntRect(),
 	sf::IntRect(0, 0, 100, 102), //power
 	sf::IntRect(0, 0, 40, 40), //shield
 	sf::IntRect(0, 0, 40, 40), //speed
 	sf::IntRect(0, 0, 100, 91), //money
-	sf::IntRect(0, 0, 67, 164)//sc
+	sf::IntRect(0, 0, 67, 87)//sc
 	///
 };
 

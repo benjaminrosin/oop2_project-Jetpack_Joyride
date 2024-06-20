@@ -32,7 +32,7 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     }
     else
     {
-        player->move({0, m_jumpVelocity * deltaTime});
+        player->move(sf::Vector2f(0.0f, m_jumpVelocity * deltaTime));
         m_jumpVelocity += m_gravity * deltaTime;
     }
     //change to member and calculate right speed
