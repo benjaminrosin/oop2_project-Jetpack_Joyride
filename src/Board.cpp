@@ -12,6 +12,7 @@
 #include "Gpower.h";
 #include "Gmoney.h";
 #include "Utilities.h"
+#include "CollisionHandling.h"
 
 
 
@@ -27,6 +28,17 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 	m_player->update(delta_time);
 
 	//check collision
+	m_statics.remove_if([&](auto& obj){ return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
+	m_movings.remove_if([&](auto& obj){ return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
+
+	//std::for_each(m_statics.begin(), m_statics.end(), [&](auto& obj)
+	//	{if (collide(*obj.get())) m_statics.remove_if(CollisionHandling::processCollision(*m_player, *obj)); });
+	
+	//std::for_each(m_movings.begin(), m_movings.end(), [&](auto& obj)
+	//	{if (collide(*obj.get())) m_movings.remove_if(CollisionHandling::processCollision(*m_player, *obj)); });
+
+	/*std::for_each(m_statics.begin(), m_statics.end(), [&](auto& obj) {if (collide(*m_player, *obj) {}; });
+	std::for_each(m_movings.begin(), m_movings.end(), [&](auto& obj) {if (obj != nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });*/
 
 	//std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {if (obj!=nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });
 	//animate
@@ -67,11 +79,20 @@ void Board::readLevel(sf::RenderWindow& wind)
 	auto x = wind.getView().getCenter().x + SCREEN_SIZE.x;
 
 	m_statics.push_back(StaticObjectFactory::create(Coin_t, x, 500));
-	m_statics.push_back(StaticObjectFactory::create(Gspeed_t, x, 350));
-	m_statics.push_back(StaticObjectFactory::create(Gshield_t, x, 300));
-	m_statics.push_back(StaticObjectFactory::create(Gmoney_t, x, 550));
-	m_statics.push_back(StaticObjectFactory::create(Gpower_t, x, 450));
-	m_movings.push_back(MovingObjectFactory::create(Scientists_t, x, 600));
+	//m_statics.push_back(StaticObjectFactory::create(Gspeed_t, x, 350));
+	//m_statics.push_back(StaticObjectFactory::create(Gshield_t, x, 300));
+	//m_statics.push_back(StaticObjectFactory::create(Gmoney_t, x, 550));
+	//m_statics.push_back(StaticObjectFactory::create(Gpower_t, x, 450));
+	//m_statics.insert(coinsgener);
+	//m_movings.push_back(MovingObjectFactory::create(Scientists_t, x, 600));
+
+
+	//x = rand() % 5;
+
+	/*if (x==Coin_t){
+		m_statics.insert(coinsgener);
+	}
+	else if (x<)*/
 
 	/*switch (rand() % NUM_OF_GIFTS)
 	{
@@ -128,6 +149,28 @@ sf::Vector2f Board::getPlayerLoc() const
 {
 	return m_player->getPosition();
 }
+
+bool Board::collide(Object& obj)
+{
+	sf::FloatRect overlapRect;
+
+	if (m_player->getGlobalBounds().intersects(obj.getGlobalBounds(), overlapRect))
+	{
+		if (overlapRect.height > APPROVED_OVERLAP && overlapRect.width > APPROVED_OVERLAP)//קונסט!!!!
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+//void Board::findCollision(std::list<std::unique_ptr<Object>>& objects)
+//{
+//	std::for_each(objects.begin(), objects.end(), [&](auto& obj) 
+//		{if (collide(obj)) objects.remove_if(CollisionHandling::processCollision(*m_player, *obj)); });
+//}
+
 
 //void Board::deleteObjects(sf::RenderWindow& wind)
 //{

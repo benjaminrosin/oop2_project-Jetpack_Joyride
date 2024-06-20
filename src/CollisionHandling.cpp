@@ -76,8 +76,9 @@ bool CollisionHandling::moneyCollision(Player&, Object&)
     return true;
 }
 
-bool CollisionHandling::powerCollision(Player&, Object&)
+bool CollisionHandling::powerCollision(Player& player, Object&)
 {
     //change texture and jump?
+    //player.setState(std::make_unique<POWERUPSTATE>());
     return true;
 }
