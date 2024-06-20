@@ -11,9 +11,9 @@ const sf::IntRect BLOCKING_RECT[] = {
 	sf::IntRect(0, 0, 112.5, 150), //player
 	sf::IntRect(0, 0, 40, 40), //coin
 	//sf::IntRect(),
-	sf::IntRect(0, 0, 100, 102), //power
+	sf::IntRect(0, 0, 59, 60), //power
 	sf::IntRect(0, 0, 40, 40), //shield
-	sf::IntRect(0, 0, 40, 40), //speed
+	sf::IntRect(0, 0, 80, 60), //speed
 	sf::IntRect(0, 0, 100, 91), //money
 	sf::IntRect(0, 0, 67, 87)//sc
 	///
@@ -58,7 +58,7 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "Coin.png",
 "PowerUpBox.png",
 "Shield.png",
-"Speed.png",
+"speedGift.png",
 "Piggy.png",
 "Scientist.png"
 };

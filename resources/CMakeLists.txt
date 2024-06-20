@@ -27,7 +27,7 @@ configure_file ("Coin.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Scientist.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Shield.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Speed.png" ${CMAKE_BINARY_DIR} COPYONLY)
-
+configure_file ("speedGift.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("back.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("mute.png" ${CMAKE_BINARY_DIR} COPYONLY)
