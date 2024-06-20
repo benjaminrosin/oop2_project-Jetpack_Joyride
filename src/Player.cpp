@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "WalkAnimationPlayerState.h"
+#include "State/WalkAnimationPlayerState.h"
 
 Player::Player()
 	: MovingGameObjects(Player_t, sf::Vector2f(MARGIN, DEFULT_START_POINT))
