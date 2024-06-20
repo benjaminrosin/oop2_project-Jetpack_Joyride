@@ -23,17 +23,12 @@ Board::Board()
 
 void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב שיש גם טיימר וגם דלתא
 {
-
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	//{
-	//	//m_player->jump();
-	//}
-
 	m_player->update(delta_time);
 
 	//check collision
 
 	//std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {if (obj!=nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });
+	//animate
 
 	m_objTimer -= delta_time;
 
