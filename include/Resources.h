@@ -14,7 +14,7 @@ const sf::IntRect BLOCKING_RECT[] = {
 	sf::IntRect(0, 0, 40, 40), //shield
 	sf::IntRect(0, 0, 40, 40), //speed
 	sf::IntRect(0, 0, 100, 91), //money
-	sf::IntRect(0, 0, 67, 164)//sc
+	sf::IntRect(0, 0, 67, 87)//sc
 	///
 };
 

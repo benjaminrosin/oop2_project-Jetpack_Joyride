@@ -19,7 +19,7 @@ private: //לבדוק אם להעלות ממברים למעלה
    // int m_currentFrame;
     //float m_frameTime;
     //float m_elapsedTime;
-    float m_jumpVelocity;
+    float m_jumpVelocity = -400;
     float m_gravity;
     
     };
