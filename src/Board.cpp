@@ -31,14 +31,8 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 	m_statics.remove_if([&](auto& obj){ return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
 	m_movings.remove_if([&](auto& obj){ return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
 
-	//std::for_each(m_statics.begin(), m_statics.end(), [&](auto& obj)
-	//	{if (collide(*obj.get())) m_statics.remove_if(CollisionHandling::processCollision(*m_player, *obj)); });
 	
-	//std::for_each(m_movings.begin(), m_movings.end(), [&](auto& obj)
-	//	{if (collide(*obj.get())) m_movings.remove_if(CollisionHandling::processCollision(*m_player, *obj)); });
-
-	/*std::for_each(m_statics.begin(), m_statics.end(), [&](auto& obj) {if (collide(*m_player, *obj) {}; });
-	std::for_each(m_movings.begin(), m_movings.end(), [&](auto& obj) {if (obj != nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });*/
+	//std::for_each(m_movings.begin(), m_movings.end(), [&](auto& obj) {if (obj != nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });*/
 
 	//std::for_each(m_objects.begin(), m_objects.end(), [&](auto &obj) {if (obj!=nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });
 	//animate
