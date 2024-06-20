@@ -20,6 +20,11 @@ sf::Vector2f Object::getPosition() const
 	return  m_sp.getPosition();
 }
 
+sf::FloatRect Object::getGlobalBounds() const
+{
+	return sf::FloatRect(m_sp.getGlobalBounds());
+}
+
 void Object::setSpriteRect(sf::IntRect rect)
 {
 	m_sp.setTextureRect(rect);

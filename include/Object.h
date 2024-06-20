@@ -18,6 +18,7 @@ public:
 
 	virtual void draw(sf::RenderWindow&)const;
 	virtual sf::Vector2f getPosition() const;
+	virtual sf::FloatRect getGlobalBounds() const;
 
 	//const sf::Sprite& getDrawable() const;
 	//virtual sf::Vector2f get_position() const;
