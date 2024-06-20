@@ -73,12 +73,12 @@ void Board::readLevel(sf::RenderWindow& wind)
 	auto x = wind.getView().getCenter().x + SCREEN_SIZE.x;
 
 	m_statics.push_back(StaticObjectFactory::create(Coin_t, x, 500));
-	//m_statics.push_back(StaticObjectFactory::create(Gspeed_t, x, 350));
-	//m_statics.push_back(StaticObjectFactory::create(Gshield_t, x, 300));
-	//m_statics.push_back(StaticObjectFactory::create(Gmoney_t, x, 550));
-	//m_statics.push_back(StaticObjectFactory::create(Gpower_t, x, 450));
+	m_statics.push_back(StaticObjectFactory::create(Gspeed_t, x, 350));
+	m_statics.push_back(StaticObjectFactory::create(Gshield_t, x, 300));
+	m_statics.push_back(StaticObjectFactory::create(Gmoney_t, x, 550));
+	m_statics.push_back(StaticObjectFactory::create(Gpower_t, x, 450));
 	//m_statics.insert(coinsgener);
-	//m_movings.push_back(MovingObjectFactory::create(Scientists_t, x, 600));
+	m_movings.push_back(MovingObjectFactory::create(Scientists_t, x, 600));
 
 
 	//x = rand() % 5;
