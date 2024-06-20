@@ -1,6 +1,6 @@
 #include "Board.h"
-#include "JumpAnimationPlayerState.h"
-#include "WalkAnimationPlayerState.h"
+#include "State/JumpAnimationPlayerState.h"
+#include "State/WalkAnimationPlayerState.h"
 #include <iostream>
 #include <fstream>
 #include <memory>

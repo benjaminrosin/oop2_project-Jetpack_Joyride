@@ -4,7 +4,7 @@
 #include <map>
 #include <typeindex>
 
-typedef bool (*HitFunctionPtr)(Player&, Object&);
+typedef bool (*HitFunctionPtr)(Player&, Object&);//maybe we need to erase object
 typedef std::map<std::type_index, HitFunctionPtr> HitMap;
 //typedef (bool*)(Object&) HitFunctionPtr;
 
