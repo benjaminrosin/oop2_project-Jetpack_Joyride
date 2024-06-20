@@ -29,6 +29,11 @@ void WalkAnimationPlayerState::update(Player* player,float deltaTime)
         // For simplicity, let's assume the player always moves to the right
     float moveSpeed = 200.0f; // מהירות ההליכה של השחקן
     player->move(sf::Vector2f(moveSpeed * deltaTime, 0));
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        player->setState(std::make_unique<JumpAnimationPlayerState>());
+    }
 }
 
 //void WalkAnimationPlayerState::draw(Player* player, sf::RenderWindow& wind)

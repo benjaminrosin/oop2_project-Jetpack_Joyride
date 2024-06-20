@@ -41,16 +41,10 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
         m_jumpVelocity = -400.0f;
-        //m_gravity = 100.0f;
     }
-    else
+    else if (player->getPosition().y > DEFULT_START_POINT)
     {
-        //m_gravity = 800.0f;
-        if (player->getPosition().y > DEFULT_START_POINT)
-        {
-            //player->setPosition(player->getPosition().x, DEFULT_START_POINT);
-            player->setState(std::make_unique<WalkAnimationPlayerState>());
-        }
+        player->setState(std::make_unique<WalkAnimationPlayerState>());
     }
 }
 
