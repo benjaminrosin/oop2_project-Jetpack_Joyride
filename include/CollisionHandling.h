@@ -1,28 +1,28 @@
 #pragma once
 #include "Player.h"
-#include "GameObjects.h"
+#include "Object.h"
 #include <map>
 #include <typeindex>
 
-typedef bool (*HitFunctionPtr)(Player&, GameObjects&);
+typedef bool (*HitFunctionPtr)(Player&, Object&);
 typedef std::map<std::type_index, HitFunctionPtr> HitMap;
-//typedef (bool*)(GameObjects&) HitFunctionPtr;
+//typedef (bool*)(Object&) HitFunctionPtr;
 
 class CollisionHandling
 {
 public:
-	static void processCollision(Player&, GameObjects&);//לבדוק אם אפשר להוסיף קונסט בארגומנטים
+	static bool processCollision(Player&, Object&);//לבדוק אם אפשר להוסיף קונסט בארגומנטים
 private:
 	static HitFunctionPtr lookup(const std::type_index&);
 	static HitMap initializeCollisionMap();
-	static bool coinCollision(Player&, GameObjects&);
-	//static bool missileCollision(Player&, GameObjects&);
-	//static bool laserCollision(Player&, GameObjects&);
-	static bool scientistCollision(Player&, GameObjects&);
-	static bool shieldCollision(Player&, GameObjects&);
-	static bool speedCollision(Player&, GameObjects&);
-	static bool moneyCollision(Player&, GameObjects&);
-	static bool powerCollision(Player&, GameObjects&);
+	static bool coinCollision(Player&, Object&);
+	//static bool missileCollision(Player&, Object&);
+	//static bool laserCollision(Player&, Object&);
+	static bool scientistCollision(Player&, Object&);
+	static bool shieldCollision(Player&, Object&);
+	static bool speedCollision(Player&, Object&);
+	static bool moneyCollision(Player&, Object&);
+	static bool powerCollision(Player&, Object&);
 
 
 
