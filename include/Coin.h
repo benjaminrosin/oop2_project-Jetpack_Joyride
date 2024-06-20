@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GameObjects.h"
+#include "StaticGameObjects.h"
 
-class Coin:public GameObjects {
+class Coin:public StaticGameObjects {
 public:
 	//using NonStatedObject::collision;
 

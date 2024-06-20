@@ -2,9 +2,7 @@
 #include "WalkAnimationPlayerState.h"
 
 Player::Player()
-	: Object(Resources::getInstance().getTextureObject(Player_t),
-		sf::Vector2f(MARGIN, DEFULT_START_POINT),
-		Resources::getInstance().getIntRect(Player_t))
+	: MovingGameObjects(Player_t, sf::Vector2f(MARGIN, DEFULT_START_POINT))
 {
 	//m_sp.setTexture(*Resources::getInstance().getTextureObject(Player_t));
 	//m_sp.setPosition(DEFULT_START_POINT);

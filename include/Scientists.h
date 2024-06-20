@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GameObjects.h"
+#include "MovingGameObjects.h"
 
-class Scientists:public GameObjects {
+class Scientists:public MovingGameObjects {
 public:
 	//using StatedObject::collision;
 

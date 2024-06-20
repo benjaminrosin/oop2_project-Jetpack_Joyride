@@ -3,6 +3,6 @@
 
 
 Gift::Gift(object_code obj, int col, int row)
-	:GameObjects(obj, sf::Vector2f(col, row))
+	:StaticGameObjects(obj, sf::Vector2f(col, row))
 {
 }

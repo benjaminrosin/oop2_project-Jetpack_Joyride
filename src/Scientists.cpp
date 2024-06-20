@@ -7,7 +7,7 @@
 bool Scientists::m_registered = ObjectFactory::registerIt(Scientists_t, [](int col, int row) -> std::unique_ptr<Object> { return std::make_unique<Scientists>(col, row); });
 
 Scientists::Scientists(int col, int row) 
-	: GameObjects(Scientists_t, sf::Vector2f(col, DEFULT_START_POINT)) //לשנות את הנקודה))
+	: MovingGameObjects(Scientists_t, sf::Vector2f(col, DEFULT_START_POINT)) //לשנות את הנקודה))
 {
 	int direction = std::rand() % 2;
 	m_direction = sf::Vector2f(((direction) ? -1 : 1), 0);

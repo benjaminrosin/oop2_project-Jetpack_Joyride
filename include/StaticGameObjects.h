@@ -4,10 +4,10 @@
 #include "Resources.h"
 
 
-class GameObjects :public Object {
+class StaticGameObjects :public Object {
 public:
-	GameObjects(object_code, sf::Vector2f);
-	virtual ~GameObjects() {};
+	StaticGameObjects(object_code, sf::Vector2f);
+	virtual ~StaticGameObjects() {};
 
 	//virtual sf::Vector2f getPosition() const override;
 	//virtual void draw(sf::RenderWindow&) const override;

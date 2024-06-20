@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "NonStatedObject.h"
+#include "MovingGameObjects.h"
 
-class Laser:public NonStatedObject {
+class Laser:public MovingGameObjects {
 public:
-	using NonStatedObject::collision;
+	using MovingGameObjects::collision;
 
 	Laser(int, int);
 	virtual ~Laser();

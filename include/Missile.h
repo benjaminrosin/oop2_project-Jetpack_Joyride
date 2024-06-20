@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "StatedObject.h"
+#include "MovingGameObjects.h"
 
-class Missile:public StatedObject {
+class Missile:public MovingGameObjects {
 public:
 	//using StatedObject::collision;
 
