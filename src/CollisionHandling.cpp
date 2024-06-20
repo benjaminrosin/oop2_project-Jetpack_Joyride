@@ -11,14 +11,14 @@
 #include "Gpower.h"
 #include "Controller.h"
 
-void CollisionHandling::processCollision(Player& player, GameObjects& obj)
+bool CollisionHandling::processCollision(Player& player, Object& obj)
 {
     auto colideFunc = lookup(typeid(obj));
     if (!colideFunc)
     {
         throw std::runtime_error("unknown collision!");
     }
-	colideFunc(player, obj);
+	return colideFunc(player, obj);
 }
 
 HitFunctionPtr CollisionHandling::lookup(const std::type_index& obj)
@@ -47,33 +47,37 @@ HitMap CollisionHandling::initializeCollisionMap()
     return colideMap;
 }
 
-bool CollisionHandling::coinCollision(Player& player, GameObjects& obj)
+bool CollisionHandling::coinCollision(Player& player, Object& obj)
 {
     Controller::addToCoins();
     return true;
 }
 
-bool CollisionHandling::scientistCollision(Player&, GameObjects&)
+bool CollisionHandling::scientistCollision(Player&, Object&)
 {
     return false;
 }
 
-bool CollisionHandling::shieldCollision(Player&, GameObjects&)
+bool CollisionHandling::shieldCollision(Player&, Object&)
 {
-    return false;
+    //change texture?
+    return true;
 }
 
-bool CollisionHandling::speedCollision(Player&, GameObjects&)
+bool CollisionHandling::speedCollision(Player&, Object&)
 {
-    return false;
+    //more speed
+    return true;
 }
 
-bool CollisionHandling::moneyCollision(Player&, GameObjects&)
+bool CollisionHandling::moneyCollision(Player&, Object&)
 {
-    return false;
+    //piggy with money
+    return true;
 }
 
-bool CollisionHandling::powerCollision(Player&, GameObjects&)
+bool CollisionHandling::powerCollision(Player&, Object&)
 {
-    return false;
+    //change texture and jump?
+    return true;
 }
