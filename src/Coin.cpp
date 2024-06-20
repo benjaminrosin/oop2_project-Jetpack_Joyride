@@ -1,7 +1,7 @@
 #include "Coin.h"
-#include "ObjectFactory.h"
+#include "Factory/StaticObjectFactory.h"
 
-bool Coin::m_registered = ObjectFactory::registerIt(Coin_t, [](int col, int row) -> std::unique_ptr<Object> { return std::make_unique<Coin>(col, row); });
+bool Coin::m_registered = StaticObjectFactory::registerIt(Coin_t, [](int col, int row) -> std::unique_ptr<StaticGameObjects> { return std::make_unique<Coin>(col, row); });
 
 Coin::Coin(int col, int row)
 	:StaticGameObjects(Coin_t, sf::Vector2f(col, row))

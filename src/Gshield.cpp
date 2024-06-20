@@ -1,7 +1,7 @@
 #include "Gshield.h"
-#include "ObjectFactory.h"
+#include "Factory/StaticObjectFactory.h"
 
-bool Gshield::m_registered = ObjectFactory::registerIt(Gshield_t, [](int col, int row) -> std::unique_ptr<Object> { return std::make_unique<Gshield>(col, row); });
+bool Gshield::m_registered = StaticObjectFactory::registerIt(Gshield_t, [](int col, int row) -> std::unique_ptr<StaticGameObjects> { return std::make_unique<Gshield>(col, row); });
 
 
 Gshield::Gshield(int col, int row)

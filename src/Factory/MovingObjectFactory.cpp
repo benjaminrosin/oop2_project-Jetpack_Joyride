@@ -1,6 +1,6 @@
-#include "ObjectFactory.h"
+#include "Factory/MovingObjectFactory.h"
 
-std::unique_ptr<Object> ObjectFactory::create(int index)
+std::unique_ptr<MovingGameObjects> MovingObjectFactory::create(int index)
 {
 	auto it = getMap().find(index);
 	if (it == getMap().end())
@@ -14,7 +14,7 @@ std::unique_ptr<Object> ObjectFactory::create(int index)
 	return it->second(5,5);
 	//adding pram
 }
-std::unique_ptr<Object> ObjectFactory::create(int index, int x, int y) //for debug
+std::unique_ptr<MovingGameObjects> MovingObjectFactory::create(int index, int x, int y) //for debug
 {
 	auto it = getMap().find(index);
 	if (it == getMap().end())
@@ -26,14 +26,14 @@ std::unique_ptr<Object> ObjectFactory::create(int index, int x, int y) //for deb
 	//adding pram
 }
 
-bool ObjectFactory::registerIt(int index, std::unique_ptr<Object>(*fu)(int, int))
+bool MovingObjectFactory::registerIt(int index, std::unique_ptr<MovingGameObjects>(*fu)(int, int))
 {
 	getMap().emplace(index, fu);
 	return true;
 }
 
-objMap& ObjectFactory::getMap()
+MovingObjMap& MovingObjectFactory::getMap()
 {
-	static objMap map;
+	static MovingObjMap map;
 	return map;
 }

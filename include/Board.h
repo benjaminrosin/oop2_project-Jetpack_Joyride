@@ -5,6 +5,8 @@
 #include <string>
 #include <memory>
 #include "Player.h"
+#include "StaticGameObjects.h"
+#include "MovingGameObjects.h"
 
 const int MIN_AMOUNT = 5;
 
@@ -28,7 +30,10 @@ private:
 	//void deleteObjects(sf::RenderWindow&);
 
 	std::unique_ptr<Player> m_player;
-	std::list<std::unique_ptr<Object>> m_objects;
+	//std::list<std::unique_ptr<Object>> m_statics;
+	std::list<std::unique_ptr<StaticGameObjects>> m_statics;
+	//std::list<std::unique_ptr<Object>> m_movings;
+	std::list<std::unique_ptr<MovingGameObjects>> m_movings;
 	//const sf::Texture* m_background;
 	float m_objTimer = 1;
 };

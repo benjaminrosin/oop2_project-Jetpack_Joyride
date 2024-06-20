@@ -4,7 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <memory>
-#include "ObjectFactory.h"
+#include "Factory/MovingObjectFactory.h"
+#include "Factory/StaticObjectFactory.h"
 #include "Gift.h";
 #include "Gshield.h";
 #include "Gspeed.h";
@@ -16,7 +17,7 @@
 
 Board::Board()
 {
-	m_objects.clear();
+	//m_objects.clear();
 	m_player = std::make_unique<Player>();
 
 }
@@ -39,14 +40,16 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 	}
 
 	int xView = wind.getView().getCenter().x - SCREEN_SIZE.x;
-	m_objects.remove_if(outOfView(xView));
+	m_movings.remove_if(outOfView(xView));
+	m_statics.remove_if(outOfView(xView));
 
 }
 
 void Board::draw(sf::RenderWindow& wind) const
 {
 
-	std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto& obj)  { /*if (obj != nullptr)*/ obj->draw(wind); });
+	std::for_each(m_movings.begin(), m_movings.end(), [&wind](auto& obj)  { /*if (obj != nullptr)*/ obj->draw(wind); });
+	std::for_each(m_statics.begin(), m_statics.end(), [&wind](auto& obj)  { /*if (obj != nullptr)*/ obj->draw(wind); });
 	
 	m_player->draw(wind);
 	//wind.draw(m_player->getDrawable());
@@ -63,15 +66,12 @@ void Board::readLevel(sf::RenderWindow& wind)
 {
 	auto x = wind.getView().getCenter().x + SCREEN_SIZE.x;
 
-	m_objects.push_back(ObjectFactory::create(Coin_t, x, 500));
-	//m_objects.push_back(ObjectFactory::create(Gmoney_t, x, 500));
-
-	m_objects.push_back(ObjectFactory::create(Gspeed_t, x, 350));
-	m_objects.push_back(ObjectFactory::create(Gshield_t, x, 300));
-	m_objects.push_back(ObjectFactory::create(Gmoney_t, x, 550));
-	m_objects.push_back(ObjectFactory::create(Gpower_t, x, 450));
-
-	m_objects.push_back(ObjectFactory::create(Scientists_t, x, 600));
+	m_statics.push_back(StaticObjectFactory::create(Coin_t, x, 500));
+	m_statics.push_back(StaticObjectFactory::create(Gspeed_t, x, 350));
+	m_statics.push_back(StaticObjectFactory::create(Gshield_t, x, 300));
+	m_statics.push_back(StaticObjectFactory::create(Gmoney_t, x, 550));
+	m_statics.push_back(StaticObjectFactory::create(Gpower_t, x, 450));
+	m_movings.push_back(MovingObjectFactory::create(Scientists_t, x, 600));
 
 	/*switch (rand() % NUM_OF_GIFTS)
 	{

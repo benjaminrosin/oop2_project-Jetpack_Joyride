@@ -1,10 +1,10 @@
 #include "Scientists.h"
-#include "ObjectFactory.h"
+#include "Factory/MovingObjectFactory.h"
 #include <memory>
 #include "Object.h"
 #include <iostream>
 
-bool Scientists::m_registered = ObjectFactory::registerIt(Scientists_t, [](int col, int row) -> std::unique_ptr<Object> { return std::make_unique<Scientists>(col, row); });
+bool Scientists::m_registered = MovingObjectFactory::registerIt(Scientists_t, [](int col, int row) -> std::unique_ptr<MovingGameObjects> { return std::make_unique<Scientists>(col, row); });
 
 Scientists::Scientists(int col, int row) 
 	: MovingGameObjects(Scientists_t, sf::Vector2f(col, DEFULT_START_POINT)) //לשנות את הנקודה))
