@@ -15,7 +15,7 @@ public:
 	void setState(std::unique_ptr<PlayerAnimationState>);
 	void update(float);
 	//void draw(sf::RenderWindow&);
-	void jump();
+	//void jump();
 	void walk();
 	void handleSpaceRelease();
 

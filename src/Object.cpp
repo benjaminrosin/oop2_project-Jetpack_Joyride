@@ -45,9 +45,14 @@ void Object::setSpriteRect(sf::IntRect rect)
 	m_sp.setTextureRect(rect);
 }
 
-void Object::setNewSprite(std::string key)
+void Object::setNewSprite(std::string key, object_code obj)
 {
+	//get texture
+	m_sp.setTexture(*Resources::getInstance().getTextureObject(obj));
 	m_frames = Resources::getInstance().getIntRect(key);
+
+	m_sp.setOrigin(sf::Vector2f(0, m_frames->at(0).height));
+
 	m_texutre_timer = 0;
 	m_curr_frame = -1;
 

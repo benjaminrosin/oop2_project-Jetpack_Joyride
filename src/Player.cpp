@@ -1,5 +1,6 @@
 #include "Player.h"
-#include "State/WalkAnimationPlayerState.h"
+#include "State/RegularWalkState.h"
+#include "State/TankWalkState.h"
 
 Player::Player()
 	: MovingGameObjects(Player_t, sf::Vector2f(MARGIN, DEFULT_START_POINT), "walking berry")
@@ -9,7 +10,9 @@ Player::Player()
 	//m_sp.setTextureRect(Resources::getInstance().getIntRect(obj));
 	//m_sp.setOrigin(sf::Vector2f(0, Resources::getInstance().getIntRect(obj).height));
 
-	setState(std::make_unique<WalkAnimationPlayerState>());
+	//setState(std::make_unique<TankWalkState>());
+	setState(std::make_unique<RegularWalkState>());
+	
 	//m_currentState->enter(this);
 
 }
@@ -37,10 +40,10 @@ void Player::update(float deltaTime)
 //
 //}
 
-void Player::jump()
-{
-	m_currentState->jump(this);
-}
+//void Player::jump()
+//{
+//	m_currentState->jump(this);
+//}
 
 void Player::walk()
 {

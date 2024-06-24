@@ -11,13 +11,13 @@ void JumpAnimationPlayerState::enter(Player* player)
 
         //להעביר לריסורסז
 
-    player->setNewSprite("running berry");
+ //   player->setNewSprite("running berry");
     //m_jumpFrame = sf::IntRect(337.5, 0, 112.5, 150);
     //player->setSpriteRect(m_jumpFrame);
 
     // הגדרת מהירות הקפיצה
     m_jumpVelocity = -400.0f;
-    m_gravity = 800.0f;
+    m_gravity = 400.0f;
 }
 
 void JumpAnimationPlayerState::update(Player* player, float deltaTime)
@@ -39,14 +39,14 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     //change to member and calculate right speed
     player->move({ 200 * deltaTime , 0 });
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    {
-        m_jumpVelocity = -400.0f;
-    }
-    else if (player->getPosition().y > DEFULT_START_POINT)
-    {
-        player->setState(std::make_unique<WalkAnimationPlayerState>());
-    }
+ //   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+ //   {
+ //       m_jumpVelocity = -400.0f;
+ //   }
+ //   else if (player->getPosition().y > DEFULT_START_POINT)
+ //   {
+ //       player->setState(std::make_unique<WalkAnimationPlayerState>());
+ //   }
 }
 
 //void JumpAnimationPlayerState::draw(Player* player, sf::RenderWindow& wind)

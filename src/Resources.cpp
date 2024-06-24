@@ -14,13 +14,19 @@ Resources::Resources()
 
 	//IntRect calculation
 	appendFrameIntRects("walking berry", 0, { 112, 150 }, 3);
-	appendFrameIntRects("running berry", 0, { 112, 150 }, 1, 3);
+	appendFrameIntRects("jumping berry", 0, { 112, 150 }, 1, 3);
+	appendFrameIntRects("walking tank", 37, { 230, 174 }, 2);
+	appendFrameIntRects("jumping tank", 0, { 200, 216 }, 1);
+
+
 	appendFrameIntRects("coin", 0, { 40, 40 }, 8);
 	appendFrameIntRects("Gmoney", 0, { 100, 91 }, 1);
 	appendFrameIntRects("Gpower", 0, { 59, 60 }, 1);
 	appendFrameIntRects("Gshield", 0, { 40, 40 }, 1);
 	appendFrameIntRects("Gspeed", 0, { 80, 60 }, 1);
 	appendFrameIntRects("Scientists", 10, { 60, 87 }, 3);
+
+
 
 }
 
