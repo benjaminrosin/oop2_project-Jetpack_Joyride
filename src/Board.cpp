@@ -14,7 +14,6 @@
 #include "CollisionHandling.h"
 
 
-
 Board::Board()
 {
 	//m_objects.clear();
@@ -80,7 +79,7 @@ void Board::readLevel(sf::RenderWindow& wind)
 	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gspeed_t, x, 350));
 	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gshield_t, x, 300));
 	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gmoney_t, x, 550));
-	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gpower_t, x, 450));
+	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gpower_t, x, 450));
 
 	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, 600));
 

@@ -9,7 +9,7 @@ void WalkAnimationPlayerState::enter(Player* player)
 
     // נניח שיש לנו 4 פריימים לאנימציית ההליכה
     //להעביר לריסורסז
-    player->setNewSprite("walking berry");
+//    player->setNewSprite("walking berry");
     //m_walkFrames = { sf::IntRect(0, 0, 112.5, 150), sf::IntRect(112.5, 0, 112.5, 150), sf::IntRect(225, 0, 112.5, 150)};
     //player->setSpriteRect(m_walkFrames[m_currentFrame]);
 }
@@ -33,10 +33,10 @@ void WalkAnimationPlayerState::update(Player* player,float deltaTime)
     float moveSpeed = 200.0f; // מהירות ההליכה של השחקן
     player->move(sf::Vector2f(moveSpeed * deltaTime, 0));
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    {
-        player->setState(std::make_unique<JumpAnimationPlayerState>());
-    }
+    //if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    //{
+    //    player->setState(std::make_unique<JumpAnimationPlayerState>());
+    //}
 }
 
 //void WalkAnimationPlayerState::draw(Player* player, sf::RenderWindow& wind)
@@ -44,7 +44,7 @@ void WalkAnimationPlayerState::update(Player* player,float deltaTime)
 //    wind.draw(player->getDrawable());
 //}
 
-void WalkAnimationPlayerState::jump(Player* player)
-{
-    player->setState(std::make_unique<JumpAnimationPlayerState>());
-}
+//void WalkAnimationPlayerState::jump(Player* player)
+//{
+//    player->setState(std::make_unique<JumpAnimationPlayerState>());
+//}

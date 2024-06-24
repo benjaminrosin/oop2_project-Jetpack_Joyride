@@ -25,7 +25,7 @@ public:
 	virtual void move(sf::Vector2f) ;
 	//virtual void move_and_change_sprite(float, Object*) = 0;
 	virtual void setSpriteRect(sf::IntRect);
-	virtual void setNewSprite(std::string);
+	virtual void setNewSprite(std::string, object_code);
 
 	//virtual void setMove(float, float); //פוגע באובייקטים סטטיים
 	//virtual void setPosition(float, float);//פוגע באובייקטים סטטיים

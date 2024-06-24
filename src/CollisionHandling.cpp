@@ -10,6 +10,8 @@
 #include "Gmoney.h"
 #include "Gpower.h"
 #include "Controller.h"
+#include "State/TankJumpState.h"
+#include "State/TankWalkState.h"
 
 bool CollisionHandling::processCollision(Player& player, Object& obj)
 {
@@ -78,7 +80,11 @@ bool CollisionHandling::moneyCollision(Player&, Object&)
 
 bool CollisionHandling::powerCollision(Player& player, Object&)
 {
+    // adding random between all options
+    
+
     //change texture and jump?
-    //player.setState(std::make_unique<POWERUPSTATE>());
+    player.setState(std::make_unique<TankJumpState>());
+    
     return true;
 }
