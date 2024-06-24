@@ -46,6 +46,7 @@ std::list<std::unique_ptr<T>> ObjectFactory<T>::create(int index, int x, int y) 
 	if (it == getMap().end())
 	{
 		//return NULL;
+		//throw exeption
 	}
 
 	return it->second(x,y);
