@@ -20,7 +20,7 @@ public:
 	void play(sf::RenderWindow&, float, float);
 	void draw(sf::RenderWindow&)const;
 	//bool checkCollision();
-	void readLevel(sf::RenderWindow&);
+	void readLevel(sf::RenderWindow&, float);
 	bool alive() const;
 	sf::Vector2f getPlayerLoc() const;
 	//void moveBackground(float, sf::RenderWindow&);
@@ -36,4 +36,5 @@ private:
 	std::list<std::unique_ptr<MovingGameObjects>> m_movings;
 	//const sf::Texture* m_background;
 	float m_objTimer = 1;
+	int randomY() const;
 };

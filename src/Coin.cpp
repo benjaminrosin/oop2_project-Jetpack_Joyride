@@ -1,11 +1,10 @@
 #include "Coin.h"
 #include "Factory/ObjectFactory.h"
+#include "CoinGenerator.h"
 
 bool Coin::m_registered = ObjectFactory<StaticGameObjects>::registerIt(Coin_t,
 	[](int col, int row) -> std::list<std::unique_ptr<StaticGameObjects>> {
-		std::list<std::unique_ptr<StaticGameObjects>> lst;
-		lst.push_back(std::make_unique<Coin>(col, row));
-		return lst; });
+		return CoinGenerator::generate(col, row); });
 
 Coin::Coin(int col, int row)
 	:StaticGameObjects(Coin_t, sf::Vector2f(col, row), "coin")
