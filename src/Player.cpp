@@ -9,7 +9,7 @@ Player::Player()
 	//m_sp.setTextureRect(Resources::getInstance().getIntRect(obj));
 	//m_sp.setOrigin(sf::Vector2f(0, Resources::getInstance().getIntRect(obj).height));
 
-	setState(std::make_unique<WalkAnimationPlayerState>());
+	setState(std::make_unique<TankWalkState>());
 	//m_currentState->enter(this);
 
 }
