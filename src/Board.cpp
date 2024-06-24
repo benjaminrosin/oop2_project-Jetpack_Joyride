@@ -111,57 +111,6 @@ void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Gift_t, x, 450));
 
 
-	//x = rand() % 5;
-
-	/*if (x==Coin_t){
-		m_statics.insert(coinsgener);
-	}
-	else if (x<)*/
-
-	/*switch (rand() % NUM_OF_GIFTS)
-	{
-	case 0:
-		m_objects.push_back(ObjectFactory::create(Gmoney_t, x, 350));
-		break;
-	case 1:
-		m_objects.push_back(ObjectFactory::create(Gpower_t, x, 450));
-		break;
-	case 2:
-		m_objects.push_back(ObjectFactory::create(Gshield_t, x, 400));
-		break;
-	case 3:
-		m_objects.push_back(ObjectFactory::create(Gspeed_t, x, 350));
-		break;
-	}*/
-
-
-
-	////for now the func will read level from txt file, hopfully 
-	////the game will ganarate its levels
-	//char c;
-	//auto file = std::ifstream("level.txt");
-	//int col = 0;
-	//int row = 0;
-
-	//while (file.get(c))
-	//{
-	//	if (c == '\n')
-	//	{
-	//		row = 0;
-	//		col++;
-	//		continue;
-	//	}
-
-	//	else if (c != '-')
-	//	{
-	//		auto temp = ObjectFactory::create(c);
-	//		if (temp != nullptr) {
-	//			m_objects.push_back(std::move(temp));
-	//		}
-	//		
-	//	}
-	//	row++;
-	//}
 }
 
 bool Board::alive() const
