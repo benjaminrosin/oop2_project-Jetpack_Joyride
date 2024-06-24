@@ -30,7 +30,7 @@ const sf::IntRect BLOCKING_RECT[] = {
 
 const sf::Vector2f SCREEN_SIZE(1200, 791);
 
-const float ANIMATION_RATE = 0.2;
+const float ANIMATION_RATE = 0.15;
 const int NUM_OF_DATA = 2;
 const int MARGIN = SCREEN_SIZE.y/12;
 const int DEFULT_START_POINT = SCREEN_SIZE.y - MARGIN;
