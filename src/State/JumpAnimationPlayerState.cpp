@@ -11,8 +11,9 @@ void JumpAnimationPlayerState::enter(Player* player)
 
         //להעביר לריסורסז
 
-    m_jumpFrame = sf::IntRect(337.5, 0, 112.5, 150);
-    player->setSpriteRect(m_jumpFrame);
+    player->setNewSprite("running berry");
+    //m_jumpFrame = sf::IntRect(337.5, 0, 112.5, 150);
+    //player->setSpriteRect(m_jumpFrame);
 
     // הגדרת מהירות הקפיצה
     m_jumpVelocity = -400.0f;
@@ -24,7 +25,7 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     //std::cout << "tset jump";
 
     //player->setSpriteRect(m_jumpFrame);
-
+    player->animate(deltaTime);
     // Update jump movement
     if ((player->getPosition().y - player->getHeight() + m_jumpVelocity * deltaTime) < TOP_SCREEN_LIMIT) //add texture height
     {

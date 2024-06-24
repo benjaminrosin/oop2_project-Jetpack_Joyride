@@ -5,7 +5,7 @@
 class Gift : public StaticGameObjects
 {
 public:
-	Gift(object_code, int, int);
+	Gift(object_code, int, int, std::string);
 
 	virtual void open_gift() = 0;
 	//virtual bool collision(Object&);

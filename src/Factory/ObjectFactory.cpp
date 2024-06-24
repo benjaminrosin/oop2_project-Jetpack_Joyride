@@ -1,4 +1,4 @@
-//#include "Factory/MovingObjectFactory.h"
+//#include "Factory/ObjectFactory.h"
 //
 //std::unique_ptr<MovingGameObjects> MovingObjectFactory::create(int index)
 //{

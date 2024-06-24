@@ -19,7 +19,7 @@ public:
 	~Board() {};
 	void play(sf::RenderWindow&, float, float);
 	void draw(sf::RenderWindow&)const;
-	bool checkCollision();
+	//bool checkCollision();
 	void readLevel(sf::RenderWindow&);
 	bool alive() const;
 	sf::Vector2f getPlayerLoc() const;

@@ -4,8 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <memory>
-#include "Factory/MovingObjectFactory.h"
-#include "Factory/StaticObjectFactory.h"
+#include "Factory/ObjectFactory.h"
 #include "Gift.h";
 #include "Gshield.h";
 #include "Gspeed.h";
@@ -25,9 +24,10 @@ Board::Board()
 
 void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב שיש גם טיימר וגם דלתא
 {
+	//player's move
 	m_player->update(delta_time);
 
-	//check collision
+	//handle collision
 	m_statics.remove_if([&](auto& obj){ return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
 	m_movings.remove_if([&](auto& obj){ return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
 
@@ -45,6 +45,7 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 		m_objTimer = 1;
 	}
 
+	//removing odjects that out of view
 	int xView = wind.getView().getCenter().x - SCREEN_SIZE.x;
 	m_movings.remove_if(outOfView(xView));
 	m_statics.remove_if(outOfView(xView));
@@ -53,7 +54,6 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 
 void Board::draw(sf::RenderWindow& wind) const
 {
-
 	std::for_each(m_movings.begin(), m_movings.end(), [&wind](auto& obj)  { /*if (obj != nullptr)*/ obj->draw(wind); });
 	std::for_each(m_statics.begin(), m_statics.end(), [&wind](auto& obj)  { /*if (obj != nullptr)*/ obj->draw(wind); });
 	
@@ -62,23 +62,39 @@ void Board::draw(sf::RenderWindow& wind) const
 	//std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto &obj) {if (obj != nullptr) wind.draw(obj->getDrawable()); });
 
 }
-
-bool Board::checkCollision()
-{
-	return false;
-}
+//
+//bool Board::checkCollision()
+//{
+//	return false;
+//}
 
 void Board::readLevel(sf::RenderWindow& wind)
 {
 	auto x = wind.getView().getCenter().x + SCREEN_SIZE.x;
 
-	m_statics.push_back(StaticObjectFactory::create(Coin_t, x, 500));
-	m_statics.push_back(StaticObjectFactory::create(Gspeed_t, x, 350));
-	m_statics.push_back(StaticObjectFactory::create(Gshield_t, x, 300));
-	m_statics.push_back(StaticObjectFactory::create(Gmoney_t, x, 550));
-	m_statics.push_back(StaticObjectFactory::create(Gpower_t, x, 450));
+	int obj = rand() % 10 + 1;
+
+	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, 500));
+	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gspeed_t, x, 350));
+	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gshield_t, x, 300));
+	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gmoney_t, x, 550));
+	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gpower_t, x, 450));
+
+	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, 600));
+
+	m_movings.splice(m_movings.begin(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600));
+
+
+
+	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Coin_t, x, 500));
+	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Gspeed_t, x, 350));
+	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Gshield_t, x, 300));
+	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Gmoney_t, x, 550));
+	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Gpower_t, x, 450));
 	//m_statics.insert(coinsgener);
-	m_movings.push_back(MovingObjectFactory::create(Scientists_t, x, 600));
+	//m_movings.push_back(ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600));
+
+	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Gift_t, x, 450));
 
 
 	//x = rand() % 5;

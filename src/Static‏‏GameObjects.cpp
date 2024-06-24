@@ -1,9 +1,9 @@
 #include "StaticGameObjects.h"
 
-StaticGameObjects::StaticGameObjects(object_code obj, sf::Vector2f loc)
+StaticGameObjects::StaticGameObjects(object_code obj, sf::Vector2f loc, std::string key)
 	: Object(Resources::getInstance().getTextureObject(obj),
 		loc,
-		Resources::getInstance().getIntRect(obj))
+		key)
 {
 	//m_sp.setTexture(*Resources::getInstance().getTextureObject(obj));
 	//m_sp.setTextureRect(Resources::getInstance().getIntRect(obj));

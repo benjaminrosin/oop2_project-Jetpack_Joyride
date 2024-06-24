@@ -1,10 +1,14 @@
 #include "Coin.h"
-#include "Factory/StaticObjectFactory.h"
+#include "Factory/ObjectFactory.h"
 
-bool Coin::m_registered = StaticObjectFactory::registerIt(Coin_t, [](int col, int row) -> std::unique_ptr<StaticGameObjects> { return std::make_unique<Coin>(col, row); });
+bool Coin::m_registered = ObjectFactory<StaticGameObjects>::registerIt(Coin_t,
+	[](int col, int row) -> std::list<std::unique_ptr<StaticGameObjects>> {
+		std::list<std::unique_ptr<StaticGameObjects>> lst;
+		lst.push_back(std::make_unique<Coin>(col, row));
+		return lst; });
 
 Coin::Coin(int col, int row)
-	:StaticGameObjects(Coin_t, sf::Vector2f(col, row))
+	:StaticGameObjects(Coin_t, sf::Vector2f(col, row), "coin")
 {
 }
 

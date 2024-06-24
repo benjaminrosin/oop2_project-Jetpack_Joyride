@@ -2,25 +2,35 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <string>
+#include <vector>
+#include <map>
+#include <unordered_map>
 
 enum object_code {
-	Player_t, Coin_t , Gpower_t, Gshield_t, Gspeed_t, Gmoney_t, Scientists_t, Gift_t
+	Player_t, 
+	Scientists_t, Misssile_t, Leser_t,
+	Coin_t, Light_t,
+	Gift_t, Gpower_t, Gshield_t, Gspeed_t, Gmoney_t
 };
 
 const sf::IntRect BLOCKING_RECT[] = {
-	sf::IntRect(0, 0, 112.5, 150), //player
-	sf::IntRect(0, 0, 40, 40), //coin
-	//sf::IntRect(),
-	sf::IntRect(0, 0, 59, 60), //power
-	sf::IntRect(0, 0, 40, 40), //shield
-	sf::IntRect(0, 0, 80, 60), //speed
-	sf::IntRect(0, 0, 100, 91), //money
-	sf::IntRect(0, 0, 67, 87)//sc
-	///
+	sf::IntRect(0, 0, 112.5, 150),	//player
+	sf::IntRect(0, 0, 67, 87),		//sc
+	sf::IntRect(),					//missile
+	sf::IntRect(),					//leser
+	sf::IntRect(0, 0, 40, 40),		//coin
+	sf::IntRect(),					//light
+	sf::IntRect(),					//gift
+	sf::IntRect(0, 0, 59, 60),		//power
+	sf::IntRect(0, 0, 40, 40),		//shield
+	sf::IntRect(0, 0, 80, 60),		//speed
+	sf::IntRect(0, 0, 100, 91)		//money
+
 };
 
 const sf::Vector2f SCREEN_SIZE(1200, 791);
-//const sf::Vector2f MESSAGE_SCREEN_SIZE(600, 300);
+
+const float ANIMATION_RATE = 0.2;
 const int NUM_OF_DATA = 2;
 const int MARGIN = SCREEN_SIZE.y/12;
 const int DEFULT_START_POINT = SCREEN_SIZE.y - MARGIN;
@@ -52,15 +62,20 @@ const std::string BOTTUNS_BOARD_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
 };
 
 //add textures
-const int NUM_OF_OBJECTS = 7;
+const int NUM_OF_OBJECTS = 11;
 const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "JetpackWalking.png",
+"Scientist.png",
+"Missile.png",
+"Laser.png",
 "Coin.png",
+"Lights.png",
+"bbb.b", //gift has no texture
 "PowerUpBox.png",
 "Shield.png",
 "speedGift.png",
-"Piggy.png",
-"Scientist.png"
+"Piggy.png"
+
 };
 
 const int NUM_OF_GIFTS = 4;
@@ -88,7 +103,8 @@ public:
 	const sf::Texture* getTextureButtons(int) const;
 	const sf::Texture* getTextureBoardButtons(int) const;
 	const sf::Texture* getTextureObject(int) const;
-	const sf::IntRect getIntRect(int) const;
+	//const sf::IntRect getIntRect(int) const;
+	std::vector<sf::IntRect>* getIntRect(std::string) const;
 	//sf::SoundBuffer* getSoundBuffer(int);
 	const sf::Font* getFont() const;
 
@@ -99,6 +115,7 @@ private:
 	Resources& operator=(const Resources&) = delete;
 
 	void readData(sf::Texture[], const std::string[], int);
+	void appendFrameIntRects(std::string, int, sf::Vector2i, int, int loc =0);
 	//void readSpriteSheet(sf::Texture[], const std::string [], int);
 
 
@@ -109,5 +126,7 @@ private:
 	//std::vector<sf::IntRect> m_intRect[NUM_OF_OBJECTS];
 	//sf::SoundBuffer m_sound_buffer[NUM_OF_SOUNDES];
 	sf::Font m_font;
+
+	std::unordered_map<std::string, std::vector<sf::IntRect>> m_intRectMap;
 
 };

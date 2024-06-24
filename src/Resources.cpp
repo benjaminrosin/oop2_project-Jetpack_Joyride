@@ -12,6 +12,16 @@ Resources::Resources()
 	//font
 	m_font.loadFromFile(FONT_FILE_NAME);
 
+	//IntRect calculation
+	appendFrameIntRects("walking berry", 0, { 112, 150 }, 3);
+	appendFrameIntRects("running berry", 0, { 112, 150 }, 1, 3);
+	appendFrameIntRects("coin", 0, { 40, 40 }, 8);
+	appendFrameIntRects("Gmoney", 0, { 100, 91 }, 1);
+	appendFrameIntRects("Gpower", 0, { 59, 60 }, 1);
+	appendFrameIntRects("Gshield", 0, { 40, 40 }, 1);
+	appendFrameIntRects("Gspeed", 0, { 80, 60 }, 1);
+	appendFrameIntRects("Scientists", 10, { 60, 87 }, 3);
+
 }
 
 Resources& Resources::getInstance()
@@ -40,9 +50,20 @@ const sf::Texture* Resources::getTextureObject(int index) const
 	return &(m_objTexures[index]);
 }
 
-const sf::IntRect Resources::getIntRect(int index) const
+//const sf::IntRect Resources::getIntRect(int index) const
+//{
+//	return BLOCKING_RECT[index];
+//}
+
+std::vector<sf::IntRect>* Resources::getIntRect(std::string key) const
 {
-	return BLOCKING_RECT[index];
+	auto it = m_intRectMap.find(key);
+	if (it != m_intRectMap.end()) {
+		return const_cast<std::vector<sf::IntRect>*>(&it->second);
+	}
+	else {
+		return nullptr; // Key not found, return nullptr
+	}
 }
 
 const sf::Font* Resources::getFont() const
@@ -56,6 +77,29 @@ void Resources::readData(sf::Texture arr[], const std::string names[], int num_o
 		{
 			arr[i].loadFromFile(names[i]);
 		}
+}
+
+void Resources::appendFrameIntRects(std::string key, int middleGap, sf::Vector2i size, int num, int loc)
+{
+	auto start = sf::Vector2i(0, 0);
+
+	if (loc > 0) {
+		start.x += size.x * loc;
+		start.x += middleGap * (loc-1);
+	}
+
+	auto Loc = [&]() {
+		auto prev = start;
+		start.x += middleGap;
+		start.x += size.x;
+		return prev;
+		};
+
+	for (int i = 0; i < num; i++)
+	{
+		m_intRectMap[key].push_back(sf::IntRect(Loc(), size));
+	}
+
 }
 
 //void Resources::readSpriteSheet(sf::Texture arr[], const std::string names[], int num_of_objects)

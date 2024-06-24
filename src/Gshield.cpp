@@ -1,11 +1,14 @@
 #include "Gshield.h"
-#include "Factory/StaticObjectFactory.h"
+#include "Factory/ObjectFactory.h"
 
-bool Gshield::m_registered = StaticObjectFactory::registerIt(Gshield_t, [](int col, int row) -> std::unique_ptr<StaticGameObjects> { return std::make_unique<Gshield>(col, row); });
-
+bool Gshield::m_registered = ObjectFactory<StaticGameObjects>::registerIt(Gshield_t,
+	[](int col, int row) -> std::list<std::unique_ptr<StaticGameObjects>> {
+		std::list<std::unique_ptr<StaticGameObjects>> lst;
+		lst.push_back(std::make_unique<Gshield>(col, row));
+		return lst; });
 
 Gshield::Gshield(int col, int row)
-	:Gift(Gshield_t, col, row)
+	:Gift(Gshield_t, col, row, "Gshield")
 {
 }
 

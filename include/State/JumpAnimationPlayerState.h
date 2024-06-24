@@ -14,7 +14,7 @@ public:
     //virtual void walk(Player*) override {};
 
 private: //לבדוק אם להעלות ממברים למעלה
-    sf::IntRect m_jumpFrame;
+    //sf::IntRect m_jumpFrame;
    // int m_currentFrame;
     //float m_frameTime;
     //float m_elapsedTime;

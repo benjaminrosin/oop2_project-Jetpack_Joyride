@@ -1,13 +1,17 @@
 #include "Scientists.h"
-#include "Factory/MovingObjectFactory.h"
+#include "Factory/ObjectFactory.h"
 #include <memory>
 #include "Object.h"
 #include <iostream>
 
-bool Scientists::m_registered = MovingObjectFactory::registerIt(Scientists_t, [](int col, int row) -> std::unique_ptr<MovingGameObjects> { return std::make_unique<Scientists>(col, row); });
+bool Scientists::m_registered = ObjectFactory<MovingGameObjects>::registerIt(Scientists_t,
+	[](int col, int row) -> std::list<std::unique_ptr<MovingGameObjects>> {
+		std::list<std::unique_ptr<MovingGameObjects>> lst;
+		lst.push_back(std::make_unique<Scientists>(col, row));
+		return lst; });
 
 Scientists::Scientists(int col, int row) 
-	: MovingGameObjects(Scientists_t, sf::Vector2f(col, DEFULT_START_POINT), 50, std::rand() % 2) //לשנות את הנקודה))
+	: MovingGameObjects(Scientists_t, sf::Vector2f(col, DEFULT_START_POINT), 50, std::rand() % 2, "Scientists") //לשנות את הנקודה))
 {
 	m_sp.setScale(sf::Vector2f(m_direction.x, 1));
 	//m_speed = 100;
@@ -15,6 +19,13 @@ Scientists::Scientists(int col, int row)
 //	m_direction = sf::Vector2f(((direction) ? -1 : 1), 1);
 //	m_sp.setScale(sf::Vector2f(m_direction.x, 1));//worng direction
 	//m_scientistFrames = { sf::IntRect(0, 0, 66.666, 164), sf::IntRect(66.666, 0, 66.666, 164), sf::IntRect(133.333, 0, 66.666, 164) };
+}
+
+void Scientists::move(float time)
+{
+	MovingGameObjects::move(time);
+
+	animate(time);
 }
 
 

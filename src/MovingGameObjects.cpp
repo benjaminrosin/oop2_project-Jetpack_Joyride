@@ -1,9 +1,9 @@
 #include "MovingGameObjects.h"
 
-MovingGameObjects::MovingGameObjects(object_code obj, sf::Vector2f loc)
+MovingGameObjects::MovingGameObjects(object_code obj, sf::Vector2f loc, std::string key)
 	: Object(Resources::getInstance().getTextureObject(obj),
 		loc,
-		Resources::getInstance().getIntRect(obj))
+		key)
 {
 	//m_sp.setTexture(*Resources::getInstance().getTextureObject(obj));
 	//m_sp.setTextureRect(Resources::getInstance().getIntRect(obj));
@@ -11,10 +11,10 @@ MovingGameObjects::MovingGameObjects(object_code obj, sf::Vector2f loc)
 	//m_sp.setOrigin(sf::Vector2f(0, Resources::getInstance().getIntRect(obj).height));
 }
 
-MovingGameObjects::MovingGameObjects(object_code obj, sf::Vector2f loc, float speed, int direction)
+MovingGameObjects::MovingGameObjects(object_code obj, sf::Vector2f loc, float speed, int direction, std::string key)
 	: Object(Resources::getInstance().getTextureObject(obj),
 		loc,
-		Resources::getInstance().getIntRect(obj)),
+		key ),
 	m_speed(speed)
 {
 	m_direction = sf::Vector2f(((direction) ? 1 : -1), 0);

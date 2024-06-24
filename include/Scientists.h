@@ -9,6 +9,7 @@ public:
 	Scientists(int, int);
 	virtual ~Scientists() {};
 	//void move_and_change_sprite(float, Object*);
+	virtual void move(float) override;
 
 private:
 	void changeDirection();

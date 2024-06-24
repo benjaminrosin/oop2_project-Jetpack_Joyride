@@ -6,7 +6,7 @@
 
 class StaticGameObjects :public Object {
 public:
-	StaticGameObjects(object_code, sf::Vector2f);
+	StaticGameObjects(object_code, sf::Vector2f, std::string);
 	virtual ~StaticGameObjects() {};
 
 	//virtual sf::Vector2f getPosition() const override;
