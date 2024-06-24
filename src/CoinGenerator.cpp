@@ -14,7 +14,9 @@ std::list<std::unique_ptr<StaticGameObjects>> CoinGenerator::createLine(int col,
 
 	if ((thiknes * COIN_SIZE.y) + row > DEFULT_START_POINT)
 	{
-		thiknes = ((thiknes * COIN_SIZE.y) + row - DEFULT_START_POINT)/COIN_SIZE.y;
+		thiknes = (DEFULT_START_POINT - row + COIN_SIZE.x) / COIN_SIZE.y;
+
+		//thiknes = (thiknes + row - (DEFULT_START_POINT / COIN_SIZE.y));
 		//thiknes = thiknes + row - DEFULT_START_POINT;
 		//thiknes = 1;
 	}

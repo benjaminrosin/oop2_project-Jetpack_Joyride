@@ -55,8 +55,8 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 
 void Board::draw(sf::RenderWindow& wind) const
 {
+	std::for_each(m_statics.begin(), m_statics.end(), [&wind](auto& obj) { /*if (obj != nullptr)*/ obj->draw(wind); });
 	std::for_each(m_movings.begin(), m_movings.end(), [&wind](auto& obj)  { /*if (obj != nullptr)*/ obj->draw(wind); });
-	std::for_each(m_statics.begin(), m_statics.end(), [&wind](auto& obj)  { /*if (obj != nullptr)*/ obj->draw(wind); });
 	
 	m_player->draw(wind);
 	//wind.draw(m_player->getDrawable());
