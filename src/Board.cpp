@@ -35,6 +35,8 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 	//std::for_each(m_movings.begin(), m_movings.end(), [&](auto& obj) {if (obj != nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });*/
 
 	std::for_each(m_movings.begin(), m_movings.end(), [&](auto& obj) {obj->move(delta_time); });
+
+	std::for_each(m_statics.begin(), m_statics.end(), [&](auto& obj) {obj->animate(delta_time); });
 	//animate
 
 	m_objTimer -= delta_time;
