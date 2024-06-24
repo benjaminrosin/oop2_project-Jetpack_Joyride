@@ -37,6 +37,7 @@ const int MARGIN = SCREEN_SIZE.y/12;
 const int DEFULT_START_POINT = SCREEN_SIZE.y - MARGIN;
 const float TOP_SCREEN_LIMIT = 0.0f + MARGIN;
 const int APPROVED_OVERLAP = 7;
+const sf::Vector2f COIN_SIZE(40, 40);
 
 const int NUM_OF_BACKGROUNDS = 3;
 const std::string BACKGROUNDS_FILE_NAMES[NUM_OF_BACKGROUNDS] = {
