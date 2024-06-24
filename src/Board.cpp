@@ -87,18 +87,24 @@ void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, randomY()));
 		timeToGift = 5 + rand() % 15;
 	}
+	if (m_objTimer < 0)
+	{
+		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600));
+		m_objTimer = 1;
+	}
 
-	int obj = rand() % 10 + 1;
 
-	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, 500));
-	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gspeed_t, x, 350));
-	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gshield_t, x, 300));
-	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gmoney_t, x, 550));
-	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gpower_t, x, 450));
+	//int obj = rand() % 10 + 1;
 
-	m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, 600));
+	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, 500));
+	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gspeed_t, x, 350));
+	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gshield_t, x, 300));
+	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gmoney_t, x, 550));
+	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gpower_t, x, 450));
 
-	m_movings.splice(m_movings.begin(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600));
+	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, 600));
+
+	//m_movings.splice(m_movings.begin(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600));
 
 
 	/*m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gspeed_t, x, 350));
