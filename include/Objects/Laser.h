@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "MovingGameObjects.h"
+#include "LaserState.h"
 
 class Laser :public MovingGameObjects {
 public:
