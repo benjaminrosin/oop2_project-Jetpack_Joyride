@@ -14,7 +14,7 @@ private:
 	Board m_board;
 	sf::Text m_data[NUM_OF_DATA];
 	 sf::Sprite m_background;
-	sf::RectangleShape m_buttonsGame[NUM_OF_BUTTONS_BOARD];
+	sf::RectangleShape m_buttonsGame[NUM_OF_BUTTONS -1];
 
 	sf::Clock m_clock;
 	float m_timer;

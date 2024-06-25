@@ -5,8 +5,8 @@ Resources::Resources()
 {
 	//texures
 	readData(m_backgroungs, BACKGROUNDS_FILE_NAMES, NUM_OF_BACKGROUNDS);
-	readData(m_buttonsTexures, BOTTUNS_FILE_NAMES, NUM_OF_BUTTONS_MENU);
-	readData(m_buttonsBoardTexures, BOTTUNS_BOARD_FILE_NAMES, NUM_OF_BUTTONS_BOARD);
+	readData(m_buttonsTexures, BOTTUNS_FILE_NAMES, NUM_OF_BUTTONS);
+	//readData(m_buttonsBoardTexures, BOTTUNS_BOARD_FILE_NAMES, NUM_OF_BUTTONS_BOARD);
 	readData(m_objTexures, OBJECT_FILE_NAMES, NUM_OF_OBJECTS);
 
 	//font
@@ -46,10 +46,10 @@ const sf::Texture* Resources::getTextureButtons(int index) const
 	return &(m_buttonsTexures[index]);
 }
 
-const sf::Texture* Resources::getTextureBoardButtons(int index) const
-{
-	return &(m_buttonsBoardTexures[index]);
-}
+//const sf::Texture* Resources::getTextureBoardButtons(int index) const
+//{
+//	return &(m_buttonsBoardTexures[index]);
+//}
 
 const sf::Texture* Resources::getTextureObject(int index) const
 {
