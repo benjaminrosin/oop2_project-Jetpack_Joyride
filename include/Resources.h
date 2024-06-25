@@ -7,7 +7,7 @@
 #include <unordered_map>
 
 enum object_code {
-	Scientists_t, Missile_t, Leser_t,
+	Scientists_t, Misssile_t, Laser_t,
 	Coin_t, Light_t,
 	Gift_t, Gpower_t, Gshield_t, Gspeed_t, Gmoney_t,
 	Player_t, Tank_t, FirstAlert_t, SecondAlert_t

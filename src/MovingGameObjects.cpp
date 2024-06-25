@@ -5,6 +5,7 @@ MovingGameObjects::MovingGameObjects(object_code obj, sf::Vector2f loc, std::str
 		loc,
 		key)
 {
+	m_speed = 0;
 	//m_sp.setTexture(*Resources::getInstance().getTextureObject(obj));
 	//m_sp.setTextureRect(Resources::getInstance().getIntRect(obj));
 	//m_sp.setPosition(loc);
