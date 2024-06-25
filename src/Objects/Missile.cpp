@@ -12,16 +12,16 @@ bool Missile::m_registered = ObjectFactory<MovingGameObjects>::registerIt(FirstA
 Missile::Missile(int col, int row)
 	:MovingGameObjects(FirstAlert_t, sf::Vector2f(col, row), "FirstWarning")
 {
-	setState(std::make_unique<AlertMissileState>());
+	//setState(std::make_unique<AlertMissileState>());
 }
 
 void Missile::setState(std::unique_ptr<MissileAnimationState> state)
 {
-	m_currState = std::move(state);
-	m_currState->enter(this);
+	//m_currState = std::move(state);
+	//m_currState->enter(this);
 }
 
 void Missile::updateState(float deltaTime)
 {
-	m_currState->update(this, deltaTime);
+	///m_currState->update(this, deltaTime);
 }
