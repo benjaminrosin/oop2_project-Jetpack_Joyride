@@ -25,8 +25,11 @@ Resources::Resources()
 	appendFrameIntRects("Gshield", 0, { 40, 40 }, 1);
 	appendFrameIntRects("Gspeed", 0, { 80, 60 }, 1);
 	appendFrameIntRects("Scientists", 10, { 60, 87 }, 3);
+	appendFrameIntRects("Missile", 0, {100, 64}, 7);
+	appendFrameIntRects("FirstWarning", 0, { 55, 88 }, 4);
+	appendFrameIntRects("SecondWarning", 0, { 99, 100 },2);
 
-
+	
 
 }
 
