@@ -15,5 +15,9 @@ public:
 private:
 	static bool m_registered;
 	sf::Sprite m_end;
+	sf::Sprite m_laser;
 	std::unique_ptr<LaserState> m_currState;
+	int len;
+	int angle;
+
 };
