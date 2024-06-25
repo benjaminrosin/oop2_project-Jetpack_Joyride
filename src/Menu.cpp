@@ -12,15 +12,15 @@ Menu::Menu()
 	m_background.setSize(SCREEN_SIZE);
 	m_controller = nullptr;
 
-	m_buttons.emplace_back(std::make_unique<StartGameCommand>(this));
-	m_buttons.emplace_back(std::make_unique<HighScoreCommand>(this));
-	m_buttons.emplace_back(std::make_unique<RulesCommand>(this));
+	m_buttons.emplace_back(std::make_unique<StartGameCommand>(this, "play"));
+	m_buttons.emplace_back(std::make_unique<HighScoreCommand>(this, "high score"));
+	m_buttons.emplace_back(std::make_unique<RulesCommand>(this, "rules"));
 	//exit button?
 
 	for (int i = 0; i < m_buttons.size(); i++)
 	{
-		auto pos = sf::Vector2f(2 * SCREEN_SIZE.x / 3, 200 * (i + 1));
-		m_buttons[i]->setSptire(pos, i);
+		auto pos = sf::Vector2f(2 * SCREEN_SIZE.x / 3, SCREEN_SIZE.y / m_buttons.size() + 150 * i);
+		m_buttons[i]->setPosition(pos);
 	}
 
 }

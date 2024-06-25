@@ -87,7 +87,7 @@ void Controller::drawData(sf::RenderWindow& wind)
 		wind.draw(m_data[i]);
 	}
 
-	for (int i = 0; i < NUM_OF_BUTTONS_BOARD; i++)
+	for (int i = 0; i < NUM_OF_BUTTONS -1; i++)
 	{
 		wind.draw(m_buttonsGame[i]);
 	}
@@ -101,7 +101,7 @@ void Controller::addToCoins()
 
 int Controller::handleClick(sf::Vector2f v2f) const
 {
-	for (int i = 0; i < NUM_OF_BUTTONS_MENU; i++)
+	for (int i = 0; i < NUM_OF_BUTTONS - 1; i++)
 	{
 		if (m_buttonsGame[i].getGlobalBounds().contains(v2f))
 		{
@@ -135,11 +135,11 @@ void Controller::resetSFMLComponents()
 	//m_boardBackground.setOutlineThickness(5);
 	//m_boardBackground.setFillColor(sf::Color::Color(255, 255, 255, 50));
 
-	for (int i = 0; i < NUM_OF_BUTTONS_BOARD; i++)
+	for (int i = 0; i < NUM_OF_BUTTONS - 1; i++)
 	{
 		m_buttonsGame[i].setSize(sf::Vector2f(50, 50));
 		m_buttonsGame[i].setPosition(sf::Vector2f(1000 + 60 * i, 10));
-		m_buttonsGame[i].setTexture(Resources::getInstance().getTextureBoardButtons(i));
+		m_buttonsGame[i].setTexture(Resources::getInstance().getTextureButtons(i+1));
 		m_buttonsGame[i].setFillColor(sf::Color::Green);
 	}
 }

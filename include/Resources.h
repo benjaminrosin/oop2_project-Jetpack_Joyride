@@ -46,22 +46,22 @@ const std::string BACKGROUNDS_FILE_NAMES[NUM_OF_BACKGROUNDS] = {
 	"help.png"
 };
 
-const int NUM_OF_BUTTONS_MENU = 4;
-const std::string BOTTUNS_FILE_NAMES[NUM_OF_BUTTONS_MENU] = {
-	"play.png",
-	"continue.png",
-	"rules.png",
-	"exit.png"
+const int NUM_OF_BUTTONS = 4;
+const std::string BOTTUNS_FILE_NAMES[NUM_OF_BUTTONS] = {
+	"ButtonMenu.png",
+	"mute.png",
+	"pause.png",
+	"back.png"
 };
 
 
 //add textures
-const int NUM_OF_BUTTONS_BOARD = 3;
-const std::string BOTTUNS_BOARD_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
-"mute.png",
-"pause.png",
-"back.png"
-};
+//const int NUM_OF_BUTTONS_BOARD = 3;
+//const std::string BOTTUNS_BOARD_FILE_NAMES[NUM_OF_BUTTONS_BOARD] = {
+//"mute.png",
+//"pause.png",
+//"back.png"
+//};
 
 //add textures
 const int NUM_OF_OBJECTS = 12;
@@ -104,7 +104,7 @@ public:
 
 	const sf::Texture* getBackground(int) const;
 	const sf::Texture* getTextureButtons(int) const;
-	const sf::Texture* getTextureBoardButtons(int) const;
+	//const sf::Texture* getTextureBoardButtons(int) const;
 	const sf::Texture* getTextureObject(int) const;
 	//const sf::IntRect getIntRect(int) const;
 	std::vector<sf::IntRect>* getIntRect(std::string) const;
@@ -123,8 +123,8 @@ private:
 
 
 	sf::Texture m_backgroungs[NUM_OF_BACKGROUNDS];
-	sf::Texture m_buttonsTexures[NUM_OF_BUTTONS_MENU];
-	sf::Texture m_buttonsBoardTexures[NUM_OF_BUTTONS_MENU];
+	sf::Texture m_buttonsTexures[NUM_OF_BUTTONS];
+	//sf::Texture m_buttonsBoardTexures[NUM_OF_BUTTONS_MENU];
 	sf::Texture m_objTexures[NUM_OF_OBJECTS];
 	//std::vector<sf::IntRect> m_intRect[NUM_OF_OBJECTS];
 	//sf::SoundBuffer m_sound_buffer[NUM_OF_SOUNDES];
