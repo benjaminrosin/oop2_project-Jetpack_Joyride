@@ -30,9 +30,10 @@ enum object_code {
 //};
 
 const sf::Vector2f SCREEN_SIZE(1200, 791);
-
+const float PI = 3.14159265358979323846;
 const float ANIMATION_RATE = 0.15;
 const int NUM_OF_DATA = 2;
+const int NUM_OF_SHAPES_COINS = 3;
 const int MARGIN = SCREEN_SIZE.y/12;
 const int DEFULT_START_POINT = SCREEN_SIZE.y - MARGIN;
 const float TOP_SCREEN_LIMIT = 0.0f + MARGIN;
