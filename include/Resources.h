@@ -13,7 +13,7 @@ enum object_code {
 	Scientists_t, Misssile_t, Laser_t,
 	Coin_t, Light_t,
 	Gift_t, Gpower_t, Gshield_t, Gspeed_t, Gmoney_t,
-	Player_t, Tank_t
+	Player_t, Tank_t, FirstAlert_t, SecondAlert_t
 
 };
 
@@ -67,7 +67,7 @@ const std::string BOTTUNS_FILE_NAMES[NUM_OF_BUTTONS] = {
 //};
 
 //add textures
-const int NUM_OF_OBJECTS = 12;
+const int NUM_OF_OBJECTS = 14;
 const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "Scientist.png",
 "Missile.png",
@@ -80,7 +80,9 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "speedGift.png",
 "Piggy.png",
 "JetpackWalking.png",
-"SuperPowerTank.png"
+"SuperPowerTank.png",
+"MissileWarning.png",
+"MissileIncoming.png"
 
 };
 
