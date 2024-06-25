@@ -2,19 +2,22 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "MovingGameObjects.h"
+#include "State/MissileAnimationState.h"
 
 class Missile:public MovingGameObjects {
 public:
-	//using StatedObject::collision;
 
 	Missile(int, int);
 	virtual ~Missile();
-	//void move_and_change_sprite(float, Object*);
+	virtual void move(sf::Vector2f v2f) override { MovingGameObjects::move(v2f); };
+	virtual void move(float x) override { MovingGameObjects::move(x); };
+	void setState(std::unique_ptr<MissileAnimationState>);
+	void updateState(float);
 	
 private:
 	static bool m_registered;
 	//sf::Sprite m_firstAlert;
 	//sf::Sprite m_SecondAlert;
-	std::unique_ptr<MissileState> m_currState;
+	std::unique_ptr<MissileAnimationState> m_currState;
 	int m_heightPlayer;
 };
