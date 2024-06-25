@@ -5,6 +5,9 @@
 #include <vector>
 #include <map>
 #include <unordered_map>
+#include <cmath>
+
+const float PI = 3.14159265358979323846;
 
 enum object_code {
 	Scientists_t, Misssile_t, Laser_t,

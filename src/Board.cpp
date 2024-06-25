@@ -89,6 +89,7 @@ void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 	}
 	if (m_objTimer < 0)
 	{
+		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Laser_t, x, 600));
 		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600));
 		m_objTimer = 1;
 	}
