@@ -66,8 +66,8 @@ void Controller::run(sf::RenderWindow& m_wind)
 		center = sf::Vector2f(m_board.getPlayerLoc().x + 400, center.y);
 
 		m_wind.setView(sf::View(center, curr_view.getSize()));
-		drawData(m_wind);
 		m_board.draw(m_wind);
+		drawData(m_wind);
 
 		m_wind.display();
 	}

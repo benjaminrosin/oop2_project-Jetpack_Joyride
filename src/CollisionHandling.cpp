@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include "Coin.h"
 //#include "Missile.h"
-//#include "Laser.h"
+#include "Objects/Laser.h"
 #include "Scientists.h"
 #include "Gshield.h"
 #include "Gspeed.h"
@@ -12,6 +12,7 @@
 #include "Controller.h"
 #include "State/TankJumpState.h"
 #include "State/TankWalkState.h"
+#include <iostream>
 
 bool CollisionHandling::processCollision(Player& player, Object& obj)
 {
@@ -39,7 +40,7 @@ HitMap CollisionHandling::initializeCollisionMap()
     static HitMap colideMap;
     colideMap[typeid(Coin)] = &coinCollision;
     //colideMap[typeid(Missile)] = &missileCollision;
-    //colideMap[typeid(Laser)] = &laserCollision;
+    colideMap[typeid(Laser)] = &laserCollision;
     colideMap[typeid(Scientists)] = &scientistCollision;
     colideMap[typeid(Gshield)] = &shieldCollision;
     colideMap[typeid(Gspeed)] = &speedCollision;
@@ -53,6 +54,12 @@ bool CollisionHandling::coinCollision(Player& player, Object& obj)
 {
     Controller::addToCoins();
     return true;
+}
+
+bool CollisionHandling::laserCollision(Player&, Object&)
+{
+    std::cout << "laser Collision\n";
+    return false;
 }
 
 bool CollisionHandling::scientistCollision(Player&, Object&)

@@ -31,4 +31,5 @@ public:
 	
 private:
 	std::unique_ptr<PlayerAnimationState> m_currentState;
+	float moveSpeed = 200.0f;
 };

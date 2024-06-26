@@ -71,11 +71,15 @@ void Board::draw(sf::RenderWindow& wind) const
 
 void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 {
-	static float timeToGift = 5;
-	static float timeToCoins = 5;
+	static float timeToGift = rand() % 5;
+	static float timeToCoins = rand() % 5;
+	static float timeToLaser = rand() % 5;
+
 	auto x = wind.getView().getCenter().x + SCREEN_SIZE.x;
+
 	timeToGift -= delta_time;
 	timeToCoins -= delta_time;
+	timeToLaser -= delta_time;
 	//int obj = rand() % 10 + 1;
 	if (timeToCoins < 0)
 	{
@@ -87,7 +91,12 @@ void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, randomY()));
 		timeToGift = 5 + rand() % 15;
 	}
-	if (m_objTimer < 0)
+	if (timeToLaser < 0)
+	{
+		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Laser_t, x, randomY()));
+		timeToLaser = 3 + rand() % 15;
+	}
+	if (m_objTimer < 0) //change to local static timer
 	{
 		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600));
 		m_objTimer = 1;

@@ -18,6 +18,8 @@ Resources::Resources()
 	appendFrameIntRects("walking tank", 37, { 230, 174 }, 2);
 	appendFrameIntRects("jumping tank", 0, { 200, 216 }, 1);
 
+	appendFrameIntRects("Laser", 0, { 101, 420 }, 4);
+//	appendFrameIntRects("Beam", 0, { 102, 250 }, 4);
 
 	appendFrameIntRects("coin", 0, { 40, 40 }, 8);
 	appendFrameIntRects("Gmoney", 0, { 100, 91 }, 1);
@@ -25,8 +27,11 @@ Resources::Resources()
 	appendFrameIntRects("Gshield", 0, { 40, 40 }, 1);
 	appendFrameIntRects("Gspeed", 0, { 80, 60 }, 1);
 	appendFrameIntRects("Scientists", 10, { 60, 87 }, 3);
+	appendFrameIntRects("Missile", 0, {100, 64}, 7);
+	appendFrameIntRects("FirstWarning", 0, { 55, 88 }, 4);
+	appendFrameIntRects("SecondWarning", 0, { 99, 100 },2);
 
-
+	
 
 }
 
