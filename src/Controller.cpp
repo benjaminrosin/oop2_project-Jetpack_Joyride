@@ -15,10 +15,10 @@ Controller::Controller() : m_board()
 
 void Controller::run(sf::RenderWindow& m_wind) 
 {
-	m_background.setTexture(*Resources::getInstance().getBackground(1));
+	//m_background.setTexture(*Resources::getInstance().getBackground(1));
 	while (m_wind.isOpen() && m_board.alive())
 	{
-		m_wind.clear(sf::Color::White);
+		m_wind.clear(sf::Color::Black);
 		//m_wind.draw(m_background);		
 		m_timer += m_clock.getElapsedTime().asSeconds();
 
@@ -58,14 +58,16 @@ void Controller::run(sf::RenderWindow& m_wind)
 
 		m_board.play(m_wind, m_timer, m_delta_time);
 
+		auto curr_view = m_wind.getView();
+		sf::Vector2f center = curr_view.getCenter();
+		center = sf::Vector2f(m_board.getPlayerLoc().x + SCREEN_SIZE.x / 3, center.y);
+
+		m_wind.setView(sf::View(center, curr_view.getSize()));
+
 		moveBackground(m_delta_time, m_wind);
 		
 		//change view
-		auto curr_view = m_wind.getView();
-		sf::Vector2f center = curr_view.getCenter();
-		center = sf::Vector2f(m_board.getPlayerLoc().x + 400, center.y);
 
-		m_wind.setView(sf::View(center, curr_view.getSize()));
 		m_board.draw(m_wind);
 		drawData(m_wind);
 
@@ -125,8 +127,10 @@ void Controller::resetSFMLComponents()
 		m_data[i].setPosition(sf::Vector2f(20 + 200 * i, 10));
 	}
 
-	m_background.setTexture(*Resources::getInstance().getBackground(0));
-	m_background.setPosition(0, 0);
+	m_background[0].setTexture(*Resources::getInstance().getBackground(0));
+	m_background[0].setPosition(- SCREEN_SIZE.x / 6, 0);
+	m_background[1].setTexture(*Resources::getInstance().getBackground(1));
+	m_background[1].setPosition(m_background[0].getPosition().x +SCREEN_SIZE.x, 0);
 	//m_background.setSize(SCREEN_SIZE);
 
 	//m_boardBackground.setSize(BOARD_SIZE);
@@ -146,14 +150,21 @@ void Controller::resetSFMLComponents()
 
 void Controller::moveBackground(float delta_time, sf::RenderWindow& wind)
 {
-	float xStart = m_background.getGlobalBounds().left - 2 * SCREEN_SIZE.x;
-	float xEnd = wind.getView().getCenter().x + SCREEN_SIZE.x;
-
-	//m_background.setPosition(xStart, 0);
-
-	for (; xStart < xEnd; xStart += SCREEN_SIZE.x)
+	int xStartOfView = wind.getView().getCenter().x - wind.getView().getSize().x / 2;
+	
+	for (int i = 0; i < NUM_OF_BACKGROUNDS-1; i++)
 	{
-		m_background.setPosition(xStart, 0);
-		wind.draw(m_background);
+		wind.draw(m_background[i]);
+
+		int xEndOfBackground = m_background[i].getGlobalBounds().left + m_background[i].getGlobalBounds().width;
+
+		if (xStartOfView >= xEndOfBackground)
+		{
+			m_background[i].setTexture(*Resources::getInstance().getBackground(1));
+			m_background[i].move({ 2 * wind.getView().getSize().x, 0 });
+			wind.draw(m_background[i]);
+		}
+
 	}
+
 }

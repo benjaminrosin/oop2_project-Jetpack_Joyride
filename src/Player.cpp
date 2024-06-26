@@ -3,7 +3,7 @@
 #include "State/TankWalkState.h"
 
 Player::Player()
-	: MovingGameObjects(Player_t, sf::Vector2f(MARGIN, DEFULT_START_POINT), "walking berry")
+	: MovingGameObjects(Player_t, sf::Vector2f(0, DEFULT_START_POINT), "walking berry")
 {
 	//m_sp.setTexture(*Resources::getInstance().getTextureObject(Player_t));
 	//m_sp.setPosition(DEFULT_START_POINT);
