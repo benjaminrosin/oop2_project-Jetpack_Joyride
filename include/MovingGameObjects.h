@@ -11,6 +11,7 @@ public:
 	virtual ~MovingGameObjects() {};
 	virtual void move(sf::Vector2f) override;
 	virtual void move(float) = 0;
+	virtual const sf::Sprite getSprite() const;
 
 protected:
 	float m_speed;
