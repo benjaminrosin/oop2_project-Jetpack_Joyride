@@ -5,9 +5,9 @@ class Laser;
 
 class LaserState {
 public:
-	void enter();
+	virtual void enter() = 0;
 	//void draw(sf::RenderWindow&);
-	void move(Laser*);
+	virtual void rotate(Laser*, float) = 0;
 
 private:
 	//sf::Sprite m_beam;

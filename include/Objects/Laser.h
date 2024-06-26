@@ -12,6 +12,7 @@ public:
 	virtual ~Laser() {};
 	//void move_and_change_sprite(float, Object*);
 	virtual void move(float) override;
+	void rotate(float);
 	//virtual void draw(sf::RenderWindow&)const override;
 
 private:

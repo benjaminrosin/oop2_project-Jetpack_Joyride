@@ -2,6 +2,8 @@
 #include "Factory/ObjectFactory.h"
 #include "Resources.h"
 #include <iostream>
+#include "State/LaserStaticState.h"
+#include "State/LaserRotatingState.h"
 
 bool Laser::m_register = ObjectFactory<MovingGameObjects>::registerIt(Laser_t,
 	[](int col, int row) -> std::list<std::unique_ptr<MovingGameObjects>> {
@@ -30,17 +32,23 @@ Laser::Laser(int col, int row)
 	m_len = 100 + (rand() % 30) * 10;
 
 	//scaling sprite
-
-	m_currState = std::make_unique<LaserState>();
+	int state = rand() % 2;
+	//((state) ? m_currState = std::make_unique<LaserStaticState>() : m_currState = std::make_unique<LaserRotatingState>());
+	m_currState = std::make_unique<LaserRotatingState>();
 	m_currState->enter();
 }
 
 void Laser::move(float time)
 {
-	m_currState->move(this);
+	m_currState->rotate(this, time);
 	animate(time);
 
 	//m_end.setTextureRect(m_sp.getTextureRect());
+}
+
+void Laser::rotate(float angle)
+{
+	m_sp.rotate(angle);
 }
 
 //void Laser::draw(sf::RenderWindow& wind) const
