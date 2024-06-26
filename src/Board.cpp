@@ -83,22 +83,22 @@ void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 	//int obj = rand() % 10 + 1;
 	if (timeToCoins < 0)
 	{
-		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, randomY()));
+		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, randomY(), m_player.get()));
 		timeToCoins = 5 + rand() % 5;
 	}
 	if (timeToGift < 0)
 	{
-		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, randomY()));
+		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, randomY(), m_player.get()));
 		timeToGift = 5 + rand() % 15;
 	}
 	if (timeToLaser < 0)
 	{
-		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Laser_t, x, randomY()));
+		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Laser_t, x, randomY(), m_player.get()));
 		timeToLaser = 3 + rand() % 15;
 	}
 	if (m_objTimer < 0) //change to local static timer
 	{
-		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600));
+		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600, m_player.get()));
 		m_objTimer = 1;
 	}
 

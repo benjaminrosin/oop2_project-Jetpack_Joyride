@@ -13,6 +13,8 @@ public:
 	//void move_and_change_sprite(float, Object*);
 	virtual void move(float) override;
 	void rotate(float);
+
+	virtual sf::FloatRect getLocalBounds() const override;
 	//virtual void draw(sf::RenderWindow&)const override;
 
 private:
@@ -23,6 +25,7 @@ private:
 	std::unique_ptr<LaserState> m_currState;
 	int m_len;
 	int m_angle;
+	sf::RectangleShape m_actual_colision;
 
 	static bool m_register;
 };

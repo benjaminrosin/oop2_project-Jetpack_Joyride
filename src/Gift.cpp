@@ -4,7 +4,7 @@
 
 bool Gift::m_registered = ObjectFactory<StaticGameObjects>::registerIt(Gift_t,
 	[](int col, int row) -> std::list<std::unique_ptr<StaticGameObjects>> {
-		return ObjectFactory<StaticGameObjects>::create(rand()%NUM_OF_GIFTS + Gift_t + 1, col, row); });
+		return ObjectFactory<StaticGameObjects>::create(rand()%NUM_OF_GIFTS + Gift_t + 1, col, row, nullptr); });
 
 
 

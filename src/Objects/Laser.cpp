@@ -15,6 +15,9 @@ Laser::Laser(int col, int row)
 	: MovingGameObjects(Laser_t, sf::Vector2f(col, row), "Laser") //לשנות את הנקודה))
 {
 	m_sp.setOrigin({m_sp.getGlobalBounds().width / 2, m_sp.getGlobalBounds().height / 2});
+	
+	m_actual_colision.setSize({ 50, 350 });
+	m_actual_colision.setOrigin({ m_actual_colision.getGlobalBounds().width / 2, m_actual_colision.getGlobalBounds().height / 2 });
 	//m_end.setTexture(*m_sp.getTexture());
 	//m_end.setTextureRect(m_sp.getTextureRect());
 	
@@ -23,6 +26,7 @@ Laser::Laser(int col, int row)
 	m_angle = (rand() % 18) * 10;
 	//m_end.rotate(m_angle);
 	m_sp.rotate(m_angle);
+	m_actual_colision.rotate(m_angle);
 
 	//calc enp point
 	//m_end.setPosition(calcEndPoint());
@@ -31,10 +35,12 @@ Laser::Laser(int col, int row)
 
 	m_len = 100 + (rand() % 30) * 10;
 
-	//scaling sprite
+	//scaling rect and sprite
+
+
 	int state = rand() % 2;
-	//((state) ? m_currState = std::make_unique<LaserStaticState>() : m_currState = std::make_unique<LaserRotatingState>());
-	m_currState = std::make_unique<LaserRotatingState>();
+	((state) ? m_currState = std::make_unique<LaserStaticState>() : m_currState = std::make_unique<LaserRotatingState>());
+	//m_currState = std::make_unique<LaserRotatingState>();
 	m_currState->enter();
 }
 
@@ -49,6 +55,12 @@ void Laser::move(float time)
 void Laser::rotate(float angle)
 {
 	m_sp.rotate(angle);
+	m_actual_colision.rotate(angle);
+}
+
+sf::FloatRect Laser::getLocalBounds() const
+{
+	return m_actual_colision.getLocalBounds();
 }
 
 //void Laser::draw(sf::RenderWindow& wind) const
