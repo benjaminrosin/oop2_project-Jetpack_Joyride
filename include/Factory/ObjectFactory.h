@@ -60,6 +60,20 @@ bool ObjectFactory<T>::registerIt(int index, std::list<std::unique_ptr<T>>(*fu)(
 	return true;
 }
 
+//template <typename T>
+//bool ObjectFactory<T>::registerIt(int index, std::list<std::unique_ptr<T>>(*fu)(int, int))
+//{
+//	getMap().emplace(index, [fu](col, row, player*) { return fu(col, row); });
+//	return true;
+//}
+// 
+//template <typename T>
+//bool ObjectFactory<T>::registerIt(int index, std::list<std::unique_ptr<T>>(*fu)(int, int, player*))
+//{
+//	getMap().emplace(index, fu);
+//	return true;
+//}
+
 
 template <typename T>
 std::map<int, std::list<std::unique_ptr<T>>(*)(int, int)>& ObjectFactory<T>::getMap()

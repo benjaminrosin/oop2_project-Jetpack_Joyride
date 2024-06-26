@@ -12,6 +12,7 @@ bool Laser::m_register = ObjectFactory<MovingGameObjects>::registerIt(Laser_t,
 Laser::Laser(int col, int row)
 	: MovingGameObjects(Laser_t, sf::Vector2f(col, row), "Laser") //לשנות את הנקודה))
 {
+	m_sp.setOrigin({m_sp.getGlobalBounds().width / 2, m_sp.getGlobalBounds().height / 2});
 	//m_end.setTexture(*m_sp.getTexture());
 	//m_end.setTextureRect(m_sp.getTextureRect());
 	
