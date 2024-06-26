@@ -27,6 +27,9 @@ Laser::Laser(int col, int row)
 	//m_end.setColor(sf::Color::Green); //for debug
 
 	m_len = 100 + (rand() % 30) * 10;
+
+	//scaling sprite
+
 	m_currState = std::make_unique<LaserState>();
 	m_currState->enter();
 }
