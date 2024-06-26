@@ -58,11 +58,13 @@ bool CollisionHandling::coinCollision(Player& player, Object& obj)
 
 bool CollisionHandling::laserCollision(Player& player, Object& obj)
 {
+
     std::cout << "laser Collision\n";
-    if (Laser* laser = dynamic_cast <Laser*>(&obj))
+    return true;
+   /* if (Laser* laser = dynamic_cast <Laser*>(&obj))
     {
         return pixelPerfectCollision(player.getSprite(), laser->getSprite());
-    }
+    }*/
     //else exep
    
 }
@@ -101,38 +103,38 @@ bool CollisionHandling::powerCollision(Player& player, Object&)
     return true;
 }
 
-bool CollisionHandling::pixelPerfectCollision(const sf::Sprite& player, const sf::Sprite& laser)
-{
-    sf::Image playerImage = player.getTexture()->copyToImage();
-    sf::Image laserImage = laser.getTexture()->copyToImage();
-
-    sf::FloatRect playerRect = player.getGlobalBounds();
-    sf::FloatRect laserRect = laser.getGlobalBounds();
-
-    // איזור חפיפה בין שני ה-sprites
-    sf::FloatRect intersection;
-    if (playerRect.intersects(laserRect, intersection)) {
-        for (int x = intersection.left; x < intersection.left + intersection.width; x++) {
-            for (int y = intersection.top; y < intersection.top + intersection.height; y++) {
-                // קואורדינטות פיקסל יחסית לתמונה
-                int xPlayer = x - playerRect.left;
-                int yPlayer = y - playerRect.top;
-                int xLaser = x - laserRect.left;
-                int yLaser = y - laserRect.top;
-
-                // בדיקת שקיפות הפיקסלים
-                if (xPlayer >= 0 && xPlayer < playerImage.getSize().x && yPlayer >= 0 && yPlayer < playerImage.getSize().y &&
-                    xLaser >= 0 && xLaser < laserImage.getSize().x && yLaser >= 0 && yLaser < laserImage.getSize().y)
-                {
-                    if (playerImage.getPixel(xPlayer, yPlayer).a != 0 && laserImage.getPixel(xLaser, yLaser).a != 0) 
-                    {
-                        std::cout << "collision pixel" << std::endl;
-                        return true; // יש התנגשות
-                    }
-                }
-               
-            }
-        }
-    }
-    return false;
-}
+//bool CollisionHandling::pixelPerfectCollision(const sf::Sprite& player, const sf::Sprite& laser)
+//{
+//    sf::Image playerImage = player.getTexture()->copyToImage();
+//    sf::Image laserImage = laser.getTexture()->copyToImage();
+//
+//    sf::FloatRect playerRect = player.getGlobalBounds();
+//    sf::FloatRect laserRect = laser.getGlobalBounds();
+//
+//    // איזור חפיפה בין שני ה-sprites
+//    sf::FloatRect intersection;
+//    if (playerRect.intersects(laserRect, intersection)) {
+//        for (int x = intersection.left; x < intersection.left + intersection.width; x++) {
+//            for (int y = intersection.top; y < intersection.top + intersection.height; y++) {
+//                // קואורדינטות פיקסל יחסית לתמונה
+//                int xPlayer = x - playerRect.left;
+//                int yPlayer = y - playerRect.top;
+//                int xLaser = x - laserRect.left;
+//                int yLaser = y - laserRect.top;
+//
+//                // בדיקת שקיפות הפיקסלים
+//                if (xPlayer >= 0 && xPlayer < playerImage.getSize().x && yPlayer >= 0 && yPlayer < playerImage.getSize().y &&
+//                    xLaser >= 0 && xLaser < laserImage.getSize().x && yLaser >= 0 && yLaser < laserImage.getSize().y)
+//                {
+//                    if (playerImage.getPixel(xPlayer, yPlayer).a != 0 && laserImage.getPixel(xLaser, yLaser).a != 0) 
+//                    {
+//                        std::cout << "collision pixel" << std::endl;
+//                        return true; // יש התנגשות
+//                    }
+//                }
+//               
+//            }
+//        }
+//    }
+//    return false;
+//}

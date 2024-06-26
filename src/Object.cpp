@@ -28,6 +28,16 @@ sf::FloatRect Object::getGlobalBounds() const
 	return sf::FloatRect(m_sp.getGlobalBounds());
 }
 
+sf::Transform Object::getTransform() const
+{
+	return m_sp.getTransform();
+}
+
+sf::FloatRect Object::getLocalBounds() const
+{
+	return m_sp.getLocalBounds();
+}
+
 void Object::animate(float time)
 {
 	m_texutre_timer += time;

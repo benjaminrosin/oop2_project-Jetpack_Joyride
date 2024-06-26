@@ -23,6 +23,8 @@ private:
 	static bool speedCollision(Player&, Object&);
 	static bool moneyCollision(Player&, Object&);
 	static bool powerCollision(Player&, Object&);
-	static bool pixelPerfectCollision(const sf::Sprite&, const sf::Sprite&);
+	//static bool pixelPerfectCollision(const sf::Sprite&, const sf::Sprite&);
+	//static std::vector<uint8_t> createBitMask(const sf::Texture& texture) 
+
 
 };
