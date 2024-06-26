@@ -148,7 +148,9 @@ bool Board::collide(Object& obj)
 {
 	sf::FloatRect overlapRect;
 
-	if (m_player->getGlobalBounds().intersects(obj.getGlobalBounds(), overlapRect))
+	//if (m_player->getGlobalBounds().intersects(obj.getGlobalBounds(), overlapRect))
+	sf::FloatRect newPlayerBounds = obj.getTransform().getInverse().transformRect(m_player->getGlobalBounds());
+	if (newPlayerBounds.intersects(obj.getLocalBounds(), overlapRect))
 	{
 		if (overlapRect.height > APPROVED_OVERLAP && overlapRect.width > APPROVED_OVERLAP)//черси!!!!
 		{

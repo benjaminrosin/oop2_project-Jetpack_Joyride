@@ -27,6 +27,11 @@ void MovingGameObjects::move(float delta_time)
 	//change texure
 }
 
+const sf::Sprite MovingGameObjects::getSprite() const
+{
+	return m_sp;
+}
+
 //sf::Vector2f MovingGameObjects::getPosition() const
 //{
 //	return m_sp.getPosition();

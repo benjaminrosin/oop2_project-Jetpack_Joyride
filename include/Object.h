@@ -19,6 +19,8 @@ public:
 	virtual void draw(sf::RenderWindow&)const;
 	virtual sf::Vector2f getPosition() const;
 	virtual sf::FloatRect getGlobalBounds() const;
+	virtual sf::Transform getTransform() const;
+	virtual sf::FloatRect getLocalBounds() const;
 	virtual void animate(float);
 	//const sf::Sprite& getDrawable() const;
 	//virtual sf::Vector2f get_position() const;
