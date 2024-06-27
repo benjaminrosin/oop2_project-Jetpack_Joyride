@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "PlayerAnimationState.h"
-#include "WalkAnimationPlayerState.h"
+#include "State/PlayerAnimationState.h"
+#include "State/WalkAnimationPlayerState.h"
 #include "Resources.h"
 
 class Player;

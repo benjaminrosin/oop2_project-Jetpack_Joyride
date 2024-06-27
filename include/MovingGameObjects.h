@@ -4,7 +4,8 @@
 #include "Resources.h"
 
 
-class MovingGameObjects :public Object {
+class MovingGameObjects :public Object
+{
 public:
 	MovingGameObjects(object_code, sf::Vector2f, std::string);
 	MovingGameObjects(object_code, sf::Vector2f, float, int, std::string);

@@ -2,9 +2,11 @@
 configure_file ("GameMenu.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Hall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("help.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Title.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("JetpackWalking.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("SuperPowerTank.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("SuperPowerFlyTank.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("PlayerDead.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("ButtonMenu.png" ${CMAKE_BINARY_DIR} COPYONLY)
 #configure_file ("play.png" ${CMAKE_BINARY_DIR} COPYONLY)

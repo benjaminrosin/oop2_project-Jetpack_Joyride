@@ -1,5 +1,6 @@
 #include "State/RegularWalkState.h"
 #include "State/RegularJumpState.h"
+#include "State/DeadPlayerState.h"
 #include "Player.h"
 
 void RegularJumpState::enter(Player* player)
@@ -21,6 +22,11 @@ void RegularJumpState::update(Player* player, float delta_time)
     {
         player->setState(std::make_unique<RegularWalkState>());
     }
+}
+
+void RegularJumpState::die(Player*player)
+{
+    player->setState(std::make_unique<DeadPlayerState>());
 }
 
 //void RegularWalkState::jump(Player*)

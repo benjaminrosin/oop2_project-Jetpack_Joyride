@@ -13,7 +13,7 @@ enum object_code {
 	Scientists_t, Misssile_t, Laser_t,
 	Coin_t, Light_t,
 	Gift_t, Gpower_t, Gshield_t, Gspeed_t, Gmoney_t,
-	Player_t, Tank_t, FirstAlert_t, SecondAlert_t
+	Player_t, Tank_t, FirstAlert_t, SecondAlert_t, Dead_t
 
 };
 
@@ -44,11 +44,12 @@ const float TOP_SCREEN_LIMIT = 0.0f + MARGIN;
 const int APPROVED_OVERLAP = 15;
 const sf::Vector2f COIN_SIZE(40, 40);
 
-const int NUM_OF_BACKGROUNDS = 3;
+const int NUM_OF_BACKGROUNDS = 4;
 const std::string BACKGROUNDS_FILE_NAMES[NUM_OF_BACKGROUNDS] = {
 	"GameMenu.png",
 	"Hall.png",
-	"help.png"
+	"help.png",
+	"Title.png"
 };
 
 const int NUM_OF_BUTTONS = 4;
@@ -69,7 +70,7 @@ const std::string BOTTUNS_FILE_NAMES[NUM_OF_BUTTONS] = {
 //};
 
 //add textures
-const int NUM_OF_OBJECTS = 14;
+const int NUM_OF_OBJECTS = 15;
 const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "Scientist.png",
 "Missile.png",
@@ -84,7 +85,8 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "JetpackWalking.png",
 "SuperPowerTank.png",
 "MissileWarning.png",
-"MissileIncoming.png"
+"MissileIncoming.png",
+"PlayerDead.png"
 
 };
 

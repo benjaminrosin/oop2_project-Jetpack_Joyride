@@ -152,7 +152,7 @@ void Controller::moveBackground(float delta_time, sf::RenderWindow& wind)
 {
 	int xStartOfView = wind.getView().getCenter().x - wind.getView().getSize().x / 2;
 	
-	for (int i = 0; i < NUM_OF_BACKGROUNDS-1; i++)
+	for (int i = 0; i < NUM_OF_BACKGROUNDS-2; i++)
 	{
 		wind.draw(m_background[i]);
 
