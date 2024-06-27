@@ -13,6 +13,7 @@
 #include "Controller.h"
 #include "State/TankJumpState.h"
 #include "State/TankWalkState.h"
+//#include "State/DeadPlayerState.h"
 #include <iostream>
 
 bool CollisionHandling::processCollision(Player& player, Object& obj)
@@ -68,6 +69,8 @@ bool CollisionHandling::laserCollision(Player& player, Object& obj)
 {
 
     std::cout << "laser Collision\n";
+    player.playerDie();
+    //player.setState(std::make_unique<DeadPlayerState>());
     return true;
    /* if (Laser* laser = dynamic_cast <Laser*>(&obj))
     {

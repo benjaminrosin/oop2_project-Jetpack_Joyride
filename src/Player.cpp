@@ -59,6 +59,11 @@ void Player::handleSpaceRelease()
 	}
 }
 
+void Player::playerDie()
+{
+	m_currentState->die(this);
+}
+
 
 
 

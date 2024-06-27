@@ -18,7 +18,7 @@ public:
 	//void jump();
 	void walk();
 	void handleSpaceRelease();
-
+	void playerDie();
 	//
 	//virtual void draw(sf::RenderWindow&)const {};
 	//virtual sf::Vector2f getPosition() const {};

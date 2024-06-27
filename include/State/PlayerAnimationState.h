@@ -14,4 +14,8 @@ public:
     //virtual void walk(Player*) = 0;
     //virtual void idle(Player*) = 0;
     virtual ~PlayerAnimationState() = default;
+
+private:
+    float m_jumpVelocity = 400;
+    float m_gravity = 400;
 };
