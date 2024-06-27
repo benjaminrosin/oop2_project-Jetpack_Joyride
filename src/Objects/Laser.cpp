@@ -25,8 +25,7 @@ Laser::Laser(int col, int row)
 
 	m_angle = (rand() % 18) * 10;
 	//m_end.rotate(m_angle);
-	m_sp.rotate(m_angle);
-	m_actual_colision.rotate(m_angle);
+	rotate(m_angle);
 
 	//calc enp point
 	//m_end.setPosition(calcEndPoint());

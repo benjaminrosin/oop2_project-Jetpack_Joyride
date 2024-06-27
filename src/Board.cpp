@@ -93,6 +93,8 @@ void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 	}
 	if (timeToLaser < 0)
 	{
+		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Misssile_t, x, 600, m_player.get()));
+
 		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Laser_t, x, randomY(), m_player.get()));
 		timeToLaser = 3 + rand() % 15;
 	}
@@ -101,8 +103,7 @@ void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600, m_player.get()));
 		m_objTimer = 1;
 	}
-
-
+	
 	//int obj = rand() % 10 + 1;
 
 	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, 500));

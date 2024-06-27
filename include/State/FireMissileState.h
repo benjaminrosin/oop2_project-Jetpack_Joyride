@@ -1,7 +1,8 @@
 #pragma once
 #include "State/MissileAnimationState.h"
 
-class AlertMissileState : public MissileAnimationState
+
+class FireMissileState : public MissileAnimationState
 {
 public:
 	virtual void enter(Missile*) override;
@@ -9,5 +10,4 @@ public:
 	//virtual void move(float x) override;
 private:
 	float m_timer = 0;
-	bool m_firstTime = true;
 };

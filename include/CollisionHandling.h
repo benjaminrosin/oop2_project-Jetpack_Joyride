@@ -16,7 +16,7 @@ private:
 	static HitFunctionPtr lookup(const std::type_index&);
 	static HitMap initializeCollisionMap();
 	static bool coinCollision(Player&, Object&);
-	//static bool missileCollision(Player&, Object&);
+	static bool missileCollision(Player&, Object&);
 	static bool laserCollision(Player&, Object&);
 	static bool scientistCollision(Player&, Object&);
 	static bool shieldCollision(Player&, Object&);

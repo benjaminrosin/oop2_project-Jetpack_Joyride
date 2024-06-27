@@ -2,7 +2,7 @@
 //#include <runtime_error>
 #include <stdexcept>
 #include "Coin.h"
-//#include "Missile.h"
+#include "Objects/Missile.h"
 #include "Objects/Laser.h"
 #include "Scientists.h"
 #include "Gshield.h"
@@ -39,7 +39,7 @@ HitMap CollisionHandling::initializeCollisionMap()
 {
     static HitMap colideMap;
     colideMap[typeid(Coin)] = &coinCollision;
-    //colideMap[typeid(Missile)] = &missileCollision;
+    colideMap[typeid(Missile)] = &missileCollision;
     colideMap[typeid(Laser)] = &laserCollision;
     colideMap[typeid(Scientists)] = &scientistCollision;
     colideMap[typeid(Gshield)] = &shieldCollision;
@@ -53,6 +53,12 @@ HitMap CollisionHandling::initializeCollisionMap()
 bool CollisionHandling::coinCollision(Player& player, Object& obj)
 {
     Controller::addToCoins();
+    return true;
+}
+
+bool CollisionHandling::missileCollision(Player& player, Object& obj)
+{
+    std::cout << "missile\n";
     return true;
 }
 

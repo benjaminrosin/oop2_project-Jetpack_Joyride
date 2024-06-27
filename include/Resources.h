@@ -35,7 +35,7 @@ enum object_code {
 const sf::Vector2f SCREEN_SIZE(1200, 791);
 
 const int NUM_OF_SHAPES_COINS = 3;
-
+const int MISSILE_SPEED = 300;
 const float ANIMATION_RATE = 0.1;
 const int NUM_OF_DATA = 2;
 const int MARGIN = SCREEN_SIZE.y/12;
@@ -82,7 +82,7 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "speedGift.png",
 "Piggy.png",
 "JetpackWalking.png",
-"SuperPowerTank.png",
+"SuperPowerTank2.png",
 "MissileWarning.png",
 "MissileIncoming.png"
 

@@ -10,16 +10,16 @@ class Missile:public MovingGameObjects {
 public:
 
 	Missile(int, int, Player*);
-	//virtual ~Missile();
 	virtual void move(sf::Vector2f v2f) override { MovingGameObjects::move(v2f); };
-	virtual void move(float x) override { MovingGameObjects::move(x); };
+	virtual void move(float x) override;
 	void setState(std::unique_ptr<MissileAnimationState>);
-	void updateState(float);
+	//void update(float);
+	void setPositionByPlayer();
 	
 private:
 	static bool m_registered;
-	//sf::Sprite m_firstAlert;
-	//sf::Sprite m_SecondAlert;
 	std::unique_ptr<MissileAnimationState> m_currState;
-	int m_heightPlayer;
+	Player* m_p2player;
+	float m_timer = 0;
+	bool m_firstTime = true;
 };

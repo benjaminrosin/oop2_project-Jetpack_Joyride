@@ -16,7 +16,7 @@ Resources::Resources()
 	appendFrameIntRects("walking berry", 0, { 112, 150 }, 3);
 	appendFrameIntRects("jumping berry", 0, { 112, 150 }, 1, 3);
 	appendFrameIntRects("walking tank", 37, { 230, 174 }, 2);
-	appendFrameIntRects("jumping tank", 0, { 200, 216 }, 1);
+	appendFrameIntRects("jumping tank", 37, { 230, 174 }, 1, 2);
 
 	appendFrameIntRects("Laser", 0, { 101, 420 }, 4);
 //	appendFrameIntRects("Beam", 0, { 102, 250 }, 4);
@@ -28,8 +28,8 @@ Resources::Resources()
 	appendFrameIntRects("Gspeed", 0, { 80, 60 }, 1);
 	appendFrameIntRects("Scientists", 10, { 60, 87 }, 3);
 	appendFrameIntRects("Missile", 0, {100, 64}, 7);
-	appendFrameIntRects("FirstWarning", 0, { 55, 88 }, 4);
-	appendFrameIntRects("SecondWarning", 0, { 99, 100 },2);
+	appendFrameIntRects("FirstWarning", 0, { 65, 100 }, 4);
+	appendFrameIntRects("SecondWarning", 0, { 100, 100 },2);
 
 	
 
@@ -96,7 +96,7 @@ void Resources::appendFrameIntRects(std::string key, int middleGap, sf::Vector2i
 
 	if (loc > 0) {
 		start.x += size.x * loc;
-		start.x += middleGap * (loc-1);
+		start.x += middleGap * loc;
 	}
 
 	auto Loc = [&]() {
