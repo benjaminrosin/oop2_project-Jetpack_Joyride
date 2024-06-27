@@ -1,12 +1,12 @@
 #pragma once
-#include "Command/CommandInterface.h"
+#include "Command/MenuCommand.h"
 
 class Menu;
 
-class StartGameCommand : public CommandInterface
+class StartGameCommand : public MenuCommand
 {
 public:
-	using CommandInterface::CommandInterface;
+	using MenuCommand::MenuCommand;
 	//StartGameCommand(Menu&);
 	virtual void axecute() override;
 private:

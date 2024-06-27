@@ -1,13 +1,13 @@
 #pragma once
-#include "Command/MenuCommandInterface.h"
+#include "Command/BoardCommand.h"
 
-class Menu;
+class Controller;
 
-class BackCommand : public MenuCommandInterface
+class BackCommand : public BoardCommand
 {
 public:
-	BackCommand();
+	BackCommand(Controller*, int);
 	virtual void axecute() override;
 private:
-	Menu& m_menu;
+
 };

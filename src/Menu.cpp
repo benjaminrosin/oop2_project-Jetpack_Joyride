@@ -96,8 +96,8 @@ int Menu::handleClick(sf::Vector2f v2f) const
 
 void Menu::newGame()
 {
-	m_controller = new Controller();
-	m_controller->run(m_wind);
+	m_controller = new Controller(m_wind);
+	m_controller->run();
 	delete m_controller;
 	m_controller = nullptr;
 }

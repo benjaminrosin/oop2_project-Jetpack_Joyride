@@ -1,13 +1,13 @@
 #pragma once
-#include "Command/MenuCommandInterface.h"
+#include "Command/BoardCommand.h"
 
-class Menu;
+class Controller;
 
-class MuteCommand : public MenuCommandInterface
+class MuteCommand : public BoardCommand
 {
 public:
-	MuteCommand();
+	MuteCommand(Controller*, int);
 	virtual void axecute() override;
 private:
-	Menu& m_menu;
+	bool m_muted = false;
 };

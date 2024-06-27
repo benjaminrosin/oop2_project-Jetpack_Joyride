@@ -1,11 +1,12 @@
 #pragma once
-#include "Command/MenuCommandInterface.h"
+#include "Command/BoardCommand.h"
 
+class Controller;
 
-class PauseCommand : public MenuCommandInterface
+class PauseCommand : public BoardCommand
 {
 public:
-	PauseCommand();
+	PauseCommand(Controller*, int);
 	virtual void axecute() override;
 private:
 	

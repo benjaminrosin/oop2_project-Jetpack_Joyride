@@ -8,23 +8,20 @@
 
 class Player;
 
-
-//template <typename T>
-//typedef std::map<int, std::unique_ptr<T>(*)(int, int)> ObjMap;
-
 template <typename T>
 class ObjectFactory
 {
 public:
-	typedef std::function<std::list<std::unique_ptr<T>>(int, int, Player*)> func;
+	typedef std::function<std::list<std::unique_ptr<T>>(int, int, Player*)> func3;
+	typedef std::function<std::list<std::unique_ptr<T>>(int, int)> func2;
 	//typedef (std::list<std::unique_ptr<T>>(*)(int, int, Player*)) func;
-	typedef std::map<int, func> ObjMap;
+	typedef std::map<int, func3> ObjMap;
 
 	//static std::list<std::unique_ptr<T>> create(int);
-	static std::list<std::unique_ptr<T>>  create(int,int,int, Player*); //for debug
+	static std::list<std::unique_ptr<T>>  create(int, int, int, Player*); 
 
-	static bool registerIt(int, std::list<std::unique_ptr<T>>(*)(int, int));
-	static bool registerIt(int, func);
+	static bool registerIt(int, func2);
+	static bool registerIt(int, func3);
 
 private:
 	static ObjMap& getMap();
@@ -61,14 +58,14 @@ std::list<std::unique_ptr<T>> ObjectFactory<T>::create(int index, int x, int y, 
 }
 
 template <typename T>
-bool ObjectFactory<T>::registerIt(int index, std::list<std::unique_ptr<T>>(*fu)(int, int))
+bool ObjectFactory<T>::registerIt(int index, func2 fu)
 {
 	getMap().emplace(index, [fu](int col, int row, Player*) -> std::list<std::unique_ptr<T>> {return fu(col, row); });
 	return true;
 }
 
 template<typename T>
-bool ObjectFactory<T>::registerIt(int index, func fu)
+bool ObjectFactory<T>::registerIt(int index, func3 fu)
 {
 	getMap().emplace(index, fu);
 	return true;

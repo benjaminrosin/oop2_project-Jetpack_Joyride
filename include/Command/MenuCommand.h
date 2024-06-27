@@ -3,10 +3,10 @@
 
 class Menu;
 
-class CommandInterface
+class MenuCommand
 {
 public:
-	CommandInterface(Menu*, std::string);
+	MenuCommand(Menu*, std::string);
 
 	virtual void axecute() = 0;
 	//void setSptire(sf::Vector2f, int);
