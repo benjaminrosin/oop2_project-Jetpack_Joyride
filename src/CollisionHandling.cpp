@@ -5,6 +5,7 @@
 #include "Objects/Missile.h"
 #include "Objects/Laser.h"
 #include "Scientists.h"
+#include "Objects/Light.h"
 #include "Gshield.h"
 #include "Gspeed.h"
 #include "Gmoney.h"
@@ -46,6 +47,7 @@ HitMap CollisionHandling::initializeCollisionMap()
     colideMap[typeid(Gspeed)] = &speedCollision;
     colideMap[typeid(Gmoney)] = &moneyCollision;
     colideMap[typeid(Gpower)] = &powerCollision;
+    colideMap[typeid(Light)] = &lightCollision;
 
     return colideMap;
 }
@@ -107,6 +109,11 @@ bool CollisionHandling::powerCollision(Player& player, Object&)
     player.setState(std::make_unique<TankJumpState>());
     
     return true;
+}
+
+bool CollisionHandling::lightCollision(Player&, Object&)
+{
+    return false;
 }
 
 //bool CollisionHandling::pixelPerfectCollision(const sf::Sprite& player, const sf::Sprite& laser)

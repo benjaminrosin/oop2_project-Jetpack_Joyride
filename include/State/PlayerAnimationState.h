@@ -8,6 +8,7 @@ class PlayerAnimationState {
 public:
     virtual void enter(Player*) = 0;
     virtual void update(Player*, float) = 0;
+    virtual void die(Player*);
     //virtual void draw(Player*, sf::RenderWindow&);
    /// virtual void jump(Player*) = 0;
     //virtual void walk(Player*) = 0;

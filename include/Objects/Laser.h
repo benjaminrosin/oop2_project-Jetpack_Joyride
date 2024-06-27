@@ -27,5 +27,5 @@ private:
 	int m_angle;
 	sf::RectangleShape m_actual_colision;
 
-	static bool m_register;
+	static bool m_registered;
 };

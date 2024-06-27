@@ -16,11 +16,13 @@ Resources::Resources()
 	appendFrameIntRects("walking berry", 0, { 112, 150 }, 3);
 	appendFrameIntRects("jumping berry", 0, { 112, 150 }, 1, 3);
 	appendFrameIntRects("walking tank", 37, { 230, 174 }, 2);
-	appendFrameIntRects("jumping tank", 37, { 230, 174 }, 1, 2);
+	appendFrameIntRects("jumping tank", 0, { 230, 174 }, 1);
+	appendFrameIntRects("Dead", 0, { 160, 150 }, 5);
 
 	appendFrameIntRects("Laser", 0, { 101, 420 }, 4);
 //	appendFrameIntRects("Beam", 0, { 102, 250 }, 4);
 
+	appendFrameIntRects("Light", 0, { 300, 236 }, 6);
 	appendFrameIntRects("coin", 0, { 40, 40 }, 8);
 	appendFrameIntRects("Gmoney", 0, { 100, 91 }, 1);
 	appendFrameIntRects("Gpower", 0, { 59, 60 }, 1);

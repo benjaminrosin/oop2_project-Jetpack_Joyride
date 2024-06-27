@@ -20,7 +20,7 @@ private:
 	sf::RenderWindow m_wind;
 	Controller* m_controller;
 	std::vector<std::unique_ptr<CommandInterface>> m_buttons;
-
+	sf::Sprite m_logo;
 	int handleClick(sf::Vector2f) const;
 	//void drawButtons(sf::RenderWindow&) const;
 
