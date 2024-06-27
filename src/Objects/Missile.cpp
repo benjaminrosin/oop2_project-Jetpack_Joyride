@@ -1,15 +1,16 @@
 #include "Objects/Missile.h"
 #include "Factory/ObjectFactory.h"
 #include "State/AlertMissileState.h"
+#include "Player.h"
 
 bool Missile::m_registered = ObjectFactory<MovingGameObjects>::registerIt(FirstAlert_t,
-	[](int col, int row) -> std::list<std::unique_ptr<MovingGameObjects>> {
+	[](int col, int row, Player* p) -> std::list<std::unique_ptr<MovingGameObjects>> {
 		std::list<std::unique_ptr<MovingGameObjects>> lst;
-		lst.push_back(std::make_unique<Missile>(col, row));
+		lst.push_back(std::make_unique<Missile>(col, row, p));
 		return lst; });
 
 
-Missile::Missile(int col, int row)
+Missile::Missile(int col, int row, Player* p)
 	:MovingGameObjects(FirstAlert_t, sf::Vector2f(col, row), "FirstWarning")
 {
 	//setState(std::make_unique<AlertMissileState>());

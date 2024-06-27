@@ -4,10 +4,12 @@
 #include "MovingGameObjects.h"
 #include "State/MissileAnimationState.h"
 
+class Player;
+
 class Missile:public MovingGameObjects {
 public:
 
-	Missile(int, int);
+	Missile(int, int, Player*);
 	//virtual ~Missile();
 	virtual void move(sf::Vector2f v2f) override { MovingGameObjects::move(v2f); };
 	virtual void move(float x) override { MovingGameObjects::move(x); };
