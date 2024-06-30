@@ -21,6 +21,8 @@ private:
 	Controller* m_controller;
 	std::vector<std::unique_ptr<MenuCommand>> m_buttons;
 	sf::Sprite m_logo;
+	sf::Sprite m_scoreBoardSign;
+	sf::Text m_text;
 	std::map<int, std::string, std::greater<int>> m_scoreBoard;
 	
 	int handleClick(sf::Vector2f) const;

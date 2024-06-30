@@ -5,6 +5,8 @@
 MenuCommand::MenuCommand(Menu* menu, std::string name)
 	:m_menu(menu), m_name(name, *Resources::getInstance().getFont(), 40)
 {
+	m_name.setOutlineColor(sf::Color::Black);
+	m_name.setOutlineThickness(2);
 	m_sp.setTexture(*Resources::getInstance().getTextureButtons(0));
 }
 

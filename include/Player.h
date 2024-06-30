@@ -21,7 +21,7 @@ public:
 	void playerDie();
 	bool avoidCollisions()const;
 	void setAvoidStatus(bool);
-	//virtual void draw(sf::RenderWindow&)const {};
+	virtual void draw(sf::RenderWindow&)const override;
 	//virtual sf::Vector2f getPosition() const {};
 	virtual void move(sf::Vector2f v2f) override { MovingGameObjects::move(v2f); };
 	virtual void move(float x) override { MovingGameObjects::move(x); };

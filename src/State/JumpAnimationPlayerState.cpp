@@ -1,9 +1,18 @@
-
+#include "Resources.h"
 #include "State/JumpAnimationPlayerState.h"
 #include "Player.h"
 
 void JumpAnimationPlayerState::enter(Player* player)
 {
+    m_sp.setTexture(*Resources::getInstance().getTextureObject(Flame_t));
+    m_frames = Resources::getInstance().getIntRect("Flame");
+
+    m_sp.setTextureRect(m_frames->at(0));
+    m_texutre_timer = 0;
+    m_curr_frame = -1;
+
+    animate(ANIMATION_RATE);
+
     // Set jump animation frames
     //m_currentFrame = 0;
     //m_frameTime = 0.1f;  // זמן בין פריימים באנימציית הקפיצה
@@ -26,6 +35,7 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
 
     //player->setSpriteRect(m_jumpFrame);
     player->animate(deltaTime);
+    animate(deltaTime);
     // Update jump movement
     if ((player->getPosition().y - player->getHeight() + m_jumpVelocity * deltaTime) < TOP_SCREEN_LIMIT) //add texture height
     {
@@ -49,11 +59,29 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
  //   }
 }
 
-void JumpAnimationPlayerState::draw(Player* player, sf::RenderWindow& wind)
+void JumpAnimationPlayerState::draw(const Player* player, sf::RenderWindow& wind)
 {
-    m_sp.setPosition(player->getPosition());
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        auto pos = player->getPosition();
+        pos.x += getXOffset();
+        pos.y -= 15;
+        m_sp.setPosition(pos);
 
-    wind.draw(m_sp);
+        wind.draw(m_sp);
+    }
+
+}
+
+void JumpAnimationPlayerState::animate(float time)
+{
+    m_texutre_timer += time;
+
+    if (m_texutre_timer >= ANIMATION_RATE)
+    {
+        m_texutre_timer -= ANIMATION_RATE;
+        m_curr_frame = (m_curr_frame + 1) % m_frames->size();
+        m_sp.setTextureRect(m_frames->at(m_curr_frame));
+    }
 }
 
 //void JumpAnimationPlayerState::draw(Player* player, sf::RenderWindow& wind)

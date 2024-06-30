@@ -16,12 +16,13 @@ Resources::Resources()
 	appendFrameIntRects("walking berry", 0, { 112, 150 }, 3);
 	appendFrameIntRects("jumping berry", 0, { 112, 150 }, 1, 3);
 	appendFrameIntRects("walking tank", 37, { 230, 174 }, 2);
-	appendFrameIntRects("jumping tank", 0, { 230, 174 }, 1);
+	appendFrameIntRects("jumping tank", 37, { 230, 174 }, 1, 2);
 	appendFrameIntRects("Fall", 0, { 160, 150 }, 4);
 	appendFrameIntRects("Dead", 0, { 160, 150 }, 1, 4);
 
 	appendFrameIntRects("Laser", 0, { 101, 420 }, 4);
 //	appendFrameIntRects("Beam", 0, { 102, 250 }, 4);
+
 
 	appendFrameIntRects("Light", 0, { 300, 236 }, 6);
 	appendFrameIntRects("coin", 0, { 40, 40 }, 8);
@@ -33,6 +34,7 @@ Resources::Resources()
 	appendFrameIntRects("Missile", 0, {100, 64}, 7);
 	appendFrameIntRects("FirstWarning", 0, { 65, 100 }, 4);
 	appendFrameIntRects("SecondWarning", 0, { 100, 100 },2);
+	appendFrameIntRects("Flame", 0, { 40, 70 }, 6);
 
 	
 

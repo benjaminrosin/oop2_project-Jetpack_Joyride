@@ -74,6 +74,12 @@ void Player::setAvoidStatus(bool val)
 	m_avoidCollisions = val;
 }
 
+void Player::draw(sf::RenderWindow& wind) const
+{
+	Object::draw(wind);
+	m_currentState->draw(this, wind);
+}
+
 void Player::setPosition(sf::Vector2f pos)
 {
 	m_sp.setPosition(pos);

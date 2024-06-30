@@ -1,5 +1,7 @@
 #include "Menu.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <exception>
 #include "Resources.h"
 #include "Command/StartGameCommand.h"
@@ -10,9 +12,11 @@ Menu::Menu()
 {
 	m_background.setTexture(Resources::getInstance().getBackground(0));
 	m_background.setSize(SCREEN_SIZE);
+
 	m_logo.setTexture(*Resources::getInstance().getBackground(3));
 	m_logo.setOrigin(m_logo.getGlobalBounds().width / 2, m_logo.getGlobalBounds().height / 2);
 	m_logo.setPosition(400, SCREEN_SIZE.y/2);
+
 	m_controller = nullptr;
 
 	m_buttons.emplace_back(std::make_unique<StartGameCommand>(this, "play"));
@@ -26,6 +30,40 @@ Menu::Menu()
 		m_buttons[i]->setPosition(pos);
 	}
 
+	auto file = std::ifstream("Score board.txt");
+
+	if (!file.is_open())
+	{
+		throw std::runtime_error("couldn't load score file");
+	}
+
+	std::string line;
+	int score;
+
+	for (int i = 0; i < 3; i++){
+		std::getline(file, line);
+		std::istringstream iss(line);
+		if ((iss >> score))
+		{
+			std::getline(iss, line);
+			m_scoreBoard.emplace(score, line);
+		}
+		else
+		{
+			//throw std::runtime_error("format isn't seported");
+		}
+	}
+
+	m_scoreBoardSign.setTexture(*Resources::getInstance().getTextureButtons(0));
+	m_scoreBoardSign.setOrigin(sf::Vector2f(m_scoreBoardSign.getGlobalBounds().width / 2, m_scoreBoardSign.getGlobalBounds().height / 2));
+	m_scoreBoardSign.setScale(sf::Vector2f(2, 1));
+	
+	m_text.setCharacterSize(30);
+	m_text.setFont(*Resources::getInstance().getFont());
+	m_text.setFillColor(sf::Color::White);
+	m_text.setOutlineColor(sf::Color::Black);
+	m_text.setOutlineThickness(2);
+	
 }
 
 Menu::~Menu()
@@ -105,6 +143,38 @@ void Menu::newGame()
 void Menu::highScore()
 {
 	std::cout << "high score\n";
+	m_wind.clear();
+	m_wind.draw(m_background);
+
+	auto pos = sf::Vector2f(SCREEN_SIZE.x / 2, 200);
+
+	for (auto& score : m_scoreBoard)
+	{
+		pos.y += m_scoreBoardSign.getGlobalBounds().height;
+		m_scoreBoardSign.setPosition(pos);
+		m_wind.draw(m_scoreBoardSign);
+		m_text.setString(std::to_string(score.first) + ' ' + score.second);
+		m_text.setOrigin(m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().height / 2);
+		m_text.setPosition(m_scoreBoardSign.getPosition());
+		m_wind.draw(m_text);
+	}
+
+	m_wind.display();
+
+	while (true)
+	{
+		if (auto event = sf::Event(); m_wind.waitEvent(event))
+		{
+			switch (event.type)
+			{
+			case sf::Event::Closed:
+				m_wind.close();
+				return;
+			case sf::Event::MouseButtonReleased:
+				return;
+			}
+		}
+	}
 }
 
 void Menu::showHelp()
