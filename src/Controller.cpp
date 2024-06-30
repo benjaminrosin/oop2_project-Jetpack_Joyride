@@ -115,9 +115,9 @@ void Controller::drawData()
 	m_wind.setView(currView);
 }
 
-void Controller::addToCoins()
+void Controller::addToCoins(int value)
 {
-	m_coins ++;
+	m_coins += value;
 }
 
 void Controller::setVolume(int num)

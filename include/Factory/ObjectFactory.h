@@ -23,6 +23,8 @@ public:
 	static bool registerIt(int, func2);
 	static bool registerIt(int, func3);
 
+	static int getSize() { return getMap().size(); };
+
 private:
 	static ObjMap& getMap();
 };
@@ -79,7 +81,11 @@ std::map<int, std::function<std::list<std::unique_ptr<T>>(int, int, Player*)>>& 
 	return map;
 }
 
-
+//template<typename T>
+//int ObjectFactory<T>::getSize() const
+//{
+//	return ;
+//}
 
 
 //template<typename T>

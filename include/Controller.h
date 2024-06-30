@@ -9,7 +9,7 @@ class Controller {
 public:
 	Controller(sf::RenderWindow&);
 	void run();
-	static void addToCoins();
+	static void addToCoins(int = 1);
 	void setVolume(int);
 	void pause();
 	void backToManu();

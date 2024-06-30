@@ -94,9 +94,11 @@ bool CollisionHandling::speedCollision(Player&, Object&)
     return true;
 }
 
-bool CollisionHandling::moneyCollision(Player&, Object&)
+bool CollisionHandling::moneyCollision(Player&, Object& obj)
 {
-    //piggy with money
+    Gmoney& gift = dynamic_cast<Gmoney&> (obj);
+
+    Controller::addToCoins(gift.getValue());
     return true;
 }
 
