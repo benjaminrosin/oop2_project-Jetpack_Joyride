@@ -49,6 +49,13 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
  //   }
 }
 
+void JumpAnimationPlayerState::draw(Player* player, sf::RenderWindow& wind)
+{
+    m_sp.setPosition(player->getPosition());
+
+    wind.draw(m_sp);
+}
+
 //void JumpAnimationPlayerState::draw(Player* player, sf::RenderWindow& wind)
 //{
 //    wind.draw(player->getDrawable());

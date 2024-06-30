@@ -25,4 +25,4 @@ std::list<std::unique_ptr<Coin>> createLine(int, int);
 std::list<std::unique_ptr<Coin>> createDiagonal(int, int);
 std::list<std::unique_ptr<Coin>> createWave(int, int);
 
-std::list<std::unique_ptr<StaticGameObjects>> convertToBaseList(std::list<std::unique_ptr<Coin>>&&);
+std::list<std::unique_ptr<StaticGameObjects>> convertCoinToStaticList(std::list<std::unique_ptr<Coin>>&&);

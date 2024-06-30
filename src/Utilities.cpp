@@ -73,7 +73,7 @@ std::list<std::unique_ptr<Coin>> createWave(int col, int row)
 	return lst;
 }
 
-std::list<std::unique_ptr<StaticGameObjects>> convertToBaseList(std::list<std::unique_ptr<Coin>>&& coinList) {
+std::list<std::unique_ptr<StaticGameObjects>> convertCoinToStaticList(std::list<std::unique_ptr<Coin>>&& coinList) {
 	std::list<std::unique_ptr<StaticGameObjects>> baseList;
 	for (auto& coin : coinList) {
 		baseList.push_back(std::move(coin));
