@@ -62,6 +62,7 @@ bool CollisionHandling::coinCollision(Player& player, Object& obj)
 bool CollisionHandling::missileCollision(Player& player, Object& obj)
 {
     std::cout << "missile\n";
+    player.playerDie();
     return true;
 }
 

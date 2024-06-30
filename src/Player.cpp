@@ -64,6 +64,11 @@ void Player::playerDie()
 	m_currentState->die(this);
 }
 
+void Player::setPosition(sf::Vector2f pos)
+{
+	m_sp.setPosition(pos);
+}
+
 
 
 
