@@ -7,6 +7,8 @@ void RegularJumpState::enter(Player* player)
 {
 	player->setNewSprite("jumping berry", Player_t);
 
+
+
 	JumpAnimationPlayerState::enter(player);
 }
 

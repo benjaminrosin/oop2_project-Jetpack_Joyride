@@ -10,7 +10,7 @@ bool Coin::m_registered =
 	(ObjectFactory<Coin>::registerIt(2, createWave)) &&
 	ObjectFactory<StaticGameObjects>::registerIt(Coin_t,
 	[](int col, int row) -> std::list<std::unique_ptr<StaticGameObjects>> {
-		return convertToBaseList(ObjectFactory<Coin>::create(rand() % ObjectFactory<Coin>::getSize() , col, row, nullptr)); });
+		return convertCoinToStaticList(ObjectFactory<Coin>::create(rand() % ObjectFactory<Coin>::getSize() , col, row, nullptr)); });
 
 
 Coin::Coin(int col, int row)
