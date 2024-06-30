@@ -9,15 +9,15 @@ void DeadPlayerState::enter(Player* player)
 
 void DeadPlayerState::update(Player* player, float deltaTime)
 {
-	player->animate(deltaTime);
     player->move(sf::Vector2f(0.0f, m_jumpVelocity * deltaTime));
     m_jumpVelocity += m_gravity * deltaTime;
+	player->animate(deltaTime);
+
+
 	if (player->getPosition().y > DEFULT_START_POINT)
 	{
 		player->setNewSprite("Dead", Dead_t);
-		player->setPosition(sf::Vector2f(player->getPosition().x, DEFULT_START_POINT ));
-		std::cout << player->getPosition().x << " " << player->getPosition().y << '\n';
-		
+		player->setPosition(sf::Vector2f(player->getPosition().x, DEFULT_START_POINT ));		
 	}
 	
 }
