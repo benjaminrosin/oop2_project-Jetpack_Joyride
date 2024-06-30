@@ -15,11 +15,13 @@ public:
 	void setState(std::unique_ptr<MissileAnimationState>);
 	//void update(float);
 	void setPositionByPlayer();
-	
+	virtual void playSound(const sf::SoundBuffer*);
+
 private:
 	static bool m_registered;
 	std::unique_ptr<MissileAnimationState> m_currState;
 	Player* m_p2player;
 	float m_timer = 0;
 	bool m_firstTime = true;
+	sf::Sound m_currSound;
 };

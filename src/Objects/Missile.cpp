@@ -18,6 +18,7 @@ Missile::Missile(int col, int row, Player* p)
 
 {
 	setState(std::make_unique<AlertMissileState>());
+	m_currState->enter(this);
 }
 
 
@@ -42,4 +43,10 @@ void Missile::setPositionByPlayer()
 	int y = m_p2player->getPosition().y;
 
 	m_sp.setPosition(sf::Vector2f(x, y));
+}
+
+void Missile::playSound(const sf::SoundBuffer* sound)
+{
+	m_currSound.setBuffer(*sound);
+	m_currSound.play();
 }

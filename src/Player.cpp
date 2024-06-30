@@ -74,11 +74,6 @@ void Player::setAvoidStatus(bool val)
 	m_avoidCollisions = val;
 }
 
-void Player::setPosition(sf::Vector2f pos)
-{
-	m_sp.setPosition(pos);
-}
-
 
 
 

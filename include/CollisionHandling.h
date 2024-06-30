@@ -3,6 +3,7 @@
 #include "Object.h"
 #include <map>
 #include <typeindex>
+#include <SFML/Audio.hpp>
 
 typedef bool (*HitFunctionPtr)(Player&, Object&);//maybe we need to erase object
 typedef std::map<std::type_index, HitFunctionPtr> HitMap;
@@ -24,6 +25,12 @@ private:
 	static bool moneyCollision(Player&, Object&);
 	static bool powerCollision(Player&, Object&);
 	static bool lightCollision(Player&, Object&);
+
+
+	static void play_sound(const sf::SoundBuffer*);
+
+	static sf::Sound m_currSound;
+
 	//static bool pixelPerfectCollision(const sf::Sprite&, const sf::Sprite&);
 	//static std::vector<uint8_t> createBitMask(const sf::Texture& texture) 
 

@@ -37,3 +37,13 @@ configure_file ("speedGift.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("back.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("mute.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("pause.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
+configure_file ("JetpackJoyrideMusic.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("coin.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("getPowerSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("hitSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("MissileAlarm.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("MissileLaunch.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("ZapperSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Piggy.wav" ${CMAKE_BINARY_DIR} COPYONLY)

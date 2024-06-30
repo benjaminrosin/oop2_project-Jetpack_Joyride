@@ -7,6 +7,8 @@
 #include "Command/MuteCommand.h"
 #include "Command/PauseCommand.h"
 #include "Command/BackCommand.h"
+#include <SFML/Audio.hpp>
+
 
 int Controller::m_coins = 0;
 
@@ -15,7 +17,9 @@ Controller::Controller(sf::RenderWindow& wind)
 {
 
 	//reading score board from file
-
+	m_music.openFromFile("JetpackJoyrideMusic.wav");
+	m_music.setVolume(MUSIC_VOLUME);
+	m_music.setLoop(true);
 
 	resetSFMLComponents();
 
@@ -29,10 +33,12 @@ Controller::Controller(sf::RenderWindow& wind)
 		m_buttons[i]->setPosition(pos);
 	}
 	m_clock.restart();
+
 }
 
 void Controller::run() 
 {
+	m_music.play();
 	//m_background.setTexture(*Resources::getInstance().getBackground(1));
 	while (m_wind.isOpen() && m_board.alive() && !m_backToMenu)
 	{
@@ -122,7 +128,7 @@ void Controller::addToCoins(int value)
 
 void Controller::setVolume(int num)
 {
-	//m_music.setVolume(num);
+	m_music.setVolume(num);
 }
 
 void Controller::pause()

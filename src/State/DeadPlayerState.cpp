@@ -16,10 +16,10 @@ void DeadPlayerState::update(Player* player, float deltaTime)
 	if (player->getPosition().y > DEFULT_START_POINT)
 	{
 		player->setNewSprite("Dead", Dead_t);
-		//player->setPosition(sf::Vector2f(player->getPosition().x, DEFULT_START_POINT ));
 		player->move(sf::Vector2f(m_jumpVelocity * deltaTime, 0));
-		if (m_jumpVelocity >= 0) {
+		if (m_jumpVelocity >= 1) {
 			m_jumpVelocity -= m_gravity * deltaTime;
+
 		}
 	}
 	else {

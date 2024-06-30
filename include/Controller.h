@@ -1,5 +1,6 @@
 # pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Command/BoardCommand.h"
 #include "Board.h"
 #include <string>
@@ -22,6 +23,7 @@ private:
 	//sf::RectangleShape m_buttonsGame[NUM_OF_BUTTONS -1];
 	std::vector<std::unique_ptr<BoardCommand>> m_buttons;
 	sf::RenderWindow& m_wind;
+	sf::Music m_music;
 
 	//sf::Music m_music;
 

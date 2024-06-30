@@ -17,6 +17,11 @@ enum object_code {
 
 };
 
+enum sound_code {
+	CoinSound_t, PowerSound_t, MissileHitSound_t, 
+	MissileAlarmSound_t, MissileLaunchSound_t, LaserHitSound_t, PiggySound_t
+};
+
 //const sf::IntRect BLOCKING_RECT[] = {
 //	sf::IntRect(0, 0, 112.5, 150),	//player
 //	sf::IntRect(0, 0, 67, 87),		//sc
@@ -33,6 +38,8 @@ enum object_code {
 //};
 
 const sf::Vector2f SCREEN_SIZE(1200, 791);
+
+const int MUSIC_VOLUME = 10;
 
 const int NUM_OF_SHAPES_COINS = 3;
 const int MISSILE_SPEED = 300;
@@ -92,16 +99,17 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 
 const int NUM_OF_GIFTS = 4;
 
-//const int NUM_OF_SOUNDES = 7;
-//const std::string SOUND_FILE_NAME[NUM_OF_SOUNDES] = {
-//"success.ogg",
-//"loss.ogg",
-//"bite.ogg",
-//"door open.ogg",
-//"gift.ogg",
-//"collect key.ogg",
-//"door collision.ogg"
-//};
+const int NUM_OF_SOUNDES = 7;
+const std::string m_SoundNames[NUM_OF_SOUNDES] = {
+"coin.wav",
+"getPowerSound.wav",
+"hitSound.wav",
+"MissileAlarm.wav",
+"MissileLaunch.wav",
+"ZapperSound.wav",
+"Piggy.wav"
+
+};
 
 const std::string FONT_FILE_NAME = "New Athletic M54.ttf";//LoveDays-2v7Oe.ttf";
 
@@ -119,6 +127,8 @@ public:
 	std::vector<sf::IntRect>* getIntRect(std::string) const;
 	//sf::SoundBuffer* getSoundBuffer(int);
 	const sf::Font* getFont() const;
+	sf::SoundBuffer* getSoundBuffer(int);
+
 
 
 private:
@@ -137,7 +147,8 @@ private:
 	sf::Texture m_objTexures[NUM_OF_OBJECTS];
 	//std::vector<sf::IntRect> m_intRect[NUM_OF_OBJECTS];
 	//sf::SoundBuffer m_sound_buffer[NUM_OF_SOUNDES];
-	sf::Font m_font;
+	sf::Font m_font;	
+	sf::SoundBuffer m_sound_buffer[NUM_OF_SOUNDES];
 
 	std::unordered_map<std::string, std::vector<sf::IntRect>> m_intRectMap;
 

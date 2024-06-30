@@ -2,10 +2,13 @@
 #include "State/FireMissileState.h"
 #include "objects/Missile.h"
 #include <iostream>
+#include <SFML/Audio.hpp>
 
 void AlertMissileState::enter(Missile* missile) 
 {
 	missile->setNewSprite("FirstWarning", FirstAlert_t);
+	missile->playSound(Resources::getInstance().getSoundBuffer(MissileAlarmSound_t));
+
 }
 
 void AlertMissileState::update(Missile* missile, float deltaTime)
@@ -26,6 +29,7 @@ void AlertMissileState::update(Missile* missile, float deltaTime)
 		missile->setState(std::make_unique<FireMissileState>());
 	}
 }
+
 //
 //void AlertMissileState::move(float deltaTime)
 //{
