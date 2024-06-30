@@ -40,7 +40,7 @@ Laser::Laser(int col, int row)
 	int state = rand() % 2;
 	((state) ? m_currState = std::make_unique<LaserStaticState>() : m_currState = std::make_unique<LaserRotatingState>());
 	//m_currState = std::make_unique<LaserRotatingState>();
-	m_currState->enter();
+	//m_currState->enter();
 }
 
 void Laser::move(float time)

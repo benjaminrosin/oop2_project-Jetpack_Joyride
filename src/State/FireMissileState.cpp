@@ -4,7 +4,7 @@
 #include <iostream>
 #include <SFML/Audio.hpp>
 
-void FireMissileState::enter(Missile* missile)
+FireMissileState::FireMissileState(Missile* missile)
 {
 	missile->setNewSprite("Missile", Misssile_t);
 	missile->playSound(Resources::getInstance().getSoundBuffer(MissileLaunchSound_t));

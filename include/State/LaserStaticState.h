@@ -6,10 +6,6 @@ class Laser;
 
 class LaserStaticState : public LaserState {
 public:
-	virtual void enter();
-	virtual void rotate(Laser*, float) override;
+	virtual void rotate(Laser*, float) override {};	//relevant only for rotating
 
-private:
-	//sf::Sprite m_beam;
-	//std::vector<sf::IntRect>* m_frames;
 };

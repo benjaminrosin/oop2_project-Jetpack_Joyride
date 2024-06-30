@@ -17,8 +17,8 @@ Missile::Missile(int col, int row, Player* p)
 	m_p2player(p)
 
 {
-	setState(std::make_unique<AlertMissileState>());
-	m_currState->enter(this);
+	setState(std::make_unique<AlertMissileState>(this));
+	//m_currState->enter(this);
 }
 
 
@@ -34,7 +34,7 @@ void Missile::move(float deltaTime)
 void Missile::setState(std::unique_ptr<MissileAnimationState> state)
 {
 	m_currState = std::move(state);
-	m_currState->enter(this);
+	//m_currState->enter(this);
 }
 
 void Missile::setPositionByPlayer()

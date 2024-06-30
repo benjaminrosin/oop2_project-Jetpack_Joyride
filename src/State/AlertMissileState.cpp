@@ -4,7 +4,7 @@
 #include <iostream>
 #include <SFML/Audio.hpp>
 
-void AlertMissileState::enter(Missile* missile) 
+AlertMissileState::AlertMissileState(Missile* missile)
 {
 	missile->setNewSprite("FirstWarning", FirstAlert_t);
 	missile->playSound(Resources::getInstance().getSoundBuffer(MissileAlarmSound_t));
@@ -26,7 +26,7 @@ void AlertMissileState::update(Missile* missile, float deltaTime)
 	if (m_timer > 3)
 	{
 		std::cout << "fire\n";
-		missile->setState(std::make_unique<FireMissileState>());
+		missile->setState(std::make_unique<FireMissileState>(missile));
 	}
 }
 

@@ -5,7 +5,8 @@
 class FireMissileState : public MissileAnimationState
 {
 public:
-	virtual void enter(Missile*) override;
+	FireMissileState(Missile*);
+	//virtual void enter(Missile*) override;
 	virtual void update(Missile*, float) override;
 	//virtual void move(float x) override;
 private:

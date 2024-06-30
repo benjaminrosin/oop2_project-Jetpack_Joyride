@@ -6,10 +6,10 @@ class Laser;
 
 class LaserRotatingState : public LaserState {
 public:
-	virtual void enter();
+	LaserRotatingState();
 	virtual void rotate(Laser*, float) override;
 
 private:
-	//sf::Sprite m_beam;
-	//std::vector<sf::IntRect>* m_frames;
+	int m_diraction;
+
 };
