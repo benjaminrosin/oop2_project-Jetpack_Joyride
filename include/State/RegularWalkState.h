@@ -3,7 +3,8 @@
 
 class RegularWalkState : public WalkAnimationPlayerState {
 public:
-    virtual void enter(Player*) override;
+    RegularWalkState(Player*);
+    //virtual void enter(Player*) override;
     virtual void update(Player*, float) override;
     virtual void die(Player*) override;
     //virtual void draw(Player*, sf::RenderWindow&) override;

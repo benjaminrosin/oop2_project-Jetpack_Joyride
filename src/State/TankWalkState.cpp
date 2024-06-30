@@ -2,7 +2,7 @@
 #include "State/TankJumpState.h"
 #include "Player.h"
 
-void TankWalkState::enter(Player* player)
+TankWalkState::TankWalkState(Player* player)
 {
 	player->setNewSprite("walking tank", Tank_t);
 }
@@ -13,11 +13,6 @@ void TankWalkState::update(Player* player, float delta_time)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		player->setState(std::make_unique<TankJumpState>());
+		player->setState(std::make_unique<TankJumpState>(player));
 	}
 }
-
-//void TankWalkState::jump(Player*)
-//{
-//
-//}

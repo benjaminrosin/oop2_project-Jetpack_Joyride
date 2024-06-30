@@ -6,7 +6,7 @@ class Player;
 class PlayerAnimationState {
 
 public:
-    virtual void enter(Player*) = 0;
+    //virtual void enter(Player*) = 0;
     virtual void update(Player*, float) = 0;
     virtual void die(Player*);
     virtual void draw(const Player*, sf::RenderWindow&) {}; //relevant only for jumping

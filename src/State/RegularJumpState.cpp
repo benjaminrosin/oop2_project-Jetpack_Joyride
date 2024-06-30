@@ -3,13 +3,12 @@
 #include "State/DeadPlayerState.h"
 #include "Player.h"
 
-void RegularJumpState::enter(Player* player)
+RegularJumpState::RegularJumpState(Player* player)
+    :JumpAnimationPlayerState(player)
 {
 	player->setNewSprite("jumping berry", Player_t);
 
-
-
-	JumpAnimationPlayerState::enter(player);
+	//JumpAnimationPlayerState::enter(player);
 }
 
 void RegularJumpState::update(Player* player, float delta_time)
@@ -22,16 +21,12 @@ void RegularJumpState::update(Player* player, float delta_time)
     }
     else if (player->getPosition().y > DEFULT_START_POINT)
     {
-        player->setState(std::make_unique<RegularWalkState>());
+        player->setState(std::make_unique<RegularWalkState>(player));
     }
 }
 
 void RegularJumpState::die(Player*player)
 {
-    player->setState(std::make_unique<DeadPlayerState>());
+    player->setState(std::make_unique<DeadPlayerState>(player));
 }
 
-//void RegularWalkState::jump(Player*)
-//{
-//
-//}

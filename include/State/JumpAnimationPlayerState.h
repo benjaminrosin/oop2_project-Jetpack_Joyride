@@ -7,7 +7,8 @@
 class Player;
 class JumpAnimationPlayerState : public PlayerAnimationState {
 public:
-    virtual void enter(Player*) = 0;
+    JumpAnimationPlayerState(Player*);
+    //virtual void enter(Player*) = 0;
     virtual void update(Player*, float) = 0;
     virtual void draw(const Player*, sf::RenderWindow&) override;
     void animate(float);

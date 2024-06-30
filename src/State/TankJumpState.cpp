@@ -2,11 +2,11 @@
 #include "State/TankJumpState.h"
 #include "Player.h"
 
-void TankJumpState::enter(Player* player)
+TankJumpState::TankJumpState(Player* player)
+    :JumpAnimationPlayerState(player)
 {
     player->setNewSprite("jumping tank", Tank_t);
 
-    JumpAnimationPlayerState::enter(player);
 }
 
 void TankJumpState::update(Player* player, float deltaTime)
@@ -19,7 +19,7 @@ void TankJumpState::update(Player* player, float deltaTime)
     }
     if (player->getPosition().y > DEFULT_START_POINT)
     {
-        player->setState(std::make_unique<TankWalkState>());
+        player->setState(std::make_unique<TankWalkState>(player));
     }
 }
 

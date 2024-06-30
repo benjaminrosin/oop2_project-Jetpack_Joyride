@@ -6,7 +6,7 @@
 class Player;
 class DeadPlayerState : public PlayerAnimationState {
 public:
-    virtual void enter(Player*) override;
+    DeadPlayerState(Player*);
     virtual void update(Player*, float) override;
 
 protected: 

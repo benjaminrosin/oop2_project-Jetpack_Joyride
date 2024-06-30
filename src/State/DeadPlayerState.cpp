@@ -2,7 +2,7 @@
 #include "Player.h"
 #include <iostream>
 
-void DeadPlayerState::enter(Player* player)
+DeadPlayerState::DeadPlayerState(Player* player)
 {
 	player->setAvoidStatus(true);
 	player->setNewSprite("Fall", Dead_t);

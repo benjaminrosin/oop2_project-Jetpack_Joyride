@@ -111,12 +111,10 @@ bool CollisionHandling::moneyCollision(Player&, Object& obj)
 
 bool CollisionHandling::powerCollision(Player& player, Object&)
 {
+    playSound(Resources::getInstance().getSoundBuffer(PowerSound_t));
     // adding random between all options
     
-
-    //change texture and jump?
-    playSound(Resources::getInstance().getSoundBuffer(PowerSound_t));
-    player.setState(std::make_unique<TankJumpState>());
+    player.setState(std::make_unique<TankJumpState>(&player));
     
     return true;
 }

@@ -3,7 +3,7 @@
 #include "State/DeadPlayerState.h"
 #include "Player.h"
 
-void RegularWalkState::enter(Player* player)
+RegularWalkState::RegularWalkState(Player* player)
 {
 	player->setNewSprite("walking berry", Player_t);
 }
@@ -14,16 +14,12 @@ void RegularWalkState::update(Player* player, float delta_time)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		player->setState(std::make_unique<RegularJumpState>());
+		player->setState(std::make_unique<RegularJumpState>(player));
 	}
 }
 
 void RegularWalkState::die(Player* player)
 {
-	player->setState(std::make_unique<DeadPlayerState>());
+	player->setState(std::make_unique<DeadPlayerState>(player));
 }
 
-//void RegularWalkState::jump(Player*)
-//{
-//
-//}

@@ -3,7 +3,8 @@
 
 class RegularJumpState : public JumpAnimationPlayerState {
 public:
-    virtual void enter(Player*) override;
+    RegularJumpState(Player*);
+    //virtual void enter(Player*) override;
     virtual void update(Player*, float) override;
     virtual int getXOffset()const override { return 15; };
     virtual void die(Player*) override;
