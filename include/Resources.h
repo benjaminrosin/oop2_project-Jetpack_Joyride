@@ -19,7 +19,8 @@ enum object_code {
 
 enum sound_code {
 	CoinSound_t, PowerSound_t, MissileHitSound_t, 
-	MissileAlarmSound_t, MissileLaunchSound_t, LaserHitSound_t, PiggySound_t
+	MissileAlarmSound_t, MissileLaunchSound_t, LaserHitSound_t, 
+	PiggySound_t, ShieldSpeed_t
 };
 
 //const sf::IntRect BLOCKING_RECT[] = {
@@ -100,7 +101,7 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 
 const int NUM_OF_GIFTS = 4;
 
-const int NUM_OF_SOUNDES = 7;
+const int NUM_OF_SOUNDES = 8;
 const std::string m_SoundNames[NUM_OF_SOUNDES] = {
 "coin.wav",
 "getPowerSound.wav",
@@ -108,7 +109,8 @@ const std::string m_SoundNames[NUM_OF_SOUNDES] = {
 "MissileAlarm.wav",
 "MissileLaunch.wav",
 "ZapperSound.wav",
-"Piggy.wav"
+"Piggy.wav",
+"ShieldSpeed.ogg"
 
 };
 

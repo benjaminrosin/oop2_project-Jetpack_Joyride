@@ -67,7 +67,6 @@ bool CollisionHandling::coinCollision(Player& player, Object& obj)
 
 bool CollisionHandling::missileCollision(Player& player, Object& obj)
 {
-    std::cout << "missile\n";
     playSound(Resources::getInstance().getSoundBuffer(MissileHitSound_t));
     player.playerDie();
     return true;
@@ -75,18 +74,10 @@ bool CollisionHandling::missileCollision(Player& player, Object& obj)
 
 bool CollisionHandling::laserCollision(Player& player, Object& obj)
 {
-
-    std::cout << "laser Collision\n";
     playSound(Resources::getInstance().getSoundBuffer(LaserHitSound_t));
     player.playerDie();
-    //player.setState(std::make_unique<DeadPlayerState>());
     return true;
-   /* if (Laser* laser = dynamic_cast <Laser*>(&obj))
-    {
-        return pixelPerfectCollision(player.getSprite(), laser->getSprite());
-    }*/
-    //else exep
-   
+  
 }
 
 bool CollisionHandling::scientistCollision(Player&, Object&)
@@ -97,12 +88,14 @@ bool CollisionHandling::scientistCollision(Player&, Object&)
 bool CollisionHandling::shieldCollision(Player&, Object&)
 {
     //change texture?
+    playSound(Resources::getInstance().getSoundBuffer(ShieldSpeed_t));
     return true;
 }
 
 bool CollisionHandling::speedCollision(Player&, Object&)
 {
     //more speed
+    playSound(Resources::getInstance().getSoundBuffer(ShieldSpeed_t));
     return true;
 }
 
@@ -139,38 +132,3 @@ void CollisionHandling::playSound(const sf::SoundBuffer* sound)
     m_currSound.play();
 }
 
-//bool CollisionHandling::pixelPerfectCollision(const sf::Sprite& player, const sf::Sprite& laser)
-//{
-//    sf::Image playerImage = player.getTexture()->copyToImage();
-//    sf::Image laserImage = laser.getTexture()->copyToImage();
-//
-//    sf::FloatRect playerRect = player.getGlobalBounds();
-//    sf::FloatRect laserRect = laser.getGlobalBounds();
-//
-//    // איזור חפיפה בין שני ה-sprites
-//    sf::FloatRect intersection;
-//    if (playerRect.intersects(laserRect, intersection)) {
-//        for (int x = intersection.left; x < intersection.left + intersection.width; x++) {
-//            for (int y = intersection.top; y < intersection.top + intersection.height; y++) {
-//                // קואורדינטות פיקסל יחסית לתמונה
-//                int xPlayer = x - playerRect.left;
-//                int yPlayer = y - playerRect.top;
-//                int xLaser = x - laserRect.left;
-//                int yLaser = y - laserRect.top;
-//
-//                // בדיקת שקיפות הפיקסלים
-//                if (xPlayer >= 0 && xPlayer < playerImage.getSize().x && yPlayer >= 0 && yPlayer < playerImage.getSize().y &&
-//                    xLaser >= 0 && xLaser < laserImage.getSize().x && yLaser >= 0 && yLaser < laserImage.getSize().y)
-//                {
-//                    if (playerImage.getPixel(xPlayer, yPlayer).a != 0 && laserImage.getPixel(xLaser, yLaser).a != 0) 
-//                    {
-//                        std::cout << "collision pixel" << std::endl;
-//                        return true; // יש התנגשות
-//                    }
-//                }
-//               
-//            }
-//        }
-//    }
-//    return false;
-//}
