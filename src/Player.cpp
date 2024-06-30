@@ -80,11 +80,11 @@ void Player::draw(sf::RenderWindow& wind) const
 	m_currentState->draw(this, wind);
 }
 
-void Player::setPosition(sf::Vector2f pos)
-{
-	m_sp.setPosition(pos);
-}
-
+//void Player::setPosition(sf::Vector2f pos)
+//{
+//	m_sp.setPosition(pos);
+//}
+//
 
 
 
