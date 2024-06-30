@@ -27,7 +27,7 @@ private:
 	static bool lightCollision(Player&, Object&);
 
 
-	static void play_sound(const sf::SoundBuffer*);
+	static void playSound(const sf::SoundBuffer*);
 
 	static sf::Sound m_currSound;
 
