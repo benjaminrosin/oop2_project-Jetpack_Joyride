@@ -2,10 +2,13 @@
 #include "State/FireMissileState.h"
 #include "objects/Missile.h"
 #include <iostream>
+#include <SFML/Audio.hpp>
 
 void FireMissileState::enter(Missile* missile)
 {
 	missile->setNewSprite("Missile", Misssile_t);
+	missile->playSound(Resources::getInstance().getSoundBuffer(MissileLaunchSound_t));
+	
 }
 
 void FireMissileState::update(Missile* missile, float deltaTime)

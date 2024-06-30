@@ -36,7 +36,12 @@ Resources::Resources()
 	appendFrameIntRects("SecondWarning", 0, { 100, 100 },2);
 	appendFrameIntRects("Flame", 0, { 40, 70 }, 6);
 
-	
+	//sounds
+	for (int i = 0; i < NUM_OF_SOUNDES; i++)
+	{
+		m_sound_buffer[i].loadFromFile(m_SoundNames[i]);
+	}
+
 
 }
 
@@ -93,6 +98,11 @@ void Resources::readData(sf::Texture arr[], const std::string names[], int num_o
 		{
 			arr[i].loadFromFile(names[i]);
 		}
+}
+
+sf::SoundBuffer* Resources::getSoundBuffer(int index)
+{
+	return &(m_sound_buffer[index]);
 }
 
 void Resources::appendFrameIntRects(std::string key, int middleGap, sf::Vector2i size, int num, int loc)

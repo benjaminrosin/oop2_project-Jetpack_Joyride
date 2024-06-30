@@ -15,6 +15,11 @@
 #include "State/TankWalkState.h"
 //#include "State/DeadPlayerState.h"
 #include <iostream>
+#include "Resources.h"
+#include <SFML/Audio.hpp>
+
+
+sf::Sound CollisionHandling::m_currSound;
 
 bool CollisionHandling::processCollision(Player& player, Object& obj)
 {
@@ -56,12 +61,14 @@ HitMap CollisionHandling::initializeCollisionMap()
 bool CollisionHandling::coinCollision(Player& player, Object& obj)
 {
     Controller::addToCoins();
+    play_sound(Resources::getInstance().getSoundBuffer(CoinSound_t));
     return true;
 }
 
 bool CollisionHandling::missileCollision(Player& player, Object& obj)
 {
     std::cout << "missile\n";
+    play_sound(Resources::getInstance().getSoundBuffer(MissileHitSound_t));
     player.playerDie();
     return true;
 }
@@ -70,6 +77,7 @@ bool CollisionHandling::laserCollision(Player& player, Object& obj)
 {
 
     std::cout << "laser Collision\n";
+    play_sound(Resources::getInstance().getSoundBuffer(LaserHitSound_t));
     player.playerDie();
     //player.setState(std::make_unique<DeadPlayerState>());
     return true;
@@ -100,8 +108,10 @@ bool CollisionHandling::speedCollision(Player&, Object&)
 
 bool CollisionHandling::moneyCollision(Player&, Object& obj)
 {
-    Gmoney& gift = dynamic_cast<Gmoney&> (obj);
+    play_sound(Resources::getInstance().getSoundBuffer(PiggySound_t));
 
+    Gmoney& gift = dynamic_cast<Gmoney&> (obj);
+ 
     Controller::addToCoins(gift.getValue());
     return true;
 }
@@ -112,6 +122,7 @@ bool CollisionHandling::powerCollision(Player& player, Object&)
     
 
     //change texture and jump?
+    play_sound(Resources::getInstance().getSoundBuffer(PowerSound_t));
     player.setState(std::make_unique<TankJumpState>());
     
     return true;
@@ -120,6 +131,12 @@ bool CollisionHandling::powerCollision(Player& player, Object&)
 bool CollisionHandling::lightCollision(Player&, Object&)
 {
     return false;
+}
+
+void CollisionHandling::play_sound(const sf::SoundBuffer* sound)
+{
+    m_currSound.setBuffer(*sound);
+    m_currSound.play();
 }
 
 //bool CollisionHandling::pixelPerfectCollision(const sf::Sprite& player, const sf::Sprite& laser)

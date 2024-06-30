@@ -109,7 +109,7 @@ void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 	if (timeToMissile < 0)
 	{
 		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Misssile_t, x, 600, m_player.get()));
-		timeToMissile = rand() % 20;
+		timeToMissile = 10 + rand() % 20;
 	}
 	if (timeToDecor < 0) //change to local static timer
 	{

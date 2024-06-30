@@ -23,6 +23,7 @@ Menu::Menu()
 	m_buttons.emplace_back(std::make_unique<HighScoreCommand>(this, "score board"));
 	m_buttons.emplace_back(std::make_unique<RulesCommand>(this, "rules"));
 	//exit button?
+	
 
 	for (int i = 0; i < m_buttons.size(); i++)
 	{

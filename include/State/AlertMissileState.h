@@ -10,4 +10,6 @@ public:
 private:
 	float m_timer = 0;
 	bool m_firstTime = true;
+	
+	
 };
