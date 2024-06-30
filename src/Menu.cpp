@@ -16,7 +16,7 @@ Menu::Menu()
 	m_controller = nullptr;
 
 	m_buttons.emplace_back(std::make_unique<StartGameCommand>(this, "play"));
-	m_buttons.emplace_back(std::make_unique<HighScoreCommand>(this, "high score"));
+	m_buttons.emplace_back(std::make_unique<HighScoreCommand>(this, "score board"));
 	m_buttons.emplace_back(std::make_unique<RulesCommand>(this, "rules"));
 	//exit button?
 

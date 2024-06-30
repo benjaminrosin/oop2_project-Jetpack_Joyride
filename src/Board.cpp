@@ -27,9 +27,10 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 	m_player->update(delta_time);
 
 	//handle collision
-	m_statics.remove_if([&](auto& obj){ return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
-	m_movings.remove_if([&](auto& obj){ return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
-
+	if (!m_player->avoidCollisions()) {
+		m_statics.remove_if([&](auto& obj) { return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
+		m_movings.remove_if([&](auto& obj) { return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
+	}
 	
 	//std::for_each(m_movings.begin(), m_movings.end(), [&](auto& obj) {if (obj != nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });*/
 

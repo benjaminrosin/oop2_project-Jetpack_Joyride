@@ -16,7 +16,7 @@ configure_file ("ButtonMenu.png" ${CMAKE_BINARY_DIR} COPYONLY)
 #configure_file ("LoveDays-2v7Oe.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("New Athletic M54.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 
-configure_file ("level.txt" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Score board.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("PowerUpBox.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Piggy.png" ${CMAKE_BINARY_DIR} COPYONLY)

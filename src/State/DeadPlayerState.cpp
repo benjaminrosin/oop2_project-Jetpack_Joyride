@@ -4,6 +4,7 @@
 
 void DeadPlayerState::enter(Player* player)
 {
+	player->setAvoidStatus(true);
 	player->setNewSprite("Fall", Dead_t);
 }
 

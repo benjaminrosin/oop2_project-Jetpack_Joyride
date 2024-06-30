@@ -19,12 +19,14 @@ public:
 	void walk();
 	void handleSpaceRelease();
 	void playerDie();
-	//
+	bool avoidCollisions()const;
+	void setAvoidStatus(bool);
 	//virtual void draw(sf::RenderWindow&)const {};
 	//virtual sf::Vector2f getPosition() const {};
 	virtual void move(sf::Vector2f v2f) override { MovingGameObjects::move(v2f); };
 	virtual void move(float x) override { MovingGameObjects::move(x); };
 	virtual void setPosition(sf::Vector2f);
+
 	//virtual void move_and_change_sprite(float, Object*) = 0;
 	//virtual void setSpriteRect(sf::IntRect) {};
 
@@ -32,5 +34,6 @@ public:
 	
 private:
 	std::unique_ptr<PlayerAnimationState> m_currentState;
+	bool m_avoidCollisions = false;
 	float moveSpeed = 200.0f;
 };
