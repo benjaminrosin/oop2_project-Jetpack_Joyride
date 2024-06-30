@@ -12,5 +12,5 @@ public:
 protected: 
     float m_jumpVelocity =600;
     float m_gravity;
-
+    
 };
