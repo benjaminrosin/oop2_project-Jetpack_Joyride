@@ -6,7 +6,7 @@
 float SpeedPlayerState::m_timer = 0.0f; 
 
 SpeedPlayerState::SpeedPlayerState(Player* player)
-	: JumpAnimationPlayerState(player), m_currState(/*std::make_unique<TankJumpState>(player)*/ player->getCurrState()), m_player(player)
+	: JumpAnimationPlayerState(player), m_currState(player->getCurrState()), m_player(player)
 {
 	//player->setAvoidStatus(true);
 	player->updateSpeed(400);
@@ -18,7 +18,7 @@ SpeedPlayerState::~SpeedPlayerState()
 {
 	m_timer = 0.0f;
 	m_player->updateSpeed(-400);
-	m_player->rotateSp(-45);
+	m_player->rotateSp(0);
 	//m_player.release();
 }
 

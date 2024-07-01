@@ -98,7 +98,7 @@ void Player::dead()
 
 void Player::rotateSp(float angle)
 {
-	m_sp.rotate(angle);
+	m_sp.setRotation(angle);
 }
 
 std::unique_ptr<PlayerAnimationState> Player::getCurrState()
