@@ -29,6 +29,7 @@ public:
 	const bool isDead()const;
 	void dead();
 	void rotateSp(float);
+	void setPosition(float, float);
 	//const std::unique_ptr<PlayerAnimationState>&& getCurrState() const;
 	std::unique_ptr<PlayerAnimationState> getCurrState();
 	

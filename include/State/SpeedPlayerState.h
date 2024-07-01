@@ -13,7 +13,7 @@ public:
     virtual int getXOffset()const { return 10; };
 
 private:
-    static float m_timer;
+    float m_timer;
     std::unique_ptr<PlayerAnimationState> m_currState;
     Player* m_player;
 };

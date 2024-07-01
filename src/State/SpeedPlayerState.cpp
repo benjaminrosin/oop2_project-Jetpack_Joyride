@@ -3,7 +3,6 @@
 #include "State/TankJumpState.h"
 #include "Player.h"
 
-float SpeedPlayerState::m_timer = 0.0f; 
 
 SpeedPlayerState::SpeedPlayerState(Player* player)
 	: JumpAnimationPlayerState(player), m_currState(player->getCurrState()), m_player(player)
@@ -25,15 +24,20 @@ SpeedPlayerState::~SpeedPlayerState()
 void SpeedPlayerState::update(Player* player, float deltaTime)
 {
 	std::cout << "speed: " << m_timer << '\n';
+	//sf::FloatRect newPlayerBounds = obj.getTransform().getInverse().transformRect(m_player->getGlobalBounds());
 
+	//sf::FloatRect newPlayerpos = player->getTransform().getInverse().transformRect(player->getGlobalBounds());
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
 		player->setVelocity(-400);
 	}
 	else if (player->getPosition().y + player->getHeight() > DEFULT_START_POINT)
+	//else if (newPlayerpos.height > DEFULT_START_POINT)
 	{
-		player->setVelocity(-GRAVITY*deltaTime);
-			//setVelocity(0);
+		//player->setVelocity(-GRAVITY*deltaTime);
+		player->setVelocity(0);
+		player->setPosition(player->getPosition().x, DEFULT_START_POINT - player->getHeight()/2);
+
 	}
 
 	JumpAnimationPlayerState::update(player, deltaTime);
@@ -41,7 +45,7 @@ void SpeedPlayerState::update(Player* player, float deltaTime)
 	m_timer += deltaTime;
 	if (m_timer >= 15)
 	{
-		//player->setAvoidStatus(false);
+		player->setAvoidStatus(false);
 		player->setState(std::move(m_currState));
 
 	}

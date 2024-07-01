@@ -97,6 +97,7 @@ void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 	{
 		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, randomY(), m_player.get()));
 		timeToGift = 5 + rand() % 15;
+		//timeToGift = 1 + rand() % 5;
 	}
 	if (timeToLaser < 0)
 	{

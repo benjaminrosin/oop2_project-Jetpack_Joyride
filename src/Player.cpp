@@ -101,6 +101,11 @@ void Player::rotateSp(float angle)
 	m_sp.setRotation(angle);
 }
 
+void Player::setPosition(float x, float y)
+{
+	m_sp.setPosition(x, y);
+}
+
 std::unique_ptr<PlayerAnimationState> Player::getCurrState()
 {
 	return std::move(m_currentState);
