@@ -8,3 +8,8 @@ void PlayerAnimationState::die(Player* player)
 {
 	player->setState(std::make_unique<RegularJumpState>(player));
 }
+
+std::unique_ptr<PlayerAnimationState> PlayerAnimationState::jump(Player*)
+{
+	return this;
+}

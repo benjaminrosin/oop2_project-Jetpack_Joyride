@@ -6,7 +6,7 @@
 float SpeedPlayerState::m_timer = 0.0f; 
 
 SpeedPlayerState::SpeedPlayerState(Player* player)
-	: JumpAnimationPlayerState(player), m_currState(player->getCurrState()), m_player(player)
+	: JumpAnimationPlayerState(player), m_currState(player->getJumpState()), m_player(player)
 {
 	//player->setAvoidStatus(true);
 	player->updateSpeed(400);
