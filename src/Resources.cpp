@@ -13,28 +13,25 @@ Resources::Resources()
 	m_font.loadFromFile(FONT_FILE_NAME);
 
 	//IntRect calculation
-	appendFrameIntRects("walking berry", 0, { 112, 150 }, 3);
-	appendFrameIntRects("jumping berry", 0, { 112, 150 }, 1, 3);
-	appendFrameIntRects("walking tank", 37, { 230, 174 }, 2);
-	appendFrameIntRects("jumping tank", 37, { 230, 174 }, 1, 2);
-	appendFrameIntRects("Fall", 0, { 160, 150 }, 4);
-	appendFrameIntRects("Dead", 0, { 160, 150 }, 1, 4);
+	appendFrameIntRects("walking berry", 0, { 75, 100 }, 3);
+	appendFrameIntRects("jumping berry", 0, { 75, 100 }, 1, 3);
+	appendFrameIntRects("walking tank", 28, { 146, 110 }, 2);
+	appendFrameIntRects("jumping tank", 28, { 146, 110 }, 1, 2);
+	appendFrameIntRects("Fall", 0, { 107, 100 }, 4);
+	appendFrameIntRects("Dead", 0, { 107, 100 }, 1, 4);
 
 	appendFrameIntRects("Laser", 0, { 101, 420 }, 4);
-//	appendFrameIntRects("Beam", 0, { 102, 250 }, 4);
-
-
 	appendFrameIntRects("Light", 0, { 300, 236 }, 6);
 	appendFrameIntRects("coin", 0, { 40, 40 }, 8);
 	appendFrameIntRects("Gmoney", 0, { 100, 91 }, 1);
 	appendFrameIntRects("Gpower", 0, { 59, 60 }, 1);
 	appendFrameIntRects("Gshield", 0, { 40, 40 }, 1);
 	appendFrameIntRects("Gspeed", 0, { 80, 60 }, 1);
-	appendFrameIntRects("Scientists", 10, { 60, 87 }, 3);
+	appendFrameIntRects("Scientists", 8, { 45, 67 }, 3);
 	appendFrameIntRects("Missile", 0, {100, 64}, 7);
 	appendFrameIntRects("FirstWarning", 0, { 65, 100 }, 4);
 	appendFrameIntRects("SecondWarning", 0, { 100, 100 },2);
-	appendFrameIntRects("Flame", 0, { 40, 70 }, 6);
+	appendFrameIntRects("Flame", 0, { 26, 45 }, 6);
 
 	//sounds
 	for (int i = 0; i < NUM_OF_SOUNDES; i++)

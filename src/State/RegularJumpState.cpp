@@ -17,7 +17,7 @@ void RegularJumpState::update(Player* player, float delta_time)
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
-        m_jumpVelocity = -400.0f;
+        player->setVelocity(-400);
     }
     else if (player->getPosition().y > DEFULT_START_POINT)
     {

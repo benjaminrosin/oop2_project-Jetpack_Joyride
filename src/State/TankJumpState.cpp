@@ -15,7 +15,7 @@ void TankJumpState::update(Player* player, float deltaTime)
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
-        m_jumpVelocity -= m_gravity * deltaTime * 0.90;
+        player->addVelocity( -GRAVITY * deltaTime * 0.90);
     }
     if (player->getPosition().y > DEFULT_START_POINT)
     {

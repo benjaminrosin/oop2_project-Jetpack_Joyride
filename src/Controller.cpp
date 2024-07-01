@@ -43,10 +43,8 @@ void Controller::run()
 	while (m_wind.isOpen() && m_board.alive() && !m_backToMenu)
 	{
 		m_wind.clear(sf::Color::Black);
-		//m_wind.draw(m_background);		
-		m_timer += m_clock.getElapsedTime().asSeconds();
 
-		//drawData(m_wind);
+		m_timer += m_clock.getElapsedTime().asSeconds();
 		m_delta_time = m_clock.restart().asSeconds();
 
 		m_board.play(m_wind, m_timer, m_delta_time);
@@ -61,7 +59,6 @@ void Controller::run()
 
 		m_board.draw(m_wind);
 		drawData();
-
 
 		if (auto event = sf::Event(); m_wind.pollEvent(event))
 		{
@@ -78,25 +75,28 @@ void Controller::run()
 				{
 					m_buttons[option]->axecute();
 				}
-				//switch (option)
-				//{
-				//case 0:
-				//	//mute
-				//	std::cout << "mute\n";
-				//	break;
-				//case 1:
-				//	std::cout << "pause\n";
-				//	pause();
-				//	break;
-				//case 2:
-				//	//back to main menu
-				//	std::cout << "back\n";
-				//	m_wind.setView(m_wind.getDefaultView());
-				//	return;
-				//}
 			}
 		}
 		m_wind.display();
+	}
+	if (!m_board.alive())
+	{
+		sf::Texture texture;
+		texture.create(SCREEN_SIZE.x, SCREEN_SIZE.y);
+		texture.update(m_wind);
+		m_background[0].setTexture(texture);
+		m_background[0].setColor(sf::Color::Green);//(0, 0, 0, 10));
+
+		m_wind.setView(m_wind.getDefaultView());
+		m_background[0].setPosition({ 0,0 });
+
+		m_wind.clear();
+		m_wind.draw(m_background[0]);
+		m_wind.display();
+
+		int i;
+		std::cin >> i;
+
 	}
 }
 

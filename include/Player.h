@@ -18,13 +18,22 @@ public:
 	void setAvoidStatus(bool);
 	virtual void draw(sf::RenderWindow&)const override;
 	//virtual sf::Vector2f getPosition() const {};
-	virtual void move(sf::Vector2f v2f) override { MovingGameObjects::move(v2f); };
-	virtual void move(float x) override { MovingGameObjects::move(x); };
+	virtual void move(sf::Vector2f) override;
+	virtual void move(float x) override;
 
-
+	void updateSpeed(float);
+	void setVelocity(float);
+	void addVelocity(float);
+	const float getVelocity()const;
+	const float getSpeed()const;
+	const bool isDead()const;
+	void dead();
 	
 private:
 	std::unique_ptr<PlayerAnimationState> m_currentState;
 	bool m_avoidCollisions = false;
-	float moveSpeed = 200.0f;
+	float m_moveSpeed = 300;
+	float m_jumpVelocity = -400;
+	bool m_dead = false;
+
 };

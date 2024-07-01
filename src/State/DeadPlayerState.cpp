@@ -6,24 +6,28 @@ DeadPlayerState::DeadPlayerState(Player* player)
 {
 	player->setAvoidStatus(true);
 	player->setNewSprite("Fall", Dead_t);
+	player->setVelocity(400);
 }
 
 void DeadPlayerState::update(Player* player, float deltaTime)
 {
 	player->animate(deltaTime);
     
-	std::cout << m_jumpVelocity << '\n';
 	if (player->getPosition().y > DEFULT_START_POINT)
 	{
 		player->setNewSprite("Dead", Dead_t);
-		player->move(sf::Vector2f(m_jumpVelocity * deltaTime, 0));
-		if (m_jumpVelocity >= 1) {
-			m_jumpVelocity -= m_gravity * deltaTime;
+		player->move(sf::Vector2f(deltaTime, 0));
+		player->updateSpeed( -GRAVITY * deltaTime);
 
+		if (player->getSpeed() < 0)
+		{
+			std::cout << "dead\n";
+			player->dead();
+			player->updateSpeed(GRAVITY * deltaTime);
 		}
 	}
 	else {
-		player->move(sf::Vector2f(m_jumpVelocity * deltaTime, m_jumpVelocity * deltaTime));
+		player->move(sf::Vector2f(deltaTime, deltaTime));
 	}
 	
 }

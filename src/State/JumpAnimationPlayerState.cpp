@@ -13,9 +13,8 @@ JumpAnimationPlayerState::JumpAnimationPlayerState(Player* player)
 
     animate(ANIMATION_RATE);
 
-    // הגדרת מהירות הקפיצה
-    m_jumpVelocity = -400.0f;
-    m_gravity = 400.0f;
+    player->setVelocity(-400);
+    //m_gravity = 400.0f;
 }
 
 void JumpAnimationPlayerState::update(Player* player, float deltaTime)
@@ -23,18 +22,23 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     player->animate(deltaTime);
     animate(deltaTime);
 
+    auto v2move = sf::Vector2f(deltaTime, deltaTime);
+
     // Update jump movement
-    if ((player->getPosition().y - player->getHeight() + m_jumpVelocity * deltaTime) < TOP_SCREEN_LIMIT) //add texture height
+    if ((player->getPosition().y - player->getHeight() + deltaTime * player->getVelocity()) < TOP_SCREEN_LIMIT) //add texture height
     {
-        m_jumpVelocity = 0;
+        player->setVelocity(0);
     }
     else
     {
-        player->move(sf::Vector2f(0.0f, m_jumpVelocity * deltaTime));
-        m_jumpVelocity += m_gravity * deltaTime;
+        //v2move.y = deltaTime;
+        player->addVelocity(GRAVITY * deltaTime);
     }
     //change to member and calculate right speed
-    player->move({ 200 * deltaTime , 0 });
+
+
+
+    player->move(v2move);
 
 }
 

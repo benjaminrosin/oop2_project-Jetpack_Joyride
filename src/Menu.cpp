@@ -83,6 +83,7 @@ void Menu::showMenu()
 
 	while (m_wind.isOpen())
 	{
+		m_wind.setView(m_wind.getDefaultView());
 		m_wind.clear(sf::Color::White);
 		m_wind.draw(m_background);
 		m_wind.draw(m_logo);

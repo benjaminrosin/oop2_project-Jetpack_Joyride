@@ -13,6 +13,7 @@ class CollisionHandling
 {
 public:
 	static bool processCollision(Player&, Object&);//לבדוק אם אפשר להוסיף קונסט בארגומנטים
+	static void setVolume(int);
 private:
 	static HitFunctionPtr lookup(const std::type_index&);
 	static HitMap initializeCollisionMap();

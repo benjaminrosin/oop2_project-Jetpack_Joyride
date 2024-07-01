@@ -31,6 +31,11 @@ bool CollisionHandling::processCollision(Player& player, Object& obj)
 	return colideFunc(player, obj);
 }
 
+void CollisionHandling::setVolume(int vol)
+{
+    m_currSound.setVolume(vol);
+}
+
 HitFunctionPtr CollisionHandling::lookup(const std::type_index& obj)
 {
     static HitMap collisionMap = initializeCollisionMap();
