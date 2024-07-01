@@ -30,7 +30,7 @@ public:
 	void dead();
 	void rotateSp(float);
 	//const std::unique_ptr<PlayerAnimationState>&& getCurrState() const;
-	 std::unique_ptr<PlayerAnimationState> getJumpState();
+	std::unique_ptr<PlayerAnimationState> getCurrState();
 	
 private:
 	std::unique_ptr<PlayerAnimationState> m_currentState;

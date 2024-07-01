@@ -101,9 +101,9 @@ void Player::rotateSp(float angle)
 	m_sp.setRotation(angle);
 }
 
-std::unique_ptr<PlayerAnimationState> Player::getJumpState()
+std::unique_ptr<PlayerAnimationState> Player::getCurrState()
 {
-	return std::move(m_currentState->jump());
+	return std::move(m_currentState);
 }
 
 //const std::unique_ptr<PlayerAnimationState>&& Player::getCurrState() const

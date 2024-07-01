@@ -11,7 +11,7 @@ public:
     virtual void update(Player*, float) = 0;
     virtual void die(Player*);
     virtual void draw(const Player*, sf::RenderWindow&) {}; //relevant only for jumping
-    virtual  std::unique_ptr<PlayerAnimationState> jump(Player*);
+    //virtual PlayerAnimationState* jump(Player*);
     //virtual void walk(Player*) = 0;
     //virtual void idle(Player*) = 0;
    
