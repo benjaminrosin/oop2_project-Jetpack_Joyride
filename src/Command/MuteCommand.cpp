@@ -9,8 +9,7 @@ MuteCommand::MuteCommand(Controller* con, int key)
 void MuteCommand::axecute()
 {
 	m_controller->setVolume(m_muted * MUSIC_VOLUME);
-	CollisionHandling::setVolume(m_muted * MUSIC_VOLUME);
-	//mute missile
+	CollisionHandling::setVolume(m_muted * SOUND_VOLUME);
 
 	m_muted = !m_muted;
 }

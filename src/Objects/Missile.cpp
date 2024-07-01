@@ -45,8 +45,8 @@ void Missile::setPositionByPlayer()
 	m_sp.setPosition(sf::Vector2f(x, y));
 }
 
-void Missile::playSound(const sf::SoundBuffer* sound)
-{
-	m_currSound.setBuffer(*sound);
-	m_currSound.play();
-}
+//void Missile::playSound(const sf::SoundBuffer* sound)
+//{
+//	m_currSound.setBuffer(*sound);
+//	m_currSound.play();
+//}

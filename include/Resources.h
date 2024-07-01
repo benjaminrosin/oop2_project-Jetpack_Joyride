@@ -43,6 +43,7 @@ enum sound_code {
 const sf::Vector2f SCREEN_SIZE(1200, 791);
 
 const int MUSIC_VOLUME = 10;
+const int SOUND_VOLUME = 20;
 
 const int NUM_OF_SHAPES_COINS = 3;
 const int MISSILE_SPEED = 300;

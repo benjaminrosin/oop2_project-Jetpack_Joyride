@@ -14,6 +14,8 @@ class CollisionHandling
 public:
 	static bool processCollision(Player&, Object&);//לבדוק אם אפשר להוסיף קונסט בארגומנטים
 	static void setVolume(int);
+	static void playSound(const sf::SoundBuffer*);
+
 private:
 	static HitFunctionPtr lookup(const std::type_index&);
 	static HitMap initializeCollisionMap();
@@ -28,7 +30,7 @@ private:
 	static bool lightCollision(Player&, Object&);
 
 
-	static void playSound(const sf::SoundBuffer*);
+
 
 	static sf::Sound m_currSound;
 

@@ -3,11 +3,12 @@
 #include "objects/Missile.h"
 #include <iostream>
 #include <SFML/Audio.hpp>
+#include "CollisionHandling.h"
 
 FireMissileState::FireMissileState(Missile* missile)
 {
 	missile->setNewSprite("Missile", Misssile_t);
-	missile->playSound(Resources::getInstance().getSoundBuffer(MissileLaunchSound_t));
+	CollisionHandling::playSound(Resources::getInstance().getSoundBuffer(MissileLaunchSound_t));
 	
 }
 
