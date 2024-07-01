@@ -1,6 +1,10 @@
 #include "Utilities.h"
 #include "Coin.h"
 #include "StaticGameObjects.h"
+#include <list>
+#include <memory>
+#include <cmath>
+#include <cstdlib> // for rand()
 
 
 std::list<std::unique_ptr<Coin>> createLine(int col, int row)
@@ -31,7 +35,6 @@ std::list<std::unique_ptr<Coin>> createDiagonal(int col, int row)
 	std::list<std::unique_ptr<Coin>> lst;
 	int length = 10 + rand() % 10;
 
-	// התאמת האורך כדי לא לחרוג מגבולות המסך
 	while ((length * COIN_SIZE.y + row) >= DEFULT_START_POINT)
 	{
 		length--;
@@ -51,15 +54,15 @@ std::list<std::unique_ptr<Coin>> createWave(int col, int row)
 {
 	std::list<std::unique_ptr<Coin>> lst;
 	int length = 20 + rand() % 10;
-	float frequency = 0.1f;  // קובע את תדירות הגל
-	float amplitude = COIN_SIZE.y * 3;  // קובע את גובה הגל
+	float frequency = 0.1f;  
+	float amplitude = COIN_SIZE.y * 3;  
 
 	for (int i = 0; i < length; i++)
 	{
 		int x = i * COIN_SIZE.x + col;
 		int y = row + (int(amplitude * sin(frequency * i * PI)));
 
-		// התאמת הערכים כדי לא לחרוג מגבולות המסך
+		
 		if (y >= DEFULT_START_POINT)
 		{
 			y = DEFULT_START_POINT - 1;
@@ -73,6 +76,52 @@ std::list<std::unique_ptr<Coin>> createWave(int col, int row)
 	return lst;
 }
 
+
+std::list<std::unique_ptr<Coin>> createTriangle(int col, int row)
+{
+	std::list<std::unique_ptr<Coin>> lst;
+
+	int size = 5+ rand() % 5;  
+
+	if (row + size * COIN_SIZE.y < MARGIN || row + size * COIN_SIZE.y >= DEFULT_START_POINT) {
+		return {};
+	}
+
+	for (int i = 0; i <= size; ++i) {
+		int y = row + i * COIN_SIZE.y;
+		int startX = col - (i * COIN_SIZE.x / 2);
+		int endX = col + (i * COIN_SIZE.x / 2);
+
+		for (int x = startX; x <= endX; x += COIN_SIZE.x) {
+			lst.push_back(std::make_unique<Coin>(x, y));
+		}
+	}
+
+	return lst;
+}
+
+
+std::list<std::unique_ptr<Coin>> createCircle(int col, int row) {
+	std::list<std::unique_ptr<Coin>> lst;
+
+	int radius = 2 + rand() % 5; 
+	int param = 2 * PI * radius;
+	
+	if (row - COIN_SIZE.y * radius <= MARGIN || row + COIN_SIZE.y * radius >= DEFULT_START_POINT) {
+		return {}; 
+	}
+
+	for (int angle = 0; angle <= 360; angle += 360/param) { 
+		double radians = angle * PI / 180.0;
+		int x = col + COIN_SIZE.x * radius * std::cos(radians);
+		int y = row + COIN_SIZE.y * radius * std::sin(radians);
+		lst.push_back(std::make_unique<Coin>(x, y));
+	}
+
+	return lst;
+}
+
+
 std::list<std::unique_ptr<StaticGameObjects>> convertCoinToStaticList(std::list<std::unique_ptr<Coin>>&& coinList) {
 	std::list<std::unique_ptr<StaticGameObjects>> baseList;
 	for (auto& coin : coinList) {
@@ -80,3 +129,4 @@ std::list<std::unique_ptr<StaticGameObjects>> convertCoinToStaticList(std::list<
 	}
 	return baseList;
 }
+
