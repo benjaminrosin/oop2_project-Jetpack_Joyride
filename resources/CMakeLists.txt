@@ -30,7 +30,6 @@ configure_file ("Glitter.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Exhaust.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Coin.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Scientist.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("Shield.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Speed.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("speedGift.png" ${CMAKE_BINARY_DIR} COPYONLY)
 

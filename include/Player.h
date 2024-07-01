@@ -28,6 +28,9 @@ public:
 	const float getSpeed()const;
 	const bool isDead()const;
 	void dead();
+	void rotateSp(float);
+	//const std::unique_ptr<PlayerAnimationState>&& getCurrState() const;
+	 std::unique_ptr<PlayerAnimationState> getJumpState();
 	
 private:
 	std::unique_ptr<PlayerAnimationState> m_currentState;

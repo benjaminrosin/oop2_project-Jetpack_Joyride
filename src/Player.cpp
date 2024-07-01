@@ -13,7 +13,7 @@ Player::Player()
 
 float Player::getHeight() const
 {
-	return m_sp.getGlobalBounds().height;
+	return m_sp.getLocalBounds().height;
 }
 
 void Player::setState(std::unique_ptr<PlayerAnimationState> state)
@@ -24,6 +24,7 @@ void Player::setState(std::unique_ptr<PlayerAnimationState> state)
 void Player::update(float deltaTime)
 {
 	m_currentState->update(this, deltaTime);
+	updateSpeed(deltaTime*3);
 }
 
 void Player::playerDie()
@@ -49,7 +50,6 @@ void Player::draw(sf::RenderWindow& wind) const
 
 void Player::move(sf::Vector2f v2f)
 {
-	std::cout << "player move sf::vector2f\n";
 	v2f.x *= m_moveSpeed;
 	v2f.y *= m_jumpVelocity;
 	MovingGameObjects::move(v2f);
@@ -57,13 +57,13 @@ void Player::move(sf::Vector2f v2f)
 
 void Player::move(float x)
 {
-	std::cout << "player move float\n";
 	MovingGameObjects::move(x);
 }
 
 void Player::updateSpeed(float add)
 {
 	m_moveSpeed += add;
+	std::cout << m_moveSpeed << '\n';
 }
 
 void Player::setVelocity(float num)
@@ -96,3 +96,23 @@ void Player::dead()
 	m_dead = true;
 }
 
+void Player::rotateSp(float angle)
+{
+	m_sp.setRotation(angle);
+}
+
+std::unique_ptr<PlayerAnimationState> Player::getJumpState()
+{
+	return std::move(m_currentState->jump());
+}
+
+//const std::unique_ptr<PlayerAnimationState>&& Player::getCurrState() const
+//{
+//	//return m_currentState.get();
+//	return std::move(m_currentState);
+//		//std::make_unique<PlayerAnimationState>(*m_currentState);
+//}
+//std::unique_ptr<PlayerAnimationState> Player::getCurrState() const
+//{
+//	//return std::move(m_currentState);
+//}
