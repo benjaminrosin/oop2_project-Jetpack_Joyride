@@ -6,7 +6,6 @@
 #include <memory>
 #include "Factory/ObjectFactory.h"
 #include "Gift.h";
-#include "Gshield.h";
 #include "Gspeed.h";
 #include "Gpower.h";
 #include "Gmoney.h";

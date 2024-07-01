@@ -6,13 +6,13 @@
 #include "Objects/Laser.h"
 #include "Scientists.h"
 #include "Objects/Light.h"
-#include "Gshield.h"
 #include "Gspeed.h"
 #include "Gmoney.h"
 #include "Gpower.h"
 #include "Controller.h"
 #include "State/TankJumpState.h"
 #include "State/TankWalkState.h"
+#include "State/SpeedPlayerState.h"
 //#include "State/DeadPlayerState.h"
 #include <iostream>
 #include "Resources.h"
@@ -54,7 +54,6 @@ HitMap CollisionHandling::initializeCollisionMap()
     colideMap[typeid(Missile)] = &missileCollision;
     colideMap[typeid(Laser)] = &laserCollision;
     colideMap[typeid(Scientists)] = &scientistCollision;
-    colideMap[typeid(Gshield)] = &shieldCollision;
     colideMap[typeid(Gspeed)] = &speedCollision;
     colideMap[typeid(Gmoney)] = &moneyCollision;
     colideMap[typeid(Gpower)] = &powerCollision;
@@ -90,17 +89,14 @@ bool CollisionHandling::scientistCollision(Player&, Object&)
     return false;
 }
 
-bool CollisionHandling::shieldCollision(Player&, Object&)
-{
-    //change texture?
-    playSound(Resources::getInstance().getSoundBuffer(ShieldSpeed_t));
-    return true;
-}
 
-bool CollisionHandling::speedCollision(Player&, Object&)
+bool CollisionHandling::speedCollision(Player& player, Object&)
 {
     //more speed
     playSound(Resources::getInstance().getSoundBuffer(ShieldSpeed_t));
+
+    player.setState(std::make_unique<SpeedPlayerState>(&player));
+
     return true;
 }
 

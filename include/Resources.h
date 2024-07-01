@@ -14,7 +14,7 @@ const float GRAVITY = 400;
 enum object_code {
 	Scientists_t, Misssile_t, Laser_t,
 	Coin_t, Light_t,
-	Gift_t, Gpower_t, Gshield_t, Gspeed_t, Gmoney_t,
+	Gift_t, Gpower_t, Gspeed_t, Gmoney_t,
 	Player_t, Tank_t, FirstAlert_t, SecondAlert_t, Dead_t, Flame_t
 
 };
@@ -80,7 +80,7 @@ const std::string BOTTUNS_FILE_NAMES[NUM_OF_BUTTONS] = {
 //};
 
 //add textures
-const int NUM_OF_OBJECTS = 16;
+const int NUM_OF_OBJECTS = 15;
 const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "Scientist.png",
 "Missile.png",
@@ -89,7 +89,6 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "Lights.png",
 "bbb.b", //gift has no texture
 "PowerUpBox.png",
-"Shield.png",
 "speedGift.png",
 "Piggy.png",
 "JetpackWalking.png",
@@ -101,7 +100,7 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 
 };
 
-const int NUM_OF_GIFTS = 4;
+const int NUM_OF_GIFTS = 3;
 
 const int NUM_OF_SOUNDES = 8;
 const std::string m_SoundNames[NUM_OF_SOUNDES] = {

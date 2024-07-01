@@ -21,7 +21,6 @@ private:
 	static bool missileCollision(Player&, Object&);
 	static bool laserCollision(Player&, Object&);
 	static bool scientistCollision(Player&, Object&);
-	static bool shieldCollision(Player&, Object&);
 	static bool speedCollision(Player&, Object&);
 	static bool moneyCollision(Player&, Object&);
 	static bool powerCollision(Player&, Object&);
