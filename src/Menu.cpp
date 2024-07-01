@@ -73,6 +73,21 @@ Menu::~Menu()
 	{
 		delete m_controller;
 	}
+
+	auto file = std::ofstream("Score board.txt", std::ios_base::trunc);
+
+	if (!file.is_open())
+	{
+		throw std::runtime_error("couldn't load score file");
+	}
+
+	auto score = m_scoreBoard.begin();
+
+	for (int i = 0; i < 3; i++)
+	{
+		file << score->first << " " << score->second << '\n';
+		score++;
+	}
 }
 
 void Menu::showMenu()
@@ -109,10 +124,7 @@ void Menu::showMenu()
 			{
 				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 
-				if (option == -1) {
-					//m_wind.close();
-				}
-				else {
+				if (option != -1) {
 					m_buttons[option]->axecute();
 				}
 			}
@@ -137,7 +149,9 @@ int Menu::handleClick(sf::Vector2f v2f) const
 void Menu::newGame()
 {
 	m_controller = new Controller(m_wind);
-	m_controller->run();
+	m_scoreBoard.emplace(m_controller->run());
+	//auto ret = m_controller->run();
+	//std::cout << ret.first << " " << ret.second << "\n";
 	delete m_controller;
 	m_controller = nullptr;
 }
@@ -149,16 +163,25 @@ void Menu::highScore()
 	m_wind.draw(m_background);
 
 	auto pos = sf::Vector2f(SCREEN_SIZE.x / 2, 200);
+	m_text.setCharacterSize(60);
+	m_text.setString("score board");
+	m_text.setOrigin(m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().height / 2);
+	m_text.setPosition(pos);
+	m_wind.draw(m_text);
 
-	for (auto& score : m_scoreBoard)
+	m_text.setCharacterSize(40);
+	auto score = m_scoreBoard.begin();
+
+	for (int i = 0; i < 3; i++)
 	{
 		pos.y += m_scoreBoardSign.getGlobalBounds().height;
 		m_scoreBoardSign.setPosition(pos);
 		m_wind.draw(m_scoreBoardSign);
-		m_text.setString(std::to_string(score.first) + ' ' + score.second);
+		m_text.setString(std::to_string(score->first) + ' ' + score->second);
 		m_text.setOrigin(m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().height / 2);
 		m_text.setPosition(m_scoreBoardSign.getPosition());
 		m_wind.draw(m_text);
+		score++;
 	}
 
 	m_wind.display();

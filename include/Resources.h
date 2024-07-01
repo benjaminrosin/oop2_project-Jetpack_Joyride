@@ -118,6 +118,11 @@ const std::string m_SoundNames[NUM_OF_SOUNDES] = {
 
 const std::string FONT_FILE_NAME = "New Athletic M54.ttf";//LoveDays-2v7Oe.ttf";
 
+const std::string MASSEGE[] = {
+"your score is ",
+"please enter your name",
+" "
+};
 
 class Resources 
 {
