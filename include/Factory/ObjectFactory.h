@@ -46,17 +46,14 @@ private:
 //}
 
 template <typename T>
-std::list<std::unique_ptr<T>> ObjectFactory<T>::create(int index, int x, int y, Player* p) //for debug
+std::list<std::unique_ptr<T>> ObjectFactory<T>::create(int index, int x, int y, Player* p)
 {
 	auto it = getMap().find(index);
 	if (it == getMap().end())
 	{
-		//return NULL;
-		//throw exeption
+		throw std::runtime_error("The requested object was not found");
 	}
-
 	return it->second(x,y,p);
-	//adding pram
 }
 
 template <typename T>

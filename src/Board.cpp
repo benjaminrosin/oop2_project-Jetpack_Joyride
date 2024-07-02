@@ -15,36 +15,31 @@
 
 Board::Board()
 {
-	//m_objects.clear();
 	m_player = std::make_unique<Player>();
-
 }
 
 void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב שיש גם טיימר וגם דלתא
 {
-	//player's move
+	//player move
 	m_player->update(delta_time);
 
-	//handle collision
+	// Goes over all objects.
+	// If there was a collision between the player and the object, the collision will be realized.
+	// If it is an object that needs to be deleted after a collision, we will drop it from the list.
 	if (!m_player->avoidCollisions()) {
 		m_statics.remove_if([&](auto& obj) { return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
 		m_movings.remove_if([&](auto& obj) { return (collide(*obj.get()) && CollisionHandling::processCollision(*m_player, *obj)); });
 	}
 	
-	//std::for_each(m_movings.begin(), m_movings.end(), [&](auto& obj) {if (obj != nullptr) obj->move_and_change_sprite(delta_time, &(*m_player)); });*/
-
+	//Perform movement for all the moving objects
 	std::for_each(m_movings.begin(), m_movings.end(), [&](auto& obj) {obj->move(delta_time); });
 
+	//Perform animation for all the moving objects
 	std::for_each(m_statics.begin(), m_statics.end(), [&](auto& obj) {obj->animate(delta_time); });
-	//animate
-
-	//m_objTimer -= delta_time;
-
-	//if (m_objTimer < 0)
-	//{
-		generateLevel(wind, delta_time);
-	//	m_objTimer = 1;
-	//}
+	
+	//create objects on the screen throughout the game.
+	generateLevel(wind, delta_time);
+	
 
 	//removing odjects that out of view
 	int xView = wind.getView().getCenter().x - SCREEN_SIZE.x;
@@ -55,19 +50,11 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 
 void Board::draw(sf::RenderWindow& wind) const
 {
-	std::for_each(m_statics.begin(), m_statics.end(), [&wind](auto& obj) { /*if (obj != nullptr)*/ obj->draw(wind); });
-	std::for_each(m_movings.begin(), m_movings.end(), [&wind](auto& obj)  { /*if (obj != nullptr)*/ obj->draw(wind); });
+	std::for_each(m_statics.begin(), m_statics.end(), [&wind](auto& obj) { obj->draw(wind); });
+	std::for_each(m_movings.begin(), m_movings.end(), [&wind](auto& obj)  { obj->draw(wind); });
 	
 	m_player->draw(wind);
-	//wind.draw(m_player->getDrawable());
-	//std::for_each(m_objects.begin(), m_objects.end(), [&wind](auto &obj) {if (obj != nullptr) wind.draw(obj->getDrawable()); });
-
 }
-//
-//bool Board::checkCollision()
-//{
-//	return false;
-//}
 
 void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 {
@@ -87,7 +74,7 @@ void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 	timeToMissile -= delta_time;
 	timeToDecor -= delta_time; 
 
-	//int obj = rand() % 10 + 1;
+
 	if (timeToCoins < 0)
 	{
 		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, randomY(), m_player.get()));
@@ -95,9 +82,9 @@ void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 	}
 	if (timeToGift < 0)
 	{
-		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, randomY(), m_player.get()));
-		timeToGift = (5 + rand() % 15) * (START_SPEED / playerSpeed);
-		//timeToGift = 1 + rand() % 5;
+		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, /*randomY()*/ TOP_SCREEN_LIMIT + MARGIN, m_player.get()));
+		//timeToGift = (5 + rand() % 15) * (START_SPEED / playerSpeed);
+		timeToGift = (1 + rand() % 5) * (START_SPEED / playerSpeed);
 	}
 	if (timeToLaser < 0)
 	{
@@ -109,7 +96,7 @@ void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Misssile_t, x, 600, m_player.get()));
 		timeToMissile = (10 + rand() % 20) * (START_SPEED / playerSpeed);
 	}
-	if (timeToDecor < 0) //change to local static timer
+	if (timeToDecor < 0)
 	{
 		int obj = rand() % 2;
 		if (obj)
@@ -123,35 +110,6 @@ void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 		}
 		timeToDecor = (1 + rand() % 3) * (START_SPEED / playerSpeed);
 	}
-	
-	//int obj = rand() % 10 + 1;
-
-	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, 500));
-	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gspeed_t, x, 350));
-	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gshield_t, x, 300));
-	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gmoney_t, x, 550));
-	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gpower_t, x, 450));
-
-	//m_statics.splice(m_statics.begin(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, 600));
-
-	//m_movings.splice(m_movings.begin(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600));
-
-
-	/*m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gspeed_t, x, 350));
-	m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gshield_t, x, 300));
-	m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gmoney_t, x, 550));
-	m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gpower_t, x, 450));*/
-
-	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Coin_t, x, 500));
-	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Gspeed_t, x, 350));
-	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Gshield_t, x, 300));
-	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Gmoney_t, x, 550));
-	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Gpower_t, x, 450));
-	//m_statics.insert(coinsgener);
-	//m_movings.push_back(ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600));
-
-	//m_statics.push_back(ObjectFactory<StaticGameObjects>::create(Gift_t, x, 450));
-
 
 }
 
@@ -173,7 +131,7 @@ bool Board::collide(Object& obj)
 	sf::FloatRect newPlayerBounds = obj.getTransform().getInverse().transformRect(m_player->getGlobalBounds());
 	if (newPlayerBounds.intersects(obj.getLocalBounds(), overlapRect))
 	{
-		if (overlapRect.height > APPROVED_OVERLAP && overlapRect.width > APPROVED_OVERLAP)//קונסט!!!!
+		if (overlapRect.height > APPROVED_OVERLAP && overlapRect.width > APPROVED_OVERLAP)
 		{
 			return true;
 		}
