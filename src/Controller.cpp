@@ -70,7 +70,6 @@ std::pair<int, std::string> Controller::run()
 			}
 			else if (event.type == sf::Event::MouseButtonReleased)
 			{
-				auto mousePosition = m_wind.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
 				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 				if (option != -1)
 				{
@@ -151,7 +150,6 @@ void Controller::pause()
 				break;
 			else if (event.type == sf::Event::MouseButtonReleased)
 			{
-				//auto mousePosition = m_wind.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
 				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 				if (option != -1 && option == 2)
 				{
