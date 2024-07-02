@@ -30,7 +30,8 @@ public:
 	const bool isDead()const;
 	void dead();
 	void rotateSp(float);
-	void setPosition(float, float);
+	void setPosition(sf::Vector2f);
+	void flip(int);
 	//const std::unique_ptr<PlayerAnimationState>&& getCurrState() const;
 	std::unique_ptr<PlayerAnimationState> getCurrState();
 	

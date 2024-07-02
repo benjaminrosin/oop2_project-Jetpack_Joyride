@@ -74,15 +74,15 @@ void Object::setNewSprite(std::string key, object_code obj)
 	animate(ANIMATION_RATE);
 }
 
-void Object::scale(sf::Vector2f v2scale)
-{
-	m_sp.scale(v2scale);
-}
-
-void Object::setScale(sf::Vector2f v2scale)
-{
-	m_sp.setScale(v2scale);
-}
+//void Object::scale(sf::Vector2f v2scale)
+//{
+//	m_sp.scale(v2scale);
+//}
+//
+//void Object::setScale(sf::Vector2f v2scale)
+//{
+//	m_sp.setScale(v2scale);
+//}
 
 //const sf::Sprite& Object::getDrawable() const
 //{

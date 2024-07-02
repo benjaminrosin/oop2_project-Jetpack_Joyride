@@ -102,9 +102,23 @@ void Player::rotateSp(float angle)
 	m_sp.setRotation(angle);
 }
 
-void Player::setPosition(float x, float y)
+void Player::setPosition(sf::Vector2f v2p)
 {
-	m_sp.setPosition(x, y);
+	m_sp.setPosition(v2p);
+}
+
+void Player::flip(int num)
+{
+	auto currOrigin = m_sp.getOrigin();
+
+	m_sp.setOrigin(0,0);
+	m_sp.setScale(sf::Vector2f(1, num));
+
+	m_sp.setOrigin(currOrigin);
+
+	//m_sp.setOrigin({ 0, - m_sp.getGlobalBounds().height });
+	//m_sp.setOrigin(0, m_sp.getGlobalBounds().height);
+	//m_sp.setPosition(m_sp.getPosition());
 }
 
 std::unique_ptr<PlayerAnimationState> Player::getCurrState()

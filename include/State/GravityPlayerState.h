@@ -8,11 +8,13 @@ public:
     ~GravityPlayerState();
     //virtual void enter(Player*) override;
     virtual void update(Player*, float) override;
-    void flip();
+    void normalGravity();
 
 private:
 
     int m_gravity;
     float m_timer = 0;
     Player* m_player;
+
+    void flip();
 };
