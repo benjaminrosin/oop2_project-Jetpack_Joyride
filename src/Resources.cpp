@@ -15,8 +15,8 @@ Resources::Resources()
 	//IntRect calculation
 	appendFrameIntRects("walking berry", 0, { 75, 100 }, 3);
 	appendFrameIntRects("jumping berry", 0, { 75, 100 }, 1, 3);
-	appendFrameIntRects("walking tank", 28, { 146, 110 }, 2);
-	appendFrameIntRects("jumping tank", 28, { 146, 110 }, 1, 2);
+	appendFrameIntRects("walking tank", 23, { 135, 100 }, 2);
+	appendFrameIntRects("jumping tank", 23, { 135, 100 }, 1, 2);
 	appendFrameIntRects("Gravity", 0, { 73, 100 }, 4);
 
 	appendFrameIntRects("Fall", 0, { 107, 100 }, 4);
