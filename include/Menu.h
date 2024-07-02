@@ -14,11 +14,12 @@ public:
 	void highScore();
 	void showHelp();
 
+
 private:
 	//sf::RectangleShape m_button[NUM_OF_BUTTONS_MENU];
 	sf::RectangleShape m_background;
 	sf::RenderWindow m_wind;
-	Controller* m_controller;
+	std::unique_ptr <Controller> m_controller; // μαγεχ
 	std::vector<std::unique_ptr<MenuCommand>> m_buttons;
 	sf::Sprite m_logo;
 	sf::Sprite m_scoreBoardSign;

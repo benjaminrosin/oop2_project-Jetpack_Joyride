@@ -18,10 +18,7 @@ public:
 	//virtual void draw(sf::RenderWindow&)const override;
 
 private:
-	//sf::Vector2f calcEndPoint() const;
-	//static bool m_registered;
-	//sf::Sprite m_end;
-	//sf::Sprite m_laser;
+	
 	std::unique_ptr<LaserState> m_currState;
 	int m_len;
 	int m_angle;

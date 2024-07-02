@@ -28,7 +28,13 @@ void MenuCommand::setPosition(sf::Vector2f pos)
 
 bool MenuCommand::contains(sf::Vector2f v2p)
 {
-	return m_sp.getGlobalBounds().contains(v2p);
+	if (m_sp.getGlobalBounds().contains(v2p))
+	{
+		m_name.setScale({ 1.2, 1.2 });
+		return true;
+	}
+	m_name.setScale({ 1, 1 });
+	return false;
 }
 
 void MenuCommand::draw(sf::RenderWindow& wind) const

@@ -69,10 +69,10 @@ Menu::Menu()
 
 Menu::~Menu()
 {
-	if (m_controller)
+	/*if (m_controller)
 	{
 		delete m_controller;
-	}
+	}*/
 
 	auto file = std::ofstream("Score board.txt", std::ios_base::trunc);
 
@@ -127,7 +127,17 @@ void Menu::showMenu()
 				if (option != -1) {
 					m_buttons[option]->axecute();
 				}
+				break;
 			}
+			case sf::Event::MouseMoved:
+			{
+				for (auto& buttun : m_buttons)
+				{
+					buttun->contains(sf::Vector2f(event.mouseMove.x, event.mouseMove.y));
+				}
+				break;
+			}
+				
 			}
 		}
 
@@ -148,12 +158,13 @@ int Menu::handleClick(sf::Vector2f v2f) const
 
 void Menu::newGame()
 {
-	m_controller = new Controller(m_wind);
+	//m_controller = new Controller(m_wind);
+	m_controller = std::make_unique<Controller>(m_wind, m_scoreBoard.begin()->first);
 	m_scoreBoard.emplace(m_controller->run());
 	//auto ret = m_controller->run();
 	//std::cout << ret.first << " " << ret.second << "\n";
-	delete m_controller;
-	m_controller = nullptr;
+	//delete m_controller;
+	//m_controller = nullptr;
 }
 
 void Menu::highScore()
