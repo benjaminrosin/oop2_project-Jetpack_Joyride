@@ -5,9 +5,15 @@
 
 
 SpeedPlayerState::SpeedPlayerState(Player* player)
-	: JumpAnimationPlayerState(player), m_currState(player->getCurrState()), m_player(player)
+	: JumpAnimationPlayerState(player, SpeedFlame_t, "SpeedFlame"), m_currState(player->getCurrState()), m_player(player)
 {
+	if (auto state = dynamic_cast<SpeedPlayerState*>(m_currState.get()))
+	{
+		m_currState = std::move(state->m_currState);
+	}
+
 	//player->setAvoidStatus(true);
+	player->setVelocity(-400);
 	player->updateSpeed(400);
 	player->rotateSp(45);
 	m_timer = 0;
@@ -50,4 +56,14 @@ void SpeedPlayerState::update(Player* player, float deltaTime)
 
 	}
 
+}
+
+void SpeedPlayerState::draw(const Player* player, sf::RenderWindow& wind)
+{
+	auto pos = player->getPosition();
+	pos.x += getFlameOffset().x;
+	pos.y += getFlameOffset().y;
+	m_sp.setPosition(pos);
+
+	wind.draw(m_sp);
 }

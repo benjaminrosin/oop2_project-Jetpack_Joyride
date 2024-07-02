@@ -2,10 +2,10 @@
 #include "State/JumpAnimationPlayerState.h"
 #include "Player.h"
 
-JumpAnimationPlayerState::JumpAnimationPlayerState(Player* player)
+JumpAnimationPlayerState::JumpAnimationPlayerState(Player* player, object_code code, std::string rectString)
 {
-    m_sp.setTexture(*Resources::getInstance().getTextureObject(Flame_t));
-    m_frames = Resources::getInstance().getIntRect("Flame");
+    m_sp.setTexture(*Resources::getInstance().getTextureObject(code));
+    m_frames = Resources::getInstance().getIntRect(rectString);
 
     m_sp.setTextureRect(m_frames->at(0));
     m_texutre_timer = 0;
@@ -13,13 +13,12 @@ JumpAnimationPlayerState::JumpAnimationPlayerState(Player* player)
 
     animate(ANIMATION_RATE);
 
-    player->setVelocity(-400);
     //m_gravity = 400.0f;
 }
 
 void JumpAnimationPlayerState::update(Player* player, float deltaTime)
 {
-    player->animate(deltaTime);
+    //player->animate(deltaTime);
     animate(deltaTime);
 
     auto v2move = sf::Vector2f(deltaTime, deltaTime);
@@ -46,8 +45,8 @@ void JumpAnimationPlayerState::draw(const Player* player, sf::RenderWindow& wind
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         auto pos = player->getPosition();
-        pos.x += getXOffset();
-        pos.y -= 15;
+        pos.x += getFlameOffset().x;
+        pos.y += getFlameOffset().y;
         m_sp.setPosition(pos);
 
         wind.draw(m_sp);

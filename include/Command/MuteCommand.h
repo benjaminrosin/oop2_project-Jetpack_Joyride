@@ -9,5 +9,5 @@ public:
 	MuteCommand(Controller*, int);
 	virtual void axecute() override;
 private:
-	bool m_muted = false;
+	static bool m_muted;
 };

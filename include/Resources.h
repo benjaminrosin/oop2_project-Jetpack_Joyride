@@ -8,14 +8,11 @@
 #include <cmath>
 #include <iostream>
 
-const float PI = 3.14159265358979323846;
-const float GRAVITY = 400;
-
 enum object_code {
 	Scientists_t, Misssile_t, Laser_t,
 	Coin_t, Light_t,
 	Gift_t, Gpower_t, Gspeed_t, Gmoney_t,
-	Player_t, Tank_t, FirstAlert_t, SecondAlert_t, Dead_t, Flame_t
+	Player_t, Tank_t, FirstAlert_t, SecondAlert_t, Dead_t, Flame_t,SpeedFlame_t
 
 };
 
@@ -42,6 +39,8 @@ enum sound_code {
 
 const sf::Vector2f SCREEN_SIZE(1200, 791);
 
+const float PI = 3.14159265358979323846;
+const float GRAVITY = 500;
 const int MUSIC_VOLUME = 10;
 const int SOUND_VOLUME = 20;
 
@@ -81,7 +80,7 @@ const std::string BOTTUNS_FILE_NAMES[NUM_OF_BUTTONS] = {
 //};
 
 //add textures
-const int NUM_OF_OBJECTS = 15;
+const int NUM_OF_OBJECTS = 16;
 const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "Scientist.png",
 "Missile.png",
@@ -97,7 +96,8 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "MissileWarning.png",
 "MissileIncoming.png",
 "PlayerDead.png",
-"Exhaust.png"
+"Exhaust.png",
+"speedflame.png"
 
 };
 

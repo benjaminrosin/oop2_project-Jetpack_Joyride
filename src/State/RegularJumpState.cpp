@@ -7,7 +7,7 @@ RegularJumpState::RegularJumpState(Player* player)
     :JumpAnimationPlayerState(player)
 {
 	player->setNewSprite("jumping berry", Player_t);
-
+    player->setVelocity(-350);
 	//JumpAnimationPlayerState::enter(player);
 }
 
@@ -17,7 +17,7 @@ void RegularJumpState::update(Player* player, float delta_time)
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
-        player->setVelocity(-400);
+        player->setVelocity(-350);
     }
     else if (player->getPosition().y > DEFULT_START_POINT)
     {

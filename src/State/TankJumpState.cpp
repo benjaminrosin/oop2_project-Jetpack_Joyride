@@ -6,7 +6,7 @@ TankJumpState::TankJumpState(Player* player)
     :JumpAnimationPlayerState(player)
 {
     player->setNewSprite("jumping tank", Tank_t);
-
+    player->setVelocity(-300);
 }
 
 void TankJumpState::update(Player* player, float deltaTime)

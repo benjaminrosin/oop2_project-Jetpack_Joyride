@@ -32,6 +32,7 @@ Resources::Resources()
 	appendFrameIntRects("FirstWarning", 0, { 65, 100 }, 4);
 	appendFrameIntRects("SecondWarning", 0, { 100, 100 },2);
 	appendFrameIntRects("Flame", 0, { 26, 45 }, 6);
+	appendFrameIntRects("SpeedFlame", 0, { 185, 130 }, 3);
 
 	//sounds
 	for (int i = 0; i < NUM_OF_SOUNDES; i++)

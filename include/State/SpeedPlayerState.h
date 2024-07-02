@@ -10,7 +10,8 @@ public:
     ~SpeedPlayerState();
     virtual void update(Player*, float) override;
     virtual void die(Player*) override {};
-    virtual int getXOffset()const { return 10; };
+    virtual sf::Vector2f getFlameOffset()const override { return { -5, -65 }; };
+    virtual void draw(const Player*, sf::RenderWindow&) override;
 
 private:
     float m_timer;
