@@ -25,7 +25,7 @@ private:
 	sf::Sprite m_scoreBoardSign;
 	sf::Text m_text;
 	std::multimap<int, std::string, std::greater<int>> m_scoreBoard;
-	
+	bool m_firstRun = true;
 	int handleClick(sf::Vector2f) const;
 
 	//void drawButtons(sf::RenderWindow&) const;

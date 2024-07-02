@@ -7,6 +7,7 @@
 #include "Command/StartGameCommand.h"
 #include "Command/RulesCommand.h"
 #include "Command/HighScoreCommand.h"
+#include "Command/BackCommandMenu.h"
 
 Menu::Menu()
 {
@@ -22,10 +23,11 @@ Menu::Menu()
 	m_buttons.emplace_back(std::make_unique<StartGameCommand>(this, "play"));
 	m_buttons.emplace_back(std::make_unique<HighScoreCommand>(this, "score board"));
 	m_buttons.emplace_back(std::make_unique<RulesCommand>(this, "rules"));
+	m_buttons.emplace_back(std::make_unique<BackCommandMenu>(this, " "));
 	//exit button?
 	
 
-	for (int i = 0; i < m_buttons.size(); i++)
+	for (int i = 0; i < m_buttons.size()-1; i++)
 	{
 		auto pos = sf::Vector2f(0.75 * SCREEN_SIZE.x, SCREEN_SIZE.y / m_buttons.size() + 150 * i);
 		m_buttons[i]->setPosition(pos);
@@ -92,9 +94,12 @@ Menu::~Menu()
 
 void Menu::showMenu()
 {
-
-	m_wind.create(sf::VideoMode(SCREEN_SIZE.x, SCREEN_SIZE.y), "Jetpack Joyride");
-	m_wind.setFramerateLimit(60);
+	if (m_firstRun) {
+		m_wind.create(sf::VideoMode(SCREEN_SIZE.x, SCREEN_SIZE.y), "Jetpack Joyride");
+		m_wind.setFramerateLimit(60);
+		m_firstRun = false;
+	}
+	
 
 	while (m_wind.isOpen())
 	{
@@ -106,11 +111,10 @@ void Menu::showMenu()
 		//sf::Vector2f mousePosF(mousePos.x, mousePos.y);
 
 		//handleHover(mousePosF, m_button, NUM_OF_BUTTONS_MENU);
-		std::for_each(m_buttons.begin(), m_buttons.end(), [&](auto& but) {but->draw(m_wind); });
+		std::for_each(m_buttons.begin(), m_buttons.end() - 1, [&](auto& but) {but->draw(m_wind); });
 
 		m_wind.display();
 
-		//hover effect
 
 		if (auto event = sf::Event(); m_wind.pollEvent(event))
 		{
@@ -178,6 +182,7 @@ void Menu::highScore()
 	m_text.setString("score board");
 	m_text.setOrigin(m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().height / 2);
 	m_text.setPosition(pos);
+	m_buttons[3]->draw(m_wind);
 	m_wind.draw(m_text);
 
 	m_text.setCharacterSize(40);
@@ -207,7 +212,12 @@ void Menu::highScore()
 				m_wind.close();
 				return;
 			case sf::Event::MouseButtonReleased:
-				return;
+				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+
+				if (option != -1 && option == 3) {
+					m_buttons[option]->axecute();
+				}
+				break;
 			}
 		}
 	}
@@ -221,7 +231,8 @@ void Menu::showHelp()
 	m_background.setTexture(Resources::getInstance().getBackground(2));
 
 	m_wind.draw(m_background);
-	
+	m_buttons[3]->draw(m_wind);
+
 	m_background.setTexture(Resources::getInstance().getBackground(0));
 	m_wind.display();
 
@@ -235,7 +246,12 @@ void Menu::showHelp()
 				m_wind.close();
 				return;
 			case sf::Event::MouseButtonReleased:
-				return;
+				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+
+				if (option != -1 && option == 3) {
+					m_buttons[option]->axecute();
+				}
+				break;;
 			}
 		}
 	}

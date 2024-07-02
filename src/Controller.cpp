@@ -151,7 +151,7 @@ void Controller::pause()
 				break;
 			else if (event.type == sf::Event::MouseButtonReleased)
 			{
-				auto mousePosition = m_wind.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
+				//auto mousePosition = m_wind.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
 				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 				if (option != -1 && option == 2)
 				{
@@ -166,6 +166,7 @@ void Controller::pause()
 void Controller::backToManu()
 {
 	m_wind.setView(m_wind.getDefaultView());
+	m_music.stop();
 	m_backToMenu = true;
 }
 
@@ -241,6 +242,7 @@ std::pair<int, std::string> Controller::readNameFromUser()
 
 	return { m_coins ,"None" };
 }
+
 
 int Controller::handleClick(sf::Vector2f v2f) const
 {

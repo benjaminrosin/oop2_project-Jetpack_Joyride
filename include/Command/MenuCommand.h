@@ -13,6 +13,7 @@ public:
 	void setPosition(sf::Vector2f);
 	bool contains(sf::Vector2f);
 	void draw(sf::RenderWindow&) const;
+
 protected:
 	sf::Sprite m_sp;
 	sf::Text m_name;

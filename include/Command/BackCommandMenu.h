@@ -9,8 +9,5 @@ class BackCommandMenu : public MenuCommand
 public:
 	BackCommandMenu(Menu*, std::string);
 	virtual void axecute() override;
-private:
-
-public:
 
 };
