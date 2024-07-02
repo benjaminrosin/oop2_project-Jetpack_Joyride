@@ -6,5 +6,5 @@
 
 void PlayerAnimationState::die(Player* player)
 {
-	player->setState(std::make_unique<RegularJumpState>(player));
+	player->setState(std::make_unique<RegularJumpState>(player, 0));
 }

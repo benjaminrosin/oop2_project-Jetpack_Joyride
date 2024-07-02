@@ -6,7 +6,7 @@ class Player;
 
 class SpeedPlayerState : public JumpAnimationPlayerState {
 public:
-    SpeedPlayerState(Player*);
+    SpeedPlayerState(Player*, int = -400);
     ~SpeedPlayerState();
     virtual void update(Player*, float) override;
     virtual void die(Player*) override {};

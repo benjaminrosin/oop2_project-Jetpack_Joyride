@@ -3,11 +3,11 @@
 #include "State/DeadPlayerState.h"
 #include "Player.h"
 
-RegularJumpState::RegularJumpState(Player* player)
+RegularJumpState::RegularJumpState(Player* player, int velocity)
     :JumpAnimationPlayerState(player)
 {
 	player->setNewSprite("jumping berry", Player_t);
-    player->setVelocity(-350);
+    player->setVelocity(velocity);
 	//JumpAnimationPlayerState::enter(player);
 }
 

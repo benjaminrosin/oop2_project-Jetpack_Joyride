@@ -4,7 +4,7 @@
 #include "Player.h"
 
 
-SpeedPlayerState::SpeedPlayerState(Player* player)
+SpeedPlayerState::SpeedPlayerState(Player* player, int velocity)
 	: JumpAnimationPlayerState(player, SpeedFlame_t, "SpeedFlame"), m_currState(player->getCurrState()), m_player(player)
 {
 	if (auto state = dynamic_cast<SpeedPlayerState*>(m_currState.get()))
@@ -13,7 +13,7 @@ SpeedPlayerState::SpeedPlayerState(Player* player)
 	}
 
 	//player->setAvoidStatus(true);
-	player->setVelocity(-400);
+	player->setVelocity(0);
 	player->updateSpeed(400);
 	player->rotateSp(45);
 	m_timer = 0;

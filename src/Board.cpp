@@ -87,7 +87,6 @@ void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 	timeToMissile -= delta_time;
 	timeToDecor -= delta_time; 
 
-
 	//int obj = rand() % 10 + 1;
 	if (timeToCoins < 0)
 	{

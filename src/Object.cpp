@@ -25,8 +25,13 @@ sf::Vector2f Object::getPosition() const
 
 sf::FloatRect Object::getGlobalBounds() const
 {
-	return sf::FloatRect(m_sp.getGlobalBounds());
+	return m_sp.getGlobalBounds();
 }
+
+//sf::FloatRect Object::getGlobalBounds() const
+//{
+//	return sf::FloatRect(m_sp.getPosition(), m_sp.getLocalBounds().getSize());
+//}
 
 sf::Transform Object::getTransform() const
 {
@@ -67,6 +72,16 @@ void Object::setNewSprite(std::string key, object_code obj)
 	m_curr_frame = -1;
 
 	animate(ANIMATION_RATE);
+}
+
+void Object::scale(sf::Vector2f v2scale)
+{
+	m_sp.scale(v2scale);
+}
+
+void Object::setScale(sf::Vector2f v2scale)
+{
+	m_sp.setScale(v2scale);
 }
 
 //const sf::Sprite& Object::getDrawable() const

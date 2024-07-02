@@ -7,6 +7,7 @@ Player::Player()
 	: MovingGameObjects(Player_t, sf::Vector2f(0, DEFULT_START_POINT), "walking berry")
 {
 	setState(std::make_unique<RegularWalkState>(this));
+	//setState(std::make_unique<TankWalkState>(this));
 
 }
 

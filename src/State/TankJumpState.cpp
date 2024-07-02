@@ -2,11 +2,11 @@
 #include "State/TankJumpState.h"
 #include "Player.h"
 
-TankJumpState::TankJumpState(Player* player)
+TankJumpState::TankJumpState(Player* player, int velocity)
     :JumpAnimationPlayerState(player)
 {
     player->setNewSprite("jumping tank", Tank_t);
-    player->setVelocity(-300);
+    player->setVelocity(velocity);
 }
 
 void TankJumpState::update(Player* player, float deltaTime)
