@@ -3,15 +3,16 @@
 #include <memory>
 #include "Object.h"
 #include <iostream>
+#include "Utilities.h"
 
 bool Scientists::m_registered = ObjectFactory<MovingGameObjects>::registerIt(Scientists_t,
-	[](int col, int row) -> std::list<std::unique_ptr<MovingGameObjects>> {
+	[](int col) -> std::list<std::unique_ptr<MovingGameObjects>> {
 		std::list<std::unique_ptr<MovingGameObjects>> lst;
-		lst.push_back(std::make_unique<Scientists>(col, row));
+		lst.push_back(std::make_unique<Scientists>(col, DEFULT_START_POINT));
 		return lst; });
 
 Scientists::Scientists(int col, int row) 
-	: MovingGameObjects(Scientists_t, sf::Vector2f(col, DEFULT_START_POINT), 50, std::rand() % 2, "Scientists") //לשנות את הנקודה))
+	: MovingGameObjects(Scientists_t, sf::Vector2f(col, row), 50, std::rand() % 2, "Scientists") //לשנות את הנקודה))
 {
 	m_sp.setScale(sf::Vector2f(m_direction.x, 1));
 	//m_speed = 100;

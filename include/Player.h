@@ -36,7 +36,7 @@ public:
 	
 private:
 	std::unique_ptr<PlayerAnimationState> m_currentState;
-	bool m_avoidCollisions = false;
+	bool m_avoidCollisions = true;
 	float m_moveSpeed = START_SPEED;
 	float m_jumpVelocity;
 	bool m_dead = false;

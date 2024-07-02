@@ -4,11 +4,12 @@
 #include <iostream>
 #include "State/LaserStaticState.h"
 #include "State/LaserRotatingState.h"
+#include "Utilities.h"
 
 bool Laser::m_registered = ObjectFactory<MovingGameObjects>::registerIt(Laser_t,
-	[](int col, int row) -> std::list<std::unique_ptr<MovingGameObjects>> {
+	[](int col) -> std::list<std::unique_ptr<MovingGameObjects>> {
 		std::list<std::unique_ptr<MovingGameObjects>> lst;
-		lst.push_back(std::make_unique<Laser>(col, row));
+		lst.push_back(std::make_unique<Laser>(col, randomY()));
 		return lst; });
 
 Laser::Laser(int col, int row)

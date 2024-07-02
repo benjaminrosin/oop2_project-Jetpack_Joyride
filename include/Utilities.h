@@ -21,10 +21,11 @@ private:
 };
 
 
-std::list<std::unique_ptr<Coin>> createLine(int, int);
-std::list<std::unique_ptr<Coin>> createDiagonal(int, int);
-std::list<std::unique_ptr<Coin>> createWave(int, int);
-std::list<std::unique_ptr<Coin>> createTriangle(int, int);
-std::list<std::unique_ptr<Coin>> createCircle(int, int);
+std::list<std::unique_ptr<Coin>> createLine(int);
+std::list<std::unique_ptr<Coin>> createDiagonal(int);
+std::list<std::unique_ptr<Coin>> createWave(int);
+std::list<std::unique_ptr<Coin>> createTriangle(int);
+std::list<std::unique_ptr<Coin>> createCircle(int);
+int randomY();
 
 std::list<std::unique_ptr<StaticGameObjects>> convertCoinToStaticList(std::list<std::unique_ptr<Coin>>&&);

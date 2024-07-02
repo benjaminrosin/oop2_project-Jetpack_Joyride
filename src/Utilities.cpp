@@ -7,8 +7,9 @@
 #include <cstdlib> // for rand()
 
 
-std::list<std::unique_ptr<Coin>> createLine(int col, int row)
+std::list<std::unique_ptr<Coin>> createLine(int col)
 {
+	int row = randomY();
 	std::list<std::unique_ptr<Coin>> lst;
 
 	int length = 10 + rand() % 10;
@@ -30,8 +31,9 @@ std::list<std::unique_ptr<Coin>> createLine(int col, int row)
 }
 
 
-std::list<std::unique_ptr<Coin>> createDiagonal(int col, int row)
+std::list<std::unique_ptr<Coin>> createDiagonal(int col)
 {
+	int row = randomY();
 	std::list<std::unique_ptr<Coin>> lst;
 	int length = 10 + rand() % 10;
 
@@ -50,26 +52,28 @@ std::list<std::unique_ptr<Coin>> createDiagonal(int col, int row)
 	return lst;
 }
 
-std::list<std::unique_ptr<Coin>> createWave(int col, int row)
+std::list<std::unique_ptr<Coin>> createWave(int col)
 {
+	int row = randomY();
 	std::list<std::unique_ptr<Coin>> lst;
 	int length = 20 + rand() % 10;
 	float frequency = 0.1f;  
 	float amplitude = COIN_SIZE.y * 3;  
-
+	int x;
+	int y;
 	for (int i = 0; i < length; i++)
 	{
-		int x = i * COIN_SIZE.x + col;
-		int y = row + (int(amplitude * sin(frequency * i * PI)));
+		x = i * COIN_SIZE.x + col;
+		y = row + (int(amplitude * sin(frequency * i * PI)));
 
 		
 		if (y >= DEFULT_START_POINT)
 		{
 			y = DEFULT_START_POINT - 1;
 		}
-		if (y <= MARGIN + COIN_SIZE.y)
+		if (y <= TOP_SCREEN_LIMIT + COIN_SIZE.y)
 		{
-			y = MARGIN + COIN_SIZE.y;
+			y = TOP_SCREEN_LIMIT + COIN_SIZE.y;
 		}
 		lst.push_back(std::make_unique<Coin>(x, y));
 	}
@@ -77,13 +81,14 @@ std::list<std::unique_ptr<Coin>> createWave(int col, int row)
 }
 
 
-std::list<std::unique_ptr<Coin>> createTriangle(int col, int row)
+std::list<std::unique_ptr<Coin>> createTriangle(int col)
 {
+	int row = randomY();
 	std::list<std::unique_ptr<Coin>> lst;
 
 	int size = 5+ rand() % 5;  
 
-	if (row + size * COIN_SIZE.y < MARGIN || row + size * COIN_SIZE.y >= DEFULT_START_POINT) {
+	if (row + size * COIN_SIZE.y < TOP_SCREEN_LIMIT || row + size * COIN_SIZE.y >= DEFULT_START_POINT) {
 		return {};
 	}
 
@@ -101,13 +106,15 @@ std::list<std::unique_ptr<Coin>> createTriangle(int col, int row)
 }
 
 
-std::list<std::unique_ptr<Coin>> createCircle(int col, int row) {
+std::list<std::unique_ptr<Coin>> createCircle(int col) 
+{
+	int row = randomY();
 	std::list<std::unique_ptr<Coin>> lst;
 
 	int radius = 2 + rand() % 5; 
 	int param = 2 * PI * radius;
 	
-	if (row - COIN_SIZE.y * radius <= MARGIN || row + COIN_SIZE.y * radius >= DEFULT_START_POINT) {
+	if (row - COIN_SIZE.y * radius - COIN_SIZE.y <= TOP_SCREEN_LIMIT || row + COIN_SIZE.y * radius >= DEFULT_START_POINT) {
 		return {}; 
 	}
 
@@ -119,6 +126,12 @@ std::list<std::unique_ptr<Coin>> createCircle(int col, int row) {
 	}
 
 	return lst;
+}
+
+
+int randomY()
+{
+	return 2 * MARGIN + (rand() % ((DEFULT_START_POINT - 2 * MARGIN) / 10)) * 10;
 }
 
 

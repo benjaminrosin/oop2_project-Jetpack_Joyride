@@ -124,7 +124,7 @@ const std::string FONT_FILE_NAME = "New Athletic M54.ttf";//LoveDays-2v7Oe.ttf";
 const std::string MASSEGE[] = {
 "your score is ",
 "please enter your name",
-" "
+"press enter to continue"
 };
 
 class Resources 

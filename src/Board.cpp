@@ -77,23 +77,22 @@ void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 
 	if (timeToCoins < 0)
 	{
-		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, randomY(), m_player.get()));
-		timeToCoins = (5 + rand() % 5) * (START_SPEED / playerSpeed);
+		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, m_player.get()));
+		timeToCoins = (3 + rand() % 5) * (START_SPEED / playerSpeed);
 	}
 	if (timeToGift < 0)
 	{
-		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, /*randomY()*/ TOP_SCREEN_LIMIT + MARGIN, m_player.get()));
-		//timeToGift = (5 + rand() % 15) * (START_SPEED / playerSpeed);
-		timeToGift = (1 + rand() % 5) * (START_SPEED / playerSpeed);
+		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, m_player.get()));
+		timeToGift = (5 + rand() % 15) * (START_SPEED / playerSpeed);
 	}
 	if (timeToLaser < 0)
 	{
-		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Laser_t, x, randomY(), m_player.get()));
+		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Laser_t, x, m_player.get()));
 		timeToLaser = (3 + rand() % 15) * (START_SPEED / playerSpeed);
 	}
 	if (timeToMissile < 0)
 	{
-		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Misssile_t, x, 600, m_player.get()));
+		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Misssile_t, x, m_player.get()));
 		timeToMissile = (10 + rand() % 20) * (START_SPEED / playerSpeed);
 	}
 	if (timeToDecor < 0)
@@ -101,11 +100,11 @@ void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 		int obj = rand() % 2;
 		if (obj)
 		{
-			m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, 600, m_player.get()));
+			m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Scientists_t, x, m_player.get()));
 		}
 		else
 		{
-			m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Light_t, x, randomY(), m_player.get()));
+			m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Light_t, x, m_player.get()));
 
 		}
 		timeToDecor = (1 + rand() % 3) * (START_SPEED / playerSpeed);
@@ -140,12 +139,12 @@ bool Board::collide(Object& obj)
 	return false;
 }
 
-int Board::randomY() const
-{
-
-	return 2*MARGIN + (rand()% ((DEFULT_START_POINT - 2*MARGIN) / 10))*10 ;
-
-}
+//int Board::randomY() const
+//{
+//
+//	return 2*MARGIN + (rand()% ((DEFULT_START_POINT - 2*MARGIN) / 10))*10 ;
+//
+//}
 
 //void Board::findCollision(std::list<std::unique_ptr<Object>>& objects)
 //{
