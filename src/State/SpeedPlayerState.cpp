@@ -1,4 +1,5 @@
 #include "State/SpeedPlayerState.h"
+#include "State/GravityPlayerState.h"
 #include "State/RegularJumpState.h"
 #include "State/TankJumpState.h"
 #include "Player.h"
@@ -10,6 +11,10 @@ SpeedPlayerState::SpeedPlayerState(Player* player, int velocity)
 	if (auto state = dynamic_cast<SpeedPlayerState*>(m_currState.get()))
 	{
 		m_currState = std::move(state->m_currState);
+	}
+	if (auto state = dynamic_cast<GravityPlayerState*>(m_currState.get()))
+	{
+		state->normalGravity();
 	}
 
 	//player->setAvoidStatus(true);
@@ -42,7 +47,7 @@ void SpeedPlayerState::update(Player* player, float deltaTime)
 	{
 		//player->setVelocity(-GRAVITY*deltaTime);
 		player->setVelocity(0);
-		player->setPosition(player->getPosition().x, DEFULT_START_POINT - player->getHeight()/2);
+		player->setPosition({ player->getPosition().x, DEFULT_START_POINT - player->getHeight() / 2 });
 
 	}
 

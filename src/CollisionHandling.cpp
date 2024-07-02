@@ -117,8 +117,8 @@ bool CollisionHandling::powerCollision(Player& player, Object&)
     playSound(Resources::getInstance().getSoundBuffer(PowerSound_t));
     // adding random between all options
     
-    player.setState(std::make_unique<TankJumpState>(&player, 0));
-    //player.setState(std::make_unique<GravityPlayerState>(&player));
+    //player.setState(std::make_unique<TankJumpState>(&player, 0));
+    player.setState(std::make_unique<GravityPlayerState>(&player));
     
 
     return true;
