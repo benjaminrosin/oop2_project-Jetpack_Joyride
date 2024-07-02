@@ -12,8 +12,8 @@
 
 int Controller::m_coins = 0;
 
-Controller::Controller(sf::RenderWindow& wind) 
-	: m_board(), m_wind(wind)
+Controller::Controller(sf::RenderWindow& wind, int best)
+	: m_board(), m_wind(wind), m_bestScore(best)
 {
 
 	//reading score board from file
@@ -26,13 +26,14 @@ Controller::Controller(sf::RenderWindow& wind)
 	m_buttons.emplace_back(std::make_unique<MuteCommand>(this, 1));
 	m_buttons.emplace_back(std::make_unique<PauseCommand>(this, 2));
 	m_buttons.emplace_back(std::make_unique<BackCommand>(this, 3));
-
 	for (int i = 0; i < m_buttons.size(); i++)
 	{
 		auto pos = sf::Vector2f(1000 + 60 * i, 10);
 		m_buttons[i]->setPosition(pos);
 	}
 	m_clock.restart();
+
+	m_coins = 0;
 
 }
 
@@ -95,6 +96,7 @@ void Controller::drawData()
 
 	m_data[0].setString("TIME " + std::to_string((int)m_timer));
 	m_data[1].setString("COINS " + std::to_string(m_coins));
+	m_data[2].setString("BEST SCORE " + std::to_string(m_bestScore));
 
 	for (int i = 0; i < NUM_OF_DATA; i++)
 	{
@@ -309,7 +311,6 @@ void Controller::moveBackground(float delta_time)
 		m_wind.draw(m_background[i]);
 
 		int xEndOfBackground = m_background[i].getGlobalBounds().left + m_background[i].getGlobalBounds().width;
-		//m_board.generateLevel(m_wind, delta_time);
 
 		if (xStartOfView >= xEndOfBackground)
 		{

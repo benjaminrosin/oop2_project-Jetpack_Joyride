@@ -7,9 +7,10 @@
 #include "Resources.h"
 #include <string>
 
+
 class Controller {
 public:
-	Controller(sf::RenderWindow&);
+	Controller(sf::RenderWindow&, int);
 	std::pair<int, std::string> run();
 	static void addToCoins(int = 1);
 	void setVolume(int);
@@ -23,6 +24,7 @@ private:
 	sf::Text m_data[NUM_OF_DATA];
 	sf::Sprite m_background[2];
 	sf::Text m_massege[3];
+	int m_bestScore = 0;
 
 	std::vector<std::unique_ptr<BoardCommand>> m_buttons;
 	sf::RenderWindow& m_wind;
