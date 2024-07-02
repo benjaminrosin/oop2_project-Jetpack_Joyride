@@ -309,6 +309,7 @@ void Controller::moveBackground(float delta_time)
 		m_wind.draw(m_background[i]);
 
 		int xEndOfBackground = m_background[i].getGlobalBounds().left + m_background[i].getGlobalBounds().width;
+		//m_board.generateLevel(m_wind, delta_time);
 
 		if (xStartOfView >= xEndOfBackground)
 		{
@@ -316,7 +317,6 @@ void Controller::moveBackground(float delta_time)
 			m_background[i].move({ 2 * m_wind.getView().getSize().x, 0 });
 			m_wind.draw(m_background[i]);
 		}
-
 	}
 
 }

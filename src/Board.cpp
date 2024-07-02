@@ -42,7 +42,7 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 
 	//if (m_objTimer < 0)
 	//{
-		readLevel(wind, delta_time);
+		generateLevel(wind, delta_time);
 	//	m_objTimer = 1;
 	//}
 
@@ -69,7 +69,7 @@ void Board::draw(sf::RenderWindow& wind) const
 //	return false;
 //}
 
-void Board::readLevel(sf::RenderWindow& wind, float delta_time)
+void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 {
 	static float timeToGift = rand() % 5;
 	static float timeToCoins = rand() % 5;
@@ -77,37 +77,38 @@ void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 	static float timeToMissile = 20 + rand() % 20;
 	static float timeToDecor = rand() % 3;
 
+	auto playerSpeed = m_player->getSpeed();
 
 	auto x = wind.getView().getCenter().x + SCREEN_SIZE.x;
 
-	timeToGift -= delta_time;
+	timeToGift -= delta_time; 
 	timeToCoins -= delta_time;
 	timeToLaser -= delta_time;
 	timeToMissile -= delta_time;
-	timeToDecor -= delta_time;
+	timeToDecor -= delta_time; 
 
 
 	//int obj = rand() % 10 + 1;
 	if (timeToCoins < 0)
 	{
 		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, randomY(), m_player.get()));
-		timeToCoins = 5 + rand() % 5;
+		timeToCoins = (5 + rand() % 5) * (START_SPEED / playerSpeed);
 	}
 	if (timeToGift < 0)
 	{
 		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Gift_t, x, randomY(), m_player.get()));
-		timeToGift = 5 + rand() % 15;
+		timeToGift = (5 + rand() % 15) * (START_SPEED / playerSpeed);
 		//timeToGift = 1 + rand() % 5;
 	}
 	if (timeToLaser < 0)
 	{
 		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Laser_t, x, randomY(), m_player.get()));
-		timeToLaser = 3 + rand() % 15;
+		timeToLaser = (3 + rand() % 15) * (START_SPEED / playerSpeed);
 	}
 	if (timeToMissile < 0)
 	{
 		m_movings.splice(m_movings.end(), ObjectFactory<MovingGameObjects>::create(Misssile_t, x, 600, m_player.get()));
-		timeToMissile = 10 + rand() % 20;
+		timeToMissile = (10 + rand() % 20) * (START_SPEED / playerSpeed);
 	}
 	if (timeToDecor < 0) //change to local static timer
 	{
@@ -121,7 +122,7 @@ void Board::readLevel(sf::RenderWindow& wind, float delta_time)
 			m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Light_t, x, randomY(), m_player.get()));
 
 		}
-		timeToDecor = 1 + rand() % 3;
+		timeToDecor = (1 + rand() % 3) * (START_SPEED / playerSpeed);
 	}
 	
 	//int obj = rand() % 10 + 1;

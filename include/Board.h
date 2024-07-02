@@ -20,7 +20,7 @@ public:
 	void play(sf::RenderWindow&, float, float);
 	void draw(sf::RenderWindow&)const;
 	//bool checkCollision();
-	void readLevel(sf::RenderWindow&, float);
+	void generateLevel(sf::RenderWindow&, float);
 	bool alive() const;
 	sf::Vector2f getPlayerLoc() const;
 	//void moveBackground(float, sf::RenderWindow&);
