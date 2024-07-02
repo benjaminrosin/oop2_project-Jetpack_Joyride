@@ -17,6 +17,8 @@ Resources::Resources()
 	appendFrameIntRects("jumping berry", 0, { 75, 100 }, 1, 3);
 	appendFrameIntRects("walking tank", 28, { 146, 110 }, 2);
 	appendFrameIntRects("jumping tank", 28, { 146, 110 }, 1, 2);
+	appendFrameIntRects("Gravity", 0, { 73, 100 }, 4);
+
 	appendFrameIntRects("Fall", 0, { 107, 100 }, 4);
 	appendFrameIntRects("Dead", 0, { 107, 100 }, 1, 4);
 

@@ -5,7 +5,7 @@ configure_file ("help.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Title.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("JetpackWalking.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("SuperPowerTank2.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("SuperPowerFlyTank.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("SuperPowerRunner.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("PlayerDead.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("ButtonMenu.png" ${CMAKE_BINARY_DIR} COPYONLY)

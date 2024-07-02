@@ -13,6 +13,7 @@
 #include "State/TankJumpState.h"
 #include "State/TankWalkState.h"
 #include "State/SpeedPlayerState.h"
+#include "State/GravityPlayerState.h"
 //#include "State/DeadPlayerState.h"
 #include <iostream>
 #include "Resources.h"
@@ -92,7 +93,6 @@ bool CollisionHandling::scientistCollision(Player&, Object&)
 
 bool CollisionHandling::speedCollision(Player& player, Object&)
 {
-    //more speed
     playSound(Resources::getInstance().getSoundBuffer(ShieldSpeed_t));
 
     player.setState(std::make_unique<SpeedPlayerState>(&player));
@@ -112,11 +112,15 @@ bool CollisionHandling::moneyCollision(Player&, Object& obj)
 
 bool CollisionHandling::powerCollision(Player& player, Object&)
 {
+    std::cout << "CollisionHandling::powerCollision - add rand\n";
+
     playSound(Resources::getInstance().getSoundBuffer(PowerSound_t));
     // adding random between all options
     
-    player.setState(std::make_unique<TankJumpState>(&player));
+    //player.setState(std::make_unique<TankJumpState>(&player));
+    player.setState(std::make_unique<GravityPlayerState>(&player));
     
+
     return true;
 }
 
