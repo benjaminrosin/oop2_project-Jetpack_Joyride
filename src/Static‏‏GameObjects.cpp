@@ -29,4 +29,4 @@ StaticGameObjects::StaticGameObjects(object_code obj, sf::Vector2f loc, std::str
 void StaticGameObjects::move(sf::Vector2f move)
 {
 	m_sp.move(move);
-}
+} //μαγεχ
