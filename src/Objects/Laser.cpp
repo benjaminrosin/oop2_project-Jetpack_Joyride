@@ -17,7 +17,7 @@ Laser::Laser(int col, int row)
 {
 	m_sp.setOrigin({m_sp.getGlobalBounds().width / 2, m_sp.getGlobalBounds().height / 2});
 	
-	m_actual_colision.setSize({ 35, 350 });
+	m_actual_colision.setSize({ 50, 350 });
 	m_actual_colision.setOrigin({ m_actual_colision.getGlobalBounds().width / 2, m_actual_colision.getGlobalBounds().height / 2 });
 
 	m_angle = (rand() % 18) * 10;
@@ -39,6 +39,7 @@ void Laser::rotate(float angle)
 	m_sp.rotate(angle);
 	m_actual_colision.rotate(angle);
 }
+
 
 sf::FloatRect Laser::getLocalBounds() const
 {
