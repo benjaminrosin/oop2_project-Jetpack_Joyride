@@ -39,6 +39,7 @@ void GravityPlayerState::normalGravity()
 	if (m_gravity < 0)
 	{
 		flip();
+		m_player->setPosition(m_player->getPosition() + sf::Vector2f(0, 10 + m_player->getGlobalBounds().height));
 	}
 }
 
