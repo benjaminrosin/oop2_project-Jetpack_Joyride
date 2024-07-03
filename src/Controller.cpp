@@ -239,7 +239,7 @@ std::pair<int, std::string> Controller::readNameFromUser()
 		m_wind.display();
 	}
 
-	return { m_coins ,"None" };
+	return { m_coins ,"anonymous" };
 }
 
 

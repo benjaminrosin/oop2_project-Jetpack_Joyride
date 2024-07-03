@@ -18,7 +18,7 @@ Missile::Missile(int col, Player* p)
 
 {
 	setState(std::make_unique<AlertMissileState>(this));
-	m_sp.setOrigin(sf::Vector2f(0, m_sp.getGlobalBounds().height/2));
+	//m_sp.setOrigin(sf::Vector2f(0, m_sp.getGlobalBounds().height/2));
 	//m_currState->enter(this);
 }
 
@@ -42,6 +42,8 @@ void Missile::setPositionByPlayer()
 {
 	int x = m_p2player->getPosition().x + 1000 - m_sp.getGlobalBounds().width;
 	int y = m_p2player->getPosition().y;
+	if (y < TOP_SCREEN_LIMIT) y = TOP_SCREEN_LIMIT;
+	m_p2player->getTransform();
 
 	m_sp.setPosition(sf::Vector2f(x, y));
 }

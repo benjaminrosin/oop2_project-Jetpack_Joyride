@@ -1,5 +1,6 @@
 #pragma once
 #include"State/WalkAnimationPlayerState.h"
+#include "Factory/PowerupFactory.h"
 
 class TankWalkState : public WalkAnimationPlayerState {
 public:
@@ -12,5 +13,5 @@ public:
     //virtual void jump(Player*) override;
 
 private:
-
+    static bool m_registered;
 };

@@ -1,9 +1,13 @@
 #include "State/GravityPlayerState.h"
 #include "Player.h"
 
+bool GravityPlayerState::m_registered = PowerupFactory::registerIt(Gravity_t,
+	[](Player* p) -> std::unique_ptr<PlayerAnimationState> {
+		return std::make_unique<GravityPlayerState>(p); });
+
+
 GravityPlayerState::GravityPlayerState(Player* player, int gravity)
 	:m_gravity(gravity), m_player(player)
-//	:WalkAnimationPlayerState(m_gravityDir)
 {
 	player->setNewSprite("Gravity", Gravity_t);
 	player->setVelocity(500);

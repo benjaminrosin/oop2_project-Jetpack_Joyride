@@ -3,7 +3,7 @@
 
 class RegularJumpState : public JumpAnimationPlayerState {
 public:
-    RegularJumpState(Player*, int = -350);
+    RegularJumpState(Player*, int = 0);
     virtual void update(Player*, float) override;
     virtual sf::Vector2f getFlameOffset()const override { return { 10, -15 }; };
     virtual void die(Player*) override;
