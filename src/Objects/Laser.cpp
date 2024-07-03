@@ -13,7 +13,7 @@ bool Laser::m_registered = ObjectFactory<MovingGameObjects>::registerIt(Laser_t,
 		return lst; });
 
 Laser::Laser(int col, int row)
-	: MovingGameObjects(Laser_t, sf::Vector2f(col, row), "Laser") //לשנות את הנקודה))
+	: MovingGameObjects(Laser_t, sf::Vector2f(col, row), "Laser")
 {
 	m_sp.setOrigin({m_sp.getGlobalBounds().width / 2, m_sp.getGlobalBounds().height / 2});
 	
@@ -22,7 +22,6 @@ Laser::Laser(int col, int row)
 
 	m_angle = (rand() % 18) * 10;
 	rotate(m_angle);
-
 
 	int state = rand() % 2;
 	((state) ? m_currState = std::make_unique<LaserStaticState>() : m_currState = std::make_unique<LaserRotatingState>());
@@ -39,7 +38,6 @@ void Laser::rotate(float angle)
 	m_sp.rotate(angle);
 	m_actual_colision.rotate(angle);
 }
-
 
 sf::FloatRect Laser::getLocalBounds() const
 {

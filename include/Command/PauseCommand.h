@@ -8,6 +8,5 @@ class PauseCommand : public BoardCommand
 public:
 	PauseCommand(Controller*, int);
 	virtual void axecute() override;
-private:
-	
+
 };

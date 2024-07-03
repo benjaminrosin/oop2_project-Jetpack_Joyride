@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Object.h"
+#include "Objects/Object.h"
 #include "Resources.h"
 
 
@@ -10,7 +10,6 @@ public:
 	MovingGameObjects(object_code, sf::Vector2f, std::string);
 	MovingGameObjects(object_code, sf::Vector2f, float, int, std::string);
 	virtual ~MovingGameObjects() {};
-	virtual void move(sf::Vector2f) override;
 	virtual void move(float) = 0;
 	virtual const sf::Sprite getSprite() const;
 

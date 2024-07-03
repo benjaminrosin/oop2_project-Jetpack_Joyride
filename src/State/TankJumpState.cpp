@@ -1,6 +1,6 @@
 #include "State/TankWalkState.h"
 #include "State/TankJumpState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 
 TankJumpState::TankJumpState(Player* player, int velocity)
     :JumpAnimationPlayerState(player)
@@ -22,8 +22,3 @@ void TankJumpState::update(Player* player, float deltaTime)
         player->setState(std::make_unique<TankWalkState>(player));
     }
 }
-
-//void TankJumpState::jump(Player*)
-//{
-//
-//}

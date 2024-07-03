@@ -2,7 +2,7 @@
 #include "Factory/ObjectFactory.h"
 #include "State/AlertMissileState.h"
 #include "State/FireMissileState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 #include <iostream>
 
 bool Missile::m_registered = ObjectFactory<MovingGameObjects>::registerIt(Misssile_t,
@@ -18,16 +18,12 @@ Missile::Missile(int col, Player* p)
 
 {
 	setState(std::make_unique<AlertMissileState>(this));
-	//m_sp.setOrigin(sf::Vector2f(0, m_sp.getGlobalBounds().height/2));
-	//m_currState->enter(this);
+
 }
-
-
 
 void Missile::move(float deltaTime)
 {
 	m_timer += deltaTime;
-
 	m_currState->update(this, deltaTime);
 
 }
@@ -35,7 +31,6 @@ void Missile::move(float deltaTime)
 void Missile::setState(std::unique_ptr<MissileAnimationState> state)
 {
 	m_currState = std::move(state);
-	//m_currState->enter(this);
 }
 
 void Missile::setPositionByPlayer()
@@ -47,9 +42,3 @@ void Missile::setPositionByPlayer()
 
 	m_sp.setPosition(sf::Vector2f(x, y));
 }
-
-//void Missile::playSound(const sf::SoundBuffer* sound)
-//{
-//	m_currSound.setBuffer(*sound);
-//	m_currSound.play();
-//}

@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Gift.h"
+#include "Objects/Gift.h"
 
 class Gmoney :public Gift
 {
@@ -13,6 +13,4 @@ private:
 	static bool m_registered;
 	sf::Text m_text;
 	int m_value;
-
-
 };

@@ -11,6 +11,7 @@
 #include "Command/NextCommandMenu.h"
 #include "Command/PrevCommandMenu.h"
 
+
 Menu::Menu()
 {
 	m_background.setTexture(Resources::getInstance().getBackground(0));
@@ -39,30 +40,38 @@ Menu::Menu()
 	m_smallButtons.emplace_back(std::make_unique<PrevCommandMenu>(this));
 	m_smallButtons[2]->setPosition({80.f, 720.f});
 
-	
-	auto file = std::ifstream("Score board.txt");
+	try {
+		auto file = std::ifstream("Score board.txt");
 
-	if (!file.is_open())
+		if (!file.is_open())
+		{
+			throw std::runtime_error("couldn't load score file");
+		}
+
+		std::string line;
+		int score;
+
+		for (int i = 0; i < 3; i++) {
+			std::getline(file, line);
+			std::istringstream iss(line);
+			if ((iss >> score))
+			{
+				std::getline(iss, line);
+				m_scoreBoard.emplace(score, line);
+			}
+			else
+			{
+				throw std::runtime_error("format isn't seported");
+			}
+		}
+	}
+	catch (std::exception& e)
 	{
-		throw std::runtime_error("couldn't load score file");
-	}
-
-	std::string line;
-	int score;
-
-	for (int i = 0; i < 3; i++){
-		std::getline(file, line);
-		std::istringstream iss(line);
-		if ((iss >> score))
-		{
-			std::getline(iss, line);
-			m_scoreBoard.emplace(score, line);
-		}
-		else
-		{
-			//throw std::runtime_error("format isn't seported");
+		for (int i = 0; i < 3; i++) {
+			m_scoreBoard.emplace(0, "none");
 		}
 	}
+	
 
 	m_scoreBoardSign.setTexture(*Resources::getInstance().getTextureButtons(0));
 	m_scoreBoardSign.setOrigin(sf::Vector2f(m_scoreBoardSign.getGlobalBounds().width / 2, m_scoreBoardSign.getGlobalBounds().height / 2));
@@ -81,17 +90,7 @@ Menu::Menu()
 
 Menu::~Menu()
 {
-	/*if (m_controller)
-	{
-		delete m_controller;
-	}*/
-
 	auto file = std::ofstream("Score board.txt", std::ios_base::trunc);
-
-	if (!file.is_open())
-	{
-		throw std::runtime_error("couldn't load score file");
-	}
 
 	auto score = m_scoreBoard.begin();
 
@@ -105,8 +104,7 @@ Menu::~Menu()
 void Menu::showMenu()
 {
 	m_wind.create(sf::VideoMode(SCREEN_SIZE.x, SCREEN_SIZE.y), "Jetpack Joyride");
-	m_wind.setFramerateLimit(60);
-		
+	m_wind.setFramerateLimit(60);	
 
 	while (m_wind.isOpen())
 	{
@@ -167,13 +165,10 @@ int Menu::handleClick(std::vector<std::unique_ptr<MenuCommand>>& conteiner,  sf:
 
 void Menu::newGame()
 {
-	//m_controller = new Controller(m_wind);
 	m_controller = std::make_unique<Controller>(m_wind, m_scoreBoard.begin()->first);
 	m_scoreBoard.emplace(m_controller->run());
-	//auto ret = m_controller->run();
-	//std::cout << ret.first << " " << ret.second << "\n";
-	//delete m_controller;
-	//m_controller = nullptr;
+	m_controller.release();
+
 }
 
 void Menu::highScore()
@@ -217,9 +212,7 @@ void Menu::highScore()
 				m_wind.close();
 				return;
 			case sf::Event::MouseButtonReleased:
-
 				int option = handleClick(m_smallButtons, sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
-
 				if (option == 0) {
 					m_smallButtons[option]->axecute();
 				}
@@ -231,13 +224,13 @@ void Menu::highScore()
 
 void Menu::showHelp()
 {
-	m_background.setTexture(Resources::getInstance().getBackground(2));
-
 	while (m_wind.isOpen() && !m_backToMenu)
 	{
 		m_wind.clear();
-		
+
+		m_background.setTexture(Resources::getInstance().getBackground(2 + m_currSlide));
 		m_wind.draw(m_background);
+
 		std::for_each(m_smallButtons.begin(), m_smallButtons.end(), [&](auto& but) {but->draw(m_wind); });
 		m_wind.display();
 
@@ -259,9 +252,16 @@ void Menu::showHelp()
 		}
 	}
 	m_background.setTexture(Resources::getInstance().getBackground(0));
+	m_currSlide = 0;
 }
 
 void Menu::backToMenu()
 {
 	m_backToMenu = true;
+}
+
+void Menu::nextSlide(int num)
+{
+	if (m_currSlide + num >= 0 && m_currSlide + num < 3)
+		m_currSlide += num;
 }

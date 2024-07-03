@@ -1,4 +1,4 @@
-#include "Gpower.h"
+#include "Objects/Gpower.h"
 #include "Factory/ObjectFactory.h"
 #include "Utilities.h"
 
@@ -10,9 +10,4 @@ bool Gpower::m_registered = ObjectFactory<StaticGameObjects>::registerIt(Gpower_
 
 Gpower::Gpower(int col, int row)
 	:Gift(Gpower_t, col, row, "Gpower")
-{
-}
-
-
-
-
+{}

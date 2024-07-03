@@ -1,18 +1,17 @@
 #pragma once
-#include "Player.h"
-#include "Object.h"
+#include "Objects/Player.h"
+#include "Objects/Object.h"
 #include <map>
 #include <typeindex>
 #include <SFML/Audio.hpp>
 
-typedef bool (*HitFunctionPtr)(Player&, Object&);//maybe we need to erase object
+typedef bool (*HitFunctionPtr)(Player&, Object&);
 typedef std::map<std::type_index, HitFunctionPtr> HitMap;
-//typedef (bool*)(Object&) HitFunctionPtr;
 
 class CollisionHandling
 {
 public:
-	static bool processCollision(Player&, Object&);//לבדוק אם אפשר להוסיף קונסט בארגומנטים
+	static bool processCollision(Player&, Object&);
 	static void setVolume(int);
 	static void playSound(const sf::SoundBuffer*);
 
@@ -28,13 +27,6 @@ private:
 	static bool powerCollision(Player&, Object&);
 	static bool lightCollision(Player&, Object&);
 
-
-
-
 	static sf::Sound m_currSound;
-
-	//static bool pixelPerfectCollision(const sf::Sprite&, const sf::Sprite&);
-	//static std::vector<uint8_t> createBitMask(const sf::Texture& texture) 
-
 
 };

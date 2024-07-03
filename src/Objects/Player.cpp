@@ -1,13 +1,12 @@
-#include "Player.h"
+#include "Objects/Player.h"
 #include "State/RegularWalkState.h"
 #include "State/TankWalkState.h"
 
 
 Player::Player()
-	: MovingGameObjects(Player_t, sf::Vector2f(0, DEFULT_START_POINT), "walking berry")
+	: MovingGameObjects(Player_t, sf::Vector2f(0, DEFULT_START_POINT), START_SPEED, 1, "walking berry")
 {
 	setState(std::make_unique<RegularWalkState>(this));
-	//setState(std::make_unique<TankWalkState>(this));
 
 }
 
@@ -25,7 +24,7 @@ void Player::setState(std::unique_ptr<PlayerAnimationState> state)
 void Player::update(float deltaTime)
 {
 	m_currentState->update(this, deltaTime);
-	updateSpeed(deltaTime*3);
+	updateSpeed(deltaTime * 3);
 }
 
 void Player::playerDie()
@@ -51,7 +50,7 @@ void Player::draw(sf::RenderWindow& wind) const
 
 void Player::move(sf::Vector2f v2f)
 {
-	v2f.x *= m_moveSpeed;
+	v2f.x *= m_speed;
 	v2f.y *= m_jumpVelocity;
 
 	if (m_sp.getPosition().y + v2f.y > DEFULT_START_POINT + 10)
@@ -59,7 +58,7 @@ void Player::move(sf::Vector2f v2f)
 		v2f.y = 0;
 	}
 
-	MovingGameObjects::move(v2f);
+	m_sp.move(v2f);
 }
 
 void Player::move(float x)
@@ -69,8 +68,7 @@ void Player::move(float x)
 
 void Player::updateSpeed(float add)
 {
-	m_moveSpeed += add;
-	std::cout << m_moveSpeed << '\n';
+	m_speed += add;
 }
 
 void Player::setVelocity(float num)
@@ -90,7 +88,7 @@ const float Player::getVelocity() const
 
 const float Player::getSpeed() const
 {
-	return m_moveSpeed;
+	return m_speed;
 }
 
 const bool Player::isDead() const
@@ -115,15 +113,8 @@ void Player::setPosition(sf::Vector2f v2p)
 
 void Player::flip(int num)
 {
-	//auto currOrigin = m_sp.getOrigin();
-
-	//m_sp.setOrigin(0,0);
 	m_sp.setScale(sf::Vector2f(1, num));
 
-	//m_sp.setOrigin(currOrigin);
-	//m_sp.setOrigin({ 0, - m_sp.getGlobalBounds().height });
-	//m_sp.setOrigin(0, m_sp.getGlobalBounds().height);
-	//m_sp.setPosition(m_sp.getPosition() + sf::Vector2f(0, 5 + m_sp.getGlobalBounds().height));
 }
 
 std::unique_ptr<PlayerAnimationState> Player::getCurrState()
@@ -131,15 +122,3 @@ std::unique_ptr<PlayerAnimationState> Player::getCurrState()
 	return std::move(m_currentState);
 }
 
-
-
-//const std::unique_ptr<PlayerAnimationState>&& Player::getCurrState() const
-//{
-//	//return m_currentState.get();
-//	return std::move(m_currentState);
-//		//std::make_unique<PlayerAnimationState>(*m_currentState);
-//}
-//std::unique_ptr<PlayerAnimationState> Player::getCurrState() const
-//{
-//	//return std::move(m_currentState);
-//}

@@ -1,14 +1,13 @@
 #include "State/RegularWalkState.h"
 #include "State/RegularJumpState.h"
 #include "State/DeadPlayerState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 
 RegularJumpState::RegularJumpState(Player* player, int velocity)
     :JumpAnimationPlayerState(player)
 {
 	player->setNewSprite("jumping berry", Player_t);
     player->setVelocity(velocity);
-	//JumpAnimationPlayerState::enter(player);
 }
 
 void RegularJumpState::update(Player* player, float delta_time)

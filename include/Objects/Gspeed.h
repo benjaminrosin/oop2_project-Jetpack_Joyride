@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Gift.h"
+#include "Objects/Gift.h"
 
 class Gspeed :public Gift
 {
@@ -9,6 +9,4 @@ public:
 	
 private:
 	static bool m_registered;
-
-
 };

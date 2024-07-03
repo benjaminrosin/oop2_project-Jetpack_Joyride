@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <memory>
-#include "MovingGameObjects.h"
+#include "Objects/MovingGameObjects.h"
 #include "State/PlayerAnimationState.h"
 #include "State/TankWalkState.h"
 
@@ -18,8 +18,7 @@ public:
 	bool avoidCollisions()const;
 	void setAvoidStatus(bool);
 	virtual void draw(sf::RenderWindow&)const override;
-	//virtual sf::Vector2f getPosition() const {};
-	virtual void move(sf::Vector2f) override;
+	void move(sf::Vector2f);
 	virtual void move(float x) override;
 
 	void updateSpeed(float);
@@ -32,13 +31,11 @@ public:
 	void rotateSp(float);
 	void setPosition(sf::Vector2f);
 	void flip(int);
-	//const std::unique_ptr<PlayerAnimationState>&& getCurrState() const;
 	std::unique_ptr<PlayerAnimationState> getCurrState();
 	
 private:
 	std::unique_ptr<PlayerAnimationState> m_currentState;
 	bool m_avoidCollisions = false;
-	float m_moveSpeed = START_SPEED;
 	float m_jumpVelocity;
 	bool m_dead = false;
 

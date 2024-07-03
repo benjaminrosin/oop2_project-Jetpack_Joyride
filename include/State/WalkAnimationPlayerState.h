@@ -6,7 +6,6 @@
 class Player;
 class WalkAnimationPlayerState : public PlayerAnimationState {
 public:
-    //WalkAnimationPlayerState() {};
     virtual void update(Player*, float) = 0;
 
 };

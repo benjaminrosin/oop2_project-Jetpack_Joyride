@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "StaticGameObjects.h"
+#include "Objects/StaticGameObjects.h"
 
 class Player;
 

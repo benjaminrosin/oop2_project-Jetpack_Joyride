@@ -1,5 +1,5 @@
 #pragma once
-#include "StaticGameObjects.h"
+#include "Objects/StaticGameObjects.h"
 
 
 class Light :public StaticGameObjects
@@ -10,6 +10,5 @@ public:
 
 private:
 	static bool m_registered;
-
 
 };
