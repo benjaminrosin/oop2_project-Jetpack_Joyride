@@ -14,6 +14,7 @@
 #include "State/TankWalkState.h"
 #include "State/SpeedPlayerState.h"
 #include "State/GravityPlayerState.h"
+#include "Factory/PowerupFactory.h"
 //#include "State/DeadPlayerState.h"
 #include <iostream>
 #include "Resources.h"
@@ -117,8 +118,8 @@ bool CollisionHandling::powerCollision(Player& player, Object&)
     playSound(Resources::getInstance().getSoundBuffer(PowerSound_t));
     // adding random between all options
     
-    //player.setState(std::make_unique<TankJumpState>(&player, 0));
-    player.setState(std::make_unique<GravityPlayerState>(&player));
+    //player.setState(std::make_unique<TankJumpState>(&player));
+    player.setState(std::move(PowerupFactory::create(Tank_t + rand() % PowerupFactory::getSize(), &player)));
     
 
     return true;

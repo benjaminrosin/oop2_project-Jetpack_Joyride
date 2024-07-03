@@ -4,7 +4,6 @@
 #include "State/TankJumpState.h"
 #include "Player.h"
 
-
 SpeedPlayerState::SpeedPlayerState(Player* player, int velocity)
 	: JumpAnimationPlayerState(player, SpeedFlame_t, "SpeedFlame"), m_currState(player->getCurrState()), m_player(player)
 {

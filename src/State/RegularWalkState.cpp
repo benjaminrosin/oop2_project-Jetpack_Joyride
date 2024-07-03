@@ -12,7 +12,7 @@ void RegularWalkState::update(Player* player, float delta_time)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || player->getPosition().y < DEFULT_START_POINT)
 	{
-		player->setState(std::make_unique<RegularJumpState>(player));
+		player->setState(std::make_unique<RegularJumpState>(player, -350));
 	}
 
 	WalkAnimationPlayerState::update(player, delta_time);

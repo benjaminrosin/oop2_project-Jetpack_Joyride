@@ -1,6 +1,6 @@
 #pragma once
 #include"State/WalkAnimationPlayerState.h"
-
+#include "Factory/PowerupFactory.h"
 
 class GravityPlayerState : public WalkAnimationPlayerState {
 public:
@@ -15,6 +15,6 @@ private:
     int m_gravity;
     float m_timer = 0;
     Player* m_player;
-
+    static bool m_registered;
     void flip();
 };
