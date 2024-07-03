@@ -36,5 +36,5 @@ private:
 	std::list<std::unique_ptr<MovingGameObjects>> m_movings;
 	//const sf::Texture* m_background;
 	float m_objTimer = 1;
-	int randomY() const;
+	//int randomY() const;
 };

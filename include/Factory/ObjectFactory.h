@@ -12,16 +12,16 @@ template <typename T>
 class ObjectFactory
 {
 public:
-	typedef std::function<std::list<std::unique_ptr<T>>(int, int, Player*)> func3;
-	typedef std::function<std::list<std::unique_ptr<T>>(int, int)> func2;
+	typedef std::function<std::list<std::unique_ptr<T>>(int, Player*)> func2;
+	typedef std::function<std::list<std::unique_ptr<T>>(int)> func1;
 	//typedef (std::list<std::unique_ptr<T>>(*)(int, int, Player*)) func;
-	typedef std::map<int, func3> ObjMap;
+	typedef std::map<int, func2> ObjMap;
 
 	//static std::list<std::unique_ptr<T>> create(int);
-	static std::list<std::unique_ptr<T>>  create(int, int, int, Player*); 
+	static std::list<std::unique_ptr<T>>  create(int, int, Player*); 
 
+	static bool registerIt(int, func1);
 	static bool registerIt(int, func2);
-	static bool registerIt(int, func3);
 
 	static int getSize() { return getMap().size(); };
 
@@ -46,25 +46,25 @@ private:
 //}
 
 template <typename T>
-std::list<std::unique_ptr<T>> ObjectFactory<T>::create(int index, int x, int y, Player* p)
+std::list<std::unique_ptr<T>> ObjectFactory<T>::create(int index, int x, Player* p)
 {
 	auto it = getMap().find(index);
 	if (it == getMap().end())
 	{
 		throw std::runtime_error("The requested object was not found");
 	}
-	return it->second(x,y,p);
+	return it->second(x,p);
 }
 
 template <typename T>
-bool ObjectFactory<T>::registerIt(int index, func2 fu)
+bool ObjectFactory<T>::registerIt(int index, func1 fu)
 {
-	getMap().emplace(index, [fu](int col, int row, Player*) -> std::list<std::unique_ptr<T>> {return fu(col, row); });
+	getMap().emplace(index, [fu](int col, Player*) -> std::list<std::unique_ptr<T>> {return fu(col); });
 	return true;
 }
 
 template<typename T>
-bool ObjectFactory<T>::registerIt(int index, func3 fu)
+bool ObjectFactory<T>::registerIt(int index, func2 fu)
 {
 	getMap().emplace(index, fu);
 	return true;
@@ -72,7 +72,7 @@ bool ObjectFactory<T>::registerIt(int index, func3 fu)
 
 
 template <typename T>
-std::map<int, std::function<std::list<std::unique_ptr<T>>(int, int, Player*)>>& ObjectFactory<T>::getMap()
+std::map<int, std::function<std::list<std::unique_ptr<T>>(int, Player*)>>& ObjectFactory<T>::getMap()
 {
 	static ObjMap map;
 	return map;

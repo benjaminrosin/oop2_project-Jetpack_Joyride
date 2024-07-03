@@ -70,7 +70,6 @@ std::pair<int, std::string> Controller::run()
 			}
 			else if (event.type == sf::Event::MouseButtonReleased)
 			{
-				auto mousePosition = m_wind.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
 				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 				if (option != -1)
 				{
@@ -129,34 +128,43 @@ void Controller::pause()
 	rect.setPosition(m_wind.getView().getCenter());
 
 	m_wind.draw(rect);
+
+	auto view = m_wind.getView();
+	m_wind.setView(m_wind.getDefaultView());
+	m_wind.draw(m_massege[2]);
+	m_buttons[2]->draw(m_wind);
+	m_wind.setView(view);
+
 	m_wind.display();
-	//wait for command
 
-	//if (auto event = sf::Event(); m_wind.waitEvent(event))
-	//{
-	//	switch (event.type)
-	//	{
-	//	case sf::Event::Closed:
-	//		m_wind.close();
-	//		break;
-
-	//	case sf::Event::MouseButtonPressed:
-	//		std::cout << "continue\n";
-	//	}
-	//}
-
-	while (true)
+	while (true && !m_backToMenu)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-			break;
+		if (auto event = sf::Event(); m_wind.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+			{
+				m_wind.close();
+				exit(EXIT_FAILURE);
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+				break;
+			else if (event.type == sf::Event::MouseButtonReleased)
+			{
+				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+				if (option != -1 && option == 2)
+				{
+					m_buttons[option]->axecute();
+				}
+			}
+		}
 	}
-
 	m_clock.restart();
 }
 
 void Controller::backToManu()
 {
 	m_wind.setView(m_wind.getDefaultView());
+	m_music.stop();
 	m_backToMenu = true;
 }
 
@@ -232,6 +240,7 @@ std::pair<int, std::string> Controller::readNameFromUser()
 
 	return { m_coins ,"None" };
 }
+
 
 int Controller::handleClick(sf::Vector2f v2f) const
 {

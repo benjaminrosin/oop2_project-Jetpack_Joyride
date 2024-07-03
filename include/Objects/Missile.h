@@ -9,7 +9,7 @@ class Player;
 class Missile:public MovingGameObjects {
 public:
 
-	Missile(int, int, Player*);
+	Missile(int, Player*);
 	virtual void move(sf::Vector2f v2f) override { MovingGameObjects::move(v2f); };
 	virtual void move(float x) override;
 	void setState(std::unique_ptr<MissileAnimationState>);

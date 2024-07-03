@@ -3,11 +3,12 @@
 #include "Gift.h"
 #include "Gmoney.h"
 #include "Factory/ObjectFactory.h"
+#include "Utilities.h"
 
 bool Gmoney::m_registered = ObjectFactory<StaticGameObjects>::registerIt(Gmoney_t,
-	[](int col, int row) -> std::list<std::unique_ptr<StaticGameObjects>> {
+	[](int col) -> std::list<std::unique_ptr<StaticGameObjects>> {
 		std::list<std::unique_ptr<StaticGameObjects>> lst;
-		lst.push_back(std::make_unique<Gmoney>(col, row));
+		lst.push_back(std::make_unique<Gmoney>(col, randomY()));
 		return lst; });
 
 

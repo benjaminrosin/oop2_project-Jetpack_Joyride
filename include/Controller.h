@@ -18,7 +18,7 @@ public:
 	void backToManu();
 	//void back();
 	std::pair<int, std::string> readNameFromUser();
-
+	
 private:
 	Board m_board;
 	sf::Text m_data[NUM_OF_DATA];
