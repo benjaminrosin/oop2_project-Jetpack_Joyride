@@ -11,6 +11,7 @@
 #include "Command/NextCommandMenu.h"
 #include "Command/PrevCommandMenu.h"
 
+
 Menu::Menu()
 {
 	m_background.setTexture(Resources::getInstance().getBackground(0));
@@ -170,6 +171,7 @@ void Menu::newGame()
 	//m_controller = new Controller(m_wind);
 	m_controller = std::make_unique<Controller>(m_wind, m_scoreBoard.begin()->first);
 	m_scoreBoard.emplace(m_controller->run());
+	m_controller.release();
 	//auto ret = m_controller->run();
 	//std::cout << ret.first << " " << ret.second << "\n";
 	//delete m_controller;
@@ -231,13 +233,13 @@ void Menu::highScore()
 
 void Menu::showHelp()
 {
-	m_background.setTexture(Resources::getInstance().getBackground(2));
-
 	while (m_wind.isOpen() && !m_backToMenu)
 	{
 		m_wind.clear();
-		
+
+		m_background.setTexture(Resources::getInstance().getBackground(2+ m_currSlide));
 		m_wind.draw(m_background);
+
 		std::for_each(m_smallButtons.begin(), m_smallButtons.end(), [&](auto& but) {but->draw(m_wind); });
 		m_wind.display();
 
@@ -258,10 +260,18 @@ void Menu::showHelp()
 			}
 		}
 	}
+
 	m_background.setTexture(Resources::getInstance().getBackground(0));
+	m_currSlide = 0;
 }
 
 void Menu::backToMenu()
 {
 	m_backToMenu = true;
+}
+
+void Menu::nextSlide(int num)
+{
+	if (m_currSlide + num >= 0 && m_currSlide + num < 3)
+		m_currSlide += num;
 }

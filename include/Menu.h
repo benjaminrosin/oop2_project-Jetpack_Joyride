@@ -14,6 +14,7 @@ public:
 	void highScore();
 	void showHelp();
 	void backToMenu();
+	void nextSlide(int);
 	
 private:
 	//sf::RectangleShape m_button[NUM_OF_BUTTONS_MENU];
@@ -27,7 +28,11 @@ private:
 	sf::Text m_text;
 	std::multimap<int, std::string, std::greater<int>> m_scoreBoard;
 	bool m_backToMenu = false;
+	int m_currSlide = 0;
+	
 	int handleClick(std::vector<std::unique_ptr<MenuCommand>>&, sf::Vector2f) const;
+
+	
 	//void drawButtons(sf::RenderWindow&) const;
 
 

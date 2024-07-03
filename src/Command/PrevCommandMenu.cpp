@@ -10,5 +10,5 @@ PrevCommandMenu::PrevCommandMenu(Menu* menu)
 
 void PrevCommandMenu::axecute()
 {
-	//m_menu->backToMenu();
+	m_menu->nextSlide(-1);
 }

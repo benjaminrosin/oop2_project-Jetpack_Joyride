@@ -79,6 +79,9 @@ std::pair<int, std::string> Controller::run()
 		}
 		m_wind.display();
 	}
+
+	m_music.stop();
+
 	if (!m_board.alive())
 	{
 		return readNameFromUser();
