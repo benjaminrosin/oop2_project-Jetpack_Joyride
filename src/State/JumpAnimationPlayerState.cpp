@@ -1,6 +1,6 @@
 #include "Resources.h"
 #include "State/JumpAnimationPlayerState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 
 JumpAnimationPlayerState::JumpAnimationPlayerState(Player* player, object_code code, std::string rectString)
 {

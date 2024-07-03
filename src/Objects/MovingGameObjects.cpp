@@ -1,4 +1,4 @@
-#include "MovingGameObjects.h"
+#include "Objects/MovingGameObjects.h"
 
 MovingGameObjects::MovingGameObjects(object_code obj, sf::Vector2f loc, std::string key)
 	: Object(Resources::getInstance().getTextureObject(obj),

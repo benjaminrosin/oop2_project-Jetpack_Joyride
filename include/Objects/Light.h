@@ -1,5 +1,5 @@
 #pragma once
-#include "StaticGameObjects.h"
+#include "Objects/StaticGameObjects.h"
 
 
 class Light :public StaticGameObjects

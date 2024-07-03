@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Gift.h"
-#include "Gmoney.h"
+#include "Objects/Gift.h"
+#include "Objects/Gmoney.h"
 #include "Factory/ObjectFactory.h"
 #include "Utilities.h"
 

@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "MovingGameObjects.h"
+#include "Objects/MovingGameObjects.h"
 
 class Scientists:public MovingGameObjects {
 public:

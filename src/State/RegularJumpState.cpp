@@ -1,7 +1,7 @@
 #include "State/RegularWalkState.h"
 #include "State/RegularJumpState.h"
 #include "State/DeadPlayerState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 
 RegularJumpState::RegularJumpState(Player* player, int velocity)
     :JumpAnimationPlayerState(player)

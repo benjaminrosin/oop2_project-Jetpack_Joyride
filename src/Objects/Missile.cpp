@@ -2,7 +2,7 @@
 #include "Factory/ObjectFactory.h"
 #include "State/AlertMissileState.h"
 #include "State/FireMissileState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 #include <iostream>
 
 bool Missile::m_registered = ObjectFactory<MovingGameObjects>::registerIt(Misssile_t,

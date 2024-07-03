@@ -1,5 +1,5 @@
 #include "State/WalkAnimationPlayerState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 
 void WalkAnimationPlayerState::update(Player* player, float deltaTime)
 {

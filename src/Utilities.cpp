@@ -1,6 +1,6 @@
 #include "Utilities.h"
-#include "Coin.h"
-#include "StaticGameObjects.h"
+#include "Objects/Coin.h"
+#include "Objects/StaticGameObjects.h"
 #include <list>
 #include <memory>
 #include <cmath>

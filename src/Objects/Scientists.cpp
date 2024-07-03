@@ -1,7 +1,7 @@
-#include "Scientists.h"
+#include "Objects/Scientists.h"
 #include "Factory/ObjectFactory.h"
 #include <memory>
-#include "Object.h"
+#include "Objects/Object.h"
 #include <iostream>
 #include "Utilities.h"
 

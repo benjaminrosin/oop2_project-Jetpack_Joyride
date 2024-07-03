@@ -1,4 +1,4 @@
-#include "Gpower.h"
+#include "Objects/Gpower.h"
 #include "Factory/ObjectFactory.h"
 #include "Utilities.h"
 

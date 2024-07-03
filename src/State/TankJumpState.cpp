@@ -1,6 +1,6 @@
 #include "State/TankWalkState.h"
 #include "State/TankJumpState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 
 TankJumpState::TankJumpState(Player* player, int velocity)
     :JumpAnimationPlayerState(player)

@@ -1,5 +1,5 @@
 #include "State/DeadPlayerState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 #include <iostream>
 
 DeadPlayerState::DeadPlayerState(Player* player)

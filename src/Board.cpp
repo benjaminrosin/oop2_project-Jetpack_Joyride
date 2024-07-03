@@ -5,10 +5,10 @@
 #include <fstream>
 #include <memory>
 #include "Factory/ObjectFactory.h"
-#include "Gift.h";
-#include "Gspeed.h";
-#include "Gpower.h";
-#include "Gmoney.h";
+#include "Objects/Gift.h";
+#include "Objects/Gspeed.h";
+#include "Objects/Gpower.h";
+#include "Objects/Gmoney.h";
 #include "Utilities.h"
 #include "CollisionHandling.h"
 

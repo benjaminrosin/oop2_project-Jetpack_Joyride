@@ -1,4 +1,4 @@
-#include "Object.h"
+#include "Objects/Object.h"
 #include <iostream>
 
 Object::Object(const sf::Texture* txture, sf::Vector2f loc, std::string key)

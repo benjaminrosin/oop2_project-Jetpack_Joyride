@@ -1,4 +1,4 @@
-#include "Coin.h"
+#include "Objects/Coin.h"
 #include "Factory/ObjectFactory.h"
 #include "Utilities.h"
 

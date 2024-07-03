@@ -2,7 +2,7 @@
 #include "State/GravityPlayerState.h"
 #include "State/RegularJumpState.h"
 #include "State/TankJumpState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 
 SpeedPlayerState::SpeedPlayerState(Player* player, int velocity)
 	: JumpAnimationPlayerState(player, SpeedFlame_t, "SpeedFlame"), m_currState(player->getCurrState()), m_player(player)

@@ -1,6 +1,6 @@
 #include "State/TankWalkState.h"
 #include "State/TankJumpState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 
 bool TankWalkState::m_registered = PowerupFactory::registerIt(Tank_t,
 	[](Player* p) -> std::unique_ptr<PlayerAnimationState> {

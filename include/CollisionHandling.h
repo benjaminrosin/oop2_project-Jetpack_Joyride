@@ -1,6 +1,6 @@
 #pragma once
-#include "Player.h"
-#include "Object.h"
+#include "Objects/Player.h"
+#include "Objects/Object.h"
 #include <map>
 #include <typeindex>
 #include <SFML/Audio.hpp>

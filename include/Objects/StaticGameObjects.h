@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Object.h"
+#include "Objects/Object.h"
 #include "Resources.h"
 
 

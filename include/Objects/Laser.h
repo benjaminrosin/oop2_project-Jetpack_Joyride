@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <memory>
-#include "MovingGameObjects.h"
+#include "Objects/MovingGameObjects.h"
 #include "State/LaserState.h"
 
 class Laser :public MovingGameObjects {

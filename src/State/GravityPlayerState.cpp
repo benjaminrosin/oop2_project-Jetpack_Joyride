@@ -1,5 +1,5 @@
 #include "State/GravityPlayerState.h"
-#include "Player.h"
+#include "Objects/Player.h"
 
 bool GravityPlayerState::m_registered = PowerupFactory::registerIt(Gravity_t,
 	[](Player* p) -> std::unique_ptr<PlayerAnimationState> {

@@ -1,6 +1,6 @@
 #pragma once
-#include "MovingGameObjects.h"
-#include "StaticGameObjects.h"
+#include "Objects/MovingGameObjects.h"
+#include "Objects/StaticGameObjects.h"
 #include <memory>
 #include <map>
 #include <list>

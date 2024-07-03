@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "Gift.h"
+#include "Objects/Gift.h"
 #include "Factory/ObjectFactory.h"
 
 bool Gift::m_registered = ObjectFactory<StaticGameObjects>::registerIt(Gift_t,

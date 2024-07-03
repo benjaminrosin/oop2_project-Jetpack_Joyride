@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Gift.h"
+#include "Objects/Gift.h"
 
 class Gmoney :public Gift
 {

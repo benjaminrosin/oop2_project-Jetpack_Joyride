@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Gift.h"
+#include "Objects/Gift.h"
 
-class Gpower :public Gift
+class Gspeed :public Gift
 {
 public:
-	Gpower(int, int);
-
+	Gspeed(int, int);
+	
 private:
 	static bool m_registered;
 };

@@ -4,9 +4,9 @@
 #include <map>
 #include <string>
 #include <memory>
-#include "Player.h"
-#include "StaticGameObjects.h"
-#include "MovingGameObjects.h"
+#include "Objects/Player.h"
+#include "Objects/StaticGameObjects.h"
+#include "Objects/MovingGameObjects.h"
 
 class Controller;
 
