@@ -53,6 +53,12 @@ void Player::move(sf::Vector2f v2f)
 {
 	v2f.x *= m_moveSpeed;
 	v2f.y *= m_jumpVelocity;
+
+	if (m_sp.getPosition().y + v2f.y > DEFULT_START_POINT + 10)
+	{
+		v2f.y = 0;
+	}
+
 	MovingGameObjects::move(v2f);
 }
 

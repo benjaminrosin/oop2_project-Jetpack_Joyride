@@ -42,7 +42,7 @@ void Missile::setPositionByPlayer()
 {
 	int x = m_p2player->getPosition().x + 1000 - m_sp.getGlobalBounds().width;
 	int y = m_p2player->getPosition().y;
-	if (y < TOP_SCREEN_LIMIT) y = TOP_SCREEN_LIMIT;
+	if (y < TOP_SCREEN_LIMIT) y = TOP_SCREEN_LIMIT + 50;
 	m_p2player->getTransform();
 
 	m_sp.setPosition(sf::Vector2f(x, y));

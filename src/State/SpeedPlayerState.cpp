@@ -28,36 +28,24 @@ SpeedPlayerState::~SpeedPlayerState()
 	m_timer = 0.0f;
 	m_player->updateSpeed(-400);
 	m_player->rotateSp(0);
+	m_player->setAvoidStatus(false);
+	//m_player->setVelocity();
 	//m_player.release();
 }
 
 void SpeedPlayerState::update(Player* player, float deltaTime)
 {
-	std::cout << "speed: " << m_timer << '\n';
-	//sf::FloatRect newPlayerBounds = obj.getTransform().getInverse().transformRect(m_player->getGlobalBounds());
+	JumpAnimationPlayerState::update(player, deltaTime);
 
-	//sf::FloatRect newPlayerpos = player->getTransform().getInverse().transformRect(player->getGlobalBounds());
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
 		player->setVelocity(-400);
 	}
-	else if (player->getPosition().y + player->getHeight() > DEFULT_START_POINT)
-	//else if (newPlayerpos.height > DEFULT_START_POINT)
-	{
-		//player->setVelocity(-GRAVITY*deltaTime);
-		player->setVelocity(0);
-		player->setPosition({ player->getPosition().x, DEFULT_START_POINT - player->getHeight() / 2 });
-
-	}
-
-	JumpAnimationPlayerState::update(player, deltaTime);
 
 	m_timer += deltaTime;
 	if (m_timer >= 15)
 	{
-		player->setAvoidStatus(false);
-		player->setState(std::move(m_currState));
-
+		m_player->setState(std::move(m_currState));
 	}
 
 }

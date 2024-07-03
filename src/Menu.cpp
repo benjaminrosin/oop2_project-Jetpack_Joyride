@@ -23,15 +23,24 @@ Menu::Menu()
 	m_buttons.emplace_back(std::make_unique<StartGameCommand>(this, "play"));
 	m_buttons.emplace_back(std::make_unique<HighScoreCommand>(this, "score board"));
 	m_buttons.emplace_back(std::make_unique<RulesCommand>(this, "rules"));
-	m_buttons.emplace_back(std::make_unique<BackCommandMenu>(this, " "));
-	//exit button?
-	
 
-	for (int i = 0; i < m_buttons.size()-1; i++)
+	for (int i = 0; i < m_buttons.size() - 1; i++)
 	{
 		auto pos = sf::Vector2f(0.75 * SCREEN_SIZE.x, SCREEN_SIZE.y / m_buttons.size() + 150 * i);
 		m_buttons[i]->setPosition(pos);
 	}
+
+	m_smallButtons.emplace_back(std::make_unique<BackCommandMenu>(this));
+	m_smallButtons[0]->setPosition({1120.f, 10.f});
+	m_smallButtons.emplace_back(std::make_unique<NextCommandMenu>(this));
+	m_smallButtons[1]->setPosition({1120.f, 780.f});
+	m_smallButtons.emplace_back(std::make_unique<PrevCommandMenu>(this));
+	m_smallButtons[2]->setPosition({10.f, 780.f});
+	//exit button?
+	
+
+
+
 
 	auto file = std::ifstream("Score board.txt");
 
@@ -105,11 +114,8 @@ void Menu::showMenu()
 		m_wind.clear(sf::Color::White);
 		m_wind.draw(m_background);
 		m_wind.draw(m_logo);
-		//sf::Vector2i mousePos = sf::Mouse::getPosition(m_wind);
-		//sf::Vector2f mousePosF(mousePos.x, mousePos.y);
 
-		//handleHover(mousePosF, m_button, NUM_OF_BUTTONS_MENU);
-		std::for_each(m_buttons.begin(), m_buttons.end() - 1, [&](auto& but) {but->draw(m_wind); });
+		std::for_each(m_buttons.begin(), m_buttons.end(), [&](auto& but) {but->draw(m_wind); });
 
 		m_wind.display();
 
@@ -142,7 +148,6 @@ void Menu::showMenu()
 				
 			}
 		}
-
 	}
 }
 

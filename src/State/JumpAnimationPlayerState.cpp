@@ -30,12 +30,8 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
     }
     else
     {
-        //v2move.y = deltaTime;
         player->addVelocity(GRAVITY * deltaTime);
     }
-    //change to member and calculate right speed
-
-
 
     player->move(v2move);
 

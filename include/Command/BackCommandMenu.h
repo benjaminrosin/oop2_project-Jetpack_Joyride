@@ -1,13 +1,12 @@
 #pragma once
-#include "Command/MenuCommand.h"
+#include "Command/MenuSmallCommand.h"
 #include <SFML/Graphics.hpp>
 
 class Menu;
 
-class BackCommandMenu : public MenuCommand
+class BackCommandMenu : public MenuSmallCommand
 {
 public:
-	BackCommandMenu(Menu*, std::string);
 	virtual void axecute() override;
 
 };

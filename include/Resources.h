@@ -89,7 +89,7 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "Laser.png",
 "Coin.png",
 "Lights.png",
-"bbb.b", //gift has no texture
+"Lights.png",
 "PowerUpBox.png",
 "speedGift.png",
 "Piggy.png",
@@ -101,7 +101,6 @@ const std::string OBJECT_FILE_NAMES[NUM_OF_OBJECTS] = {
 "PlayerDead.png",
 "Exhaust.png",
 "speedflame.png"
-
 };
 
 const int NUM_OF_GIFTS = 3;
