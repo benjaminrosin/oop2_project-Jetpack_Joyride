@@ -56,11 +56,13 @@ const int APPROVED_OVERLAP = 15;
 const float START_SPEED = 300;
 const sf::Vector2f COIN_SIZE(40, 40);
 
-const int NUM_OF_BACKGROUNDS = 4;
+const int NUM_OF_BACKGROUNDS = 6;
 const std::string BACKGROUNDS_FILE_NAMES[NUM_OF_BACKGROUNDS] = {
 	"GameMenu.png",
 	"Hall.png",
-	"help.png",
+	"help1.png",
+	"help2.png",
+	"help3.png",
 	"Title.png"
 };
 

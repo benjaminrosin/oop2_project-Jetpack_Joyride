@@ -14,7 +14,7 @@ Menu::Menu()
 	m_background.setTexture(Resources::getInstance().getBackground(0));
 	m_background.setSize(SCREEN_SIZE);
 
-	m_logo.setTexture(*Resources::getInstance().getBackground(3));
+	m_logo.setTexture(*Resources::getInstance().getBackground(5));
 	m_logo.setOrigin(m_logo.getGlobalBounds().width / 2, m_logo.getGlobalBounds().height / 2);
 	m_logo.setPosition(400, SCREEN_SIZE.y/2);
 
