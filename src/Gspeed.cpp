@@ -13,7 +13,4 @@ Gspeed::Gspeed(int col, int row)
 {
 }
 
-void Gspeed::open_gift()
-{
-}
 

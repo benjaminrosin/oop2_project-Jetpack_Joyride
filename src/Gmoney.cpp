@@ -43,6 +43,4 @@ int Gmoney::getValue() const
 	return m_value;
 }
 
-void Gmoney::open_gift()
-{
-}
+
