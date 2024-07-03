@@ -12,7 +12,7 @@ bool Coin::m_registered =
 	(ObjectFactory<Coin>::registerIt(4, createCircle)) &&
 	ObjectFactory<StaticGameObjects>::registerIt(Coin_t,
 	[](int col) -> std::list<std::unique_ptr<StaticGameObjects>> {
-		return convertCoinToStaticList(ObjectFactory<Coin>::create(/*rand() % ObjectFactory<Coin>::getSize()*/ 2, col, nullptr)); });
+		return convertCoinToStaticList(ObjectFactory<Coin>::create(rand() % ObjectFactory<Coin>::getSize(), col, nullptr)); });
 
 
 Coin::Coin(int col, int row)

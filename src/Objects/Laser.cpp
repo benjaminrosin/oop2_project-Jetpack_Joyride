@@ -40,6 +40,7 @@ void Laser::rotate(float angle)
 	m_actual_colision.rotate(angle);
 }
 
+
 sf::FloatRect Laser::getLocalBounds() const
 {
 	return m_actual_colision.getLocalBounds();

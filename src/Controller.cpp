@@ -170,6 +170,7 @@ void Controller::backToManu()
 
 std::pair<int, std::string> Controller::readNameFromUser()
 {
+	m_massege[2].setString("");
 	std::string name;
 	sf::Texture texture;
 	texture.create(SCREEN_SIZE.x, SCREEN_SIZE.y);

@@ -25,7 +25,6 @@ public:
 	sf::Vector2f getPlayerLoc() const;
 	//void moveBackground(float, sf::RenderWindow&);
 	//void findCollision(std::list<std::unique_ptr<Object>>&);
-	bool collide(Object&);
 private:
 	//void deleteObjects(sf::RenderWindow&);
 
@@ -36,5 +35,7 @@ private:
 	std::list<std::unique_ptr<MovingGameObjects>> m_movings;
 	//const sf::Texture* m_background;
 	float m_objTimer = 1;
+	bool collide(Object&);
+
 	//int randomY() const;
 };
