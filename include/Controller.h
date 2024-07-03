@@ -16,7 +16,6 @@ public:
 	void setVolume(int);
 	void pause();
 	void backToManu();
-	//void back();
 	std::pair<int, std::string> readNameFromUser();
 	
 private:
