@@ -35,7 +35,6 @@ void Gmoney::draw(sf::RenderWindow& wind) const
 {
 	Object::draw(wind);
 	wind.draw(m_text);
-
 }
 
 int Gmoney::getValue() const

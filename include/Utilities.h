@@ -5,6 +5,7 @@
 class Coin;
 class StaticGameObjects;
 
+// func-tor 
 class outOfView
 {
 public:
@@ -20,7 +21,7 @@ private:
 	int m_limit;
 };
 
-
+// coin generating funcs
 std::list<std::unique_ptr<Coin>> createLine(int);
 std::list<std::unique_ptr<Coin>> createDiagonal(int);
 std::list<std::unique_ptr<Coin>> createWave(int);

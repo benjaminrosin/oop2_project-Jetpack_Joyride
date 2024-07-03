@@ -9,7 +9,6 @@ public:
 	MenuCommand(Menu*, std::string, int = 0);
 
 	virtual void axecute() = 0;
-	//void setSptire(sf::Vector2f, int);
 	void setPosition(sf::Vector2f);
 	bool contains(sf::Vector2f);
 	void draw(sf::RenderWindow&) const;

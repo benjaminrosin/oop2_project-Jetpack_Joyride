@@ -10,7 +10,6 @@ bool Gspeed::m_registered = ObjectFactory<StaticGameObjects>::registerIt(Gspeed_
 
 Gspeed::Gspeed(int col, int row)
 	:Gift(Gspeed_t, col, row, "Gspeed")
-{
-}
+{}
 
 

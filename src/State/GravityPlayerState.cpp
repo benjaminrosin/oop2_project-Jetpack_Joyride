@@ -11,8 +11,7 @@ GravityPlayerState::GravityPlayerState(Player* player, int gravity)
 {
 	player->setNewSprite("Gravity", Gravity_t);
 	player->setVelocity(500);
-	//player->flip(m_gravity / GRAVITY);
-	//set scale
+
 }
 
 GravityPlayerState::~GravityPlayerState()

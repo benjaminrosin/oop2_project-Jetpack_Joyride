@@ -8,7 +8,6 @@ RegularJumpState::RegularJumpState(Player* player, int velocity)
 {
 	player->setNewSprite("jumping berry", Player_t);
     player->setVelocity(velocity);
-	//JumpAnimationPlayerState::enter(player);
 }
 
 void RegularJumpState::update(Player* player, float delta_time)

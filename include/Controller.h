@@ -35,7 +35,6 @@ private:
 	static int m_coins;
 	bool m_backToMenu = false;
 
-
 	void drawData();
 	int handleClick(sf::Vector2f) const;
 	void resetSFMLComponents();

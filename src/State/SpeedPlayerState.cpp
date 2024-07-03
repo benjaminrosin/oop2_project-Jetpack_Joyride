@@ -7,16 +7,17 @@
 SpeedPlayerState::SpeedPlayerState(Player* player, int velocity)
 	: JumpAnimationPlayerState(player, SpeedFlame_t, "SpeedFlame"), m_currState(player->getCurrState()), m_player(player)
 {
+	// avoid double speed
 	if (auto state = dynamic_cast<SpeedPlayerState*>(m_currState.get()))
 	{
 		m_currState = std::move(state->m_currState);
 	}
+	// normal gravity
 	if (auto state = dynamic_cast<GravityPlayerState*>(m_currState.get()))
 	{
 		state->normalGravity();
 	}
 
-	//player->setAvoidStatus(true);
 	player->setVelocity(0);
 	player->updateSpeed(400);
 	player->rotateSp(45);
@@ -28,9 +29,7 @@ SpeedPlayerState::~SpeedPlayerState()
 	m_timer = 0.0f;
 	m_player->updateSpeed(-400);
 	m_player->rotateSp(0);
-	m_player->setAvoidStatus(false);
-	//m_player->setVelocity();
-	//m_player.release();
+
 }
 
 void SpeedPlayerState::update(Player* player, float deltaTime)
@@ -42,6 +41,7 @@ void SpeedPlayerState::update(Player* player, float deltaTime)
 		player->setVelocity(-400);
 	}
 
+	// return to previous state by time
 	m_timer += deltaTime;
 	if (m_timer >= 15)
 	{

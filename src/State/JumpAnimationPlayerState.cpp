@@ -13,17 +13,12 @@ JumpAnimationPlayerState::JumpAnimationPlayerState(Player* player, object_code c
 
     animate(ANIMATION_RATE);
 
-    //m_gravity = 400.0f;
 }
 
 void JumpAnimationPlayerState::update(Player* player, float deltaTime)
 {
-    //player->animate(deltaTime);
     animate(deltaTime);
 
-    auto v2move = sf::Vector2f(deltaTime, deltaTime);
-
-    // Update jump movement
     if ((player->getPosition().y - player->getHeight() + deltaTime * player->getVelocity()) < TOP_SCREEN_LIMIT) //add texture height
     {
         player->setVelocity(0);
@@ -33,7 +28,7 @@ void JumpAnimationPlayerState::update(Player* player, float deltaTime)
         player->addVelocity(GRAVITY * deltaTime);
     }
 
-    player->move(v2move);
+    player->move(sf::Vector2f(deltaTime, deltaTime));
 
 }
 

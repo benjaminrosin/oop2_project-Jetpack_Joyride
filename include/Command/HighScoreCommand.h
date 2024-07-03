@@ -7,8 +7,6 @@ class HighScoreCommand : public MenuCommand
 {
 public:
 	using MenuCommand::MenuCommand;
-	//HighScoreCommand(Menu&);
 	virtual void axecute() override;
-private:
 
 };

@@ -8,6 +8,5 @@ class BackCommand : public BoardCommand
 public:
 	BackCommand(Controller*, int);
 	virtual void axecute() override;
-private:
 
 };

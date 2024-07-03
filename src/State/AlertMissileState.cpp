@@ -26,13 +26,7 @@ void AlertMissileState::update(Missile* missile, float deltaTime)
 	}
 	if (m_timer > 3)
 	{
-		std::cout << "fire\n";
 		missile->setState(std::make_unique<FireMissileState>(missile));
 	}
 }
 
-//
-//void AlertMissileState::move(float deltaTime)
-//{
-//
-//}

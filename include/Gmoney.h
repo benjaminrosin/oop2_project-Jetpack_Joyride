@@ -13,6 +13,4 @@ private:
 	static bool m_registered;
 	sf::Text m_text;
 	int m_value;
-
-
 };

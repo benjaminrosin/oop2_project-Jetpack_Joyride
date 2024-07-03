@@ -1,5 +1,4 @@
 #include "CollisionHandling.h"
-//#include <runtime_error>
 #include <stdexcept>
 #include "Coin.h"
 #include "Objects/Missile.h"
@@ -15,7 +14,6 @@
 #include "State/SpeedPlayerState.h"
 #include "State/GravityPlayerState.h"
 #include "Factory/PowerupFactory.h"
-//#include "State/DeadPlayerState.h"
 #include <iostream>
 #include "Resources.h"
 #include <SFML/Audio.hpp>
@@ -44,7 +42,7 @@ HitFunctionPtr CollisionHandling::lookup(const std::type_index& obj)
     auto mapEntry = collisionMap.find(obj);
     if (mapEntry == collisionMap.end())
     {
-        return nullptr;
+        throw std::runtime_error("unknown collision!");
     }
     return mapEntry->second;
 }
@@ -66,8 +64,8 @@ HitMap CollisionHandling::initializeCollisionMap()
 
 bool CollisionHandling::coinCollision(Player& player, Object& obj)
 {
-    Controller::addToCoins();
     playSound(Resources::getInstance().getSoundBuffer(CoinSound_t));
+    Controller::addToCoins();
     return true;
 }
 
@@ -95,7 +93,6 @@ bool CollisionHandling::scientistCollision(Player&, Object&)
 bool CollisionHandling::speedCollision(Player& player, Object&)
 {
     playSound(Resources::getInstance().getSoundBuffer(ShieldSpeed_t));
-
     player.setState(std::make_unique<SpeedPlayerState>(&player));
 
     return true;
@@ -104,24 +101,15 @@ bool CollisionHandling::speedCollision(Player& player, Object&)
 bool CollisionHandling::moneyCollision(Player&, Object& obj)
 {
     playSound(Resources::getInstance().getSoundBuffer(PiggySound_t));
-
     Gmoney& gift = dynamic_cast<Gmoney&> (obj);
- 
     Controller::addToCoins(gift.getValue());
     return true;
 }
 
 bool CollisionHandling::powerCollision(Player& player, Object&)
 {
-    std::cout << "CollisionHandling::powerCollision - add rand\n";
-
     playSound(Resources::getInstance().getSoundBuffer(PowerSound_t));
-    // adding random between all options
-    
-    //player.setState(std::make_unique<TankJumpState>(&player));
     player.setState(std::move(PowerupFactory::create(Tank_t + rand() % PowerupFactory::getSize(), &player)));
-    
-
     return true;
 }
 

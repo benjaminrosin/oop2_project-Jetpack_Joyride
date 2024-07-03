@@ -7,7 +7,6 @@ class RulesCommand : public MenuCommand
 {
 public:
 	using MenuCommand::MenuCommand;
-	//RulesCommand(Menu&);
 	virtual void axecute() override;
-private:
+
 };

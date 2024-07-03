@@ -15,9 +15,7 @@ class PowerupFactory
 {
 public:
 	static std::unique_ptr<PlayerAnimationState> create(int, Player*);
-
 	static bool registerIt(int, Func);
-
 	static int getSize() { return getMap().size(); };
 
 private:

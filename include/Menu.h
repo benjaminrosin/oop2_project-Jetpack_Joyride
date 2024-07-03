@@ -17,7 +17,6 @@ public:
 	void nextSlide(int);
 	
 private:
-	//sf::RectangleShape m_button[NUM_OF_BUTTONS_MENU];
 	sf::RectangleShape m_background;
 	sf::RenderWindow m_wind;
 	std::unique_ptr <Controller> m_controller; 
@@ -31,9 +30,5 @@ private:
 	int m_currSlide = 0;
 	
 	int handleClick(std::vector<std::unique_ptr<MenuCommand>>&, sf::Vector2f) const;
-
-	
-	//void drawButtons(sf::RenderWindow&) const;
-
 
 };

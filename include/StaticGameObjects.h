@@ -6,19 +6,6 @@
 
 class StaticGameObjects :public Object {
 public:
-	StaticGameObjects(object_code, sf::Vector2f, std::string);
-	//virtual ~StaticGameObjects() {};
-
-	//virtual sf::Vector2f getPosition() const override;
-	//virtual void draw(sf::RenderWindow&) const override;
-	//virtual void move_and_change_sprite(float, Object*) = 0;
-	//virtual void setSpriteRect(sf::IntRect) override;
-	virtual void move(sf::Vector2f move) override;
-
-	//virtual bool collision(Object&) = 0;
-	//virtual bool collision(Player&) = 0;
-	//virtual bool collision(Cat&) = 0;
-
-private:
-	//sf::Sprite m_sp;
+	StaticGameObjects(object_code obj, sf::Vector2f loc, std::string key)
+		: Object(Resources::getInstance().getTextureObject(obj), loc, key) {};
 };

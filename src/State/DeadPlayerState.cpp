@@ -21,9 +21,7 @@ void DeadPlayerState::update(Player* player, float deltaTime)
 
 		if (player->getSpeed() < 0)
 		{
-			std::cout << "dead\n";
 			player->dead();
-			player->updateSpeed(GRAVITY * deltaTime);
 		}
 	}
 	else {

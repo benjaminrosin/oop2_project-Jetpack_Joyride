@@ -22,8 +22,3 @@ void TankJumpState::update(Player* player, float deltaTime)
         player->setState(std::make_unique<TankWalkState>(player));
     }
 }
-
-//void TankJumpState::jump(Player*)
-//{
-//
-//}

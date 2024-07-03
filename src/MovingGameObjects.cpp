@@ -6,10 +6,6 @@ MovingGameObjects::MovingGameObjects(object_code obj, sf::Vector2f loc, std::str
 		key)
 {
 	m_speed = 0;
-	//m_sp.setTexture(*Resources::getInstance().getTextureObject(obj));
-	//m_sp.setTextureRect(Resources::getInstance().getIntRect(obj));
-	//m_sp.setPosition(loc);
-	//m_sp.setOrigin(sf::Vector2f(0, Resources::getInstance().getIntRect(obj).height));
 }
 
 MovingGameObjects::MovingGameObjects(object_code obj, sf::Vector2f loc, float speed, int direction, std::string key)
@@ -24,30 +20,9 @@ MovingGameObjects::MovingGameObjects(object_code obj, sf::Vector2f loc, float sp
 void MovingGameObjects::move(float delta_time)
 {
 	m_sp.move(m_direction * m_speed * delta_time);
-	//change texure
 }
 
 const sf::Sprite MovingGameObjects::getSprite() const
 {
 	return m_sp;
-}
-
-//sf::Vector2f MovingGameObjects::getPosition() const
-//{
-//	return m_sp.getPosition();
-//}
-
-//void MovingGameObjects::draw(sf::RenderWindow& wind) const
-//{
-//	wind.draw(m_sp);
-//}
-
-//void MovingGameObjects::setSpriteRect(sf::IntRect rect)
-//{
-//	m_sp.setTextureRect(rect);
-//}
-
-void MovingGameObjects::move(sf::Vector2f move)
-{
-	m_sp.move(move);
 }

@@ -4,7 +4,6 @@
 #include <list>
 #include <memory>
 #include <cmath>
-#include <cstdlib> // for rand()
 
 
 std::list<std::unique_ptr<Coin>> createLine(int col)
@@ -88,10 +87,6 @@ std::list<std::unique_ptr<Coin>> createTriangle(int col)
 
 	int size = 5+ rand() % 5;  
 
-	//if (row + size * COIN_SIZE.y < TOP_SCREEN_LIMIT || row + size * COIN_SIZE.y >= DEFULT_START_POINT) {
-	//	return {};
-	//}
-
 	for (int i = 0; i <= size; ++i) {
 		int y = row + i * COIN_SIZE.y;
 		int startX = col - (i * COIN_SIZE.x / 2);
@@ -117,10 +112,6 @@ std::list<std::unique_ptr<Coin>> createCircle(int col)
 
 	int radius = 2 + rand() % 5; 
 	int param = 2 * PI * radius;
-	/*
-	if (row - COIN_SIZE.y * radius - COIN_SIZE.y <= TOP_SCREEN_LIMIT || row + COIN_SIZE.y * radius >= DEFULT_START_POINT) {
-		return {}; 
-	}*/
 
 	for (int angle = 0; angle <= 360; angle += 360/param) { 
 		double radians = angle * PI / 180.0;
@@ -130,7 +121,6 @@ std::list<std::unique_ptr<Coin>> createCircle(int col)
 			lst.push_back(std::make_unique<Coin>(x, y));
 		}
 	}
-
 	return lst;
 }
 

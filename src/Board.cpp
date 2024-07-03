@@ -18,7 +18,7 @@ Board::Board()
 	m_player = std::make_unique<Player>();
 }
 
-void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב שיש גם טיימר וגם דלתא
+void Board::play(sf::RenderWindow& wind, float delta_time)
 {
 	//player move
 	m_player->update(delta_time);
@@ -34,14 +34,13 @@ void Board::play(sf::RenderWindow& wind, float timer, float delta_time)//לשים לב
 	//Perform movement for all the moving objects
 	std::for_each(m_movings.begin(), m_movings.end(), [&](auto& obj) {obj->move(delta_time); });
 
-	//Perform animation for all the moving objects
+	//Perform animation for all the static objects
 	std::for_each(m_statics.begin(), m_statics.end(), [&](auto& obj) {obj->animate(delta_time); });
 	
 	//create objects on the screen throughout the game.
 	generateLevel(wind, delta_time);
 	
-
-	//removing odjects that out of view
+	//removing odjects that out of view using func-tor
 	int xView = wind.getView().getCenter().x - SCREEN_SIZE.x;
 	m_movings.remove_if(outOfView(xView));
 	m_statics.remove_if(outOfView(xView));
@@ -58,6 +57,7 @@ void Board::draw(sf::RenderWindow& wind) const
 
 void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 {
+	// firs rand
 	static float timeToGift = rand() % 5;
 	static float timeToCoins = rand() % 5;
 	static float timeToLaser = rand() % 5;
@@ -68,13 +68,14 @@ void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 
 	auto x = wind.getView().getCenter().x + SCREEN_SIZE.x;
 
+	// update timers
 	timeToGift -= delta_time; 
 	timeToCoins -= delta_time;
 	timeToLaser -= delta_time;
 	timeToMissile -= delta_time;
 	timeToDecor -= delta_time; 
 
-
+	// craeting the objects and raffle the next timer
 	if (timeToCoins < 0)
 	{
 		m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Coin_t, x, m_player.get()));
@@ -105,7 +106,6 @@ void Board::generateLevel(sf::RenderWindow& wind, float delta_time)
 		else
 		{
 			m_statics.splice(m_statics.end(), ObjectFactory<StaticGameObjects>::create(Light_t, x, m_player.get()));
-
 		}
 		timeToDecor = (1 + rand() % 3) * (START_SPEED / playerSpeed);
 	}
@@ -126,7 +126,6 @@ bool Board::collide(Object& obj)
 {
 	sf::FloatRect overlapRect;
 
-	//if (m_player->getGlobalBounds().intersects(obj.getGlobalBounds(), overlapRect))
 	sf::FloatRect newPlayerBounds = obj.getTransform().getInverse().transformRect(m_player->getGlobalBounds());
 	if (newPlayerBounds.intersects(obj.getLocalBounds(), overlapRect))
 	{
@@ -139,38 +138,4 @@ bool Board::collide(Object& obj)
 	return false;
 }
 
-//int Board::randomY() const
-//{
-//
-//	return 2*MARGIN + (rand()% ((DEFULT_START_POINT - 2*MARGIN) / 10))*10 ;
-//
-//}
-
-//void Board::findCollision(std::list<std::unique_ptr<Object>>& objects)
-//{
-//	std::for_each(objects.begin(), objects.end(), [&](auto& obj) 
-//		{if (collide(obj)) objects.remove_if(CollisionHandling::processCollision(*m_player, *obj)); });
-//}
-
-
-//void Board::deleteObjects(sf::RenderWindow& wind)
-//{
-//	int xView = wind.getView().getCenter().x - SCREEN_SIZE.x;
-//
-//	for (auto& obj : m_objects) 
-//	{
-//		if (obj->getPosition().x < xView) {
-//
-//		}
-//
-//	}
-//
-//	
-//
-//	for (int i = 0; i < m_objects.size(); i++) {
-//		{
-//
-//		}
-//	}
-//}
 
