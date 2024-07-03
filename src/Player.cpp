@@ -109,22 +109,23 @@ void Player::setPosition(sf::Vector2f v2p)
 
 void Player::flip(int num)
 {
-	auto currOrigin = m_sp.getOrigin();
+	//auto currOrigin = m_sp.getOrigin();
 
-	m_sp.setOrigin(0,0);
+	//m_sp.setOrigin(0,0);
 	m_sp.setScale(sf::Vector2f(1, num));
 
-	m_sp.setOrigin(currOrigin);
-
+	//m_sp.setOrigin(currOrigin);
 	//m_sp.setOrigin({ 0, - m_sp.getGlobalBounds().height });
 	//m_sp.setOrigin(0, m_sp.getGlobalBounds().height);
-	//m_sp.setPosition(m_sp.getPosition());
+	//m_sp.setPosition(m_sp.getPosition() + sf::Vector2f(0, 5 + m_sp.getGlobalBounds().height));
 }
 
 std::unique_ptr<PlayerAnimationState> Player::getCurrState()
 {
 	return std::move(m_currentState);
 }
+
+
 
 //const std::unique_ptr<PlayerAnimationState>&& Player::getCurrState() const
 //{

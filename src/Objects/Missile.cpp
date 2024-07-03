@@ -18,6 +18,7 @@ Missile::Missile(int col, Player* p)
 
 {
 	setState(std::make_unique<AlertMissileState>(this));
+	m_sp.setOrigin(sf::Vector2f(0, m_sp.getGlobalBounds().height/2));
 	//m_currState->enter(this);
 }
 
