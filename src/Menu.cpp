@@ -94,15 +94,13 @@ Menu::~Menu()
 
 void Menu::showMenu()
 {
-	if (m_firstRun) {
-		m_wind.create(sf::VideoMode(SCREEN_SIZE.x, SCREEN_SIZE.y), "Jetpack Joyride");
-		m_wind.setFramerateLimit(60);
-		m_firstRun = false;
-	}
-	
+	m_wind.create(sf::VideoMode(SCREEN_SIZE.x, SCREEN_SIZE.y), "Jetpack Joyride");
+	m_wind.setFramerateLimit(60);
+		
 
 	while (m_wind.isOpen())
 	{
+		m_backToMenu = false;
 		m_wind.setView(m_wind.getDefaultView());
 		m_wind.clear(sf::Color::White);
 		m_wind.draw(m_background);
@@ -202,7 +200,7 @@ void Menu::highScore()
 
 	m_wind.display();
 
-	while (true)
+	while (!m_backToMenu && m_wind.isOpen())
 	{
 		if (auto event = sf::Event(); m_wind.waitEvent(event))
 		{
@@ -214,7 +212,7 @@ void Menu::highScore()
 			case sf::Event::MouseButtonReleased:
 				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 
-				if (option != -1 && option == 3) {
+				if (option == 3) {
 					m_buttons[option]->axecute();
 				}
 				break;
@@ -236,7 +234,7 @@ void Menu::showHelp()
 	m_background.setTexture(Resources::getInstance().getBackground(0));
 	m_wind.display();
 
-	while (true)
+	while (!m_backToMenu && m_wind.isOpen())
 	{
 		if (auto event = sf::Event(); m_wind.waitEvent(event))
 		{
@@ -248,11 +246,16 @@ void Menu::showHelp()
 			case sf::Event::MouseButtonReleased:
 				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 
-				if (option != -1 && option == 3) {
+				if (option == 3) {
 					m_buttons[option]->axecute();
 				}
 				break;;
 			}
 		}
 	}
+}
+
+void Menu::backToMenu()
+{
+	m_backToMenu = true;
 }

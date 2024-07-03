@@ -11,5 +11,5 @@ BackCommandMenu::BackCommandMenu(Menu* menu, std::string name)
 
 void BackCommandMenu::axecute()
 {
-	m_menu->showMenu();
+	m_menu->backToMenu();
 }
