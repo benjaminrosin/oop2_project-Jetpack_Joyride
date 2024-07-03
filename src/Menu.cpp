@@ -8,6 +8,8 @@
 #include "Command/RulesCommand.h"
 #include "Command/HighScoreCommand.h"
 #include "Command/BackCommandMenu.h"
+#include "Command/NextCommandMenu.h"
+#include "Command/PrevCommandMenu.h"
 
 Menu::Menu()
 {
@@ -24,24 +26,20 @@ Menu::Menu()
 	m_buttons.emplace_back(std::make_unique<HighScoreCommand>(this, "score board"));
 	m_buttons.emplace_back(std::make_unique<RulesCommand>(this, "rules"));
 
-	for (int i = 0; i < m_buttons.size() - 1; i++)
+	for (int i = 0; i < m_buttons.size(); i++)
 	{
 		auto pos = sf::Vector2f(0.75 * SCREEN_SIZE.x, SCREEN_SIZE.y / m_buttons.size() + 150 * i);
 		m_buttons[i]->setPosition(pos);
 	}
 
 	m_smallButtons.emplace_back(std::make_unique<BackCommandMenu>(this));
-	m_smallButtons[0]->setPosition({1120.f, 10.f});
+	m_smallButtons[0]->setPosition({1120.f, 100.f});
 	m_smallButtons.emplace_back(std::make_unique<NextCommandMenu>(this));
-	m_smallButtons[1]->setPosition({1120.f, 780.f});
+	m_smallButtons[1]->setPosition({1120.f, 720.f});
 	m_smallButtons.emplace_back(std::make_unique<PrevCommandMenu>(this));
-	m_smallButtons[2]->setPosition({10.f, 780.f});
-	//exit button?
+	m_smallButtons[2]->setPosition({80.f, 720.f});
+
 	
-
-
-
-
 	auto file = std::ifstream("Score board.txt");
 
 	if (!file.is_open())
@@ -70,11 +68,14 @@ Menu::Menu()
 	m_scoreBoardSign.setOrigin(sf::Vector2f(m_scoreBoardSign.getGlobalBounds().width / 2, m_scoreBoardSign.getGlobalBounds().height / 2));
 	m_scoreBoardSign.setScale(sf::Vector2f(2, 1));
 	
-	m_text.setCharacterSize(30);
+	m_text.setCharacterSize(40);
 	m_text.setFont(*Resources::getInstance().getFont());
 	m_text.setFillColor(sf::Color::White);
 	m_text.setOutlineColor(sf::Color::Black);
 	m_text.setOutlineThickness(2);
+	m_text.setOrigin(m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().height / 2);
+	m_text.setPosition(sf::Vector2f(SCREEN_SIZE.x / 2, 200));
+
 	
 }
 
@@ -110,6 +111,7 @@ void Menu::showMenu()
 	while (m_wind.isOpen())
 	{
 		m_backToMenu = false;
+
 		m_wind.setView(m_wind.getDefaultView());
 		m_wind.clear(sf::Color::White);
 		m_wind.draw(m_background);
@@ -130,7 +132,7 @@ void Menu::showMenu()
 
 			case sf::Event::MouseButtonReleased:
 			{
-				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+				int option = handleClick(m_buttons, sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 
 				if (option != -1) {
 					m_buttons[option]->axecute();
@@ -151,11 +153,11 @@ void Menu::showMenu()
 	}
 }
 
-int Menu::handleClick(sf::Vector2f v2f) const
+int Menu::handleClick(std::vector<std::unique_ptr<MenuCommand>>& conteiner,  sf::Vector2f v2f) const
 {
-	for (int i = 0; i < m_buttons.size(); i++)
+	for (int i = 0; i < conteiner.size(); i++)
 	{
-		if (m_buttons[i]->contains(v2f))
+		if (conteiner[i]->contains(v2f))
 		{
 			return i;
 		}
@@ -176,7 +178,6 @@ void Menu::newGame()
 
 void Menu::highScore()
 {
-	std::cout << "high score\n";
 	m_wind.clear();
 	m_wind.draw(m_background);
 
@@ -185,13 +186,14 @@ void Menu::highScore()
 	m_text.setString("score board");
 	m_text.setOrigin(m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().height / 2);
 	m_text.setPosition(pos);
-	m_buttons[3]->draw(m_wind);
+
+	m_smallButtons[0]->draw(m_wind);
 	m_wind.draw(m_text);
 
 	m_text.setCharacterSize(40);
 	auto score = m_scoreBoard.begin();
 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 3; i++) //only top 3
 	{
 		pos.y += m_scoreBoardSign.getGlobalBounds().height;
 		m_scoreBoardSign.setPosition(pos);
@@ -215,10 +217,11 @@ void Menu::highScore()
 				m_wind.close();
 				return;
 			case sf::Event::MouseButtonReleased:
-				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 
-				if (option == 3) {
-					m_buttons[option]->axecute();
+				int option = handleClick(m_smallButtons, sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+
+				if (option == 0) {
+					m_smallButtons[option]->axecute();
 				}
 				break;
 			}
@@ -228,19 +231,16 @@ void Menu::highScore()
 
 void Menu::showHelp()
 {
-	m_wind.clear(sf::Color::White);
-
-	m_wind.clear();
 	m_background.setTexture(Resources::getInstance().getBackground(2));
 
-	m_wind.draw(m_background);
-	m_buttons[3]->draw(m_wind);
-
-	m_background.setTexture(Resources::getInstance().getBackground(0));
-	m_wind.display();
-
-	while (!m_backToMenu && m_wind.isOpen())
+	while (m_wind.isOpen() && !m_backToMenu)
 	{
+		m_wind.clear();
+		
+		m_wind.draw(m_background);
+		std::for_each(m_smallButtons.begin(), m_smallButtons.end(), [&](auto& but) {but->draw(m_wind); });
+		m_wind.display();
+
 		if (auto event = sf::Event(); m_wind.waitEvent(event))
 		{
 			switch (event.type)
@@ -249,15 +249,16 @@ void Menu::showHelp()
 				m_wind.close();
 				return;
 			case sf::Event::MouseButtonReleased:
-				int option = handleClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+				int option = handleClick(m_smallButtons, sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 
-				if (option == 3) {
-					m_buttons[option]->axecute();
+				if (option != -1) {
+					m_smallButtons[option]->axecute();
 				}
-				break;;
+				break;
 			}
 		}
 	}
+	m_background.setTexture(Resources::getInstance().getBackground(0));
 }
 
 void Menu::backToMenu()

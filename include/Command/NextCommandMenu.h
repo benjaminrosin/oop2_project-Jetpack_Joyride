@@ -4,10 +4,10 @@
 
 class Menu;
 
-class BackCommandMenu : public MenuCommand
+class NextCommandMenu : public MenuCommand
 {
 public:
-	BackCommandMenu(Menu*);
+	NextCommandMenu(Menu*);
 	virtual void axecute() override;
 
 };

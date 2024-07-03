@@ -3,7 +3,6 @@
 #include "Resources.h"
 #include "Controller.h"
 #include "Command/MenuCommand.h"
-#include "Command/MenuSmallCommand.h"
 #include <vector>
 
 class Menu {
@@ -22,13 +21,13 @@ private:
 	sf::RenderWindow m_wind;
 	std::unique_ptr <Controller> m_controller; 
 	std::vector<std::unique_ptr<MenuCommand>> m_buttons;
-	std::vector<std::unique_ptr<MenuSmallCommand>> m_smallButtons;
+	std::vector<std::unique_ptr<MenuCommand>> m_smallButtons;
 	sf::Sprite m_logo;
 	sf::Sprite m_scoreBoardSign;
 	sf::Text m_text;
 	std::multimap<int, std::string, std::greater<int>> m_scoreBoard;
 	bool m_backToMenu = false;
-	int handleClick(sf::Vector2f) const;
+	int handleClick(std::vector<std::unique_ptr<MenuCommand>>&, sf::Vector2f) const;
 	//void drawButtons(sf::RenderWindow&) const;
 
 

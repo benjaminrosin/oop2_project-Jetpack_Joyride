@@ -6,7 +6,7 @@ class Menu;
 class MenuCommand
 {
 public:
-	MenuCommand(Menu*, std::string);
+	MenuCommand(Menu*, std::string, int = 0);
 
 	virtual void axecute() = 0;
 	//void setSptire(sf::Vector2f, int);

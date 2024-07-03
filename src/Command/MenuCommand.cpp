@@ -2,12 +2,14 @@
 #include "Menu.h"
 #include "Resources.h"
 
-MenuCommand::MenuCommand(Menu* menu, std::string name)
+MenuCommand::MenuCommand(Menu* menu, std::string name, int index)
 	:m_menu(menu), m_name(name, *Resources::getInstance().getFont(), 40)
 {
 	m_name.setOutlineColor(sf::Color::Black);
 	m_name.setOutlineThickness(2);
-	m_sp.setTexture(*Resources::getInstance().getTextureButtons(0));
+	m_sp.setTexture(*Resources::getInstance().getTextureButtons(index));
+	m_sp.setOrigin({ m_sp.getGlobalBounds().width / 2 ,m_sp.getGlobalBounds().height / 2 });
+	m_name.setOrigin({ m_name.getGlobalBounds().width / 2 ,m_name.getGlobalBounds().height / 2 });
 }
 
 //void CommandInterface::setSptire(sf::Vector2f pos, int index)
@@ -19,10 +21,7 @@ MenuCommand::MenuCommand(Menu* menu, std::string name)
 
 void MenuCommand::setPosition(sf::Vector2f pos)
 {
-	m_sp.setOrigin({ m_sp.getGlobalBounds().width / 2 ,m_sp.getGlobalBounds().height / 2 });
 	m_sp.setPosition(pos);
-
-	m_name.setOrigin({ m_name.getGlobalBounds().width / 2 ,m_name.getGlobalBounds().height / 2 });
 	m_name.setPosition(pos);
 }
 
