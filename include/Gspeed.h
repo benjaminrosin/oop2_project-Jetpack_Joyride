@@ -7,7 +7,6 @@ class Gspeed :public Gift
 public:
 	Gspeed(int, int);
 	
-	virtual void open_gift();
 private:
 	static bool m_registered;
 

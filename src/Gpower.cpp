@@ -13,8 +13,6 @@ Gpower::Gpower(int col, int row)
 {
 }
 
-void Gpower::open_gift()
-{
-}
+
 
 
