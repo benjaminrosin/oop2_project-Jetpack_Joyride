@@ -316,7 +316,7 @@ void Controller::moveBackground(float delta_time)
 {
 	int xStartOfView = m_wind.getView().getCenter().x - m_wind.getView().getSize().x / 2;
 	
-	for (int i = 0; i < NUM_OF_BACKGROUNDS-2; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		m_wind.draw(m_background[i]);
 
