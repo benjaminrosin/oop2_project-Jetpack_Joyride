@@ -2,6 +2,8 @@
 
 A C++ implementation of the popular game Jetpack Joyride using SFML graphics library.
 
+[Check on YouTube](https://youtu.be/0Xg2BCWOO0o)
+
 ## Description
 
 This project is a clone of the classic Jetpack Joyride game where players control a character with a jetpack, avoiding obstacles, collecting coins, and trying to achieve the highest score possible. The game features various power-ups, obstacles, and enemies that make the gameplay challenging and entertaining.
